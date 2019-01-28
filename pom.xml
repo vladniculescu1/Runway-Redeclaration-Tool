@@ -40,7 +40,6 @@
             <version>3.0.0</version>
             <type>maven-plugin</type>
         </dependency>
-
         <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
@@ -79,6 +78,7 @@
                 </configuration>
             </plugin>
 
+            <!-- run checkstyle -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -174,6 +174,7 @@
                                     <mainClass>${project.mainclass}</mainClass>
                                 </transformer>
                             </transformers>
+                            <minimizeJar>true</minimizeJar>
                         </configuration>
                     </execution>
                 </executions>
@@ -219,6 +220,13 @@
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
                 </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
     </reporting>
