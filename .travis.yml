@@ -1,4 +1,7 @@
 language: java
 jdk: oraclejdk11
+branches:
+  only:
+    - master
 notifications:
   slack: segteam3:b9FcBvlYjm27S7w8yNmgubDT
