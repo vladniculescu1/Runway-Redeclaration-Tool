@@ -48,6 +48,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- painless gridbag layout -->
+        <dependency>
+            <groupId>com.github.tri-bao</groupId>
+            <artifactId>painless-gridbag</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
