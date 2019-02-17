@@ -190,7 +190,6 @@
         <module name="OverloadMethodsDeclarationOrder"/>
         <module name="VariableDeclarationUsageDistance"/>
         <module name="CustomImportOrder">
-            <property name="sortImportsInGroupAlphabetically" value="true"/>
             <property name="separateLineBetweenGroups" value="true"/>
             <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
         </module>
@@ -228,9 +227,6 @@
             <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>
             <property name="target"
                       value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
-        </module>
-        <module name="JavadocType">
-            <property name="scope" value="public"/>
         </module>
         <module name="JavadocMethod">
             <property name="scope" value="public"/>
