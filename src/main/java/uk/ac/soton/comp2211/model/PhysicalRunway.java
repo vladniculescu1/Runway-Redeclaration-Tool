@@ -3,11 +3,16 @@ package uk.ac.soton.comp2211.model;
 /**
  * The physical runway which is a basis for the logical runway.
  */
+import uk.ac.soton.comp2211.calculator.Calculator;
+import uk.ac.soton.comp2211.calculator.ClearwayValueCalculator;
+import uk.ac.soton.comp2211.calculator.RunwayProperty;
+import uk.ac.soton.comp2211.calculator.StopwayValueCalculator;
+
 public class PhysicalRunway {
 
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
-    private RunwayDirection runwayDirection;
+    private RunwaySide runwayDirection;
     private RunwayMode runwayMode;
 
     /**
@@ -33,7 +38,7 @@ public class PhysicalRunway {
         return lowerThreshold;
     }
 
-    public RunwayDirection getRunwayDirection() {
+    public RunwaySide getRunwayDirection() {
         return runwayDirection;
     }
 
