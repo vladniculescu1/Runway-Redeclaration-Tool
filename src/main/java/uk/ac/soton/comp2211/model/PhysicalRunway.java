@@ -45,4 +45,26 @@ public class PhysicalRunway {
     public RunwayMode getRunwayMode() {
         return runwayMode;
     }
+
+    /**
+     * Factory method for creating a new calculator for a given runway property.
+     *
+     * @param property the runway property that should be calculated.
+     * @return the calculator used to calculate the property.
+     */
+    public Calculator getCalculator(RunwayProperty property) {
+
+        switch (property) {
+            case STOPWAY_LOWER_VALUE:
+                return new StopwayValueCalculator(this, RunwaySide.LOWER_THRESHOLD);
+            case STOPWAY_HIGHER_VALUE:
+                return new StopwayValueCalculator(this, RunwaySide.HIGHER_THRESHOLD);
+            case CLEARWAY_LOWER_VALUE:
+                return new ClearwayValueCalculator(this, RunwaySide.LOWER_THRESHOLD);
+            case CLEARWAY_HIGHER_VALUE:
+                return new ClearwayValueCalculator(this, RunwaySide.HIGHER_THRESHOLD);
+            default:
+                throw new IllegalArgumentException("Calculator for property: " + property + " not defined!");
+        }
+    }
 }
