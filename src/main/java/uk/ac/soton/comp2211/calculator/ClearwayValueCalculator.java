@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.calculator;
 
+import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -8,8 +9,8 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  */
 public class ClearwayValueCalculator extends Calculator {
 
-    public ClearwayValueCalculator(PhysicalRunway runway, RunwaySide direction) {
-        super(runway, direction);
+    public ClearwayValueCalculator(LogicalRunway logicalRunway) {
+        super(logicalRunway);
     }
 
     @Override
