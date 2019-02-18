@@ -2,18 +2,13 @@ package uk.ac.soton.comp2211.model;
 
 import java.util.Optional;
 
-public class RunwayDisplay {
+public class RunwaySelection {
 
     private DrawMode drawMode;
-    private RunwayMode runwayMode;
     private Optional<PhysicalRunway> selectedRunway;
 
     public DrawMode getDrawMode() {
         return drawMode;
-    }
-
-    public RunwayMode getRunwayMode() {
-        return runwayMode;
     }
 
     public boolean hasSelectedRunway() {

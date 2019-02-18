@@ -5,6 +5,7 @@ public class PhysicalRunway {
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
     private RunwayDirection runwayDirection;
+    private RunwayMode runwayMode;
 
     public LogicalRunway getHigherThreshold() {
         return higherThreshold;
@@ -16,5 +17,9 @@ public class PhysicalRunway {
 
     public RunwayDirection getRunwayDirection() {
         return runwayDirection;
+    }
+
+    public RunwayMode getRunwayMode() {
+        return runwayMode;
     }
 }
