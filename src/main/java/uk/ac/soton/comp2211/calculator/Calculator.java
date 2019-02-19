@@ -7,53 +7,66 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 public class Calculator {
 
     private PhysicalRunway physicalRunway;
-    private RunwaySide side;
 
-    public Calculator(PhysicalRunway physicalRunway, RunwaySide side) {
+    public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
-        this.side = side;
     }
 
-    public int getToda() {
+    public int getToda(RunwaySide side) {
         return 0;
     }
 
-    public int getTora() {
+    public int getTora(RunwaySide side) {
         return 0;
     }
 
-    public int getAsda() {
+    public int getAsda(RunwaySide side) {
         return 0;
     }
 
-    public int getLda() {
+    public int getLda(RunwaySide side) {
         return 0;
     }
 
-    public int getStopway() {
+    public int getStopway(RunwaySide side) {
         LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
-        return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalToda();
+        return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalTora();
     }
 
-    public int getClearway() {
+    public int getClearway(RunwaySide side) {
         LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
         return logicalRunway.getOriginalToda() - logicalRunway.getOriginalTora();
     }
 
-    public int getMargin() {
+    public int getMargin(RunwaySide side) {
+        if (this.getClearway(side) > 60) {
+            return this.getClearway(side);
+        } else {
+            return 60;
+        }
+
+    }
+
+    public int getRunwayLength() {
+        // as the tora is the same for both sides of the runway, the side doesn't matter here
+        LogicalRunway logicalRunway = physicalRunway.getLowerThreshold();
+        return logicalRunway.getOriginalTora();
+    }
+
+    public int getTotalVisualisationLength() {
+        return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength() + this.getMargin(RunwaySide.HIGHER_THRESHOLD);
+    }
+
+    public int getClearwayPosition(RunwaySide side) {
         return 0;
     }
 
-    public int getClearwayPosition() {
-        return 0;
-    }
-
-    public int getStopwayPosition() {
+    public int getStopwayPosition(RunwaySide side) {
         return 0;
     }
 
     private LogicalRunway getLogicalRunwayForSide(RunwaySide side) {
-        switch(side) {
+        switch (side) {
             case LOWER_THRESHOLD:
                 return physicalRunway.getLowerThreshold();
             case HIGHER_THRESHOLD:
@@ -61,7 +74,6 @@ public class Calculator {
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
-
     }
 
 
