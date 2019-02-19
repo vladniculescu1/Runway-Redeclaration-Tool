@@ -1,8 +1,9 @@
 package uk.ac.soton.comp2211;
 
-import uk.ac.soton.comp2211.draw.BasicRunwayDrawer;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
 import uk.ac.soton.comp2211.draw.Drawer;
+import uk.ac.soton.comp2211.draw.LdaDrawer;
+import uk.ac.soton.comp2211.draw.TodaDrawer;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.MainPanel;
@@ -41,7 +42,7 @@ public class Main {
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
-        List<Drawer> topDownDrawer = List.of(new BasicRunwayDrawer());
+        List<Drawer> topDownDrawer = List.of(new TodaDrawer());
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 
         new MainFrame(

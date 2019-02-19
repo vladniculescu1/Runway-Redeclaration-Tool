@@ -10,9 +10,9 @@ public class LdaDrawer extends DistanceDrawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
-        Calculator calc = runwaySelection.getSelectedRunway().getCalculator(side);
-        int startX = calc.getMargin(); //possibly wont work when heading swapped
-        int length = calc.getLda();
+        Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
+        int startX = calc.getMargin(side); //possibly wont work when heading swapped
+        int length = calc.getLda(side);
 
         drawDistance(g2d, startX, length, 50, "LDA");
     }
