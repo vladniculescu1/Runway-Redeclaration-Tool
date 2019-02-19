@@ -15,15 +15,15 @@ public class BasicRunwayDrawer implements Drawer {
         var calculator = runwaySelection.getSelectedRunway().getCalculator();
 
         var runwayLength = calculator.getRunwayLength();
-        var runwayPosition = calculator.getMargin(RunwaySide.LOWER_THRESHOLD);
+        var runwayPosition = calculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
 
         var stripLength = calculator.getStripLength();
         var stripPosition = calculator.getStripPosition();
 
-        var clearwayLengthHigher = calculator.getClearway(RunwaySide.HIGHER_THRESHOLD);
+        var clearwayLengthHigher = calculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
         var clearwayPositionHigher = calculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var clearwayLengthLower = calculator.getClearway(RunwaySide.LOWER_THRESHOLD);
+        var clearwayLengthLower = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
         var clearwayPositionLower = calculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw box for runway
