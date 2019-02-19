@@ -33,6 +33,30 @@ public class Calculator {
         return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalTora();
     }
 
+    public int getClearwayPosition(RunwaySide side) {
+        switch (side) {
+            case LOWER_THRESHOLD:
+                return 0;
+            case HIGHER_THRESHOLD:
+                return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
+    }
+
+    public int getStopwayPosition(RunwaySide side) {
+
+        switch (side) {
+            case LOWER_THRESHOLD:
+                return this.getMargin(RunwaySide.LOWER_THRESHOLD) - this.getStopway(RunwaySide.LOWER_THRESHOLD);
+            case HIGHER_THRESHOLD:
+                return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
+
+    }
+
     public int getClearway(RunwaySide side) {
         LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
         return logicalRunway.getOriginalToda() - logicalRunway.getOriginalTora();
@@ -54,15 +78,8 @@ public class Calculator {
     }
 
     public int getTotalVisualisationLength() {
-        return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength() + this.getMargin(RunwaySide.HIGHER_THRESHOLD);
-    }
-
-    public int getClearwayPosition(RunwaySide side) {
-        return 0;
-    }
-
-    public int getStopwayPosition(RunwaySide side) {
-        return 0;
+        return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength()
+                + this.getMargin(RunwaySide.HIGHER_THRESHOLD);
     }
 
     private LogicalRunway getLogicalRunwayForSide(RunwaySide side) {
