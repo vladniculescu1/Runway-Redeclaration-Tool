@@ -2,6 +2,10 @@ package uk.ac.soton.comp2211.model;
 
 import java.util.Optional;
 
+/**
+ * The various (number) distances that define the runway.
+ * Physical runway can be used in both directions, creating two logical runways.
+ */
 public class LogicalRunway {
 
     private int originalLda;
@@ -11,6 +15,27 @@ public class LogicalRunway {
     private int heading;
     private ThresholdLocation location;
     private Optional<RunwayObstacle> runwayObstacle;
+
+    /**
+     * The LogicalRunway constructor.
+     * @param originalLda the original LDA value
+     * @param originalToda the original TODA value
+     * @param originalTora the original TORA value
+     * @param originalAsda the original ASDA value
+     * @param heading the angular direction of the runway
+     * @param location the relative direction (L or R) of the runway when there are several parallel runways.
+     * @param runwayObstacle the obstacle on the runway
+     */
+    public LogicalRunway(int originalLda, int originalToda, int originalTora, int originalAsda,
+                         int heading, ThresholdLocation location, Optional<RunwayObstacle> runwayObstacle) {
+        this.originalLda = originalLda;
+        this.originalToda = originalToda;
+        this.originalTora = originalTora;
+        this.originalAsda = originalAsda;
+        this.heading = heading;
+        this.location = location;
+        this.runwayObstacle = runwayObstacle;
+    }
 
     public int getOriginalLda() {
         return originalLda;
