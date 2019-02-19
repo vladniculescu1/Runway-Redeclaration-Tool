@@ -1,8 +1,13 @@
 package uk.ac.soton.comp2211.draw;
 
+/**
+ * Constants used during during drawing - e.g. for width of the runway.
+ */
 public class DrawConstants {
-    public static int RUNWAY_WIDTH = 100;
-    public static int STRIP_WIDTH = 500;
-    public static int CLEARWAY_WIDTH = 150;
+
+    public static double DRAW_MARGIN_PERCENTAGE = 7;
+    public static double RUNWAY_WIDTH_PERCENTAGE = 15;
+    public static double STRIP_WIDTH_PERCENTAGE = 50;
+    public static double CLEARWAY_WIDTH_PERCENTAGE = 30;
 
 }

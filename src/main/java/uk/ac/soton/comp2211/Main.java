@@ -1,9 +1,6 @@
 package uk.ac.soton.comp2211;
 
-import uk.ac.soton.comp2211.draw.DrawExecutor;
-import uk.ac.soton.comp2211.draw.Drawer;
-import uk.ac.soton.comp2211.draw.LdaDrawer;
-import uk.ac.soton.comp2211.draw.TodaDrawer;
+import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.MainPanel;
@@ -31,10 +28,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3595, 3902,
-                3902, 3902, 9, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway1 = new LogicalRunway(3595, 3700,
+                3700, 3902, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3884, 3962,
-                3884, 3884, 27, ThresholdLocation.RIGHT);
+                3700, 3884, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
@@ -42,7 +39,9 @@ public class Main {
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
-        List<Drawer> topDownDrawer = List.of(new TodaDrawer());
+        List<Drawer> topDownDrawer = List.of(
+                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(), new CentreLineDrawer(), new RunwayDrawer()
+        );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 
         new MainFrame(
