@@ -31,11 +31,13 @@ public class Calculator {
     }
 
     public int getStopway() {
-        return 0;
+        LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
+        return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalToda();
     }
 
     public int getClearway() {
-        return 0;
+        LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
+        return logicalRunway.getOriginalToda() - logicalRunway.getOriginalTora();
     }
 
     public int getMargin() {
@@ -48,6 +50,18 @@ public class Calculator {
 
     public int getStopwayPosition() {
         return 0;
+    }
+
+    private LogicalRunway getLogicalRunwayForSide(RunwaySide side) {
+        switch(side) {
+            case LOWER_THRESHOLD:
+                return physicalRunway.getLowerThreshold();
+            case HIGHER_THRESHOLD:
+                return physicalRunway.getHigherThreshold();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
+
     }
 
 
