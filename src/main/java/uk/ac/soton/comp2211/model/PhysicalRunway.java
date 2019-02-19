@@ -44,8 +44,8 @@ public class PhysicalRunway {
         return runwayMode;
     }
 
-    public Calculator getCalculator(RunwaySide side) {
-        return new Calculator(this, side);
+    public Calculator getCalculator() {
+        return new Calculator(this);
     }
 
 }
