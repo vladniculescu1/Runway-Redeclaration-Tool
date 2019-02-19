@@ -4,23 +4,51 @@ import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
-/**
- * Calculates different values of the physical and logical runways.
- */
-public abstract class Calculator {
+public class Calculator {
 
-    protected LogicalRunway logicalRunway;
+    private PhysicalRunway physicalRunway;
+    private RunwaySide side;
 
-    /**
-     * Instantiate new length calculator with the given physical runway. Sets the current
-     * logical runway according to the current runway direction.
-     *
-     * @param logicalRunway the logical runway for which the value will be calculated.
-     */
-    public Calculator(LogicalRunway logicalRunway) {
-        this.logicalRunway = logicalRunway;
+    public Calculator(PhysicalRunway physicalRunway, RunwaySide side) {
+        this.physicalRunway = physicalRunway;
+        this.side = side;
     }
 
-    public abstract int calculate();
+    public int getToda() {
+        return 0;
+    }
+
+    public int getTora() {
+        return 0;
+    }
+
+    public int getAsda() {
+        return 0;
+    }
+
+    public int getLda() {
+        return 0;
+    }
+
+    public int getStopway() {
+        return 0;
+    }
+
+    public int getClearway() {
+        return 0;
+    }
+
+    public int getMargin() {
+        return 0;
+    }
+
+    public int getClearwayPosition() {
+        return 0;
+    }
+
+    public int getStopwayPosition() {
+        return 0;
+    }
+
 
 }
