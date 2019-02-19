@@ -11,28 +11,30 @@ public class Calculator {
 
     public Calculator(PhysicalRunway physicalRunway, RunwaySide side) {
         this.physicalRunway = physicalRunway;
-        this.side = side;
+        this.side=side;
     }
-
-    public int getToda() {
+     private int runwayStart(){
         return 0;
+     }
+    public int getToda() {
+        return getLogicalRunwayForSide(side).getOriginalToda();
     }
 
     public int getTora() {
-        return 0;
+        return getLogicalRunwayForSide(side).getOriginalTora();
     }
 
     public int getAsda() {
-        return 0;
+        return getLogicalRunwayForSide(side).getOriginalAsda();
     }
 
     public int getLda() {
-        return 0;
+        return getLogicalRunwayForSide(side).getOriginalLda();
     }
 
     public int getStopway() {
         LogicalRunway logicalRunway = this.getLogicalRunwayForSide(side);
-        return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalToda();
+        return logicalRunway.getOriginalAsda() - logicalRunway.getOriginalTora();
     }
 
     public int getClearway() {
