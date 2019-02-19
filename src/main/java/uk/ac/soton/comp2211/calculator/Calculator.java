@@ -77,6 +77,19 @@ public class Calculator {
         return logicalRunway.getOriginalTora();
     }
 
+    public int getStripLength() {
+        return 60 + this.getStopway(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength()
+                + this.getStopway(RunwaySide.HIGHER_THRESHOLD) + 60;
+    }
+
+    public int getStripPosition() {
+        if (this.getClearway(RunwaySide.LOWER_THRESHOLD) > 0) {
+            return this.getClearway(RunwaySide.LOWER_THRESHOLD) - this.getStopway(RunwaySide.LOWER_THRESHOLD) - 60;
+        } else {
+            return 0;
+        }
+    }
+
     public int getTotalVisualisationLength() {
         return this.getMargin(RunwaySide.LOWER_THRESHOLD) + this.getRunwayLength()
                 + this.getMargin(RunwaySide.HIGHER_THRESHOLD);
