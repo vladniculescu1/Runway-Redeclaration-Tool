@@ -1,8 +1,6 @@
 package uk.ac.soton.comp2211.calculator;
 
 import uk.ac.soton.comp2211.model.LogicalRunway;
-import uk.ac.soton.comp2211.model.PhysicalRunway;
-import uk.ac.soton.comp2211.model.RunwaySide;
 
 /**
  * Calculates different values of the physical and logical runways.
