@@ -24,17 +24,16 @@ public class LogicalRunway {
      * @param originalAsda the original ASDA value
      * @param heading the angular direction of the runway
      * @param location the relative direction (L or R) of the runway when there are several parallel runways.
-     * @param runwayObstacle the obstacle on the runway
      */
     public LogicalRunway(int originalLda, int originalToda, int originalTora, int originalAsda,
-                         int heading, ThresholdLocation location, Optional<RunwayObstacle> runwayObstacle) {
+                         int heading, ThresholdLocation location) {
         this.originalLda = originalLda;
         this.originalToda = originalToda;
         this.originalTora = originalTora;
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle = runwayObstacle;
+        this.runwayObstacle = Optional.empty();
     }
 
     public int getOriginalLda() {

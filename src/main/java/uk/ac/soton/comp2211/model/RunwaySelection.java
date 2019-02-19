@@ -13,16 +13,18 @@ public class RunwaySelection {
     /**
      * RunwaySelection constructor.
      * @param drawMode the drawing mode; where the drawing is done.
-     * @param selectedRunway the runway that is currently selected. It is an instance of PhysicalRunway.
-     *                       Optional &lt;PhysicalRunway&gt; used as there can be no runway selected (NULL)
      */
-    public RunwaySelection(DrawMode drawMode, Optional<PhysicalRunway> selectedRunway) {
+    public RunwaySelection(DrawMode drawMode) {
         this.drawMode = drawMode;
-        this.selectedRunway = selectedRunway;
+        this.selectedRunway = Optional.empty();
     }
 
     public DrawMode getDrawMode() {
         return drawMode;
+    }
+
+    public void setSelectedRunway(PhysicalRunway physicalRunway) {
+        this.selectedRunway = Optional.of(physicalRunway);
     }
 
     public boolean hasSelectedRunway() {
