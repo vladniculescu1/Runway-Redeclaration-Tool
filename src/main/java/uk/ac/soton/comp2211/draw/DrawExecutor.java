@@ -75,6 +75,6 @@ public class DrawExecutor {
 
         // set draw color to black
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(5));
+        g2d.setStroke(new BasicStroke(10));
     }
 }

@@ -40,7 +40,7 @@ public class Main {
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(), new CentreLineDrawer(), new RunwayDrawer()
+                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(), new RunwayDrawer(), new CentreLineDrawer()
         );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 

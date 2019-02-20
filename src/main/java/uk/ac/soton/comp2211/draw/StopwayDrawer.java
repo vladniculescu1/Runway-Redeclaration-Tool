@@ -22,18 +22,35 @@ public class StopwayDrawer implements Drawer {
         var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
         var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        g2d.setColor(Color.blue);
+        if (stopwayLengthLower > 0) {
+
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionLower,
+                    stopwayLengthLower, stopwayWidth);
+
+            g2d.setColor(Color.yellow);
+            g2d.draw(new ChevronSeries(stopwayPositionLower, stopwayWidth,
+                    stopwayLengthLower, RunwaySide.LOWER_THRESHOLD));
+
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.blue, stopwayPositionLower,
+                    stopwayLengthLower, stopwayWidth, "SWY");
+
+        }
 
         if (stopwayLengthHigher > 0) {
-            DrawUtils.centeredRectangleWithLabel(g2d, stopwayPositionHigher, stopwayLengthHigher,
-                    stopwayWidth, "SWY");
-        }
-        if (stopwayLengthLower > 0) {
-            DrawUtils.centeredRectangleWithLabel(g2d, stopwayPositionLower, stopwayLengthLower,
-                    stopwayWidth, "SWY");
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionHigher,
+                    stopwayLengthHigher, stopwayWidth);
+
+            g2d.setColor(Color.yellow);
+            g2d.draw(new ChevronSeries(stopwayPositionHigher, stopwayWidth,
+                    stopwayLengthHigher, RunwaySide.HIGHER_THRESHOLD));
+
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.blue, stopwayPositionHigher,
+                    stopwayLengthHigher, stopwayWidth, "SWY");
+
         }
 
         g2d.setColor(Color.black);
 
     }
+
 }
