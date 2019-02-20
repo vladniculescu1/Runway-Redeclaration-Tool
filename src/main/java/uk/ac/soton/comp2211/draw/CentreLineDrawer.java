@@ -15,16 +15,16 @@ public class CentreLineDrawer implements Drawer {
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         var calculator = runwaySelection.getSelectedRunway().getCalculator();
 
-        var runwayLength = calculator.getRunwayLength();
-        var runwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
         Stroke normal = g2d.getStroke();
 
         Stroke dashed = new BasicStroke(10, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
-                0, new float[]{100}, 0);
+                0, new float[]{70}, 0);
         g2d.setStroke(dashed);
         g2d.setColor(Color.white);
-        g2d.draw(new Line2D.Double(runwayPosition, 0, runwayPosition + runwayLength, 0));
+        g2d.draw(new Line2D.Double(lowerThresholdPosition, 0, higherThresholdPosition, 0));
 
         g2d.setColor(Color.black);
         g2d.setStroke(normal);

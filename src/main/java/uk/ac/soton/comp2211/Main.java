@@ -28,9 +28,9 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3595, 3700,
+        LogicalRunway logicalRunway1 = new LogicalRunway(3600, 3700,
                 3700, 3902, 9, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway2 = new LogicalRunway(3884, 3962,
+        LogicalRunway logicalRunway2 = new LogicalRunway(3700, 3962,
                 3700, 3884, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
@@ -40,7 +40,8 @@ public class Main {
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(), new RunwayDrawer(), new CentreLineDrawer()
+                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer()
         );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 

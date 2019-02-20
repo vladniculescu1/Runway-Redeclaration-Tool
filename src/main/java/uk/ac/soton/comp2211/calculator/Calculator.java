@@ -174,7 +174,7 @@ public class Calculator {
                         + this.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
             case HIGHER_THRESHOLD:
                 return this.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD)
-                        - this.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
+                        - this.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
