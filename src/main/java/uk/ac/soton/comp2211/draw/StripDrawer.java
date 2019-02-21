@@ -18,6 +18,7 @@ public class StripDrawer implements Drawer {
         var stripWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
         var stripPosition = calculator.getStripPosition();
 
-        DrawUtils.centeredRectangleWithLabel(g2d, stripPosition, stripLength, stripWidth, "STRIP");
+        DrawUtils.centeredFilledRectangle(g2d, new Color(77, 188, 41), stripPosition, stripLength, stripWidth);
+        DrawUtils.centeredRectangleWithLabel(g2d, Color.black, stripPosition, stripLength, stripWidth, "STRIP");
     }
 }

@@ -23,17 +23,13 @@ public class ClearwayDrawer implements Drawer {
 
         var clearwayWidth = visualisationLength * (DrawConstants.CLEARWAY_WIDTH_PERCENTAGE / 100);
 
-        g2d.setColor(Color.red);
-
         if (clearwayLengthHigher > 0) {
-            DrawUtils.centeredRectangleWithLabel(g2d, clearwayPositionHigher, clearwayLengthHigher,
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.red, clearwayPositionHigher, clearwayLengthHigher,
                     clearwayWidth, "CWY");
         }
         if (clearwayLengthLower > 0) {
-            DrawUtils.centeredRectangleWithLabel(g2d, clearwayPositionLower, clearwayLengthLower,
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.red, clearwayPositionLower, clearwayLengthLower,
                     clearwayWidth, "CWY");
         }
-
-        g2d.setColor(Color.black);
     }
 }

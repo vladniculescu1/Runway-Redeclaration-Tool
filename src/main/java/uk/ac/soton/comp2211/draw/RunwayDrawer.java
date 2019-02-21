@@ -20,7 +20,11 @@ public class RunwayDrawer implements Drawer {
         var runwayWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
         var runwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
-        g2d.draw(new Rectangle2D.Double(runwayPosition, - (runwayWidth / 2), runwayLength, runwayWidth));
+        g2d.setColor(Color.lightGray);
+        Rectangle2D runway = new Rectangle2D.Double(runwayPosition, - (runwayWidth / 2), runwayLength, runwayWidth);
+        g2d.fill(runway);
 
+        g2d.setColor(Color.black);
+        g2d.draw(runway);
     }
 }
