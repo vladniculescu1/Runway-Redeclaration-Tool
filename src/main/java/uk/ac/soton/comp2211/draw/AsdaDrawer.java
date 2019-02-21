@@ -11,9 +11,21 @@ public class AsdaDrawer extends DistanceDrawer {
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
-        int startX = calc.getMargin(side);
-        int length = calc.getAsda(side);
 
-        drawDistance(g2d, startX, length, 50, "ASDA");
+        var visualisationLength = calc.getTotalVisualisationLength();
+        var runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
+        int startX = calc.getRunwayPosition(side);
+        int distance = calc.getAsda(side);
+        double height = - ((runwayWidth/14)*5);
+
+        switch (side){
+            case LOWER_THRESHOLD:
+                drawDistance(g2d, startX, distance, (int) height , "ASDA");
+                break;
+            case HIGHER_THRESHOLD:
+                drawDistance(g2d, startX, -distance, (int) -height , "ASDA");
+                break;
+        }
+
     }
 }

@@ -3,7 +3,7 @@ package uk.ac.soton.comp2211.model;
 /**
  * How an individual obstacle is defined. Includes the name, height and length of the obstacle.
  */
-public class Obstacle {
+public class Obstacle{
 
     private String name;
     private int height;

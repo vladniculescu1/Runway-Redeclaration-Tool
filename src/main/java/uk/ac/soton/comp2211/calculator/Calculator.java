@@ -1,31 +1,80 @@
 package uk.ac.soton.comp2211.calculator;
 
-import uk.ac.soton.comp2211.model.LogicalRunway;
-import uk.ac.soton.comp2211.model.PhysicalRunway;
-import uk.ac.soton.comp2211.model.RunwaySide;
+import uk.ac.soton.comp2211.model.*;
 
 public class Calculator {
 
     private PhysicalRunway physicalRunway;
+    private Obstacle testObstacle = new Obstacle("testObstacle", 25,10);
+    private int testStripValue = 60;
+    private int testRESAValue = 240;
+    private int testBlastProtectionValue = 25;
 
     public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
     }
 
     public int getToda(RunwaySide side) {
-        return 0;
+        switch (side){
+            case LOWER_THRESHOLD:
+                return getTora(side)+getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
+            case HIGHER_THRESHOLD:
+                return getTora(side)+getClearwayLength(RunwaySide.LOWER_THRESHOLD);
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
     }
 
     public int getTora(RunwaySide side) {
-        return 0;
+        return 3700;
     }
 
     public int getAsda(RunwaySide side) {
-        return 0;
+        switch (side){
+            case LOWER_THRESHOLD:
+                return getTora(side)+getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
+            case HIGHER_THRESHOLD:
+                return getTora(side)+getStopwayLength(RunwaySide.LOWER_THRESHOLD);
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
     }
 
     public int getLda(RunwaySide side) {
-        return 0;
+        RunwayObstacle higherThresholdObstacle=null;
+        RunwayObstacle lowerThresholdObstacle=null;
+        try{
+            higherThresholdObstacle = getLogicalRunwayForSide(RunwaySide.HIGHER_THRESHOLD).getRunwayObstacle();
+        }catch (java.util.NoSuchElementException e1){}
+        try {
+            lowerThresholdObstacle = getLogicalRunwayForSide(RunwaySide.LOWER_THRESHOLD).getRunwayObstacle();
+        }catch (java.util.NoSuchElementException e2){}
+
+        switch (side){
+            case HIGHER_THRESHOLD:
+                if(higherThresholdObstacle!=null){
+
+                }else if(lowerThresholdObstacle!=null){
+
+                }else{
+                    return getTora(side)-getDisplacedThresholdLength(side);
+                }
+            case LOWER_THRESHOLD:
+                if(higherThresholdObstacle!=null){
+                    return getLogicalRunwayForSide(side).getOriginalLda()-testStripValue-testRESAValue;
+                }else if(testObstacle!=null){
+                    int alsValue = (testObstacle.getHeight()*50)+testStripValue;
+                    if(alsValue<testBlastProtectionValue){
+                        alsValue=testBlastProtectionValue;
+                    }
+                    return getLogicalRunwayForSide(side).getOriginalLda()-500-alsValue;
+                }else{
+                    return getLogicalRunwayForSide(side).getOriginalLda();
+                }
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        }
+
     }
 
     /**
@@ -55,7 +104,6 @@ public class Calculator {
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
-
     }
 
     /**

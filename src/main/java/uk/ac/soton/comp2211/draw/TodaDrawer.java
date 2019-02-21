@@ -11,11 +11,22 @@ public class TodaDrawer extends DistanceDrawer {
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
-        int startX = calc.getMargin(side);
-        int length = calc.getToda(side);
-        startX = 100;
-        length = 3000;
 
-        drawDistance(g2d, startX, length, 50, "TODA");
+        var visualisationLength = calc.getTotalVisualisationLength();
+        var runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
+        int startX = calc.getRunwayPosition(side);
+        int distance = calc.getToda(side);
+        double height = - ((runwayWidth/14)*6);
+
+
+        switch (side){
+            case LOWER_THRESHOLD:
+                drawDistance(g2d, startX, distance, (int) height , "TODA");
+                break;
+            case HIGHER_THRESHOLD:
+                drawDistance(g2d, startX, -distance, (int) -height , "TODA");
+                break;
+        }
+
     }
 }
