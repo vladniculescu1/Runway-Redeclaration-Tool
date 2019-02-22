@@ -5,10 +5,9 @@ import uk.ac.soton.comp2211.model.*;
 public class Calculator {
 
     private PhysicalRunway physicalRunway;
-    private Obstacle testObstacle = new Obstacle("testObstacle", 25,10);
-    private int testStripValue = 60;
     private int testRESAValue = 240;
-    private int testBlastProtectionValue = 25;
+    private int testBlastProtectionValue = 60;
+    private  int testStripValue = 60;
 
     public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
@@ -30,6 +29,9 @@ public class Calculator {
     }
 
     public int getAsda(RunwaySide side) {
+        if(getLogicalRunwayForSide(RunwaySide.HIGHER_THRESHOLD).hasRunwayObstacle() || getLogicalRunwayForSide(RunwaySide.LOWER_THRESHOLD).hasRunwayObstacle()){
+            return getTora(side);
+        }
         switch (side){
             case LOWER_THRESHOLD:
                 return getTora(side)+getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
@@ -41,40 +43,19 @@ public class Calculator {
     }
 
     public int getLda(RunwaySide side) {
-        RunwayObstacle higherThresholdObstacle=null;
-        RunwayObstacle lowerThresholdObstacle=null;
-        try{
-            higherThresholdObstacle = getLogicalRunwayForSide(RunwaySide.HIGHER_THRESHOLD).getRunwayObstacle();
-        }catch (java.util.NoSuchElementException e1){}
-        try {
-            lowerThresholdObstacle = getLogicalRunwayForSide(RunwaySide.LOWER_THRESHOLD).getRunwayObstacle();
-        }catch (java.util.NoSuchElementException e2){}
-
-        switch (side){
-            case HIGHER_THRESHOLD:
-                if(higherThresholdObstacle!=null){
-
-                }else if(lowerThresholdObstacle!=null){
-
-                }else{
-                    return getTora(side)-getDisplacedThresholdLength(side);
-                }
-            case LOWER_THRESHOLD:
-                if(higherThresholdObstacle!=null){
-                    return getLogicalRunwayForSide(side).getOriginalLda()-testStripValue-testRESAValue;
-                }else if(testObstacle!=null){
-                    int alsValue = (testObstacle.getHeight()*50)+testStripValue;
-                    if(alsValue<testBlastProtectionValue){
-                        alsValue=testBlastProtectionValue;
-                    }
-                    return getLogicalRunwayForSide(side).getOriginalLda()-500-alsValue;
-                }else{
-                    return getLogicalRunwayForSide(side).getOriginalLda();
-                }
-            default:
-                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+        if(runwayObstacle.getThresholdDistance()<getRunwayLength()/2){
+            //Plane landing over obstacle
+            int temporaryThresholdLength=(runwayObstacle.getObstacle().getHeight()*50)+testStripValue;
+            if(temporaryThresholdLength<testBlastProtectionValue){
+                temporaryThresholdLength=testBlastProtectionValue;
+            }
+            return runway.getOriginalLda()-runwayObstacle.getThresholdDistance()-temporaryThresholdLength;
+        }else{
+            //Plane landing towards obstacle
+            return runwayObstacle.getThresholdDistance()-testRESAValue-testStripValue;
         }
-
     }
 
     /**

@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.model;
 
+import org.checkerframework.checker.nullness.Opt;
+
 import java.util.Optional;
 
 /**
@@ -33,7 +35,13 @@ public class LogicalRunway {
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle = Optional.empty();
+        if(heading==9) {
+            Obstacle obstacle = new Obstacle("testObstacle", 25, 10);
+            RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, obstacle);
+            this.runwayObstacle = Optional.of(runwayObstacle);
+        }else {
+            this.runwayObstacle= Optional.empty();
+        }
     }
 
     public int getOriginalLda() {
