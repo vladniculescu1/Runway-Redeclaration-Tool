@@ -32,6 +32,5 @@ public class LdaDrawer extends DistanceDrawer {
                 drawDistance(g2d, startX, -distance, (int) -height , "LDA");
                 break;
         }
-
     }
 }
