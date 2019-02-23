@@ -41,7 +41,8 @@ public class Main {
 
         List<Drawer> topDownDrawer = List.of(
                 new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
-                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer()
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new DesignatorDrawer()
         );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 

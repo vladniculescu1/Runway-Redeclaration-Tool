@@ -42,7 +42,7 @@ public class DrawUtils {
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
         g2d.setColor(outline);
         g2d.draw(rectangle);
-        g2d.drawString(label, (int) positionX, - (int) (width / 2) - 30);
+        g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (width / 50)));
         g2d.setColor(Color.black);
     }
 
