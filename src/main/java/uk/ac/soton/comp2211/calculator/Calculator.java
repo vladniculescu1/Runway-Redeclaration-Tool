@@ -145,7 +145,6 @@ public class Calculator {
                     default:
                         return 0;
                 }
-
             }else {
                 //Landing towards obstacle
                 return getThresholdPosition(side);

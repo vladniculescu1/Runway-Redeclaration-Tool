@@ -28,13 +28,13 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3353, 3660,
-                3660, 3660, 9, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway2 = new LogicalRunway(3660, 3660,
-                3660, 3660, 27, ThresholdLocation.RIGHT);
+        LogicalRunway logicalRunway1 = new LogicalRunway(3595, 3902,
+                3902, 3902, 9, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway2 = new LogicalRunway(3884, 3962,
+                3884, 3884, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
+                RunwaySide.HIGHER_THRESHOLD, RunwayMode.LANDING);
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);

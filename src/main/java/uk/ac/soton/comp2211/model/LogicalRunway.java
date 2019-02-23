@@ -36,12 +36,13 @@ public class LogicalRunway {
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        Obstacle obstacle = new Obstacle("Scenario 3",15,0);
+        //Just adds the obstacle to the logical runways for Scenario 4
+        Obstacle obstacle = new Obstacle("Scenario 4",20,0);
         if(heading==9){
-            RunwayObstacle runwayObstacle = new RunwayObstacle(150,60,obstacle);
+            RunwayObstacle runwayObstacle = new RunwayObstacle(3546,20,obstacle);
             this.runwayObstacle=Optional.of(runwayObstacle);
         }else{
-            RunwayObstacle runwayObstacle = new RunwayObstacle(3203, 60, obstacle);
+            RunwayObstacle runwayObstacle = new RunwayObstacle(50, 20, obstacle);
             this.runwayObstacle= Optional.of(runwayObstacle);
         }
        // this.runwayObstacle = Optional.empty();
