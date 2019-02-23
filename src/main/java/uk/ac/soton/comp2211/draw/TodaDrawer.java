@@ -6,6 +6,9 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
+/**
+ * Draws the TODA value onto the runway
+ */
 public class TodaDrawer extends DistanceDrawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {

@@ -34,7 +34,7 @@ public class Main {
                 3884, 3884, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.HIGHER_THRESHOLD, RunwayMode.LANDING);
+                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);

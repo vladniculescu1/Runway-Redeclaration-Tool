@@ -6,6 +6,9 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
+/**
+ * Draws the LDA value onto the runway
+ */
 public class LdaDrawer extends DistanceDrawer {
 
     @Override
