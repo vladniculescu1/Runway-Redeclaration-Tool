@@ -203,10 +203,10 @@ public class Calculator {
     public int getStopwayPosition(RunwaySide side) {
         switch (side) {
             case LOWER_THRESHOLD:
-                return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
-                        - this.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
-            case HIGHER_THRESHOLD:
                 return this.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+
+            case HIGHER_THRESHOLD:
+                return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)- this.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
@@ -232,10 +232,10 @@ public class Calculator {
     public int getClearwayPosition(RunwaySide side) {
         switch (side) {
             case LOWER_THRESHOLD:
-                return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
-                        - this.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-            case HIGHER_THRESHOLD:
                 return this.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+            case HIGHER_THRESHOLD:
+                return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+                        - this.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
