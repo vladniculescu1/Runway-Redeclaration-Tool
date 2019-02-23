@@ -31,7 +31,7 @@ public class Calculator {
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
-            return runway.getOriginalToda()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+            return getTora(side)+getClearwayLength(side);
         } else {
             //Plane taking-off towards obstacle
             return getTora(side);
@@ -56,14 +56,14 @@ public class Calculator {
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
-            return runway.getOriginalTora()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+            return runway.getOriginalTora()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue-getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
-            int temporaryEndOfTora=runwayObstacle.getObstacle().getHeight()*50;
-            if(temporaryEndOfTora<testRESAValue){
-                temporaryEndOfTora=testRESAValue;
+            int slopeCalculation=runwayObstacle.getObstacle().getHeight()*50;
+            if(slopeCalculation<testRESAValue){
+                slopeCalculation=testRESAValue;
             }
-            return runway.getOriginalTora()-temporaryEndOfTora-testStripValue;
+            return runwayObstacle.getThresholdDistance()+getDisplacedThresholdLength(side)-slopeCalculation-testStripValue;
         }
     }
 
@@ -85,7 +85,7 @@ public class Calculator {
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
-            return runway.getOriginalAsda()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+            return getTora(side)+getStopwayLength(side);
         } else {
             //Plane taking-off towards obstacle
             return getTora(side);
@@ -110,11 +110,11 @@ public class Calculator {
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane landing over obstacle
-            int temporaryThresholdLength = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
-            if (temporaryThresholdLength < testBlastProtectionValue) {
-                temporaryThresholdLength = testBlastProtectionValue;
+            int slopeCalculation = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
+            if (slopeCalculation < testBlastProtectionValue) {
+                slopeCalculation = testBlastProtectionValue;
             }
-            return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - temporaryThresholdLength;
+            return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - slopeCalculation;
         } else {
             //Plane landing towards obstacle
             return runwayObstacle.getThresholdDistance() - testRESAValue - testStripValue;

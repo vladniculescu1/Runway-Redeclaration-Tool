@@ -28,10 +28,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3600, 3700,
-                3700, 3902, 9, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway2 = new LogicalRunway(3700, 3962,
-                3700, 3884, 27, ThresholdLocation.RIGHT);
+        LogicalRunway logicalRunway1 = new LogicalRunway(3353, 3660,
+                3660, 3660, 9, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway2 = new LogicalRunway(3660, 3660,
+                3660, 3660, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);

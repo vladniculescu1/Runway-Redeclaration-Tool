@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.model;
 
 import org.checkerframework.checker.nullness.Opt;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
@@ -35,7 +36,15 @@ public class LogicalRunway {
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle = Optional.empty();
+        Obstacle obstacle = new Obstacle("Scenario 3",15,0);
+        if(heading==9){
+            RunwayObstacle runwayObstacle = new RunwayObstacle(150,60,obstacle);
+            this.runwayObstacle=Optional.of(runwayObstacle);
+        }else{
+            RunwayObstacle runwayObstacle = new RunwayObstacle(3203, 60, obstacle);
+            this.runwayObstacle= Optional.of(runwayObstacle);
+        }
+       // this.runwayObstacle = Optional.empty();
     }
 
     public int getOriginalLda() {
