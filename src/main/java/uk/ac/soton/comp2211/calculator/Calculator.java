@@ -6,50 +6,101 @@ public class Calculator {
 
     private PhysicalRunway physicalRunway;
     private int testRESAValue = 240;
-    private int testBlastProtectionValue = 60;
+    private int testBlastProtectionValue = 300;
     private  int testStripValue = 60;
 
     public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
     }
 
+    /**
+     * Calculates the length of the TODA for the given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
     public int getToda(RunwaySide side) {
-        switch (side){
-            case LOWER_THRESHOLD:
-                return getTora(side)+getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
-            case HIGHER_THRESHOLD:
-                return getTora(side)+getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-            default:
-                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
-        }
-    }
-
-    public int getTora(RunwaySide side) {
-        return 3700;
-    }
-
-    public int getAsda(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle=null;
+        RunwayObstacle runwayObstacle;
         try {
-             runwayObstacle = runway.getRunwayObstacle();
+            runwayObstacle = runway.getRunwayObstacle();
         }catch (java.util.NoSuchElementException e){
-            return runway.getOriginalLda();
+            //no obstacle
+            return runway.getOriginalToda();
         }
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
-            return 0;
+            return runway.getOriginalToda()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
         } else {
-            return 0;
             //Plane taking-off towards obstacle
+            return getTora(side);
         }
     }
 
+    /**
+     * Calculates the length of the TORA for the given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
+    public int getTora(RunwaySide side) {
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+        RunwayObstacle runwayObstacle;
+        try {
+            runwayObstacle = runway.getRunwayObstacle();
+        }catch (java.util.NoSuchElementException e){
+            //no obstacle
+            return runway.getOriginalTora();
+        }
 
+        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+            //Plane taking-off away from obstacle
+            return runway.getOriginalTora()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+        } else {
+            //Plane taking-off towards obstacle
+            int temporaryEndOfTora=runwayObstacle.getObstacle().getHeight()*50;
+            if(temporaryEndOfTora<testRESAValue){
+                temporaryEndOfTora=testRESAValue;
+            }
+            return runway.getOriginalTora()-temporaryEndOfTora-testStripValue;
+        }
+    }
+
+    /**
+     * Calculates the length of the ASDA for the given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
+    public int getAsda(RunwaySide side) {
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+        RunwayObstacle runwayObstacle;
+        try {
+             runwayObstacle = runway.getRunwayObstacle();
+        }catch (java.util.NoSuchElementException e){
+            //no obstacle
+            return runway.getOriginalAsda();
+        }
+
+        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+            //Plane taking-off away from obstacle
+            return runway.getOriginalAsda()-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+        } else {
+            //Plane taking-off towards obstacle
+            return getTora(side);
+        }
+    }
+
+    /**
+     * Calculates the length of the LDA for the given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
     public int getLda(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle=null;
+        RunwayObstacle runwayObstacle;
         try {
             runwayObstacle = runway.getRunwayObstacle();
         }catch (java.util.NoSuchElementException e){
@@ -67,6 +118,69 @@ public class Calculator {
         } else {
             //Plane landing towards obstacle
             return runwayObstacle.getThresholdDistance() - testRESAValue - testStripValue;
+        }
+    }
+
+    /**
+     * Calculates starting positions for Landing Values (LDA) for a given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
+    public int getLandingObstacleOffest(RunwaySide side){
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+        if(runway.hasRunwayObstacle()){
+            RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+            if(runwayObstacle.getThresholdDistance()<getRunwayLength()/2){
+                //Landing over obstacle
+                int temporaryThresholdLength = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
+                if (temporaryThresholdLength < testBlastProtectionValue) {
+                    temporaryThresholdLength = testBlastProtectionValue;
+                }
+                switch (side){
+                    case LOWER_THRESHOLD:
+                        return getThresholdPosition(side)+runwayObstacle.getThresholdDistance()+temporaryThresholdLength;
+                    case HIGHER_THRESHOLD:
+                        return getThresholdPosition(side)-runwayObstacle.getThresholdDistance()-temporaryThresholdLength;
+                    default:
+                        return 0;
+                }
+
+            }else {
+                //Landing towards obstacle
+                return getThresholdPosition(side);
+            }
+        }else{
+            return getThresholdPosition(side);
+        }
+    }
+
+    /**
+     * Calculates starting positions for Take-Off values (TORA,TODA,ASDA) for a given runway
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
+    public int getTakeOffObstacleOffset(RunwaySide side){
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+        if(runway.hasRunwayObstacle()){
+            RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+            if(runwayObstacle.getThresholdDistance()<getRunwayLength()/2){
+                //Take-off away from obstacle
+                switch (side){
+                    case LOWER_THRESHOLD:
+                        return getRunwayPosition(side)+runwayObstacle.getThresholdDistance()+testBlastProtectionValue;
+                    case HIGHER_THRESHOLD:
+                        return getRunwayPosition(side)-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+                    default:
+                        return 0;
+                }
+            }else{
+                //Take-off Towards obstacle
+                return getRunwayPosition(side);
+            }
+        }else{
+            return getRunwayPosition(side);
         }
     }
 

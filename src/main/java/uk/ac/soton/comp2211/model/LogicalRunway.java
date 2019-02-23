@@ -35,7 +35,7 @@ public class LogicalRunway {
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle=Optional.empty();
+        this.runwayObstacle = Optional.empty();
     }
 
     public int getOriginalLda() {
