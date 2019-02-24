@@ -1,0 +1,44 @@
+package uk.ac.soton.comp2211.controller;
+
+import uk.ac.soton.comp2211.model.PhysicalRunway;
+import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.RunwaySide;
+import uk.ac.soton.comp2211.view.south.DirectionPanel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class DirectionController implements ActionListener {
+
+    private RunwaySelection runwaySelection;
+
+    public DirectionController(RunwaySelection runwaySelection) {
+        this.runwaySelection = runwaySelection;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (runwaySelection.hasSelectedRunway()) {
+
+            PhysicalRunway runway = runwaySelection.getSelectedRunway();
+
+            switch (e.getActionCommand()) {
+
+                case DirectionPanel.TOWARDS_LOWER_COMMAND: {
+                    runway.setRunwayDirection(RunwaySide.LOWER_THRESHOLD);
+                    break;
+                }
+                case DirectionPanel.TOWARDS_HIGHER_COMMAND: {
+                    runway.setRunwayDirection(RunwaySide.HIGHER_THRESHOLD);
+                    break;
+                }
+                default: {
+                    throw new UnsupportedOperationException("Cannot process action command " + e.getActionCommand());
+                }
+            }
+
+        }
+
+    }
+}

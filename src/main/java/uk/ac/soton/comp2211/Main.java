@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -58,7 +59,7 @@ public class Main {
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
-                                new DirectionPanel(),
+                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
                                 new UsagePanel(),
                                 new XmlPanel(),
                                 new NotificationsPanel()

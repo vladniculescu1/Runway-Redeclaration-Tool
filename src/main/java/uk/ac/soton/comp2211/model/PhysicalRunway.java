@@ -1,17 +1,24 @@
 package uk.ac.soton.comp2211.model;
 
+import uk.ac.soton.comp2211.Observable;
 import uk.ac.soton.comp2211.calculator.*;
+import uk.ac.soton.comp2211.Observer;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
  * The physical runway which is a basis for the logical runway.
  */
-public class PhysicalRunway {
+public class PhysicalRunway implements Observable {
 
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
     private RunwaySide runwayDirection;
     private RunwayMode runwayMode;
+
+    private Set<Observer> observers;
 
     /**
      * The PhysicalRunway constructor.
@@ -26,6 +33,7 @@ public class PhysicalRunway {
         this.lowerThreshold = lowerThreshold;
         this.runwayDirection = runwayDirection;
         this.runwayMode = runwayMode;
+        this.observers = new HashSet<>();
     }
 
     public LogicalRunway getHigherThreshold() {
@@ -48,4 +56,23 @@ public class PhysicalRunway {
         return new Calculator(this);
     }
 
+    public void setRunwayDirection(RunwaySide runwayDirection) {
+        this.runwayDirection = runwayDirection;
+        this.observers.forEach(Observer::notifyUpdate);
+    }
+
+    public void setRunwayMode(RunwayMode runwayMode) {
+        this.runwayMode = runwayMode;
+        this.observers.forEach(Observer::notifyUpdate);
+    }
+
+    @Override
+    public void subscribe(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unsubscribe(Observer observer) {
+        this.observers.remove(observer);
+    }
 }
