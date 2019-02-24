@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.shape;
 
 import uk.ac.soton.comp2211.model.RunwaySide;
 

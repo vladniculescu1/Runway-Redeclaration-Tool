@@ -23,6 +23,7 @@ public class ClearwayDrawer implements Drawer {
 
         var clearwayWidth = visualisationLength * (DrawConstants.CLEARWAY_WIDTH_PERCENTAGE / 100);
 
+        // draw clearways as labelled rectangles only if they are present
         if (clearwayLengthHigher > 0) {
             DrawUtils.centeredRectangleWithLabel(g2d, Color.red, clearwayPositionHigher, clearwayLengthHigher,
                     clearwayWidth, "CWY");
