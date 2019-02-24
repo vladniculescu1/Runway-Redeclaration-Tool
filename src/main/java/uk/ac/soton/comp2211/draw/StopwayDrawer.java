@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.draw.shape.ChevronSeries;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -22,6 +23,7 @@ public class StopwayDrawer implements Drawer {
         var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
         var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
+        // draw lower stopway if there is one
         if (stopwayLengthLower > 0) {
 
             DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionLower,
@@ -31,12 +33,14 @@ public class StopwayDrawer implements Drawer {
             g2d.draw(new ChevronSeries(stopwayPositionLower, stopwayWidth,
                     stopwayLengthLower, RunwaySide.LOWER_THRESHOLD));
 
-            DrawUtils.centeredRectangleWithLabel(g2d, Color.blue, stopwayPositionLower,
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionLower,
                     stopwayLengthLower, stopwayWidth, "SWY");
 
         }
 
+        // draw higher stopway if there is one
         if (stopwayLengthHigher > 0) {
+
             DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionHigher,
                     stopwayLengthHigher, stopwayWidth);
 
@@ -44,11 +48,12 @@ public class StopwayDrawer implements Drawer {
             g2d.draw(new ChevronSeries(stopwayPositionHigher, stopwayWidth,
                     stopwayLengthHigher, RunwaySide.HIGHER_THRESHOLD));
 
-            DrawUtils.centeredRectangleWithLabel(g2d, Color.blue, stopwayPositionHigher,
+            DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionHigher,
                     stopwayLengthHigher, stopwayWidth, "SWY");
 
         }
 
+        // reset color to black
         g2d.setColor(Color.black);
 
     }

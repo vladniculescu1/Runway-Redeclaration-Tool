@@ -52,8 +52,8 @@ public class LogicalRunway {
         return originalAsda;
     }
 
-    public int getHeading() {
-        return heading;
+    public String getHeadingAsString() {
+        return heading < 10 ? "0" + heading : "" + heading;
     }
 
     public ThresholdLocation getLocation() {

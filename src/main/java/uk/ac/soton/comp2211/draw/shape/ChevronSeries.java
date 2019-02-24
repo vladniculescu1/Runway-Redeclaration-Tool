@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.shape;
 
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -42,7 +42,6 @@ public class ChevronSeries extends Path2D.Double {
                     lineTo(currentPos + 50, width / 2);
                     currentPos += 50;
                 }
-
                 break;
             }
             default:
