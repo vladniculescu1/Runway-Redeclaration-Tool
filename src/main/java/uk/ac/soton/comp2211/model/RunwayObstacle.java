@@ -8,16 +8,19 @@ public class RunwayObstacle {
 
     private int thresholdDistance;
     private int centreLineDistance;
+    private Obstacle obstacle;
 
     /**
      * The RunwayObstacle constructor.
      * Combines an obstacle and a runway together by its threshold and centre-line distances
      * @param thresholdDistance the distance of the threshold
      * @param centreLineDistance the distance from the object to the centre line of the runway
+     * @param obstacle the size of the obstacle
      */
-    public RunwayObstacle(int thresholdDistance, int centreLineDistance) {
+    public RunwayObstacle(int thresholdDistance, int centreLineDistance, Obstacle obstacle) {
         this.thresholdDistance = thresholdDistance;
         this.centreLineDistance = centreLineDistance;
+        this.obstacle = obstacle;
     }
 
     public int getThresholdDistance() {
