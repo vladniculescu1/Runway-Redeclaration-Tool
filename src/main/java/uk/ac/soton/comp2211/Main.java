@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.DirectionController;
+import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -34,7 +36,7 @@ public class Main {
                 3700, 3884, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
+                RunwaySide.LOWER_THRESHOLD, RunwayMode.TAKEOFF);
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
@@ -58,8 +60,8 @@ public class Main {
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
-                                new DirectionPanel(),
-                                new UsagePanel(),
+                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
+                                new UsagePanel(runwaySelection, new UsageController(runwaySelection)),
                                 new XmlPanel(),
                                 new NotificationsPanel()
                         )
