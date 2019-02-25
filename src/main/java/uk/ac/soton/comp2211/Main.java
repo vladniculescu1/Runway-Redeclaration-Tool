@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
@@ -47,8 +48,10 @@ public class Main {
                 new DesignatorDrawer()
         );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        
 
-        new MainFrame(
+        MainFrame mainFrame = new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(topDownDrawExecutor),
@@ -57,7 +60,7 @@ public class Main {
                         ),
                         new EastPanel(
                                 new RunwayPanel(),
-                                new ObstaclePanel(),
+                                new ObstaclePanel(runwaySelection, assignObstacleController),
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
@@ -68,6 +71,7 @@ public class Main {
                         )
                 )
         );
+        assignObstacleController.addMainFrame(mainFrame);
     }
 
 }
