@@ -15,7 +15,7 @@ public class RunwayObstacle {
      * Combines an obstacle and a runway together by its threshold and centre-line distances
      * @param thresholdDistance the distance of the threshold
      * @param centreLineDistance the distance from the object to the centre line of the runway
-     * @param obstacle the size of the obstacle
+     * @param obstacle the sizes of the obstacle
      */
     public RunwayObstacle(int thresholdDistance, int centreLineDistance, Obstacle obstacle) {
         this.thresholdDistance = thresholdDistance;
