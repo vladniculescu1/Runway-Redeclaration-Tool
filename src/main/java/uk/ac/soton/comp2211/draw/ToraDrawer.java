@@ -7,7 +7,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the TORA value onto the runway
+ * Draws the TORA value onto the runway.
  */
 public class ToraDrawer extends DistanceDrawer {
     @Override
@@ -19,15 +19,17 @@ public class ToraDrawer extends DistanceDrawer {
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getTora(side);
-        double height = - ((runwayWidth/14)*4);
+        double height = - ((runwayWidth / 14) * 4);
 
-        switch (side){
+        switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height , "TORA");
+                drawDistance(g2d, startX, distance, (int) height, "TORA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height , "TORA");
+                drawDistance(g2d, startX, -distance, (int) -height, "TORA");
                 break;
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
     }
 }

@@ -7,7 +7,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the LDA value onto the runway
+ * Draws the LDA value onto the runway.
  */
 public class LdaDrawer extends DistanceDrawer {
 
@@ -20,15 +20,17 @@ public class LdaDrawer extends DistanceDrawer {
 
         int startX = calc.getLandingObstacleOffest(side);
         int distance = calc.getLda(side);
-        double height = - ((runwayWidth/14)*3);
+        double height = - ((runwayWidth / 14) * 3);
 
-        switch (side){
+        switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height , "LDA");
+                drawDistance(g2d, startX, distance, (int) height, "LDA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height , "LDA");
+                drawDistance(g2d, startX, -distance, (int) -height, "LDA");
                 break;
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
     }
 }

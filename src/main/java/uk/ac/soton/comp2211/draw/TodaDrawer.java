@@ -7,7 +7,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the TODA value onto the runway
+ * Draws the TODA value onto the runway.
  */
 public class TodaDrawer extends DistanceDrawer {
     @Override
@@ -19,16 +19,18 @@ public class TodaDrawer extends DistanceDrawer {
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getToda(side);
-        double height = - ((runwayWidth/14)*6);
+        double height = - ((runwayWidth / 14) * 6);
 
 
-        switch (side){
+        switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height , "TODA");
+                drawDistance(g2d, startX, distance, (int) height, "TODA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height , "TODA");
+                drawDistance(g2d, startX, -distance, (int) -height, "TODA");
                 break;
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
 
     }

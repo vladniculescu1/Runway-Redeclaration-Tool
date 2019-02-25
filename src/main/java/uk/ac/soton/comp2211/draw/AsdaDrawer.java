@@ -7,7 +7,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the ASDA value onto the runway
+ * Draws the ASDA value onto the runway.
  */
 public class AsdaDrawer extends DistanceDrawer {
     @Override
@@ -19,15 +19,17 @@ public class AsdaDrawer extends DistanceDrawer {
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getAsda(side);
-        double height = - ((runwayWidth/14)*5);
+        double height = - ((runwayWidth / 14) * 5);
 
-        switch (side){
+        switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height , "ASDA");
+                drawDistance(g2d, startX, distance, (int) height,"ASDA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height , "ASDA");
+                drawDistance(g2d, startX, -distance, (int) -height,"ASDA");
                 break;
+            default:
+                throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
 
     }
