@@ -1,5 +1,8 @@
 package uk.ac.soton.comp2211.model;
 
+import org.checkerframework.checker.nullness.Opt;
+
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
@@ -66,5 +69,9 @@ public class LogicalRunway {
 
     public RunwayObstacle getRunwayObstacle() {
         return runwayObstacle.get();
+    }
+
+    public void setRunwayObstacle(RunwayObstacle runwayObstacle) {
+        this.runwayObstacle = Optional.of(runwayObstacle);
     }
 }
