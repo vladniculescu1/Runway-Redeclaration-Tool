@@ -21,13 +21,12 @@ public class Calculator {
      */
     public int getToda(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle;
-        try {
-            runwayObstacle = runway.getRunwayObstacle();
-        } catch (java.util.NoSuchElementException e) {
+
+        if (!runway.hasRunwayObstacle()) {
             //no obstacle
             return runway.getOriginalToda();
         }
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
@@ -46,13 +45,12 @@ public class Calculator {
      */
     public int getTora(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle;
-        try {
-            runwayObstacle = runway.getRunwayObstacle();
-        } catch (java.util.NoSuchElementException e) {
+
+        if (!runway.hasRunwayObstacle()) {
             //no obstacle
             return runway.getOriginalTora();
         }
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
@@ -81,13 +79,12 @@ public class Calculator {
      */
     public int getAsda(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle;
-        try {
-            runwayObstacle = runway.getRunwayObstacle();
-        } catch (java.util.NoSuchElementException e) {
+
+        if (!runway.hasRunwayObstacle()) {
             //no obstacle
             return runway.getOriginalAsda();
         }
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane taking-off away from obstacle
@@ -106,13 +103,12 @@ public class Calculator {
      */
     public int getLda(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
-        RunwayObstacle runwayObstacle;
-        try {
-            runwayObstacle = runway.getRunwayObstacle();
-        } catch (java.util.NoSuchElementException e) {
+
+        if (!runway.hasRunwayObstacle()) {
             //no obstacle
             return runway.getOriginalLda();
         }
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
         if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
             //Plane landing over obstacle
