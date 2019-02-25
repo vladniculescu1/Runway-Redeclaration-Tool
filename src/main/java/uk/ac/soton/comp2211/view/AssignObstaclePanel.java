@@ -10,6 +10,7 @@ import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.model.Obstacle;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.validate.Validator;
 
 public class AssignObstaclePanel extends JPanel implements Observer {
 
@@ -106,41 +107,61 @@ public class AssignObstaclePanel extends JPanel implements Observer {
 
     }
     
-    /*
-    public RunwayObstacle getObstacleFromInputs() throws Exception {
-        //returns null if exception
+    /**
+     * Returns the runway obstacle created from the options on this panel.
+     * @return null if not valid inputs, otherwise the runway obstacle
+     */
+    public RunwayObstacle getObstacleFromInputs() {
         String issues = "";
-        Obstacle obstacle;
-        if (obstacleComboBox.getSelectedIndex() == 0)
-        {
-            String obsName = obstacleNameTextField.getText();
-            if (obsName == "") {
-                issues += "Obstacle name cannot be empty.\n";
-            }
-            String obsHeiStr = obstacleHeightTextField.getText();
-            String obsLenStr = obstacleHeightTextField.getText();
-            if (obsName != "") {
-                obstacle = new Obstacle(obsName, Integer.parseInt(obsHeiStr), Integer.parseInt(obsLenStr));
-            } else {
-                obstacle = new Obstacle("",0,0);
-            }
-        }
-        else
-        {
-            //TODO get Obstacle from ObstacleStorage[index-1]
-        }
-        
-        if (obsName != "") {
-            
-        }
-        RunwayObstacle runwayObstacle = new RunwayObstacle(0,0,obstacle);
-        
-        
-        if (issues == "") {
-            
+        int height = 1;
+        if (!isNumeric(obstacleHeightTextField.getText())) {
+            issues += "Height must be an integer.\n";
         } else {
-            
+            height = Integer.parseInt(obstacleHeightTextField.getText());
         }
-    }*/
+        int length = 1;
+        if (!isNumeric(obstacleLengthTextField.getText())) {
+            issues += "Length must be an integer.\n";
+        } else {
+            length = Integer.parseInt(obstacleLengthTextField.getText());
+        }
+        int centreline = 0;
+        if (!isNumeric(centrelineDistanceTextField.getText())) {
+            issues += "Centreline distance must be an integer.\n";
+        } else {
+            centreline = Integer.parseInt(centrelineDistanceTextField.getText());
+        }
+        int threshold = 0;
+        if (!isNumeric(thresholdDistanceTextField.getText())) {
+            issues += "Threshold must be an integer.\n";
+        } else {
+            threshold = Integer.parseInt(thresholdDistanceTextField.getText());
+        }
+        Obstacle obstacle = new Obstacle(obstacleNameTextField.getText(), height, length);
+        RunwayObstacle runwayObstacle = new RunwayObstacle(centreline, threshold,obstacle);
+        Validator validator = Validator.forObject(obstacle);
+        if (!validator.isValid()) {
+            issues += validator.getViolationMessages();
+        }
+        validator = Validator.forObject(runwayObstacle);
+        if (!validator.isValid()) {
+            issues += validator.getViolationMessages();
+        }
+        
+        if (issues != "") {
+            JOptionPane.showMessageDialog(this, issues);
+            return null;
+        }
+        return runwayObstacle;
+    }
+    
+    private boolean isNumeric(String s) {
+        try {
+            int i = Integer.parseInt(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -5,6 +5,7 @@ package uk.ac.soton.comp2211.model;
  */
 public class Obstacle {
 
+    
     private String name;
     private int height;
     private int length;
