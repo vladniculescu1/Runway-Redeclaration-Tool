@@ -1,8 +1,6 @@
 package uk.ac.soton.comp2211.model;
 
-import org.checkerframework.checker.nullness.Opt;
-
-import javax.swing.text.html.Option;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -73,5 +71,24 @@ public class LogicalRunway {
 
     public void setRunwayObstacle(RunwayObstacle runwayObstacle) {
         this.runwayObstacle = Optional.of(runwayObstacle);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LogicalRunway that = (LogicalRunway) o;
+        return heading == that.heading
+                && getLocation() == that.getLocation();
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(heading, getLocation());
     }
 }
