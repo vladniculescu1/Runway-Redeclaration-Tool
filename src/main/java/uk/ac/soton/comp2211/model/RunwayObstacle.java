@@ -30,4 +30,8 @@ public class RunwayObstacle {
     public int getCentreLineDistance() {
         return centreLineDistance;
     }
+    
+    public Obstacle getObstacle() {
+        return obstacle;
+    }
 }

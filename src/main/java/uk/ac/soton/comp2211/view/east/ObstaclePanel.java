@@ -13,27 +13,38 @@ import uk.ac.soton.comp2211.model.RunwaySelection;
  * the runway or remove the obstacle from the runway.
  */
 public class ObstaclePanel extends JPanel implements Observer {
+    
+    public static final String OPEN_ASSIGN_BUTTON_COMMAND = "assignOpenButton";
+    public static final String REMOVE_BUTTON_COMMAND = "removeButton";
 
+    private RunwaySelection runwaySelection;
+    private JButton assignObstacleButton;
+    private JTextField obstacleTextField;
+    private JButton removeObstacleButton;
+    
     /**
      * Constructs a new obstacle panel.
      * @param runwaySelection TODO
      * @param assignObstacleController TODO
      */
     public ObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
-
+        runwaySelection.subscribe(this);
+        this.runwaySelection = runwaySelection;
+        
         this.setBorder(BorderFactory.createTitledBorder("Obstacles"));
 
         PainlessGridBag gridBag = new PainlessGridBag(this,false);
-        JButton assignObstacleButton = new JButton("Assign new obstacle to current runway");
+        assignObstacleButton = new JButton("Assign new obstacle to current runway");
+        assignObstacleButton.setActionCommand(OPEN_ASSIGN_BUTTON_COMMAND);
+        assignObstacleButton.addActionListener(assignObstacleController);
         gridBag.row().cellX(assignObstacleButton,3).fillX();
-        //TODO add eventlistener etc to button
         
-        JTextField obstacleTextField = new JTextField("");
-        JButton removeObstacleButton = new JButton("Remove");
-        //TODO add eventlistener etc to button
+        obstacleTextField = new JTextField("");
+        obstacleTextField.setEnabled(false);
+        removeObstacleButton = new JButton("Remove");
+        removeObstacleButton.setActionCommand(REMOVE_BUTTON_COMMAND);
+        removeObstacleButton.addActionListener(assignObstacleController);
         gridBag.row().cellX(obstacleTextField,2).fillX().cell(removeObstacleButton);
-        
-        
         
         gridBag.done();
         
@@ -42,8 +53,26 @@ public class ObstaclePanel extends JPanel implements Observer {
 
     @Override
     public void notifyUpdate() {
-        // TODO Auto-generated method stub
-        //TODO make textfield uneditable and change with notifyUpdate
-        //TODO make buttons unpresable
+        if (runwaySelection.hasSelectedRunway()) {
+            if (runwaySelection.getSelectedRunway().getHigherThreshold().hasRunwayObstacle()) {
+                assignObstacleButton.setEnabled(false);
+                obstacleTextField.setText(runwaySelection.getSelectedRunway().getHigherThreshold()
+                                 .getRunwayObstacle().getObstacle().getName());
+                removeObstacleButton.setEnabled(true);
+            } else if (runwaySelection.getSelectedRunway().getLowerThreshold().hasRunwayObstacle())   {
+                assignObstacleButton.setEnabled(false);
+                obstacleTextField.setText(runwaySelection.getSelectedRunway().getLowerThreshold()
+                                 .getRunwayObstacle().getObstacle().getName());
+                removeObstacleButton.setEnabled(true);
+            } else { //no obstacle on runway
+                assignObstacleButton.setEnabled(true);
+                obstacleTextField.setText("");
+                removeObstacleButton.setEnabled(false);                
+            }
+        } else { //no runway (hence no obstacle can be assigned)
+            assignObstacleButton.setEnabled(false);
+            obstacleTextField.setText("");
+            removeObstacleButton.setEnabled(false);            
+        }
     }
 }

@@ -22,21 +22,20 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         PainlessGridBag gridBag = new PainlessGridBag(this,false);
 
         JComboBox obstacleComboBox = new JComboBox(); //TODO populate and link to event listener
-        gridBag.row().cell(new JLabel("Select predefined:")).cellX(obstacleComboBox, 2);
-        
-        gridBag.row();
+        gridBag.row().cell(new JLabel("Select predefined:")).cellX(obstacleComboBox, 2).fillX();
+
+        //TODO add spacing row
         
         JTextField obstacleNameTextField = new JTextField(); //TODO popoulate and link to event listener
-        gridBag.row().cell(new JLabel("Name of obstacle:")).cellX(obstacleNameTextField, 2);
+        gridBag.row().cell(new JLabel("Name of obstacle:")).cellX(obstacleNameTextField, 2).fillX();
         
         JTextField obstacleHeightTextField = new JTextField(); //TODO popoulate and link to event listener
-        gridBag.row().cell().cell(new JLabel("Height (m):")).cell(obstacleHeightTextField);
+        gridBag.row().cell().cell(new JLabel("Height (m):")).cell(obstacleHeightTextField).fillX();
         
         JTextField obstacleLengthTextField = new JTextField(); //TODO popoulate and link to event listener
-        gridBag.row().cell().cell(new JLabel("Length (m):")).cell(obstacleLengthTextField);
+        gridBag.row().cell().cell(new JLabel("Length (m):")).cell(obstacleLengthTextField).fillX();
         
-        //TODO line
-        gridBag.row(); //placeholder, TODO remove
+        gridBag.row().separator();
         
         JRadioButton higherThresholdRadioButton = new JRadioButton(); //TODO popoulate and link to event listener
         JRadioButton lowerThresholdRadioButton = new JRadioButton();
@@ -45,15 +44,16 @@ public class AssignObstaclePanel extends JPanel implements Observer {
                      .cell(lowerThresholdRadioButton);
         
         JTextField centrelineDistanceTextField = new JTextField(); //TODO popoulate and link to event listener
-        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2).cell(centrelineDistanceTextField);
+        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2).cell(centrelineDistanceTextField).fillX();
         
         JTextField thresholdDistanceTextField = new JTextField(); //TODO popoulate and link to event listener
-        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2).cell(thresholdDistanceTextField);
+        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2).cell(thresholdDistanceTextField).fillX();
         
         JButton assignButton = new JButton("Assign to Runway "); //TODO populate and link to event listerner
         JButton cancelButton = new JButton("Cancel"); //TODO populate and link to event listener
-        gridBag.row().cellX(assignButton,2).cell(cancelButton);        
+        gridBag.row().cellX(assignButton,2).fillX().cell(cancelButton);        
         
+        //also ensure only numbers
         gridBag.done();
         
         notifyUpdate();

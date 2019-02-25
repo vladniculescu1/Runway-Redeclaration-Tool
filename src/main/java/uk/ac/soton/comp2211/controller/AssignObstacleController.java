@@ -3,7 +3,10 @@ package uk.ac.soton.comp2211.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.view.AssignObstacleFrame;
+import uk.ac.soton.comp2211.view.AssignObstaclePanel;
 import uk.ac.soton.comp2211.view.MainFrame;
+import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 
 public class AssignObstacleController implements ActionListener {
 
@@ -20,8 +23,19 @@ public class AssignObstacleController implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+        switch (e.getActionCommand()) {
+
+            case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
+                new AssignObstacleFrame(mainFrame, new AssignObstaclePanel(runwaySelection, this));
+                break;
+            }
+            case ObstaclePanel.REMOVE_BUTTON_COMMAND: {
+                //TODO
+                break;
+            }
+            default:
+                break;
+        }
     }
 
 }
