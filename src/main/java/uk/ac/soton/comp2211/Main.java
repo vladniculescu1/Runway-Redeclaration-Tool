@@ -28,10 +28,19 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3595, 3902,
-                3902, 3902, 9, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway2 = new LogicalRunway(3884, 3962,
-                3884, 3884, 27, ThresholdLocation.RIGHT);
+        LogicalRunway logicalRunway1 = new LogicalRunway(3360, 3660,
+                3660, 3810, 9, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
+                3660, 3810, 27, ThresholdLocation.RIGHT);
+
+        //Just adds the obstacle to the logical runways for Scenario 4
+        /*
+        Obstacle obstacle = new Obstacle("Scenario 4",20,0);
+        RunwayObstacle runwayObstacle1 = new RunwayObstacle(3546,20,obstacle);
+        logicalRunway1.setRunwayObstacle(runwayObstacle1);
+        RunwayObstacle runwayObstacle2 = new RunwayObstacle(50, 20, obstacle);
+        logicalRunway2.setRunwayObstacle(runwayObstacle2);
+        */
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);

@@ -23,7 +23,7 @@ public abstract class DistanceDrawer implements Drawer {
                 BasicStroke.JOIN_MITER,
                 10.0f, dash1, 0.0f));
         drawArrowLine(g2d,startX,height,startX+distance,height,30,20);
-        drawArrowLine(g2d,startX+distance,height,startX,height,30,20);
+     //   drawArrowLine(g2d,startX+distance,height,startX,height,30,20);
 
 
         g2d.setStroke(new BasicStroke(10.0f));
@@ -61,11 +61,16 @@ public abstract class DistanceDrawer implements Drawer {
         yn = xn*sin + yn*cos + y1;
         xn = x;
 
+
         int[] xpoints = {x2, (int) xm, (int) xn};
         int[] ypoints = {y2, (int) ym, (int) yn};
 
+
+      //  int[] xStartPoints = {x1, (int) xm-dx-(d*2), (int) xn-dx-(d*2)};
+
         g.drawLine(x1, y1, x2, y2);
         g.fillPolygon(xpoints, ypoints, 3);
+       // g.fillPolygon(xStartPoints, ypoints, 3);
     }
 
 }

@@ -168,9 +168,9 @@ public class Calculator {
                 //Take-off away from obstacle
                 switch (side){
                     case LOWER_THRESHOLD:
-                        return getRunwayPosition(side)+runwayObstacle.getThresholdDistance()+testBlastProtectionValue;
+                        return getThresholdPosition(side)+runwayObstacle.getThresholdDistance()+testBlastProtectionValue;
                     case HIGHER_THRESHOLD:
-                        return getRunwayPosition(side)-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
+                        return getThresholdPosition(side)-runwayObstacle.getThresholdDistance()-testBlastProtectionValue;
                     default:
                         return 0;
                 }
@@ -184,7 +184,7 @@ public class Calculator {
     }
 
     /**
-     * Calculates the length of the stopway on the given side of the runway.
+     * Calculates the length of the stopway on the opposite side of the runway.
      *
      * @param side the side the value will be calculated for
      * @return the calculated value
@@ -195,7 +195,7 @@ public class Calculator {
     }
 
     /**
-     * Calculates the position of the stopway on the given side of the runway.
+     * Calculates the position of the stopway on the opposite side of the runway.
      *
      * @param side the side the value will be calculated for
      * @return the calculated value
@@ -213,7 +213,7 @@ public class Calculator {
     }
 
     /**
-     * Calculates the length of the clearway on the given side of the runway.
+     * Calculates the length of the clearway on the opposite side of the runway.
      *
      * @param side the side the value will be calculated for
      * @return the calculated value
@@ -224,7 +224,7 @@ public class Calculator {
     }
 
     /**
-     * Calculates the position of the clearway on the given side of the runway.
+     * Calculates the position of the clearway on the opposite side of the runway.
      *
      * @param side the side the value will be calculated for
      * @return the calculated value
@@ -248,10 +248,10 @@ public class Calculator {
      * @return the calculated value
      */
     public int getRunwayMarginLength(RunwaySide side) {
-        if (this.getClearwayLength(side) > 60) {
-            return this.getClearwayLength(side);
+        if (this.getClearwayLength(RunwaySide.opposite(side)) > 60) {
+            return this.getClearwayLength(RunwaySide.opposite(side));
         } else {
-            return this.getStopwayLength(side) + 60;
+            return this.getStopwayLength(RunwaySide.opposite(side)) + 60;
         }
 
     }
