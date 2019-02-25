@@ -3,6 +3,7 @@ package uk.ac.soton.comp2211.model;
 import uk.ac.soton.comp2211.Observable;
 import uk.ac.soton.comp2211.calculator.*;
 import uk.ac.soton.comp2211.Observer;
+import uk.ac.soton.comp2211.model.validate.EqualTora;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Set;
 /**
  * The physical runway which is a basis for the logical runway.
  */
+@EqualTora(message = "The TORA of both logical runways must be equal!")
 public class PhysicalRunway implements Observable {
 
     private LogicalRunway higherThreshold;
@@ -50,6 +52,11 @@ public class PhysicalRunway implements Observable {
 
     public RunwayMode getRunwayMode() {
         return runwayMode;
+    }
+
+    @Override
+    public String toString() {
+        return getLowerThreshold().getHeadingAsString() + "/" + getHigherThreshold().getHeadingAsString();
     }
 
     public Calculator getCalculator() {

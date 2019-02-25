@@ -1,9 +1,11 @@
 package uk.ac.soton.comp2211;
 
 import uk.ac.soton.comp2211.controller.DirectionController;
+import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
+import uk.ac.soton.comp2211.model.validate.Validator;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.MainPanel;
 import uk.ac.soton.comp2211.view.center.DisplayTabbedPane;
@@ -30,6 +32,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        Airport airport = new Airport();
+
         LogicalRunway logicalRunway1 = new LogicalRunway(3360, 3660,
                 3660, 3810, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
@@ -48,6 +52,8 @@ public class Main {
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
 
+        airport.addRunway(physicalRunway);
+
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
@@ -58,7 +64,14 @@ public class Main {
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new DesignatorDrawer()
         );
+
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+
+        // Validation example - TODO remove later
+        Validator validator = Validator.forObject(physicalRunway);
+        if (!validator.isValid()) {
+            System.out.println(validator.getViolationMessages());
+        }
 
         new MainFrame(
                 new MainPanel(
@@ -68,7 +81,8 @@ public class Main {
                                 new SideOnPanel()
                         ),
                         new EastPanel(
-                                new RunwayPanel(),
+                                new RunwayPanel(airport, runwaySelection,
+                                        new RunwaySelectionController(runwaySelection)),
                                 new ObstaclePanel(),
                                 new DistancesPanel()
                         ),
