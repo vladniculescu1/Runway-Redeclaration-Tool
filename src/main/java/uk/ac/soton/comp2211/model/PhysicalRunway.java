@@ -51,6 +51,10 @@ public class PhysicalRunway implements Observable {
     public RunwayMode getRunwayMode() {
         return runwayMode;
     }
+    
+    public String getRunwayName() {
+        return getLowerThreshold().getHeadingAsString() + "/" + getHigherThreshold().getHeadingAsString();
+    }
 
     public Calculator getCalculator() {
         return new Calculator(this);

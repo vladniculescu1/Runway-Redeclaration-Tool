@@ -24,8 +24,8 @@ public class ObstaclePanel extends JPanel implements Observer {
     
     /**
      * Constructs a new obstacle panel.
-     * @param runwaySelection TODO
-     * @param assignObstacleController TODO
+     * @param runwaySelection The runway selection
+     * @param assignObstacleController Controller for clicks etc.
      */
     public ObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
         runwaySelection.subscribe(this);

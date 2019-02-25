@@ -1,6 +1,8 @@
 package uk.ac.soton.comp2211.view;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 
 public class AssignObstacleFrame extends JDialog {
@@ -20,4 +22,5 @@ public class AssignObstacleFrame extends JDialog {
         this.setVisible(true);
         
     }
+    
 }

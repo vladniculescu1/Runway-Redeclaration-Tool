@@ -67,4 +67,8 @@ public class LogicalRunway {
     public RunwayObstacle getRunwayObstacle() {
         return runwayObstacle.get();
     }
+    
+    public void removeRunwayObstacle() {
+        runwayObstacle = Optional.empty();
+    }
 }
