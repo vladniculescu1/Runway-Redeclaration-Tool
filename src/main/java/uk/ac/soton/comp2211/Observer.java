@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.view;
+package uk.ac.soton.comp2211;
 
 public interface Observer {
 

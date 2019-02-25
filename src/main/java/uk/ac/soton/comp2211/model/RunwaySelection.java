@@ -1,14 +1,21 @@
 package uk.ac.soton.comp2211.model;
 
+import uk.ac.soton.comp2211.Observable;
+import uk.ac.soton.comp2211.Observer;
+
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Chose a runway to be viewed/used.
  */
-public class RunwaySelection {
+public class RunwaySelection implements Observer, Observable {
 
     private DrawMode drawMode;
     private Optional<PhysicalRunway> selectedRunway;
+
+    private Set<Observer> observers;
 
     /**
      * RunwaySelection constructor.
@@ -17,13 +24,21 @@ public class RunwaySelection {
     public RunwaySelection(DrawMode drawMode) {
         this.drawMode = drawMode;
         this.selectedRunway = Optional.empty();
+        this.observers = new HashSet<>();
     }
 
     public DrawMode getDrawMode() {
         return drawMode;
     }
 
+    /**
+     * Update the currently selected runway and subscribe to it. Unsubscribe from the runway that was selected before.
+     *
+     * @param physicalRunway the runway that should be selected from now on
+     */
     public void setSelectedRunway(PhysicalRunway physicalRunway) {
+        this.selectedRunway.ifPresent(runway -> runway.unsubscribe(this));
+        physicalRunway.subscribe(this);
         this.selectedRunway = Optional.of(physicalRunway);
     }
 
@@ -33,5 +48,20 @@ public class RunwaySelection {
 
     public PhysicalRunway getSelectedRunway() {
         return selectedRunway.get();
+    }
+
+    @Override
+    public void notifyUpdate() {
+        this.observers.forEach(Observer::notifyUpdate);
+    }
+
+    @Override
+    public void subscribe(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unsubscribe(Observer observer) {
+        this.observers.remove(observer);
     }
 }

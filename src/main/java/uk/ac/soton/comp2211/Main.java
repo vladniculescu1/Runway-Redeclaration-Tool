@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.DirectionController;
+import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -51,6 +53,8 @@ public class Main {
         List<Drawer> topDownDrawer = List.of(
                 new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(), new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer()
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new DesignatorDrawer()
         );
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
 
@@ -67,8 +71,8 @@ public class Main {
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
-                                new DirectionPanel(),
-                                new UsagePanel(),
+                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
+                                new UsagePanel(runwaySelection, new UsageController(runwaySelection)),
                                 new XmlPanel(),
                                 new NotificationsPanel()
                         )

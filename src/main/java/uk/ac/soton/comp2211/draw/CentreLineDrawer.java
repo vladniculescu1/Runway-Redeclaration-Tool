@@ -18,14 +18,25 @@ public class CentreLineDrawer implements Drawer {
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        Stroke normal = g2d.getStroke();
+        // the start and end positions are different from the threshold positions because the centre line can only
+        // start/end after/before the threshold designators
+        var startPosition = lowerThresholdPosition
+                + 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR);
+        var endPosition = higherThresholdPosition
+                - 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR);
 
-        Stroke dashed = new BasicStroke(10, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+        BasicStroke normal = (BasicStroke) g2d.getStroke();
+
+        // configure the dashed stroke
+        Stroke dashed = new BasicStroke(normal.getLineWidth(), BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
                 0, new float[]{70}, 0);
         g2d.setStroke(dashed);
         g2d.setColor(Color.white);
-        g2d.draw(new Line2D.Double(lowerThresholdPosition, 0, higherThresholdPosition, 0));
 
+        // draw the centre line
+        g2d.draw(new Line2D.Double(startPosition, 0, endPosition, 0));
+
+        // reset graphics object back to defaults
         g2d.setColor(Color.black);
         g2d.setStroke(normal);
 
