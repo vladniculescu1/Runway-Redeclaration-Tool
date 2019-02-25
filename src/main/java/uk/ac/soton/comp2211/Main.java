@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211;
 
 import uk.ac.soton.comp2211.controller.DirectionController;
+import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
@@ -30,6 +31,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        Airport airport = new Airport();
+
         LogicalRunway logicalRunway1 = new LogicalRunway(3600, 3700,
                 3700, 3902, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3700, 3962,
@@ -37,6 +40,8 @@ public class Main {
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.TAKEOFF);
+
+        airport.addRunway(physicalRunway);
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
@@ -56,7 +61,8 @@ public class Main {
                                 new SideOnPanel()
                         ),
                         new EastPanel(
-                                new RunwayPanel(),
+                                new RunwayPanel(airport, runwaySelection,
+                                        new RunwaySelectionController(runwaySelection)),
                                 new ObstaclePanel(),
                                 new DistancesPanel()
                         ),
