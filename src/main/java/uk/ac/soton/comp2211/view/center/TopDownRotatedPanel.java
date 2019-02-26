@@ -16,7 +16,6 @@ import java.awt.image.BufferedImage;
 public class TopDownRotatedPanel extends JPanel {
 
     private DrawExecutor drawExecutor;
-    private LogicalRunway logicalRunway;
     private RunwaySelection runwaySelection;
 
 
