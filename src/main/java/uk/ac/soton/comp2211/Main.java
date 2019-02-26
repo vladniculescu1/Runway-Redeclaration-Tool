@@ -34,13 +34,23 @@ public class Main {
 
         Airport airport = new Airport();
 
-        LogicalRunway logicalRunway1 = new LogicalRunway(3600, 3700,
-                3700, 3902, 9, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway2 = new LogicalRunway(3700, 3962,
-                3700, 3884, 27, ThresholdLocation.RIGHT);
+        LogicalRunway logicalRunway1 = new LogicalRunway(3360, 3660,
+                3660, 3810, 9, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
+                3660, 3810, 27, ThresholdLocation.RIGHT);
+
+        //Just adds the obstacle to the logical runways for Scenario
+        /*
+        Obstacle obstacle = new Obstacle("Test",5,0);
+        RunwayObstacle runwayObstacle1 = new RunwayObstacle(50,0,obstacle);
+        logicalRunway1.setRunwayObstacle(runwayObstacle1);
+        RunwayObstacle runwayObstacle2 = new RunwayObstacle(3310, 0, obstacle);
+        logicalRunway2.setRunwayObstacle(runwayObstacle2);
+        */
+
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.LOWER_THRESHOLD, RunwayMode.TAKEOFF);
+                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
 
         airport.addRunway(physicalRunway);
 
@@ -49,6 +59,8 @@ public class Main {
 
         List<Drawer> topDownDrawer = List.of(
                 new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new DesignatorDrawer()
         );
@@ -64,7 +76,7 @@ public class Main {
         new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
-                                new TopDownPanel(topDownDrawExecutor),
+                                new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(topDownDrawExecutor),
                                 new SideOnPanel()
                         ),
