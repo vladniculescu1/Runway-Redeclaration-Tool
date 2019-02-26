@@ -65,7 +65,7 @@ public class Main {
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(topDownDrawExecutor),
-                                new TopDownRotatedPanel(),
+                                new TopDownRotatedPanel(topDownDrawExecutor),
                                 new SideOnPanel()
                         ),
                         new EastPanel(
