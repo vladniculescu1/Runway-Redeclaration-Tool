@@ -14,6 +14,8 @@ class CalculatorTest {
 
     @BeforeAll
     void setUp() {
+        calculator=null;
+        assertNull(calculator);
     }
     void setUpNoStopWayNoClearway(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
@@ -23,7 +25,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpStopWayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -32,7 +33,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpStopWayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3500, 27, ThresholdLocation.RIGHT);
@@ -49,7 +49,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpNoStopWayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3700, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -58,7 +57,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpStopWayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3700, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -67,7 +65,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpStopWayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3700, 3000, 3500, 27, ThresholdLocation.RIGHT);
@@ -76,7 +73,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdNoStopwayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -85,7 +81,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdNoStopwayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -94,7 +89,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdStopwayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3000, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -103,7 +97,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdStopwayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3000, 3000, 3500, 27, ThresholdLocation.RIGHT);
@@ -112,7 +105,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdNoStopwayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3700, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -121,7 +113,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdNoStopwayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3700, 3000, 3000, 27, ThresholdLocation.RIGHT);
@@ -139,7 +130,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     void setUpDisplacedThresholdStopwayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3700, 3000, 3500, 27, ThresholdLocation.RIGHT);
@@ -148,7 +138,6 @@ class CalculatorTest {
 
         this.calculator = physicalRunway.getCalculator();
     }
-
     @Test
     void getToraNoStopWayNoClearwayLower() {
         setUpNoStopWayNoClearway();
@@ -661,22 +650,9 @@ class CalculatorTest {
 
         assertEquals(expectedValue, calculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-
-    @Test
-    void getLandingObstacleOffest() {
-    }
-
-    @Test
-    void getTakeOffObstacleOffset() {
-    }
-
-    @Test
-    void getSlopeCalculation(){
-
-    }
-
-    @Test
-    void checkSide(){
-
+    @AfterAll
+    void tearDown(){
+        calculator = null;
+        assertNull(calculator);
     }
 }
