@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.calculator;
 
+import org.junit.Test;
 import uk.ac.soton.comp2211.model.*;
 
 public class Calculator {
@@ -11,6 +12,33 @@ public class Calculator {
 
     public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
+    }
+
+    /**
+     * checks what side of the runway the obstacle is on.
+     * @param runwayObstacle the runway obstacle
+     * @param side the current runway side
+     * @return true if it is closer to the current side, false if not
+     */
+    private boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
+        int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance() + getDisplacedThresholdLength(side);
+        int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))
+                .getRunwayObstacle().getThresholdDistance() + getDisplacedThresholdLength(RunwaySide.opposite(side));
+        if (distanceToCurrentThreshold < distanceToOppositeThreshold) {
+            //closer to current threshold
+            return true;
+        }
+        //closer to opposite threshold
+        return false;
+    }
+
+    /**
+     * calculates the 1/50 slope for an obstacle.
+     * @param runwayObstacle the obstacle to calculate the slope for
+     * @return the slope calculation
+     */
+    private int getSlopeCalculation(RunwayObstacle runwayObstacle) {
+        return runwayObstacle.getObstacle().getHeight() * 50;
     }
 
     /**
@@ -28,7 +56,7 @@ public class Calculator {
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (checkSide(runwayObstacle, side)) {
             //Plane taking-off away from obstacle
             return getTora(side) + getClearwayLength(side);
         } else {
@@ -52,7 +80,7 @@ public class Calculator {
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (checkSide(runwayObstacle, side)) {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
@@ -60,7 +88,7 @@ public class Calculator {
                     - getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
-            int slopeCalculation = runwayObstacle.getObstacle().getHeight() * 50;
+            int slopeCalculation = getSlopeCalculation(runwayObstacle);
             if (slopeCalculation < testResaValue) {
                 slopeCalculation = testResaValue;
             }
@@ -86,7 +114,7 @@ public class Calculator {
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (checkSide(runwayObstacle, side)) {
             //Plane taking-off away from obstacle
             return getTora(side) + getStopwayLength(side);
         } else {
@@ -109,10 +137,13 @@ public class Calculator {
             return runway.getOriginalLda();
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+        int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance();
+        int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))
+                .getRunwayObstacle().getThresholdDistance();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (distanceToOppositeThreshold > distanceToCurrentThreshold) {
             //Plane landing over obstacle
-            int slopeCalculation = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
+            int slopeCalculation = getSlopeCalculation(runwayObstacle) + testStripValue;
             if (slopeCalculation < testBlastProtectionValue) {
                 slopeCalculation = testBlastProtectionValue;
             }
@@ -129,6 +160,7 @@ public class Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
+    @Test
     public int getLandingObstacleOffest(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
@@ -166,6 +198,7 @@ public class Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
+    @Test
     public int getTakeOffObstacleOffset(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {

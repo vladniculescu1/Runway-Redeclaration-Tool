@@ -17,26 +17,29 @@ public abstract class DistanceDrawer implements Drawer {
      * @param text the name of the value
      */
     public void drawDistance(Graphics2D g2d, int startX, int distance, int height, String text) {
-        float[] dash1 = new float[1];
-        dash1[0] = 25.0f;
-
-
+        //Get standard font and stroke
         Font font = g2d.getFont();
-        g2d.setFont(font.deriveFont((float) font.getSize() * 0.7f));
-
-        g2d.drawLine(startX, height + 20, startX, height - 20);
-        g2d.drawLine(startX + distance, height + 20, startX + distance, height - 20);
-        g2d.drawString(text, (startX + startX + distance) / 2, height);
-
         BasicStroke stroke = (BasicStroke) g2d.getStroke();
+        //Set font for displaying value name (TODA, TORA...)
+        g2d.setFont(font.deriveFont((float) font.getSize() * DrawConstants.RUNWAY_DISTANCE_FONTSIZE_FACTOR));
+        g2d.drawString(text, (startX + startX + distance) / 2,
+                height - DrawConstants.RUNWAY_DISTANCE_ENDLINE_HEIGHT / 2);
+        //Draw line endpoints
+        g2d.drawLine(startX, height + DrawConstants.RUNWAY_DISTANCE_ENDLINE_HEIGHT,
+                startX, height - DrawConstants.RUNWAY_DISTANCE_ENDLINE_HEIGHT);
+        g2d.drawLine(startX + distance, height + DrawConstants.RUNWAY_DISTANCE_ENDLINE_HEIGHT,
+                startX + distance, height - DrawConstants.RUNWAY_DISTANCE_ENDLINE_HEIGHT);
+        //Set stroke to be dashed and draw dashed line with arrow
         g2d.setStroke(new BasicStroke(stroke.getLineWidth(),
                 BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_MITER,
-                10.0f, dash1, 0.0f));
-        drawArrowLine(g2d,startX,height,startX + distance,height,30,20);
-
-        g2d.drawString(String.valueOf(Math.abs(distance)) + "m", (startX + startX + distance) / 2, height + 70);
-
+                10.0f, DrawConstants.RUNWAY_DISTANCE_DASHLINE, 0.0f));
+        drawArrowLine(g2d, startX, height, startX + distance, height,
+                DrawConstants.ARROW_WIDTH, DrawConstants.ARROW_HEIGHT);
+        //Display value of runway distance
+        g2d.drawString(String.valueOf(Math.abs(distance)) + "m",
+                (startX + startX + distance) / 2, height + DrawConstants.RUNWAY_VALUE_DISPLACEMENT);
+        //Reset stroke and font to standard
         g2d.setStroke(stroke);
         g2d.setFont(font);
     }

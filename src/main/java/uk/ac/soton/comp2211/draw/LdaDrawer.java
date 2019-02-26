@@ -14,18 +14,19 @@ public class LdaDrawer extends DistanceDrawer {
 
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
+
         if (runwaySelection.getSelectedRunway().getRunwayMode() == RunwayMode.TAKEOFF) {
             return;
         }
 
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
-        var visualisationLength = calc.getTotalVisualisationLength();
-        var runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
+        int visualisationLength = calc.getTotalVisualisationLength();
+        double runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
 
         int startX = calc.getLandingObstacleOffest(side);
         int distance = calc.getLda(side);
-        double height = - ((runwayWidth / 14) * 3);
+        double height = - ((runwayWidth / DrawConstants.VALUE_DISPLAY_HEIGHT_FACTOR) * 3);
 
         switch (side) {
             case LOWER_THRESHOLD:
