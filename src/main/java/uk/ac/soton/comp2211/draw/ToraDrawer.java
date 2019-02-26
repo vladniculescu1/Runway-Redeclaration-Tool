@@ -18,14 +18,13 @@ public class ToraDrawer extends DistanceDrawer {
             return;
         }
 
+        int position = 3;
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
-        int visualisationLength = calc.getTotalVisualisationLength();
-        double runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getTora(side);
-        double height = - ((runwayWidth / DrawConstants.VALUE_DISPLAY_HEIGHT_FACTOR) * 3);
+        double height = - ((calc.getTotalVisualisationLength() * DrawConstants.VALUE_DISPLAY_HEIGHT_FACTOR) * position);
 
         switch (side) {
             case LOWER_THRESHOLD:

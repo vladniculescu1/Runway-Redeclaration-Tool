@@ -17,16 +17,13 @@ public class TodaDrawer extends DistanceDrawer {
         if (runwaySelection.getSelectedRunway().getRunwayMode() == RunwayMode.LANDING) {
             return;
         }
-
+        int position = 5;
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
-        int visualisationLength = calc.getTotalVisualisationLength();
-        double runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getToda(side);
-        double height = - ((runwayWidth / DrawConstants.VALUE_DISPLAY_HEIGHT_FACTOR) * 5);
-
+        double height = - ((calc.getTotalVisualisationLength() * DrawConstants.VALUE_DISPLAY_HEIGHT_FACTOR) * position);
 
         switch (side) {
             case LOWER_THRESHOLD:

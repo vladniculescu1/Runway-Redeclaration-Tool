@@ -1,6 +1,5 @@
 package uk.ac.soton.comp2211.calculator;
 
-import org.junit.Test;
 import uk.ac.soton.comp2211.model.*;
 
 public class Calculator {
@@ -133,7 +132,6 @@ public class Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
-    @Test
     public int getLandingObstacleOffest(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
@@ -171,7 +169,6 @@ public class Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
-    @Test
     public int getTakeOffObstacleOffset(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
