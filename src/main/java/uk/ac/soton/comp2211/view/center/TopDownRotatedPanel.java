@@ -22,6 +22,8 @@ public class TopDownRotatedPanel extends JPanel {
 
     /**
      * Constructs a new top down rotated panel.
+     * @param runwaySelection the selected runway
+     * @param drawExecutor the draw executor that is used for visualisation
      */
     public TopDownRotatedPanel(RunwaySelection runwaySelection, DrawExecutor drawExecutor) {
         this.runwaySelection = runwaySelection;
@@ -39,10 +41,10 @@ public class TopDownRotatedPanel extends JPanel {
         // 3. translate it to the center of the component
         at.translate(this.getWidth() / 2, this.getHeight() / 2);
         // 2. do the actual rotation
-//        at.rotate(0);
-        at.rotate(Math.toRadians(90+(runwaySelection.getSelectedRunway().getLowerThreshold().getHeading())*10));
+        // at.rotate(0);
+        at.rotate(Math.toRadians(90 + (runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10));
         // 1. translate the object so that you rotate it around the center
-        at.translate(-image.getWidth()/2, -image.getHeight()/2);
+        at.translate(-image.getWidth() / 2, -image.getHeight() / 2);
 
         g2d.drawImage(image, at,null);
     }
