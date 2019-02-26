@@ -6,6 +6,7 @@ import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.validate.EqualTora;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -58,6 +59,11 @@ public class PhysicalRunway implements Observable {
         return getLowerThreshold().getHeadingAsString() + "/" + getHigherThreshold().getHeadingAsString();
     }
 
+    @Override
+    public String toString() {
+        return getLowerThreshold().getHeadingAsString() + "/" + getHigherThreshold().getHeadingAsString();
+    }
+
     public Calculator getCalculator() {
         return new Calculator(this);
     }
@@ -70,6 +76,25 @@ public class PhysicalRunway implements Observable {
     public void setRunwayMode(RunwayMode runwayMode) {
         this.runwayMode = runwayMode;
         this.observers.forEach(Observer::notifyUpdate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PhysicalRunway that = (PhysicalRunway) o;
+        return Objects.equals(getHigherThreshold(), that.getHigherThreshold())
+                && Objects.equals(getLowerThreshold(), that.getLowerThreshold());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getHigherThreshold(), getLowerThreshold());
     }
 
     @Override

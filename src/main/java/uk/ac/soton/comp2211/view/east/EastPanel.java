@@ -19,9 +19,9 @@ public class EastPanel extends JPanel {
     public EastPanel(RunwayPanel runwayPanel, ObstaclePanel obstaclePanel, DistancesPanel distancesPanel) {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cell(runwayPanel);
-        gridBag.row().cell(obstaclePanel);
-        gridBag.row().cell(distancesPanel).fillY();
+        gridBag.row().cell(runwayPanel).fillX();
+        gridBag.row().cell(obstaclePanel).fillX();
+        gridBag.row().cell(distancesPanel).fillXY();
         gridBag.done();
     }
 
