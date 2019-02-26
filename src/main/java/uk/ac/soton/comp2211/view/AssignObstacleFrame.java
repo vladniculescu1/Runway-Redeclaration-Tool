@@ -10,17 +10,28 @@ public class AssignObstacleFrame extends JDialog {
     /**
      *TODO.
      * @param mainFrame TODO 
-     * @param assignObstaclePanel TODO
      */
-    public AssignObstacleFrame(MainFrame mainFrame, AssignObstaclePanel assignObstaclePanel)    {
+    public AssignObstacleFrame(MainFrame mainFrame)    {
         super(mainFrame, ModalityType.DOCUMENT_MODAL);
         
-        this.setContentPane(assignObstaclePanel);
         this.setTitle("Assign Obstacle to Runway");
         this.pack();
         this.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }
+
+    public void close() {
+        this.setVisible(false);
+    }
+    
+    /**
+     * TODO.
+     * @param assignObstaclePanel TODO
+     */
+    public void create(AssignObstaclePanel assignObstaclePanel) {
+        this.setContentPane(assignObstaclePanel);
+        this.pack();
         this.setVisible(true);
-        
     }
     
 }

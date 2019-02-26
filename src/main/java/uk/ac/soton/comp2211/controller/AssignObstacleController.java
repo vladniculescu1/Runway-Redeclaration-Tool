@@ -19,8 +19,13 @@ public class AssignObstacleController implements ActionListener {
     private AssignObstacleFrame assignObstacleFrame;
     private AssignObstaclePanel assignObstaclePanel;
     
+    /**
+     * Creates this AssignObstacleController.
+     * @param runwaySelection The runwaySelection.
+     */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
+        assignObstacleFrame = new AssignObstacleFrame(mainFrame);
     }
     
     public void addMainFrame(MainFrame mainFrame)  {
@@ -33,12 +38,14 @@ public class AssignObstacleController implements ActionListener {
 
             case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
                 assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
-                assignObstacleFrame = new AssignObstacleFrame(mainFrame, assignObstaclePanel);
+                assignObstacleFrame.create(assignObstaclePanel);
                 break;
             }
             case ObstaclePanel.REMOVE_BUTTON_COMMAND: {
                 runwaySelection.getSelectedRunway().getHigherThreshold().removeRunwayObstacle();
                 runwaySelection.getSelectedRunway().getLowerThreshold().removeRunwayObstacle();   
+                
+                runwaySelection.notifyUpdate();
                 break;
             }
             case AssignObstaclePanel.ASSIGN_OBSTACLE_BUTTON_COMMAND: {
@@ -63,20 +70,22 @@ public class AssignObstacleController implements ActionListener {
                                             runwaySelection.getSelectedRunway().getCalculator()
                                                 .getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD),
                                             ro.getCentreLineDistance(),
-                                            ro.getObstacle()));  
+                                            ro.getObstacle()));
                             
                             break;
                         }
                         default: { }
-                    } 
+                    }
                     
+                    runwaySelection.notifyUpdate();
                     
-                    //TODO close assign window
+                    assignObstacleFrame.close();
                 }
                 break;
             }
             case AssignObstaclePanel.CANCEL_BUTTON_COMMAND: {
-                //TODO close assign window
+                assignObstaclePanel.setVisible(false);
+                assignObstacleFrame.close();
                 
                 break;
             }
