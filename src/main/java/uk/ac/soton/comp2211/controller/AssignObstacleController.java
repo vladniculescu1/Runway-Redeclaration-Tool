@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.RunwaySide;
 import uk.ac.soton.comp2211.view.AssignObstacleFrame;
 import uk.ac.soton.comp2211.view.AssignObstaclePanel;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -44,8 +45,31 @@ public class AssignObstacleController implements ActionListener {
                 RunwayObstacle ro = assignObstaclePanel.getObstacleFromInputs();
                 if (ro != null) {
 
-                    runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(ro);
-                    runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(ro);   
+                    switch (assignObstaclePanel.getRunwaySide()) {
+                        case HIGHER_THRESHOLD: {
+                            runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(ro);
+                            runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(
+                                    new RunwayObstacle(
+                                            runwaySelection.getSelectedRunway().getCalculator()
+                                                .getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD),
+                                            ro.getCentreLineDistance(),
+                                            ro.getObstacle()));  
+                            break;
+                        }
+                        case LOWER_THRESHOLD: {
+                            runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(ro);
+                            runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(
+                                    new RunwayObstacle(
+                                            runwaySelection.getSelectedRunway().getCalculator()
+                                                .getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD),
+                                            ro.getCentreLineDistance(),
+                                            ro.getObstacle()));  
+                            
+                            break;
+                        }
+                        default: { }
+                    } 
+                    
                     
                     //TODO close assign window
                 }
