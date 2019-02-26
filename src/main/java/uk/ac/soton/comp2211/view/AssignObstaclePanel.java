@@ -1,15 +1,11 @@
 package uk.ac.soton.comp2211.view;
 
-import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.Formatter;
 
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
 
-import org.antlr.v4.runtime.ParserInterpreter;
 import org.painlessgridbag.PainlessGridBag;
-import org.painlessgridbag.PainlessGridbagConfiguration;
 
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
@@ -37,9 +33,9 @@ public class AssignObstaclePanel extends JPanel implements Observer {
     private JButton cancelButton;
     
     /**
-     * TODO.
-     * @param runwaySelection TODO
-     * @param assignObstacleController TODO
+     * (View) Constructor for AssignObstaclePanel.
+     * @param runwaySelection (Model) The runway selector for the program
+     * @param assignObstacleController (Controller) The controller for this view's inputs.
      */
     public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
 
@@ -51,8 +47,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         obstacleComboBox = new JComboBox(); //TODO populate and link to event listener
         obstacleComboBox.addActionListener(assignObstacleController);
         gridBag.row().cell(new JLabel("Select predefined:")).cellX(obstacleComboBox, 2).fillX();
-
-        //TODO possibly add spacing row
         
         NumberFormat integerFormat = NumberFormat.getNumberInstance();
         NumberFormatter integerFormatter = new NumberFormatter(integerFormat);

@@ -1,6 +1,5 @@
 package uk.ac.soton.comp2211.controller;
 
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

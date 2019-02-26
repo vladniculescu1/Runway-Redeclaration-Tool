@@ -1,15 +1,12 @@
 package uk.ac.soton.comp2211.view;
 
-import java.awt.*;
-import java.awt.event.WindowEvent;
-
 import javax.swing.*;
 
 public class AssignObstacleFrame extends JDialog {
 
     /**
-     *TODO.
-     * @param mainFrame TODO 
+     * (View) Constructor for AssignObstacleFrame.
+     * @param mainFrame The frame of the main program, to allow blocking input to it.
      */
     public AssignObstacleFrame(MainFrame mainFrame)    {
         super(mainFrame, ModalityType.DOCUMENT_MODAL);
@@ -25,8 +22,8 @@ public class AssignObstacleFrame extends JDialog {
     }
     
     /**
-     * TODO.
-     * @param assignObstaclePanel TODO
+     * 'Creates' this frame (makes it visible and fixes related issues).
+     * @param assignObstaclePanel The content visible in this frame.
      */
     public void create(AssignObstaclePanel assignObstaclePanel) {
         this.setContentPane(assignObstaclePanel);
