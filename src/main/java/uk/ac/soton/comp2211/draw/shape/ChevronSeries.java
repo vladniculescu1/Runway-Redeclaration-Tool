@@ -23,7 +23,7 @@ public class ChevronSeries extends Path2D.Double {
         switch (side) {
             case LOWER_THRESHOLD: {
                 var currentPos = startPos + length;
-                while (currentPos > startPos + 50) {
+                while (currentPos >= startPos + 50) {
                     moveTo(currentPos, 0);
                     lineTo(currentPos - 50, - width / 2);
                     moveTo(currentPos, 0);
@@ -35,7 +35,7 @@ public class ChevronSeries extends Path2D.Double {
             case HIGHER_THRESHOLD: {
                 var currentPos = startPos;
                 var endPos = currentPos + length;
-                while (currentPos < endPos - 50) {
+                while (currentPos <= endPos - 50) {
                     moveTo(currentPos, 0);
                     lineTo(currentPos + 50, - width / 2);
                     moveTo(currentPos, 0);

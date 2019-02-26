@@ -16,17 +16,17 @@ public class StopwayDrawer implements Drawer {
         var calculator = runwaySelection.getSelectedRunway().getCalculator();
         var visualisationLength = calculator.getTotalVisualisationLength();
 
-        var stopwayLengthLower = calculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
+        var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
         var stopwayWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
-        var stopwayPositionLower = calculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
 
-        var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        var stopwayLengthLower = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
+        var stopwayPositionLower = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         // draw lower stopway if there is one
         if (stopwayLengthLower > 0) {
 
-            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionLower,
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionLower,
                     stopwayLengthLower, stopwayWidth);
 
             g2d.setColor(Color.yellow);
@@ -37,11 +37,10 @@ public class StopwayDrawer implements Drawer {
                     stopwayLengthLower, stopwayWidth, "SWY");
 
         }
-
         // draw higher stopway if there is one
         if (stopwayLengthHigher > 0) {
 
-            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionHigher,
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionHigher,
                     stopwayLengthHigher, stopwayWidth);
 
             g2d.setColor(Color.yellow);
