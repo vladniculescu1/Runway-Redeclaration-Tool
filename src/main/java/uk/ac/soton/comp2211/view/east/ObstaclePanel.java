@@ -59,11 +59,6 @@ public class ObstaclePanel extends JPanel implements Observer {
                 obstacleTextField.setText(runwaySelection.getSelectedRunway().getHigherThreshold()
                                  .getRunwayObstacle().getObstacle().getName());
                 removeObstacleButton.setEnabled(true);
-            } else if (runwaySelection.getSelectedRunway().getLowerThreshold().hasRunwayObstacle())   {
-                assignObstacleButton.setEnabled(false);
-                obstacleTextField.setText(runwaySelection.getSelectedRunway().getLowerThreshold()
-                                 .getRunwayObstacle().getObstacle().getName());
-                removeObstacleButton.setEnabled(true);
             } else { //no obstacle on runway
                 assignObstacleButton.setEnabled(true);
                 obstacleTextField.setText("");

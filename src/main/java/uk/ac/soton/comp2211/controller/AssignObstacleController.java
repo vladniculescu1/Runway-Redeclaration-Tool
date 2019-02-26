@@ -36,22 +36,24 @@ public class AssignObstacleController implements ActionListener {
                 break;
             }
             case ObstaclePanel.REMOVE_BUTTON_COMMAND: {
-                if (runwaySelection.getSelectedRunway().getHigherThreshold().hasRunwayObstacle()) {
-                    runwaySelection.getSelectedRunway().getHigherThreshold().removeRunwayObstacle();
-                } else {
-                    runwaySelection.getSelectedRunway().getLowerThreshold().removeRunwayObstacle();                    
-                }
+                runwaySelection.getSelectedRunway().getHigherThreshold().removeRunwayObstacle();
+                runwaySelection.getSelectedRunway().getLowerThreshold().removeRunwayObstacle();   
                 break;
             }
             case AssignObstaclePanel.ASSIGN_OBSTACLE_BUTTON_COMMAND: {
                 RunwayObstacle ro = assignObstaclePanel.getObstacleFromInputs();
                 if (ro != null) {
+
+                    runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(ro);
+                    runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(ro);   
+                    
                     //TODO close assign window
                 }
                 break;
             }
             case AssignObstaclePanel.CANCEL_BUTTON_COMMAND: {
                 //TODO close assign window
+                
                 break;
             }
             default:

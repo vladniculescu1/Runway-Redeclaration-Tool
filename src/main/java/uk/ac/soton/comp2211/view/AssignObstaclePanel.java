@@ -1,15 +1,22 @@
 package uk.ac.soton.comp2211.view;
 
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Formatter;
+
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 
 import org.antlr.v4.runtime.ParserInterpreter;
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.model.Obstacle;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.RunwaySide;
 import uk.ac.soton.comp2211.model.validate.Validator;
 
 public class AssignObstaclePanel extends JPanel implements Observer {
@@ -41,20 +48,26 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         this.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         
         PainlessGridBag gridBag = new PainlessGridBag(this,false);
-
         obstacleComboBox = new JComboBox(); //TODO populate and link to event listener
         obstacleComboBox.addActionListener(assignObstacleController);
         gridBag.row().cell(new JLabel("Select predefined:")).cellX(obstacleComboBox, 2).fillX();
 
-        //TODO add spacing row
+        //TODO possibly add spacing row
+        
+        NumberFormat integerFormat = NumberFormat.getNumberInstance();
+        NumberFormatter integerFormatter = new NumberFormatter(integerFormat);
+        integerFormatter.setAllowsInvalid(true);
+        integerFormatter.setMaximum(9999);
+        integerFormatter.setMinimum(-9999);
+        integerFormat.setGroupingUsed(false);
         
         obstacleNameTextField = new JTextField();
         gridBag.row().cell(new JLabel("Name of obstacle:")).cellX(obstacleNameTextField, 2).fillX();
         
-        obstacleHeightTextField = new JTextField();
+        obstacleHeightTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cell().cell(new JLabel("Height (m):")).cell(obstacleHeightTextField).fillX();
         
-        obstacleLengthTextField = new JTextField();
+        obstacleLengthTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cell().cell(new JLabel("Length (m):")).cell(obstacleLengthTextField).fillX();
         
         gridBag.row().separator();
@@ -69,10 +82,10 @@ public class AssignObstaclePanel extends JPanel implements Observer {
                      .cell(lowerThresholdRadioButton)
                      .cell(higherThresholdRadioButton);
         
-        centrelineDistanceTextField = new JTextField();
+        centrelineDistanceTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2).cell(centrelineDistanceTextField).fillX();
         
-        thresholdDistanceTextField = new JTextField();
+        thresholdDistanceTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2).cell(thresholdDistanceTextField).fillX();
         
         assignButton = new JButton();
@@ -84,7 +97,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         gridBag.row().cellX(assignButton,2).fillX().cell(cancelButton);        
         
         populate();
-        //also ensure only numbers
         gridBag.done();
         
         notifyUpdate();
@@ -101,9 +113,21 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
     }
     
+    /**
+     * Reads the radio buttons to determine which threshold the obstacle is to be assigned to.
+     * @return RunwaySide that the obstacle is to be assigned to.
+     */
+    public RunwaySide getRunwaySide() {
+        if (higherThresholdRadioButton.isSelected()) {
+            return RunwaySide.HIGHER_THRESHOLD;
+        } else {
+            return RunwaySide.LOWER_THRESHOLD;
+        }
+    }
+    
     @Override
     public void notifyUpdate() {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method stub (will be used with the combobox?)
 
     }
     
@@ -113,30 +137,35 @@ public class AssignObstaclePanel extends JPanel implements Observer {
      */
     public RunwayObstacle getObstacleFromInputs() {
         String issues = "";
+        
         int height = 1;
         if (!isNumeric(obstacleHeightTextField.getText())) {
-            issues += "Height must be an integer.\n";
+            issues += "Height must not be blank.\n";
         } else {
             height = Integer.parseInt(obstacleHeightTextField.getText());
         }
+        
         int length = 1;
         if (!isNumeric(obstacleLengthTextField.getText())) {
-            issues += "Length must be an integer.\n";
+            issues += "Length must not be blank.\n";
         } else {
             length = Integer.parseInt(obstacleLengthTextField.getText());
         }
+        
         int centreline = 0;
         if (!isNumeric(centrelineDistanceTextField.getText())) {
-            issues += "Centreline distance must be an integer.\n";
+            issues += "Centreline distance must not be blank.\n";
         } else {
             centreline = Integer.parseInt(centrelineDistanceTextField.getText());
         }
+        
         int threshold = 0;
         if (!isNumeric(thresholdDistanceTextField.getText())) {
-            issues += "Threshold must be an integer.\n";
+            issues += "Threshold must not be blank.\n";
         } else {
             threshold = Integer.parseInt(thresholdDistanceTextField.getText());
         }
+        
         Obstacle obstacle = new Obstacle(obstacleNameTextField.getText(), height, length);
         RunwayObstacle runwayObstacle = new RunwayObstacle(centreline, threshold,obstacle);
         Validator validator = Validator.forObject(obstacle);
