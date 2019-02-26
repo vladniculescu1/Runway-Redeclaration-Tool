@@ -38,12 +38,12 @@ public class RunwayPanel extends JPanel implements Observer {
         comboBoxModel = new DefaultComboBoxModel<>();
         comboBox = new JComboBox<>(comboBoxModel);
 
-        JButton doit = new JButton("Add");
-        JButton doit2 = new JButton("Remove");
+        JButton addButton = new JButton("Add");
+        JButton removeButton = new JButton("Remove");
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cellX(comboBox,2).fillX();
-        gridBag.row().cell(doit).cell(doit2).fillX();
+        gridBag.row().cell(addButton).cell(removeButton).fillX();
 
         gridBag.done();
 
