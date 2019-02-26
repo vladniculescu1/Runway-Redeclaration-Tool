@@ -23,28 +23,28 @@ public class ArrowSeries extends Path2D.Double {
         switch (side) {
             case LOWER_THRESHOLD: {
                 var currentPos = startPos + length;
-                while (currentPos > startPos + 80) {
+                while (currentPos >= startPos + 70) {
                     moveTo(currentPos, 0);
-                    lineTo(currentPos - 30, - width / 15);
+                    lineTo(currentPos - 30, - width / 25);
                     moveTo(currentPos, 0);
-                    lineTo(currentPos - 30, width / 15);
+                    lineTo(currentPos - 30, width / 25);
                     moveTo(currentPos, 0);
                     lineTo(currentPos - 70, 0);
-                    currentPos -= 80;
+                    currentPos -= 100;
                 }
                 break;
             }
             case HIGHER_THRESHOLD: {
                 var currentPos = startPos;
                 var endPos = currentPos + length;
-                while (currentPos < endPos - 80) {
+                while (currentPos <= endPos - 70) {
                     moveTo(currentPos, 0);
-                    lineTo(currentPos + 30, - width / 5);
+                    lineTo(currentPos + 30, - width / 25);
                     moveTo(currentPos, 0);
-                    lineTo(currentPos + 30, width / 5);
+                    lineTo(currentPos + 30, width / 25);
                     moveTo(currentPos, 0);
                     lineTo(currentPos + 70, 0);
-                    currentPos += 80;
+                    currentPos += 100;
                 }
 
                 break;
