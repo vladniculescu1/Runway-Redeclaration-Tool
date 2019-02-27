@@ -92,7 +92,6 @@ public class LogicalRunway {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(heading, getLocation());
     }
 }
