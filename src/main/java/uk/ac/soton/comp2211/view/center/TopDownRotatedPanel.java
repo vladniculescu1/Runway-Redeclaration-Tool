@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.view.center;
 
+import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
@@ -13,12 +14,10 @@ import java.awt.image.BufferedImage;
 /**
  * This panel shows the runway in a top down view, with the runway rotated corresponding to its heading.
  */
-public class TopDownRotatedPanel extends JPanel {
+public class TopDownRotatedPanel extends JPanel implements Observer {
 
     private DrawExecutor drawExecutor;
-    private LogicalRunway logicalRunway;
     private RunwaySelection runwaySelection;
-
 
     /**
      * Constructs a new top down rotated panel.
@@ -26,6 +25,7 @@ public class TopDownRotatedPanel extends JPanel {
      * @param drawExecutor the draw executor that is used for visualisation
      */
     public TopDownRotatedPanel(RunwaySelection runwaySelection, DrawExecutor drawExecutor) {
+        runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
         this.drawExecutor = drawExecutor;
     }
@@ -62,5 +62,10 @@ public class TopDownRotatedPanel extends JPanel {
         this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight());
         g2d.dispose();
         return image;
+    }
+
+    @Override
+    public void notifyUpdate() {
+        this.repaint();
     }
 }
