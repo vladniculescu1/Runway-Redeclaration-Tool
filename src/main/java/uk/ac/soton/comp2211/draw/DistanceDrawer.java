@@ -17,25 +17,23 @@ public abstract class DistanceDrawer implements Drawer {
      * @param text the name of the value
      */
     public void drawDistance(Graphics2D g2d, int startX, int distance, int height, String text) {
-        float[] dash1 = new float[1];
-        dash1[0] = 25.0f;
-
-
         Font font = g2d.getFont();
-        g2d.setFont(font.deriveFont((float) font.getSize() * 0.7f));
+        int fontHeight = g2d.getFontMetrics().getHeight();
 
-        g2d.drawLine(startX, height + 20, startX, height - 20);
-        g2d.drawLine(startX + distance, height + 20, startX + distance, height - 20);
-        g2d.drawString(text, (startX + startX + distance) / 2, height);
+        g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
+        g2d.drawLine(startX + distance, height + fontHeight / 4,
+                startX + distance, height - fontHeight / 4);
+        g2d.drawString(text, (startX + startX + distance) / 2, (int) (height - fontHeight * 0.2));
 
         BasicStroke stroke = (BasicStroke) g2d.getStroke();
         g2d.setStroke(new BasicStroke(stroke.getLineWidth(),
                 BasicStroke.CAP_BUTT,
-                BasicStroke.JOIN_MITER,
-                10.0f, dash1, 0.0f));
-        drawArrowLine(g2d,startX,height,startX + distance,height,30,20);
+                BasicStroke.JOIN_BEVEL,
+                0, new float[]{25}, 0));
+        drawArrowLine(g2d,startX,height,startX + distance,height, fontHeight / 2, fontHeight / 4);
 
-        g2d.drawString(String.valueOf(Math.abs(distance)) + "m", (startX + startX + distance) / 2, height + 70);
+        g2d.drawString(String.valueOf(Math.abs(distance)) + "m",
+                (startX + startX + distance) / 2,  (int) (height + fontHeight * 0.8));
 
         g2d.setStroke(stroke);
         g2d.setFont(font);
