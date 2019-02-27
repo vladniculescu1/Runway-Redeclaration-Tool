@@ -25,12 +25,14 @@ public class DirectionController implements ActionListener {
 
             switch (e.getActionCommand()) {
 
-                case DirectionPanel.TOWARDS_LOWER_COMMAND: {
+                case DirectionPanel.FROM_LOWER_COMMAND: {
                     runway.setRunwayDirection(RunwaySide.LOWER_THRESHOLD);
+                    runwaySelection.notifyUpdate();
                     break;
                 }
-                case DirectionPanel.TOWARDS_HIGHER_COMMAND: {
+                case DirectionPanel.FROM_HIGHER_COMMAND: {
                     runway.setRunwayDirection(RunwaySide.HIGHER_THRESHOLD);
+                    runwaySelection.notifyUpdate();
                     break;
                 }
                 default: {

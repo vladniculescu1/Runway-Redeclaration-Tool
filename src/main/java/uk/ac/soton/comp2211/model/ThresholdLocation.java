@@ -14,7 +14,7 @@ public enum ThresholdLocation {
         this.letter = letter;
     }
 
-    public String getLetter() {
+    public String toString() {
         return letter;
     }
 }
