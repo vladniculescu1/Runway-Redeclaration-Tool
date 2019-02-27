@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Draws the ASDA value onto the runway.
  */
-public class AsdaDrawer extends DistanceDrawer {
+public class AsdaDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
@@ -24,10 +24,10 @@ public class AsdaDrawer extends DistanceDrawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height,"ASDA");
+                DrawUtils.drawDistance(g2d, startX, distance, (int) height,"ASDA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height,"ASDA");
+                DrawUtils.drawDistance(g2d, startX, -distance, (int) -height,"ASDA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);

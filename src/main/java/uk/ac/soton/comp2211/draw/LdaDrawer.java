@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Draws the LDA value onto the runway.
  */
-public class LdaDrawer extends DistanceDrawer {
+public class LdaDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
@@ -25,10 +25,10 @@ public class LdaDrawer extends DistanceDrawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height, "LDA");
+                DrawUtils.drawDistance(g2d, startX, distance, (int) height, "LDA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height, "LDA");
+                DrawUtils.drawDistance(g2d, startX, -distance, (int) -height, "LDA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);

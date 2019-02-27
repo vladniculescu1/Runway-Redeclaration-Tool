@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Draws the TODA value onto the runway.
  */
-public class TodaDrawer extends DistanceDrawer {
+public class TodaDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
@@ -25,10 +25,10 @@ public class TodaDrawer extends DistanceDrawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height, "TODA");
+                DrawUtils.drawDistance(g2d, startX, distance, (int) height, "TODA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height, "TODA");
+                DrawUtils.drawDistance(g2d, startX, -distance, (int) -height, "TODA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
