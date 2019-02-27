@@ -39,16 +39,6 @@ public class Main {
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
                 3660, 3810, 27, ThresholdLocation.RIGHT);
 
-        //Just adds the obstacle to the logical runways for Scenario
-
-        Obstacle obstacle = new Obstacle("Test",5,0);
-        RunwayObstacle runwayObstacle1 = new RunwayObstacle(50,0,obstacle);
-        logicalRunway1.setRunwayObstacle(runwayObstacle1);
-        RunwayObstacle runwayObstacle2 = new RunwayObstacle(3310, 0, obstacle);
-        logicalRunway2.setRunwayObstacle(runwayObstacle2);
-
-
-
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
 
