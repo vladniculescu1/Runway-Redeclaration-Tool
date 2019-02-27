@@ -2,7 +2,6 @@ package uk.ac.soton.comp2211;
 
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
-import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
@@ -50,7 +49,7 @@ public class Main {
 
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
+                RunwaySide.LOWER_THRESHOLD);
 
         airport.addRunway(physicalRunway);
 
@@ -88,7 +87,6 @@ public class Main {
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new UsagePanel(runwaySelection, new UsageController(runwaySelection)),
                                 new XmlPanel(),
                                 new NotificationsPanel()
                         )

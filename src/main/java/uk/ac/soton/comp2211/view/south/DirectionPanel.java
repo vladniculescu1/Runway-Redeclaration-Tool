@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.view.south;
 
 import org.painlessgridbag.PainlessGridBag;
+import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.Observer;
@@ -14,11 +15,11 @@ import java.awt.event.ActionListener;
  */
 public class DirectionPanel extends JPanel implements Observer {
 
-    private JRadioButton towardsLowerRadio;
-    private JRadioButton towardsHigherRadio;
+    private JRadioButton fromLowerRadio;
+    private JRadioButton fromHigherRadio;
 
-    public static final String TOWARDS_HIGHER_COMMAND = "towardsHigher";
-    public static final String TOWARDS_LOWER_COMMAND = "towardsLower";
+    public static final String FROM_HIGHER_COMMAND = "fromHigher";
+    public static final String FROM_LOWER_COMMAND = "fromLower";
 
     private RunwaySelection runwaySelection;
 
@@ -34,23 +35,23 @@ public class DirectionPanel extends JPanel implements Observer {
 
         this.setBorder(BorderFactory.createTitledBorder("Landing/Take-off Direction"));
 
-        towardsLowerRadio = new JRadioButton("Towards lower threshold");
-        towardsLowerRadio.setEnabled(false);
-        towardsLowerRadio.setActionCommand(TOWARDS_LOWER_COMMAND);
-        towardsLowerRadio.addActionListener(directionController);
+        fromLowerRadio = new JRadioButton("From lower threshold towards higher threshold");
+        fromLowerRadio.setEnabled(false);
+        fromLowerRadio.setActionCommand(FROM_LOWER_COMMAND);
+        fromLowerRadio.addActionListener(directionController);
 
-        towardsHigherRadio = new JRadioButton("Towards higher threshold");
-        towardsHigherRadio.setEnabled(false);
-        towardsHigherRadio.setActionCommand(TOWARDS_HIGHER_COMMAND);
-        towardsHigherRadio.addActionListener(directionController);
+        fromHigherRadio = new JRadioButton("From higher threshold towards lower threshold");
+        fromHigherRadio.setEnabled(false);
+        fromHigherRadio.setActionCommand(FROM_HIGHER_COMMAND);
+        fromHigherRadio.addActionListener(directionController);
 
         ButtonGroup radioButtons = new ButtonGroup();
-        radioButtons.add(towardsLowerRadio);
-        radioButtons.add(towardsHigherRadio);
+        radioButtons.add(fromLowerRadio);
+        radioButtons.add(fromHigherRadio);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cell(towardsLowerRadio).fillX();
-        gridBag.row().cell(towardsHigherRadio).fillX();
+        gridBag.row().cell(fromLowerRadio).fillX();
+        gridBag.row().cell(fromHigherRadio).fillX();
         gridBag.done();
 
         this.notifyUpdate();
@@ -61,21 +62,30 @@ public class DirectionPanel extends JPanel implements Observer {
 
         if (runwaySelection.hasSelectedRunway()) {
 
-            towardsLowerRadio.setEnabled(true);
-            towardsHigherRadio.setEnabled(true);
-
             PhysicalRunway runway = runwaySelection.getSelectedRunway();
+            LogicalRunway lowerThreshold = runway.getLowerThreshold();
+            LogicalRunway higherThreshold = runway.getHigherThreshold();
+
+            fromLowerRadio.setText("From " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation()
+                    + " towards " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
+            fromLowerRadio.setEnabled(true);
+
+            fromHigherRadio.setText("From " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation()
+                    + " towards " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
+            fromHigherRadio.setEnabled(true);
+
+
 
             switch (runway.getRunwayDirection()) {
 
                 case LOWER_THRESHOLD: {
-                    this.towardsHigherRadio.setSelected(false);
-                    this.towardsLowerRadio.setSelected(true);
+                    this.fromHigherRadio.setSelected(false);
+                    this.fromLowerRadio.setSelected(true);
                     break;
                 }
                 case HIGHER_THRESHOLD: {
-                    this.towardsLowerRadio.setSelected(false);
-                    this.towardsHigherRadio.setSelected(true);
+                    this.fromLowerRadio.setSelected(false);
+                    this.fromHigherRadio.setSelected(true);
                     break;
                 }
                 default:
