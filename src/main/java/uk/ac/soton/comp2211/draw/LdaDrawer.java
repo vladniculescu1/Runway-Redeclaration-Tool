@@ -25,10 +25,10 @@ public class LdaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.drawDistance(g2d, startX, distance, (int) height, "LDA");
+                DrawUtils.labelledDistance(g2d, startX, distance, (int) height, "LDA");
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.drawDistance(g2d, startX, -distance, (int) -height, "LDA");
+                DrawUtils.labelledDistance(g2d, startX, -distance, (int) -height, "LDA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);

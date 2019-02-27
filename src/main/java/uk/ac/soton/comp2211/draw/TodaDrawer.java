@@ -25,10 +25,10 @@ public class TodaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.drawDistance(g2d, startX, distance, (int) height, "TODA");
+                DrawUtils.labelledDistance(g2d, startX, distance, (int) height, "TODA");
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.drawDistance(g2d, startX, -distance, (int) -height, "TODA");
+                DrawUtils.labelledDistance(g2d, startX, -distance, (int) -height, "TODA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);

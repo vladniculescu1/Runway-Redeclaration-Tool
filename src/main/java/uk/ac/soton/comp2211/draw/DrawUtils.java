@@ -56,7 +56,7 @@ public class DrawUtils {
      * @param height the y-cordinate of the line
      * @param text the name of the value
      */
-    public static void drawDistance(Graphics2D g2d, int startX, int distance, int height, String text) {
+    public static void labelledDistance(Graphics2D g2d, int startX, int distance, int height, String text) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
 
