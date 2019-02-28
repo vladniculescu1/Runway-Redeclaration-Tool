@@ -14,30 +14,6 @@ public class Calculator {
     }
 
     /**
-     * Calculates the length of the TODA for the given runway.
-     *
-     * @param side the side the value will be calculated for
-     * @return the calculated value
-     */
-    public int getToda(RunwaySide side) {
-        LogicalRunway runway = getLogicalRunwayForSide(side);
-
-        if (!runway.hasRunwayObstacle()) {
-            //no obstacle
-            return runway.getOriginalToda();
-        }
-        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
-
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
-            //Plane taking-off away from obstacle
-            return getTora(side) + getClearwayLength(side);
-        } else {
-            //Plane taking-off towards obstacle
-            return getTora(side);
-        }
-    }
-
-    /**
      * Calculates the length of the TORA for the given runway.
      *
      * @param side the side the value will be calculated for
@@ -52,7 +28,7 @@ public class Calculator {
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (checkSide(runwayObstacle, side)) {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
@@ -60,7 +36,7 @@ public class Calculator {
                     - getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
-            int slopeCalculation = runwayObstacle.getObstacle().getHeight() * 50;
+            int slopeCalculation = getSlopeCalculation(runwayObstacle);
             if (slopeCalculation < testResaValue) {
                 slopeCalculation = testResaValue;
             }
@@ -68,6 +44,30 @@ public class Calculator {
                     + getDisplacedThresholdLength(side)
                     - slopeCalculation
                     - testStripValue;
+        }
+    }
+
+    /**
+     * Calculates the length of the TODA for the given runway.
+     *
+     * @param side the side the value will be calculated for
+     * @return the calculated value
+     */
+    public int getToda(RunwaySide side) {
+        LogicalRunway runway = getLogicalRunwayForSide(side);
+
+        if (!runway.hasRunwayObstacle()) {
+            //no obstacle
+            return runway.getOriginalToda();
+        }
+        RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+
+        if (checkSide(runwayObstacle, side)) {
+            //Plane taking-off away from obstacle
+            return getTora(side) + getClearwayLength(side);
+        } else {
+            //Plane taking-off towards obstacle
+            return getTora(side);
         }
     }
 
@@ -86,7 +86,7 @@ public class Calculator {
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (checkSide(runwayObstacle, side)) {
             //Plane taking-off away from obstacle
             return getTora(side) + getStopwayLength(side);
         } else {
@@ -109,10 +109,13 @@ public class Calculator {
             return runway.getOriginalLda();
         }
         RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
+        int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance();
+        int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))
+                .getRunwayObstacle().getThresholdDistance();
 
-        if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+        if (distanceToOppositeThreshold > distanceToCurrentThreshold) {
             //Plane landing over obstacle
-            int slopeCalculation = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
+            int slopeCalculation = getSlopeCalculation(runwayObstacle) + testStripValue;
             if (slopeCalculation < testBlastProtectionValue) {
                 slopeCalculation = testBlastProtectionValue;
             }
@@ -133,9 +136,9 @@ public class Calculator {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
-            if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+            if (checkSide(runwayObstacle, side)) {
                 //Landing over obstacle
-                int temporaryThresholdLength = (runwayObstacle.getObstacle().getHeight() * 50) + testStripValue;
+                int temporaryThresholdLength = getSlopeCalculation(runwayObstacle) + testStripValue;
                 if (temporaryThresholdLength < testBlastProtectionValue) {
                     temporaryThresholdLength = testBlastProtectionValue;
                 }
@@ -170,7 +173,7 @@ public class Calculator {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
-            if (runwayObstacle.getThresholdDistance() < getRunwayLength() / 2) {
+            if (checkSide(runwayObstacle, side)) {
                 //Take-off away from obstacle
                 switch (side) {
                     case LOWER_THRESHOLD:
@@ -212,6 +215,33 @@ public class Calculator {
             throw new IllegalArgumentException("Cannot calculate distance to obstacle because there is no obstacle "
                     + "on side " + side);
         }
+    }
+
+    /**
+     * checks what side of the runway the obstacle is on.
+     * @param runwayObstacle the runway obstacle
+     * @param side the current runway side
+     * @return true if it is closer to the current side, false if not
+     */
+    private boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
+        int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance() + getDisplacedThresholdLength(side);
+        int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))
+                .getRunwayObstacle().getThresholdDistance() + getDisplacedThresholdLength(RunwaySide.opposite(side));
+        if (distanceToCurrentThreshold < distanceToOppositeThreshold) {
+            //closer to current threshold
+            return true;
+        }
+        //closer to opposite threshold
+        return false;
+    }
+
+    /**
+     * calculates the 1/50 slope for an obstacle.
+     * @param runwayObstacle the obstacle to calculate the slope for
+     * @return the slope calculation
+     */
+    private int getSlopeCalculation(RunwayObstacle runwayObstacle) {
+        return runwayObstacle.getObstacle().getHeight() * 50;
     }
 
     /**
