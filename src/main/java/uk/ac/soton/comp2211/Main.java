@@ -52,7 +52,7 @@ public class Main {
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
-                new DesignatorDrawer()
+                new DesignatorDrawer(), new ObstacleDrawer()
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
