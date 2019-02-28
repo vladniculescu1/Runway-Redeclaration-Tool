@@ -64,6 +64,7 @@ public class DrawUtils {
                                                   double positionX, double positionY, double length, double width,
                                                   String label) {
         width = g2d.getFontMetrics().getHeight() * width;
+        positionY = g2d.getFontMetrics().getHeight() * positionY;
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2) - positionY, length, width);
         g2d.setColor(outline);
         g2d.draw(rectangle);
