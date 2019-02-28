@@ -1,6 +1,7 @@
-package uk.ac.soton.comp2211.view;
+package uk.ac.soton.comp2211.view.modal;
 
 import java.text.NumberFormat;
+import java.util.Optional;
 
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
@@ -102,7 +103,7 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         lowerThresholdRadioButton.setText(runwaySelection.getSelectedRunway()
                 .getLowerThreshold().getHeadingAsString());
         
-        assignButton.setText("Assign to Runway " + runwaySelection.getSelectedRunway().getRunwayName());
+        assignButton.setText("Assign to Runway " + runwaySelection.getSelectedRunway().toString());
         
         
     }
@@ -129,32 +130,32 @@ public class AssignObstaclePanel extends JPanel implements Observer {
      * Returns the runway obstacle created from the options on this panel.
      * @return null if not valid inputs, otherwise the runway obstacle
      */
-    public RunwayObstacle getObstacleFromInputs() {
+    public Optional<RunwayObstacle> getObstacleFromInputs() {
         String issues = "";
         
         int height = 1;
-        if (!isNumeric(obstacleHeightTextField.getText())) {
+        if (obstacleHeightTextField.getText().equals("")) {
             issues += "Height must not be blank.\n";
         } else {
             height = Integer.parseInt(obstacleHeightTextField.getText());
         }
         
         int length = 1;
-        if (!isNumeric(obstacleLengthTextField.getText())) {
+        if (obstacleLengthTextField.getText().equals("")) {
             issues += "Length must not be blank.\n";
         } else {
             length = Integer.parseInt(obstacleLengthTextField.getText());
         }
         
         int centreline = 0;
-        if (!isNumeric(centrelineDistanceTextField.getText())) {
+        if (centrelineDistanceTextField.getText().equals("")) {
             issues += "Centreline distance must not be blank.\n";
         } else {
             centreline = Integer.parseInt(centrelineDistanceTextField.getText());
         }
         
         int threshold = 0;
-        if (!isNumeric(thresholdDistanceTextField.getText())) {
+        if (thresholdDistanceTextField.getText().equals("")) {
             issues += "Threshold must not be blank.\n";
         } else {
             threshold = Integer.parseInt(thresholdDistanceTextField.getText());
@@ -173,18 +174,9 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         if (issues != "") {
             JOptionPane.showMessageDialog(this, issues);
-            return null;
+            return Optional.empty();
         }
-        return runwayObstacle;
-    }
-    
-    private boolean isNumeric(String s) {
-        try {
-            int i = Integer.parseInt(s);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
+        return Optional.of(runwayObstacle);
     }
 
 }

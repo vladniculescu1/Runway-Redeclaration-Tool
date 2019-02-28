@@ -15,7 +15,7 @@ public class Obstacle {
     @Range(min = 1, max = 35, message = "Height must be between 1 and 35 inclusive.")
     private int height;
     
-    @Range(min = 1, max = 35, message = "Length must be between 1 and 100 inclusive.")
+    @Range(min = 1, max = 100, message = "Length must be between 1 and 100 inclusive.")
     private int length;
 
     /**

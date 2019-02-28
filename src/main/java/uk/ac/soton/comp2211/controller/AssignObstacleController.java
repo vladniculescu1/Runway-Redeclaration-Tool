@@ -2,14 +2,15 @@ package uk.ac.soton.comp2211.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
-import uk.ac.soton.comp2211.view.AssignObstacleFrame;
-import uk.ac.soton.comp2211.view.AssignObstaclePanel;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
+import uk.ac.soton.comp2211.view.modal.AssignObstacleFrame;
+import uk.ac.soton.comp2211.view.modal.AssignObstaclePanel;
 
 public class AssignObstacleController implements ActionListener {
 
@@ -48,28 +49,28 @@ public class AssignObstacleController implements ActionListener {
                 break;
             }
             case AssignObstaclePanel.ASSIGN_OBSTACLE_BUTTON_COMMAND: {
-                RunwayObstacle ro = assignObstaclePanel.getObstacleFromInputs();
-                if (ro != null) {
-
+                Optional<RunwayObstacle> runwayObstacleOptional = assignObstaclePanel.getObstacleFromInputs();
+                if (runwayObstacleOptional.isPresent()) {
+                    RunwayObstacle runwayObstacle = runwayObstacleOptional.get();
                     switch (assignObstaclePanel.getRunwaySide()) {
                         case HIGHER_THRESHOLD: {
-                            runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(ro);
+                            runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(runwayObstacle);
                             runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(
                                     new RunwayObstacle(
                                             runwaySelection.getSelectedRunway().getCalculator()
                                                 .getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD),
-                                            ro.getCentreLineDistance(),
-                                            ro.getObstacle()));  
+                                            runwayObstacle.getCentreLineDistance(),
+                                            runwayObstacle.getObstacle()));  
                             break;
                         }
                         case LOWER_THRESHOLD: {
-                            runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(ro);
+                            runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(runwayObstacle);
                             runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(
                                     new RunwayObstacle(
                                             runwaySelection.getSelectedRunway().getCalculator()
                                                 .getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD),
-                                            ro.getCentreLineDistance(),
-                                            ro.getObstacle()));
+                                            runwayObstacle.getCentreLineDistance(),
+                                            runwayObstacle.getObstacle()));
                             
                             break;
                         }
@@ -89,7 +90,7 @@ public class AssignObstacleController implements ActionListener {
                 break;
             }
             default:
-                break;
+                throw new IllegalArgumentException();
         }
     }
 
