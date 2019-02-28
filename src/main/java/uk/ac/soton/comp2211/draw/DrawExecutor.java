@@ -50,22 +50,38 @@ public class DrawExecutor {
     private void setupGraphics(Graphics2D g2d, int panelWidth, int panelHeight) {
         Calculator calculator = runwaySelection.getSelectedRunway().getCalculator();
 
-        var visualisationLength = calculator.getTotalVisualisationLength();
-
-        // set font in relation to total visualisation length
-        g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
-
+        // the margin around the draw display according to the font size
         var margin = g2d.getFontMetrics().getHeight() * DrawConstants.DRAW_MARGIN;
 
-        // move the origin down to the extended centreline and add some margin
-        g2d.translate(margin, panelHeight / 2);
+        // the total length (in metres) of all elements that need to be visualised
+        var visualisationLength = calculator.getTotalVisualisationLength();
 
-        // scale the axis according to panel width/height, margin and strip length
-        var axisScaleFactor = (panelWidth - 2 * margin) / visualisationLength;
-        g2d.scale(axisScaleFactor, axisScaleFactor);
+        // the width of the drawing
+        var drawWidth = panelWidth;
+
+        // additional margin used to centre the drawing
+        var extraMargin = 0;
+
+        // if the panel is too wide and lacks height to draw everything, adjust drawWidth and extraMargin
+        if (panelWidth > panelHeight * 1.5) {
+            drawWidth = (int) (panelHeight * 1.5);
+            extraMargin = (panelWidth - drawWidth) / 2;
+        }
+
+        // set font size according to total visualisation length
+        g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
+
+        // move the origin down to the extended centre line and add some margin
+        g2d.translate(margin + extraMargin, panelHeight / 2);
+
+        // the factor by which the both axes are scaled in order to visualise the specified total length
+        var axesScaleFactor = (drawWidth - 2 * margin) / visualisationLength;
+        g2d.scale(axesScaleFactor, axesScaleFactor);
+
+        // set stroke according to visualisation length
+        g2d.setStroke(new BasicStroke(visualisationLength / 500));
 
         // set draw color to black
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(visualisationLength / 500));
     }
 }
