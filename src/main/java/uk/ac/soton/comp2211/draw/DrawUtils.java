@@ -50,6 +50,30 @@ public class DrawUtils {
     }
 
     /**
+     * Draws a rectangle that is vertically centred then offset from the x axis. Adds a label in the top left corner.
+     *
+     * @param g2d the graphics object used to draw the shape
+     * @param positionX the left position on the x axis
+     * @param positionY the vertical offset (such that increasing positionY moves the rectangle up)
+     * @param length the length of the rectangle
+     * @param width the width of the rectangle as a factor of the current font size
+     * @param label the label that will be put above the rectangle
+     * @param outline the colour of the outline
+     */
+    public static void uncenteredRectangleWithLabel(Graphics2D g2d, Color outline,
+                                                  double positionX, double positionY, double length, double width,
+                                                  String label) {
+        width = g2d.getFontMetrics().getHeight() * width;
+        positionY = g2d.getFontMetrics().getHeight() * positionY;
+        Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2) - positionY, length, width);
+        g2d.setColor(outline);
+        g2d.draw(rectangle);
+        var fontHeight = g2d.getFontMetrics().getHeight();
+        g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4) - positionY));
+        g2d.setColor(Color.black);
+    }
+
+    /**
      * Displays a length name and value onto the GUI.
      *
      * @param g2d the graphics2d object used for drawing

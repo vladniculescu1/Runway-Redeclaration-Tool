@@ -421,4 +421,16 @@ public class Calculator {
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
     }
+    
+    /**
+     * Calculates the position of the left side of the obstacle.
+     * 
+     * @return the position of the left side of the obstacle.
+     */
+    public int getObstaclePosition() {
+        return physicalRunway.getLowerThreshold().getRunwayObstacle().getThresholdDistance()
+                + getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+    }
+
+
 }
