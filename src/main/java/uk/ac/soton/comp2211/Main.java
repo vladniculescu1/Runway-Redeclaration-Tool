@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.draw.*;
@@ -65,6 +66,8 @@ public class Main {
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        
 
         // Validation example - TODO remove later
         Validator validator = Validator.forObject(physicalRunway);
@@ -72,7 +75,7 @@ public class Main {
             System.out.println(validator.getViolationMessages());
         }
 
-        new MainFrame(
+        MainFrame mainFrame = new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
@@ -82,7 +85,7 @@ public class Main {
                         new EastPanel(
                                 new RunwayPanel(airport, runwaySelection,
                                         new RunwaySelectionController(runwaySelection)),
-                                new ObstaclePanel(),
+                                new ObstaclePanel(runwaySelection, assignObstacleController),
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
@@ -92,6 +95,7 @@ public class Main {
                         )
                 )
         );
+        assignObstacleController.addMainFrame(mainFrame);
     }
 
 }
