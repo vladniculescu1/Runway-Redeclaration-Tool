@@ -60,19 +60,19 @@ public class DrawExecutor {
         var drawWidth = panelWidth;
 
         // additional margin used to centre the drawing
-        var extraMargin = 0;
+        var centreMargin = 0;
 
-        // if the panel is too wide and lacks height to draw everything, adjust drawWidth and extraMargin
+        // if the panel is too wide and lacks height to draw everything, adjust drawWidth and centreMargin
         if (panelWidth > panelHeight * 1.5) {
             drawWidth = (int) (panelHeight * 1.5);
-            extraMargin = (panelWidth - drawWidth) / 2;
+            centreMargin = (panelWidth - drawWidth) / 2;
         }
 
         // set font size according to total visualisation length
         g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
 
         // move the origin down to the extended centre line and add some margin
-        g2d.translate(margin + extraMargin, panelHeight / 2);
+        g2d.translate(margin + centreMargin, panelHeight / 2);
 
         // the factor by which the both axes are scaled in order to visualise the specified total length
         var axesScaleFactor = (drawWidth - 2 * margin) / visualisationLength;
