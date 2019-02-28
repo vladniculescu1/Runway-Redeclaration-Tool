@@ -9,24 +9,25 @@ import java.awt.*;
 /**
  * Draws the ASDA value onto the runway.
  */
-public class AsdaDrawer extends DistanceDrawer {
+public class AsdaDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         RunwaySide side = runwaySelection.getSelectedRunway().getRunwayDirection();
         Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
         var visualisationLength = calc.getTotalVisualisationLength();
-        var runwayWidth = visualisationLength * (DrawConstants.STRIP_WIDTH_PERCENTAGE / 100);
+        var runwayWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
+        var fontHeight = g2d.getFontMetrics().getHeight();
 
         int startX = calc.getTakeOffObstacleOffset(side);
         int distance = calc.getAsda(side);
-        double height = - ((runwayWidth / 14) * 5);
+        double height = - 1.1 * (runwayWidth / 2) - 5 * fontHeight;
 
         switch (side) {
             case LOWER_THRESHOLD:
-                drawDistance(g2d, startX, distance, (int) height,"ASDA");
+                DrawUtils.labelledDistance(g2d, startX, distance, (int) height,"ASDA");
                 break;
             case HIGHER_THRESHOLD:
-                drawDistance(g2d, startX, -distance, (int) -height,"ASDA");
+                DrawUtils.labelledDistance(g2d, startX, -distance, (int) -height,"ASDA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);

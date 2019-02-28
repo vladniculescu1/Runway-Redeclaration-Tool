@@ -17,11 +17,11 @@ public class DesignatorDrawer implements Drawer {
         var calculator = runway.getCalculator();
 
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var lowerThresholdLetter = runway.getLowerThreshold().getLocation().getLetter();
+        var lowerThresholdLetter = runway.getLowerThreshold().getLocation().toString();
         var lowerThresholdNumber = runway.getLowerThreshold().getHeadingAsString();
 
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
-        var higherThresholdLetter = runway.getHigherThreshold().getLocation().getLetter();
+        var higherThresholdLetter = runway.getHigherThreshold().getLocation().toString();
         var higherThresholdNumber = runway.getHigherThreshold().getHeadingAsString();
 
         var originalTransform = g2d.getTransform();
