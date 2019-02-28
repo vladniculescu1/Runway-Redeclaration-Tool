@@ -16,9 +16,8 @@ public class ThresholdDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         var calculator = runwaySelection.getSelectedRunway().getCalculator();
-        var visualisationLength = calculator.getTotalVisualisationLength();
 
-        var thresholdWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
+        var thresholdWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
@@ -52,10 +51,10 @@ public class ThresholdDrawer implements Drawer {
 
         // draw the threshold stripes - the length corresponds to the designator font size
         g2d.draw(new Stripes(thresholdWidth / 1.1,
-                g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR,
+                g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE,
                 lowerThresholdPosition + thresholdWidth / 20, 10));
         g2d.draw(new Stripes(thresholdWidth / 1.1,
-                - g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR,
+                - g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE,
                 higherThresholdPosition - thresholdWidth / 20, 10));
 
         // reset graphics to standards

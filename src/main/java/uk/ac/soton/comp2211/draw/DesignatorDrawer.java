@@ -28,7 +28,7 @@ public class DesignatorDrawer implements Drawer {
 
         // change font size for the designators
         Font currentFont = g2d.getFont();
-        g2d.setFont(currentFont.deriveFont(currentFont.getSize() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR));
+        g2d.setFont(currentFont.deriveFont(currentFont.getSize() * DrawConstants.DESIGNATOR_FONTSIZE));
         var fontHeight = g2d.getFontMetrics().getHeight();
 
         g2d.setColor(Color.white);
