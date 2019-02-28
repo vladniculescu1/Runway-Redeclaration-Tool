@@ -50,18 +50,19 @@ public class DrawExecutor {
     private void setupGraphics(Graphics2D g2d, int panelWidth, int panelHeight) {
         Calculator calculator = runwaySelection.getSelectedRunway().getCalculator();
 
-        var margin = panelWidth * (DrawConstants.DRAW_MARGIN_PERCENTAGE / 100);
+        var visualisationLength = calculator.getTotalVisualisationLength();
+
+        // set font in relation to total visualisation length
+        g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
+
+        var margin = g2d.getFontMetrics().getHeight() * DrawConstants.DRAW_MARGIN;
 
         // move the origin down to the extended centreline and add some margin
         g2d.translate(margin, panelHeight / 2);
 
         // scale the axis according to panel width/height, margin and strip length
-        var visualisationLength = calculator.getTotalVisualisationLength();
-        var axisScaleFactor = (double) (panelWidth - 2 * margin) / visualisationLength;
+        var axisScaleFactor = (panelWidth - 2 * margin) / visualisationLength;
         g2d.scale(axisScaleFactor, axisScaleFactor);
-
-        // set font in relation to total visualisation length
-        g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
 
         // set draw color to black
         g2d.setColor(Color.BLACK);

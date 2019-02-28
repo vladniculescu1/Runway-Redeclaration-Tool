@@ -21,9 +21,9 @@ public class CentreLineDrawer implements Drawer {
         // the start and end positions are different from the threshold positions because the centre line can only
         // start/end after/before the threshold designators
         var startPosition = lowerThresholdPosition
-                + 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR);
+                + 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE);
         var endPosition = higherThresholdPosition
-                - 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE_FACTOR);
+                - 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE);
 
         BasicStroke normal = (BasicStroke) g2d.getStroke();
 

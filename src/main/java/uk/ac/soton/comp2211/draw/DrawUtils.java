@@ -15,11 +15,12 @@ public class DrawUtils {
      * @param g2d the graphics object used to draw the shape
      * @param positionX the left position on the x axis
      * @param length the length of the rectangle
-     * @param width the width of the rectangle
+     * @param width the width of the rectangle as a factor of the current font size
      * @param fill the colour of the filling
      */
     public static void centeredFilledRectangle(Graphics2D g2d, Color fill,
                                                         double positionX, double length, double width) {
+        width = g2d.getFontMetrics().getHeight() * width;
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
         g2d.setColor(fill);
         g2d.fill(rectangle);
@@ -32,13 +33,14 @@ public class DrawUtils {
      * @param g2d the graphics object used to draw the shape
      * @param positionX the left position on the x axis
      * @param length the length of the rectangle
-     * @param width the width of the rectangle
+     * @param width the width of the rectangle as a factor of the current font size
      * @param label the label that will be put above the rectangle
      * @param outline the colour of the outline
      */
     public static void centeredRectangleWithLabel(Graphics2D g2d, Color outline,
                                                   double positionX, double length, double width,
                                                   String label) {
+        width = g2d.getFontMetrics().getHeight() * width;
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
         g2d.setColor(outline);
         g2d.draw(rectangle);
@@ -53,12 +55,13 @@ public class DrawUtils {
      * @param g2d the graphics2d object used for drawing
      * @param startX the start position of the line/value
      * @param distance the value of the distance (ASDA,TORA,TODA,LDA)
-     * @param height the y-cordinate of the line
+     * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
      */
-    public static void labelledDistance(Graphics2D g2d, int startX, int distance, int height, String text) {
+    public static void labelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
+        int height = (int) (fontHeight * offset);
 
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,
