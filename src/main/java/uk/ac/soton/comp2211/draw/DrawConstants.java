@@ -6,7 +6,7 @@ package uk.ac.soton.comp2211.draw;
  */
 public class DrawConstants {
 
-    public static double DRAW_MARGIN = 0.25;
+    public static double DRAW_MARGIN = 1;
 
     public static float DESIGNATOR_FONTSIZE = 1.5F;
 
