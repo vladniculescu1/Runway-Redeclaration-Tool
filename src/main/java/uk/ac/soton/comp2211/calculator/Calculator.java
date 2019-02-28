@@ -197,6 +197,27 @@ public class Calculator {
     }
 
     /**
+     * Get the distance to the obstacle for the specified runway side.
+     * Obstacle has to be present at the opposite side.
+     *
+     * @param side the side of the runway the distance should be computed for
+     * @return the distance to the obstacle
+     */
+    public int getObstacleThresholdDistance(RunwaySide side) {
+        LogicalRunway logicalRunway = this.getLogicalRunwayForSide(RunwaySide.opposite(side));
+        if (logicalRunway.hasRunwayObstacle()) {
+            RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
+            var distanceBetweenThresholds = this.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD)
+                    - this.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+            return distanceBetweenThresholds - (runwayObstacle.getThresholdDistance()
+                    + runwayObstacle.getObstacle().getLength());
+        } else {
+            throw new IllegalArgumentException("Cannot calculate distance to obstacle because there is no obstacle "
+                    + "on side " + side);
+        }
+    }
+
+    /**
      * checks what side of the runway the obstacle is on.
      * @param runwayObstacle the runway obstacle
      * @param side the current runway side

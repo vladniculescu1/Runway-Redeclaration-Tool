@@ -14,42 +14,41 @@ public class StopwayDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         var calculator = runwaySelection.getSelectedRunway().getCalculator();
-        var visualisationLength = calculator.getTotalVisualisationLength();
 
-        var stopwayLengthLower = calculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
-        var stopwayWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
-        var stopwayPositionLower = calculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
+        var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
 
-        var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        var stopwayLengthLower = calculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
+        var stopwayPositionLower = calculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         // draw lower stopway if there is one
         if (stopwayLengthLower > 0) {
 
-            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionLower,
-                    stopwayLengthLower, stopwayWidth);
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionLower,
+                    stopwayLengthLower, DrawConstants.RUNWAY_WIDTH);
 
             g2d.setColor(Color.yellow);
-            g2d.draw(new ChevronSeries(stopwayPositionLower, stopwayWidth,
+            g2d.draw(new ChevronSeries(stopwayPositionLower,
+                    DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight(),
                     stopwayLengthLower, RunwaySide.LOWER_THRESHOLD));
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionLower,
-                    stopwayLengthLower, stopwayWidth, "SWY");
+                    stopwayLengthLower, DrawConstants.RUNWAY_WIDTH, "SWY");
 
         }
-
         // draw higher stopway if there is one
         if (stopwayLengthHigher > 0) {
 
-            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray,stopwayPositionHigher,
-                    stopwayLengthHigher, stopwayWidth);
+            DrawUtils.centeredFilledRectangle(g2d, Color.lightGray, stopwayPositionHigher,
+                    stopwayLengthHigher, DrawConstants.RUNWAY_WIDTH);
 
             g2d.setColor(Color.yellow);
-            g2d.draw(new ChevronSeries(stopwayPositionHigher, stopwayWidth,
+            g2d.draw(new ChevronSeries(stopwayPositionHigher,
+                    DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight(),
                     stopwayLengthHigher, RunwaySide.HIGHER_THRESHOLD));
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionHigher,
-                    stopwayLengthHigher, stopwayWidth, "SWY");
+                    stopwayLengthHigher, DrawConstants.RUNWAY_WIDTH, "SWY");
 
         }
 

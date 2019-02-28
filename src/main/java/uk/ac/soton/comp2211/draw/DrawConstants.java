@@ -2,21 +2,23 @@ package uk.ac.soton.comp2211.draw;
 
 /**
  * Constants used during during drawing - e.g. for width of the runway.
+ * Constants denote factors of the font size.
  */
 public class DrawConstants {
 
-    public static double DRAW_MARGIN_PERCENTAGE = 5;
-    public static double RUNWAY_WIDTH_PERCENTAGE = 15;
-    public static double STRIP_WIDTH_PERCENTAGE = 50;
-    public static double CLEARWAY_WIDTH_PERCENTAGE = 25;
-    public static double VALUE_DISPLAY_HEIGHT_FACTOR = STRIP_WIDTH_PERCENTAGE / 100  / 14;
-    public static int RUNWAY_DISTANCE_ENDLINE_HEIGHT = 20;
-    public static int RUNWAY_VALUE_DISPLACEMENT = 70;
-    public static int ARROW_WIDTH = 30;
-    public static int ARROW_HEIGHT = 20;
-    public static float DESIGNATOR_FONTSIZE_FACTOR = 1.5F;
-    public static float RUNWAY_DISTANCE_STROKE_FACTOR = 0.7F;
-    public static float RUNWAY_DISTANCE_FONTSIZE_FACTOR = 0.7F;
-    public static float[] RUNWAY_DISTANCE_DASHLINE = {25.0f};
+    public static double DRAW_MARGIN = 0.25;
+
+    public static float DESIGNATOR_FONTSIZE = 1.5F;
+
+    public static double RUNWAY_WIDTH = 3;
+
+    public static double CLEARWAY_WIDTH = 2 * RUNWAY_WIDTH;
+    public static double STRIP_WIDTH = 1.1 * (RUNWAY_WIDTH / 2) + 18;
+
+    public static double LDA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 1;
+    public static double TORA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 3;
+    public static double ASDA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 5;
+    public static double TODA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 7;
+
 
 }

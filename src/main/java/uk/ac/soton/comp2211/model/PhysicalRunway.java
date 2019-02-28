@@ -6,6 +6,7 @@ import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.validate.EqualTora;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -13,29 +14,23 @@ import java.util.Set;
  * The physical runway which is a basis for the logical runway.
  */
 @EqualTora(message = "The TORA of both logical runways must be equal!")
-public class PhysicalRunway implements Observable {
+public class PhysicalRunway {
 
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
     private RunwaySide runwayDirection;
-    private RunwayMode runwayMode;
-
-    private Set<Observer> observers;
 
     /**
      * The PhysicalRunway constructor.
      * @param higherThreshold the logical runway with the higher heading
      * @param lowerThreshold the logical runway with the lower heading
      * @param runwayDirection indicates whether landing/takeoff is towards the lower or higher threshold
-     * @param runwayMode indicates whether a runway is for landing or take-off
      */
     public PhysicalRunway(LogicalRunway higherThreshold, LogicalRunway lowerThreshold,
-                          RunwaySide runwayDirection,RunwayMode runwayMode) {
+                          RunwaySide runwayDirection) {
         this.higherThreshold = higherThreshold;
         this.lowerThreshold = lowerThreshold;
         this.runwayDirection = runwayDirection;
-        this.runwayMode = runwayMode;
-        this.observers = new HashSet<>();
     }
 
     public LogicalRunway getHigherThreshold() {
@@ -50,13 +45,11 @@ public class PhysicalRunway implements Observable {
         return runwayDirection;
     }
 
-    public RunwayMode getRunwayMode() {
-        return runwayMode;
-    }
 
     @Override
     public String toString() {
-        return getLowerThreshold().getHeadingAsString() + "/" + getHigherThreshold().getHeadingAsString();
+        return getLowerThreshold().getHeadingAsString() + getLowerThreshold().getLocation() + "/"
+                + getHigherThreshold().getHeadingAsString() + getHigherThreshold().getLocation();
     }
 
     public Calculator getCalculator() {
@@ -65,21 +58,24 @@ public class PhysicalRunway implements Observable {
 
     public void setRunwayDirection(RunwaySide runwayDirection) {
         this.runwayDirection = runwayDirection;
-        this.observers.forEach(Observer::notifyUpdate);
-    }
-
-    public void setRunwayMode(RunwayMode runwayMode) {
-        this.runwayMode = runwayMode;
-        this.observers.forEach(Observer::notifyUpdate);
     }
 
     @Override
-    public void subscribe(Observer observer) {
-        this.observers.add(observer);
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PhysicalRunway that = (PhysicalRunway) o;
+        return Objects.equals(getHigherThreshold(), that.getHigherThreshold())
+                && Objects.equals(getLowerThreshold(), that.getLowerThreshold());
     }
 
     @Override
-    public void unsubscribe(Observer observer) {
-        this.observers.remove(observer);
+    public int hashCode() {
+        return Objects.hash(getHigherThreshold(), getLowerThreshold());
     }
+
 }

@@ -15,7 +15,8 @@ import java.awt.event.ActionListener;
  */
 public class RunwayPanel extends JPanel implements Observer {
 
-    private JComboBox runwaySelector;
+    private DefaultComboBoxModel<PhysicalRunway> comboBoxModel;
+    private JComboBox<PhysicalRunway> comboBox;
 
     private RunwaySelection runwaySelection;
     private Airport airport;
@@ -34,14 +35,15 @@ public class RunwayPanel extends JPanel implements Observer {
 
         this.setBorder(BorderFactory.createTitledBorder("Runway"));
 
-        runwaySelector = new JComboBox();
+        comboBoxModel = new DefaultComboBoxModel<>();
+        comboBox = new JComboBox<>(comboBoxModel);
 
-        JButton doit = new JButton("Add");
-        JButton doit2 = new JButton("Remove");
+        JButton addButton = new JButton("Add");
+        JButton removeButton = new JButton("Remove");
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cellX(runwaySelector,2).fillX();
-        gridBag.row().cell(doit).cell(doit2).fillX();
+        gridBag.row().cellX(comboBox,2).fillX();
+        gridBag.row().cell(addButton).cell(removeButton).fillX();
 
         gridBag.done();
 
@@ -52,7 +54,10 @@ public class RunwayPanel extends JPanel implements Observer {
     @Override
     public void notifyUpdate() {
         this.airport.getRunways().forEach(runway -> {
-            this.runwaySelector.addItem(runway);
+            // only add runway to combobox if it is not already in the combo box
+            if (this.comboBoxModel.getIndexOf(runway) == -1) {
+                this.comboBox.addItem(runway);
+            }
         });
 
     }

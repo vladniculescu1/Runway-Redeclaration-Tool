@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Chose a runway to be viewed/used.
  */
-public class RunwaySelection implements Observer, Observable {
+public class RunwaySelection implements Observable, Observer {
 
     private DrawMode drawMode;
     private Optional<PhysicalRunway> selectedRunway;
@@ -31,14 +31,7 @@ public class RunwaySelection implements Observer, Observable {
         return drawMode;
     }
 
-    /**
-     * Update the currently selected runway and subscribe to it. Unsubscribe from the runway that was selected before.
-     *
-     * @param physicalRunway the runway that should be selected from now on
-     */
     public void setSelectedRunway(PhysicalRunway physicalRunway) {
-        this.selectedRunway.ifPresent(runway -> runway.unsubscribe(this));
-        physicalRunway.subscribe(this);
         this.selectedRunway = Optional.of(physicalRunway);
     }
 

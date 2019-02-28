@@ -1,8 +1,8 @@
 package uk.ac.soton.comp2211;
 
+import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
-import uk.ac.soton.comp2211.controller.UsageController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
@@ -40,7 +40,7 @@ public class Main {
                 3660, 3810, 27, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
-                RunwaySide.LOWER_THRESHOLD, RunwayMode.LANDING);
+                RunwaySide.LOWER_THRESHOLD);
 
         airport.addRunway(physicalRunway);
 
@@ -56,6 +56,8 @@ public class Main {
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        
 
         // Validation example - TODO remove later
         Validator validator = Validator.forObject(physicalRunway);
@@ -63,27 +65,27 @@ public class Main {
             System.out.println(validator.getViolationMessages());
         }
 
-        new MainFrame(
+        MainFrame mainFrame = new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
-                                new TopDownRotatedPanel(),
+                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
                                 new SideOnPanel()
                         ),
                         new EastPanel(
                                 new RunwayPanel(airport, runwaySelection,
                                         new RunwaySelectionController(runwaySelection)),
-                                new ObstaclePanel(),
+                                new ObstaclePanel(runwaySelection, assignObstacleController),
                                 new DistancesPanel()
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new UsagePanel(runwaySelection, new UsageController(runwaySelection)),
                                 new XmlPanel(),
                                 new NotificationsPanel()
                         )
                 )
         );
+        assignObstacleController.addMainFrame(mainFrame);
     }
 
 }
