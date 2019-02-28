@@ -18,8 +18,14 @@ public class ObstacleDrawer implements Drawer {
             int leftX = calc.getObstaclePosition();
             int length = runwaySelection.getSelectedRunway().getHigherThreshold()
                     .getRunwayObstacle().getObstacle().getLength();
+            double offsetY = 1.5;
+            if (runwaySelection.getSelectedRunway().getHigherThreshold()
+                    .getRunwayObstacle().getCentreLineDistance() != 0) {
+                offsetY = 1.5 + runwaySelection.getSelectedRunway().getHigherThreshold()
+                        .getRunwayObstacle().getCentreLineDistance() * 2;
+            }
             
-            DrawUtils.centeredRectangleWithLabel(g2d, Color.RED, leftX, length, 3, "Obstacle");
+            DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY, length, 3, "Obstacle");
 
         }
     }
