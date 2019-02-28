@@ -17,7 +17,7 @@ public class RunwayDrawer implements Drawer {
         var visualisationLength = calculator.getTotalVisualisationLength();
 
         var runwayLength = calculator.getRunwayLength();
-        var runwayWidth = visualisationLength * (DrawConstants.RUNWAY_WIDTH_PERCENTAGE / 100);
+        var runwayWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();
         var runwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw runway as a filled gray rectangle
