@@ -74,7 +74,9 @@ public class AssignObstacleController implements ActionListener {
                             
                             break;
                         }
-                        default: { }
+                        default: { 
+                            throw new IllegalArgumentException("Threshold must be higher or lower."); 
+                        }
                     }
                     
                     runwaySelection.notifyUpdate();
@@ -89,8 +91,9 @@ public class AssignObstacleController implements ActionListener {
                 
                 break;
             }
-            default:
-                throw new IllegalArgumentException();
+            default: {
+                throw new IllegalArgumentException("Unhandled command input.");
+            }
         }
     }
 
