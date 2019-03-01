@@ -1,9 +1,12 @@
 package uk.ac.soton.comp2211.view.east;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
 
+import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.model.LogicalRunway;
@@ -16,7 +19,12 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 public class DistancesPanel extends JPanel implements Observer {
 
     private RunwaySelection runwaySelection;
-    private JTabbedPane tabPane;
+
+    private JLabel higherPanelLabel;
+    private DefaultTableModel higherTableModel;
+
+    private JLabel lowerPanelLabel;
+    private DefaultTableModel lowerTableModel;
     
     /**
      * Constructs a new distances panel.
@@ -26,10 +34,50 @@ public class DistancesPanel extends JPanel implements Observer {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
 
-        this.setBorder(BorderFactory.createTitledBorder("Distances"));
+        String[] header = {"Parameter", "Original", "Re-Calc"};
 
-        tabPane = new JTabbedPane();
-        
+        this.lowerPanelLabel = new JLabel("Lower threshold");
+        this.higherPanelLabel = new JLabel("Higher threshold");
+
+        this.lowerTableModel = new DefaultTableModel(header, 4) {
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+
+        this.higherTableModel = new DefaultTableModel(header, 4) {
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+
+        JTable lowerTable = new JTable(this.lowerTableModel);
+        lowerTable.setRowSelectionAllowed(true);
+        lowerTable.getTableHeader().setFont(this.getFont());
+        lowerTable.setFont(this.getFont());
+
+
+        JTable higherTable = new JTable(this.higherTableModel);
+        higherTable.setRowSelectionAllowed(true);
+        higherTable.getTableHeader().setFont(this.getFont());
+        higherTable.setFont(this.getFont());
+
+        JPanel lowerPanel = new JPanel(new BorderLayout());
+        lowerPanel.add(lowerTable,BorderLayout.CENTER);
+        lowerPanel.add(lowerTable.getTableHeader(),BorderLayout.NORTH);
+
+        JPanel higherPanel = new JPanel(new BorderLayout());
+        higherPanel.add(higherTable,BorderLayout.CENTER);
+        higherPanel.add(higherTable.getTableHeader(),BorderLayout.NORTH);
+
+        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        gridBag.row().cell(lowerPanelLabel).fillX();
+        gridBag.row().cell(lowerPanel).fillX();
+        gridBag.row().separator();
+        gridBag.row().cell(higherPanelLabel).fillX();
+        gridBag.row().cell(higherPanel).fillX();
+        gridBag.doneAndPushEverythingToTop();
+
         notifyUpdate();
     }
     
@@ -37,48 +85,51 @@ public class DistancesPanel extends JPanel implements Observer {
      * Creates tables and fills in their data if applicable.
      */
     private void fillIn() {
-        this.removeAll();
+
         if (runwaySelection.hasSelectedRunway()) {
             LogicalRunway lowerThreshold = runwaySelection.getSelectedRunway().getLowerThreshold();
             LogicalRunway higherThreshold = runwaySelection.getSelectedRunway().getHigherThreshold();
 
-            String[] names = {"Parameter", "Original", "Re-Calc", "Workings"};
+            this.lowerPanelLabel.setText("From " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation()
+                    + " towards " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
+
+            this.higherPanelLabel.setText("From " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation()
+                    + " towards " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
+
+            for (int i = 0; i < 4; i++) {
+                this.lowerTableModel.removeRow(0);
+                this.higherTableModel.removeRow(0);
+            }
 
             Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
             Object[][] lowerData = {
                 {"LDA",  lowerThreshold.getOriginalLda(),
-                    calc.getLda(RunwaySide.LOWER_THRESHOLD),"not implemented"},
+                    calc.getLda(RunwaySide.LOWER_THRESHOLD)},
                 {"TODA", lowerThreshold.getOriginalToda(),
-                    calc.getToda(RunwaySide.LOWER_THRESHOLD),"not implemented"},
+                    calc.getToda(RunwaySide.LOWER_THRESHOLD)},
                 {"ASDA", lowerThreshold.getOriginalAsda(),
-                    calc.getAsda(RunwaySide.LOWER_THRESHOLD),"not implemented"},
+                    calc.getAsda(RunwaySide.LOWER_THRESHOLD)},
                 {"TORA", lowerThreshold.getOriginalTora(),
-                    calc.getTora(RunwaySide.LOWER_THRESHOLD),"not implemented"}};
+                    calc.getTora(RunwaySide.LOWER_THRESHOLD)}};
             Object[][] higherData = {
                 {"LDA",  higherThreshold.getOriginalLda(),
-                    calc.getLda(RunwaySide.HIGHER_THRESHOLD),"not implemented"},
+                    calc.getLda(RunwaySide.HIGHER_THRESHOLD)},
                 {"TODA", higherThreshold.getOriginalToda(),
-                    calc.getToda(RunwaySide.HIGHER_THRESHOLD),"not implemented"},
+                    calc.getToda(RunwaySide.HIGHER_THRESHOLD)},
                 {"ASDA", higherThreshold.getOriginalAsda(),
-                    calc.getAsda(RunwaySide.HIGHER_THRESHOLD),"not implemented"},
+                    calc.getAsda(RunwaySide.HIGHER_THRESHOLD)},
                 {"TORA", higherThreshold.getOriginalTora(),
-                    calc.getTora(RunwaySide.HIGHER_THRESHOLD),"not implemented"}};
-            
-            JTable lowerTable = new JTable(lowerData, names);
-            JPanel lowerPanel = new JPanel(new BorderLayout());
-            lowerPanel.add(lowerTable,BorderLayout.CENTER);
-            lowerPanel.add(lowerTable.getTableHeader(),BorderLayout.NORTH);
-            lowerTable.setEnabled(false);
-            JTable higherTable = new JTable(higherData, names);
-            JPanel higherPanel = new JPanel(new BorderLayout());
-            higherPanel.add(higherTable,BorderLayout.CENTER);
-            higherPanel.add(higherTable.getTableHeader(),BorderLayout.NORTH);
-            higherTable.setEnabled(false);
-            
-            tabPane.removeAll();
-            tabPane.addTab(lowerThreshold.getHeadingAsString(), lowerPanel);
-            tabPane.addTab(higherThreshold.getHeadingAsString(), higherPanel);            
-            this.add(tabPane);
+                    calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
+
+            for (var row : lowerData) {
+                this.lowerTableModel.addRow(row);
+            }
+
+            for (var row : higherData) {
+                this.higherTableModel.addRow(row);
+            }
+
+
         } else {
             this.add(new JLabel("A runway must be selected to view distances."));
         }
