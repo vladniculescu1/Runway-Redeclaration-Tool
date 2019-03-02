@@ -19,8 +19,21 @@ public class RunwaySelectionController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JComboBox test = (JComboBox) e.getSource();
-//        runwaySelection.setSelectedRunway(test.getItemAt(test.getSelectedIndex()));
-        System.out.println(test.getItemAt(test.getSelectedIndex()));
+
+        switch (e.getActionCommand()) {
+
+            case RunwayPanel.COMBOBOX_COMMAND: {
+
+                JComboBox runwayComboBox = (JComboBox) e.getSource();
+                PhysicalRunway selectedRunway = (PhysicalRunway) runwayComboBox.getSelectedItem();
+
+                runwaySelection.setSelectedRunway(selectedRunway);
+                runwaySelection.notifyUpdate();
+
+                break;
+            }
+            default:
+                throw new UnsupportedOperationException("Cannot handle action command " + e.getActionCommand());
+        }
     }
 }

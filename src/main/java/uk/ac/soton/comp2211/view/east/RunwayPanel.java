@@ -16,7 +16,10 @@ import java.awt.event.ActionListener;
 public class RunwayPanel extends JPanel implements Observer {
 
     private DefaultComboBoxModel<PhysicalRunway> runwayComboBoxModel;
+
     private JComboBox<PhysicalRunway> runwayComboBox;
+
+    public static final String COMBOBOX_COMMAND = "runwayComboBox";
 
     private RunwaySelection runwaySelection;
     private Airport airport;
@@ -37,6 +40,7 @@ public class RunwayPanel extends JPanel implements Observer {
 
         runwayComboBoxModel = new DefaultComboBoxModel<>();
         runwayComboBox = new JComboBox<>(runwayComboBoxModel);
+        runwayComboBox.setActionCommand(COMBOBOX_COMMAND);
         runwayComboBox.addActionListener(runwaySelectionController);
 
         JButton addButton = new JButton("Add");
