@@ -21,7 +21,6 @@ public class RunwayPanel extends JPanel implements Observer {
 
     public static final String COMBOBOX_COMMAND = "runwayComboBox";
 
-    private RunwaySelection runwaySelection;
     private Airport airport;
 
     /**
@@ -32,7 +31,6 @@ public class RunwayPanel extends JPanel implements Observer {
      */
     public RunwayPanel(Airport airport, RunwaySelection runwaySelection, ActionListener runwaySelectionController) {
         runwaySelection.subscribe(this);
-        this.runwaySelection = runwaySelection;
         this.airport = airport;
         airport.subscribe(this);
 
