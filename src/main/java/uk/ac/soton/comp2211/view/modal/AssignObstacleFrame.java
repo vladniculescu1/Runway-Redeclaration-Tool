@@ -11,7 +11,7 @@ public class AssignObstacleFrame extends JDialog {
      * @param mainFrame The frame of the main program, to allow blocking input to it.
      */
     public AssignObstacleFrame(MainFrame mainFrame)    {
-        super(mainFrame, ModalityType.DOCUMENT_MODAL);
+        super(mainFrame, ModalityType.APPLICATION_MODAL);
         
         this.setTitle("Assign Obstacle to Runway");
         this.pack();
