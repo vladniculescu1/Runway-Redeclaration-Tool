@@ -85,7 +85,7 @@ public class Main {
                                 new RunwayPanel(airport, runwaySelection,
                                         new RunwaySelectionController(runwaySelection)),
                                 new ObstaclePanel(runwaySelection, assignObstacleController),
-                                new DistancesPanel()
+                                new DistancesPanel(runwaySelection)
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
