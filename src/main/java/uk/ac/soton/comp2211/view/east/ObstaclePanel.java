@@ -44,7 +44,7 @@ public class ObstaclePanel extends JPanel implements Observer {
         removeObstacleButton = new JButton("Remove");
         removeObstacleButton.setActionCommand(REMOVE_BUTTON_COMMAND);
         removeObstacleButton.addActionListener(assignObstacleController);
-        gridBag.row().cellX(obstacleTextField,2).fillX().cell(removeObstacleButton);
+        gridBag.row().cellX(obstacleTextField,2).fillX().cell(removeObstacleButton).fillX();
         
         gridBag.done();
         

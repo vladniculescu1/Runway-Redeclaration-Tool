@@ -21,7 +21,7 @@ public class EastPanel extends JPanel {
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(runwayPanel).fillX();
         gridBag.row().cell(obstaclePanel).fillX();
-        gridBag.row().cell(distancesPanel).fillXY();
+        gridBag.row().cell(new DistancePanelContainer(distancesPanel)).fillXY();
         gridBag.done();
     }
 
