@@ -46,7 +46,7 @@ public class RunwayPanel extends JPanel implements Observer {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cellX(runwayComboBox,2).fillX();
-        gridBag.row().cell(addButton).cell(removeButton).fillX();
+        gridBag.row().cell(addButton).fillX().cell(removeButton).fillX();
 
         gridBag.done();
 
