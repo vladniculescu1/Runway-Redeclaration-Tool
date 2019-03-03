@@ -39,10 +39,10 @@ public class Main {
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
                 3660, 3810, 27, ThresholdLocation.RIGHT);
 
-        LogicalRunway logicalRunway3 = new LogicalRunway(3360, 3660,
-                3660, 3810, 7, ThresholdLocation.LEFT);
-        LogicalRunway logicalRunway4 = new LogicalRunway(3660, 4060,
-                3660, 3810, 25, ThresholdLocation.RIGHT);
+        LogicalRunway logicalRunway3 = new LogicalRunway(2985, 3346,
+                3346, 3346, 7, ThresholdLocation.LEFT);
+        LogicalRunway logicalRunway4 = new LogicalRunway(2985, 2986,
+                2986, 2986, 25, ThresholdLocation.RIGHT);
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD);
