@@ -15,10 +15,12 @@ import java.awt.event.ActionListener;
  */
 public class RunwayPanel extends JPanel implements Observer {
 
-    private DefaultComboBoxModel<PhysicalRunway> comboBoxModel;
-    private JComboBox<PhysicalRunway> comboBox;
+    private DefaultComboBoxModel<PhysicalRunway> runwayComboBoxModel;
 
-    private RunwaySelection runwaySelection;
+    private JComboBox<PhysicalRunway> runwayComboBox;
+
+    public static final String COMBOBOX_COMMAND = "runwayComboBox";
+
     private Airport airport;
 
     /**
@@ -29,20 +31,21 @@ public class RunwayPanel extends JPanel implements Observer {
      */
     public RunwayPanel(Airport airport, RunwaySelection runwaySelection, ActionListener runwaySelectionController) {
         runwaySelection.subscribe(this);
-        this.runwaySelection = runwaySelection;
         this.airport = airport;
         airport.subscribe(this);
 
         this.setBorder(BorderFactory.createTitledBorder("Runway"));
 
-        comboBoxModel = new DefaultComboBoxModel<>();
-        comboBox = new JComboBox<>(comboBoxModel);
+        runwayComboBoxModel = new DefaultComboBoxModel<>();
+        runwayComboBox = new JComboBox<>(runwayComboBoxModel);
+        runwayComboBox.setActionCommand(COMBOBOX_COMMAND);
+        runwayComboBox.addActionListener(runwaySelectionController);
 
         JButton addButton = new JButton("Add");
         JButton removeButton = new JButton("Remove");
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cellX(comboBox,2).fillX();
+        gridBag.row().cellX(runwayComboBox,2).fillX();
         gridBag.row().cell(addButton).cell(removeButton).fillX();
 
         gridBag.done();
@@ -55,8 +58,8 @@ public class RunwayPanel extends JPanel implements Observer {
     public void notifyUpdate() {
         this.airport.getRunways().forEach(runway -> {
             // only add runway to combobox if it is not already in the combo box
-            if (this.comboBoxModel.getIndexOf(runway) == -1) {
-                this.comboBox.addItem(runway);
+            if (this.runwayComboBoxModel.getIndexOf(runway) == -1) {
+                this.runwayComboBox.addItem(runway);
             }
         });
 
