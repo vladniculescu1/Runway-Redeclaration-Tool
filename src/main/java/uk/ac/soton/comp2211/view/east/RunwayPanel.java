@@ -42,7 +42,12 @@ public class RunwayPanel extends JPanel implements Observer {
         runwayComboBox.addActionListener(runwaySelectionController);
 
         JButton addButton = new JButton("Add");
+        // disable add button
+        addButton.setEnabled(false);
+
         JButton removeButton = new JButton("Remove");
+        // disable remove button
+        removeButton.setEnabled(false);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cellX(runwayComboBox,2).fillX();
