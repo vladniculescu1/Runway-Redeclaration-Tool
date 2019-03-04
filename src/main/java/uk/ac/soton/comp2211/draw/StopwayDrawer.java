@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.draw;
 
 import uk.ac.soton.comp2211.draw.shape.ChevronSeries;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -12,8 +13,8 @@ import java.awt.*;
 public class StopwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getCalculator();
 
         var stopwayLengthHigher = calculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
         var stopwayPositionHigher = calculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
