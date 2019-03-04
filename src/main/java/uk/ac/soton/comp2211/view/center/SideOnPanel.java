@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * This panel shows the runway in a top down view, with the runway aligned horizontally.
  */
-public class SideOnPanel  extends JPanel implements Observer {
+public class SideOnPanel extends JPanel implements Observer {
 
     private DrawExecutor drawExecutor;
     private RunwaySelection runwaySelection;
