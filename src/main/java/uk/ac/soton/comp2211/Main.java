@@ -4,6 +4,7 @@ import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.draw.*;
+import uk.ac.soton.comp2211.draw.sideon.*;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -57,14 +58,21 @@ public class Main {
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
-                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new StripDrawer(), new TopDownStopwayDrawer(), new ClearwayDrawer(), 
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new TopDownRunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new DesignatorDrawer(), new ObstacleDrawer()
+        );
+        
+        List<Drawer> sideOnDrawer = List.of(
+                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(), 
+                new SideOnDesignatorDrawer(), new ObstacleDrawer()
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
         
 
@@ -79,7 +87,7 @@ public class Main {
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
-                                new SideOnPanel()
+                                new SideOnPanel(runwaySelection, sideOnDrawExecutor)
                         ),
                         new EastPanel(
                                 new RunwayPanel(airport, runwaySelection,
