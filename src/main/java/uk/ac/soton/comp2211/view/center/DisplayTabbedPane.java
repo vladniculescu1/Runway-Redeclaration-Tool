@@ -21,6 +21,6 @@ public class DisplayTabbedPane extends JTabbedPane {
         this.addTab("Side On", sideOnPanel);
 
         // disable side on tab
-        this.setEnabledAt(2, false);
+//        this.setEnabledAt(2, false);
     }
 }

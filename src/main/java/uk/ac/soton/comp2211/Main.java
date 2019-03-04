@@ -79,7 +79,7 @@ public class Main {
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
-                                new SideOnPanel()
+                                new SideOnPanel(runwaySelection, topDownDrawExecutor)
                         ),
                         new EastPanel(
                                 new RunwayPanel(airport, runwaySelection,
