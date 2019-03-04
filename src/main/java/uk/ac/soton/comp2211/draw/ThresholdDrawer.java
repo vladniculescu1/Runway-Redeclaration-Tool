@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.draw;
 
 import uk.ac.soton.comp2211.draw.shape.ArrowSeries;
 import uk.ac.soton.comp2211.draw.shape.Stripes;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -14,8 +15,8 @@ import java.awt.geom.Line2D;
 public class ThresholdDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getCalculator();
 
         var thresholdWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
