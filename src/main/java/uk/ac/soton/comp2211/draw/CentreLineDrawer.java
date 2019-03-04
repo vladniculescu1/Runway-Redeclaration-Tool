@@ -14,7 +14,7 @@ public class CentreLineDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getCalculator();
+        var calculator = physicalRunway.getConstantPositionCalculator();
 
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);

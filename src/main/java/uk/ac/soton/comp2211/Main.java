@@ -58,10 +58,14 @@ public class Main {
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-                new StripDrawer(), new TopDownStopwayDrawer(), new ClearwayDrawer(), 
+
+                new SurroundingsDrawer(), new StripDrawer(),
+                new StopwayDrawer(), new ClearwayDrawer(),
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new TopDownRunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new DesignatorDrawer(), new ObstacleDrawer()
+
         );
         
         List<Drawer> sideOnDrawer = List.of(

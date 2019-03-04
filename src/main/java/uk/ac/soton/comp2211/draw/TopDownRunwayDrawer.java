@@ -14,12 +14,13 @@ public class TopDownRunwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getCalculator();
-        var visualisationLength = calculator.getTotalVisualisationLength();
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
+        var visualisationLength = lengthCalculator.getTotalVisualisationLength();
 
-        var runwayLength = calculator.getRunwayLength();
+        var runwayLength = lengthCalculator.getRunwayLength();
         var runwayWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();
-        var runwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var runwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw runway as a filled gray rectangle
         g2d.setColor(Color.lightGray);

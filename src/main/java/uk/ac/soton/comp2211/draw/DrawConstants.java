@@ -22,5 +22,8 @@ public class DrawConstants {
     public static double ASDA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 5;
     public static double TODA_POSITION = 1.1 * (RUNWAY_WIDTH / 2) + 7;
 
+    public static double CLEARED_GRADED_POSITION_INNER = 1.1 * (RUNWAY_WIDTH / 2) + 3;
+    public static double CLEARED_GRADED_POSITION_OUTER = 1.1 * (RUNWAY_WIDTH / 2) + 5;
+
 
 }
