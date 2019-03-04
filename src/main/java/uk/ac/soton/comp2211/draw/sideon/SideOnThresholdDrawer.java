@@ -16,17 +16,18 @@ public class SideOnThresholdDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getCalculator();
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
         var thresholdWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
-        var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        var lowerThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        var higherThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var lowerRunwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherRunwayPosition = calculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        var lowerRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var higherRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var lowerDisplacedThresholdLength = calculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
-        var higherDisplacedThresholdLength = calculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
+        var lowerDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
+        var higherDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
 
         g2d.setColor(Color.white);
         

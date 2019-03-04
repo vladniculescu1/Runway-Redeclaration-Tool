@@ -10,7 +10,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * Draws the runway.
  */
-public class TopDownRunwayDrawer implements Drawer {
+public class RunwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {

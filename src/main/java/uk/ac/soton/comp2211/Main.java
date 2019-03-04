@@ -63,7 +63,7 @@ public class Main {
                 new StopwayDrawer(), new ClearwayDrawer(),
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new TopDownRunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new DesignatorDrawer(), new ObstacleDrawer()
 
         );

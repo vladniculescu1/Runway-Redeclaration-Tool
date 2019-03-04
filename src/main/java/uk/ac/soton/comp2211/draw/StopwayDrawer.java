@@ -10,7 +10,7 @@ import java.awt.*;
 /**
  * Draws the stopways on both sides of the runway.
  */
-public class TopDownStopwayDrawer implements Drawer {
+public class StopwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
