@@ -5,9 +5,9 @@ import uk.ac.soton.comp2211.model.*;
 public class Calculator {
 
     private PhysicalRunway physicalRunway;
-    private int testResaValue = 240;
-    private int testBlastProtectionValue = 300;
-    private  int testStripValue = 60;
+    private int resaValue = 240;
+    private int blastProtectionValue = 300;
+    private  int stripValue = 60;
 
     public Calculator(PhysicalRunway physicalRunway) {
         this.physicalRunway = physicalRunway;
@@ -19,6 +19,7 @@ public class Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
+    //REFACTORING stuff
     public int getTora(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
 
@@ -32,18 +33,18 @@ public class Calculator {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
-                    - testBlastProtectionValue
+                    - blastProtectionValue
                     - getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
             int slopeCalculation = getSlopeCalculation(runwayObstacle);
-            if (slopeCalculation < testResaValue) {
-                slopeCalculation = testResaValue;
+            if (slopeCalculation < resaValue) {
+                slopeCalculation = resaValue;
             }
             return runwayObstacle.getThresholdDistance()
                     + getDisplacedThresholdLength(side)
                     - slopeCalculation
-                    - testStripValue;
+                    - stripValue;
         }
     }
 
@@ -115,14 +116,14 @@ public class Calculator {
 
         if (distanceToOppositeThreshold > distanceToCurrentThreshold) {
             //Plane landing over obstacle
-            int slopeCalculation = getSlopeCalculation(runwayObstacle) + testStripValue;
-            if (slopeCalculation < testBlastProtectionValue) {
-                slopeCalculation = testBlastProtectionValue;
+            int slopeCalculation = getSlopeCalculation(runwayObstacle) + stripValue;
+            if (slopeCalculation < blastProtectionValue) {
+                slopeCalculation = blastProtectionValue;
             }
             return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - slopeCalculation;
         } else {
             //Plane landing towards obstacle
-            return runwayObstacle.getThresholdDistance() - testResaValue - testStripValue;
+            return runwayObstacle.getThresholdDistance() - resaValue - stripValue;
         }
     }
 
@@ -138,9 +139,9 @@ public class Calculator {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
             if (checkSide(runwayObstacle, side)) {
                 //Landing over obstacle
-                int temporaryThresholdLength = getSlopeCalculation(runwayObstacle) + testStripValue;
-                if (temporaryThresholdLength < testBlastProtectionValue) {
-                    temporaryThresholdLength = testBlastProtectionValue;
+                int temporaryThresholdLength = getSlopeCalculation(runwayObstacle) + stripValue;
+                if (temporaryThresholdLength < blastProtectionValue) {
+                    temporaryThresholdLength = blastProtectionValue;
                 }
                 switch (side) {
                     case LOWER_THRESHOLD:
@@ -179,11 +180,11 @@ public class Calculator {
                     case LOWER_THRESHOLD:
                         return getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
-                                + testBlastProtectionValue;
+                                + blastProtectionValue;
                     case HIGHER_THRESHOLD:
                         return getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
-                                - testBlastProtectionValue;
+                                - blastProtectionValue;
                     default:
                         return 0;
                 }
