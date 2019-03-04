@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
@@ -10,11 +11,12 @@ import java.awt.*;
 public class StripDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var stripLength = calculator.getStripLength();
-        var stripPosition = calculator.getStripPosition();
+        var stripLength = lengthCalculator.getStripLength();
+        var stripPosition = positionCalculator.getStripPosition();
 
         // draw the strip as a filled and labelled rectangle
         DrawUtils.centeredFilledRectangle(g2d, new Color(77, 188, 41),

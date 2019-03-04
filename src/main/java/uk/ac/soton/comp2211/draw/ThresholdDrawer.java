@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.draw;
 
 import uk.ac.soton.comp2211.draw.shape.ArrowSeries;
 import uk.ac.soton.comp2211.draw.shape.Stripes;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -14,18 +15,19 @@ import java.awt.geom.Line2D;
 public class ThresholdDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
         var thresholdWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();
-        var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        var lowerThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        var higherThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var lowerRunwayPosition = calculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherRunwayPosition = calculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        var lowerRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var higherRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var lowerDisplacedThresholdLength = calculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
-        var higherDisplacedThresholdLength = calculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
+        var lowerDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
+        var higherDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
 
         g2d.setColor(Color.white);
 

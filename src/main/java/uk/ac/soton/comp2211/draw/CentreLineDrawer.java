@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -12,8 +13,8 @@ import java.awt.geom.Line2D;
 public class CentreLineDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getConstantPositionCalculator();
 
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
