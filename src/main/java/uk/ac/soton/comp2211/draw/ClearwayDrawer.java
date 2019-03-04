@@ -13,13 +13,14 @@ public class ClearwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getCalculator();
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var clearwayLengthLower = calculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var clearwayPositionLower = calculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        var clearwayLengthLower = lengthCalculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
+        var clearwayPositionLower = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
-        var clearwayLengthHigher = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-        var clearwayPositionHigher = calculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
+        var clearwayLengthHigher = lengthCalculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
+        var clearwayPositionHigher = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw clearways as labelled rectangles only if they are present
         if (clearwayLengthLower > 0) {

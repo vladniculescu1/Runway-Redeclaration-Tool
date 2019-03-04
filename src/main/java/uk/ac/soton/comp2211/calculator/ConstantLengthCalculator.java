@@ -9,7 +9,6 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * not change when an object is added.
  */
 public class ConstantLengthCalculator extends Calculator {
-    private ConstantPositionCalculator constantPositionCalculator;
 
     /**
      * Constructor for the Constant Length Calculator.
@@ -17,7 +16,6 @@ public class ConstantLengthCalculator extends Calculator {
      */
     public ConstantLengthCalculator(PhysicalRunway physicalRunway) {
         super(physicalRunway);
-        this.constantPositionCalculator = physicalRunway.getConstantPositionCalculator();
     }
 
     /**
@@ -95,8 +93,4 @@ public class ConstantLengthCalculator extends Calculator {
      * @return the calculated value
      */
 
-    public int getTotalVisualisationLength() {
-        return constantPositionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD)
-                + this.getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
-    }
 }

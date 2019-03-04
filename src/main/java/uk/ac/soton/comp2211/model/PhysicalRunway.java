@@ -35,6 +35,10 @@ public class PhysicalRunway {
         this.higherThreshold = higherThreshold;
         this.lowerThreshold = lowerThreshold;
         this.runwayDirection = runwayDirection;
+        this.constantLengthCalculator = new ConstantLengthCalculator(this);
+        this.constantPositionCalculator = new ConstantPositionCalculator(this);
+        this.dynamicLengthCalculator = new DynamicLengthCalculator(this);
+        this.dynamicPositionCalculator = new DynamicPositionCalculator(this);
     }
 
     public LogicalRunway getHigherThreshold() {

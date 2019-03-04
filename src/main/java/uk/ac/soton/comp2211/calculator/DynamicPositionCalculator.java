@@ -97,6 +97,7 @@ public class DynamicPositionCalculator extends Calculator {
      *
      * @return the position of the left side of the obstacle.
      */
+
     public int getObstaclePosition() {
         return physicalRunway.getLowerThreshold().getRunwayObstacle().getThresholdDistance()
                 + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);

@@ -14,6 +14,11 @@ public class Calculator {
         this.physicalRunway = physicalRunway;
     }
 
+    /**
+     * Gets the logical runway for the current side.
+     * @param side the side to get the logical runway for
+     * @return the logical runway for that side
+     */
     protected LogicalRunway getLogicalRunwayForSide(RunwaySide side) {
         switch (side) {
             case LOWER_THRESHOLD:
@@ -23,5 +28,14 @@ public class Calculator {
             default:
                 throw new UnsupportedOperationException("Cannot calculate value for side " + side);
         }
+    }
+
+    /**
+     * Calculates the visualisation length of the application.
+     * @return the total visualisation length
+     */
+    public int getTotalVisualisationLength() {
+        return physicalRunway.getConstantPositionCalculator().getRunwayPosition(RunwaySide.HIGHER_THRESHOLD)
+                + physicalRunway.getConstantLengthCalculator().getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
     }
 }
