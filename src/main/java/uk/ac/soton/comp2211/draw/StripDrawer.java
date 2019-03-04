@@ -19,7 +19,7 @@ public class StripDrawer implements Drawer {
         var stripPosition = positionCalculator.getStripPosition();
 
         // draw the strip as a filled and labelled rectangle
-        DrawUtils.centeredFilledRectangle(g2d, new Color(77, 188, 41),
+        DrawUtils.centeredFilledRectangle(g2d, new Color(43, 166, 32, 172),
                 stripPosition, stripLength, DrawConstants.STRIP_WIDTH);
         DrawUtils.centeredRectangleWithLabel(g2d, Color.black,
                 stripPosition, stripLength, DrawConstants.STRIP_WIDTH, "STRIP");
