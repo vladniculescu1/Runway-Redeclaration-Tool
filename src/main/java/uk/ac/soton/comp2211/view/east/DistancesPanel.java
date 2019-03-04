@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.Calculator;
+import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -101,7 +102,7 @@ public class DistancesPanel extends JPanel implements Observer {
                 this.higherTableModel.removeRow(0);
             }
 
-            Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
+            DynamicLengthCalculator calc = runwaySelection.getSelectedRunway().getDynamicLengthCalculator();
             Object[][] lowerData = {
                 {"LDA",  lowerThreshold.getOriginalLda(),
                     calc.getLda(RunwaySide.LOWER_THRESHOLD)},
