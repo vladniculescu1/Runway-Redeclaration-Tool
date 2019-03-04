@@ -12,7 +12,8 @@ public class SurroundingsDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
 
-        var calculator = physicalRunway.getCalculator();
+        var positionCalculator = physicalRunway.getConstantPositionCalculator();
+        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
 
         // set colour for cleared and graded areas
         g2d.setColor(new Color(44, 149, 32, 172));
@@ -20,40 +21,40 @@ public class SurroundingsDrawer implements Drawer {
         // draw the cleared and graded area as a polygon
         Polygon clearedGraded = new Polygon();
 
-        clearedGraded.addPoint(calculator.getStripPosition(),
+        clearedGraded.addPoint(positionCalculator.getStripPosition(),
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + 210,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + 210,
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + 360,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + 360,
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_OUTER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength() - 360,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength() - 360,
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_OUTER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength() - 210,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength() - 210,
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength(),
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength(),
                 (int) (g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength(),
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength(),
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength() - 210,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength() - 210,
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + calculator.getStripLength() - 360,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + lengthCalculator.getStripLength() - 360,
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_OUTER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + 360,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + 360,
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_OUTER));
 
-        clearedGraded.addPoint(calculator.getStripPosition() + 210,
+        clearedGraded.addPoint(positionCalculator.getStripPosition() + 210,
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
-        clearedGraded.addPoint(calculator.getStripPosition(),
+        clearedGraded.addPoint(positionCalculator.getStripPosition(),
                 (int) (-g2d.getFontMetrics().getHeight() * DrawConstants.CLEARED_GRADED_POSITION_INNER));
 
         // draw the polygon
