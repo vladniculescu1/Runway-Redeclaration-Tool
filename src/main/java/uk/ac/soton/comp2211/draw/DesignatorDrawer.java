@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -12,17 +13,16 @@ public class DesignatorDrawer implements Drawer {
 
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var runway = runwaySelection.getSelectedRunway();
-        var calculator = runway.getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getCalculator();
 
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var lowerThresholdLetter = runway.getLowerThreshold().getLocation().toString();
-        var lowerThresholdNumber = runway.getLowerThreshold().getHeadingAsString();
+        var lowerThresholdLetter = physicalRunway.getLowerThreshold().getLocation().toString();
+        var lowerThresholdNumber = physicalRunway.getLowerThreshold().getHeadingAsString();
 
         var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
-        var higherThresholdLetter = runway.getHigherThreshold().getLocation().toString();
-        var higherThresholdNumber = runway.getHigherThreshold().getHeadingAsString();
+        var higherThresholdLetter = physicalRunway.getHigherThreshold().getLocation().toString();
+        var higherThresholdNumber = physicalRunway.getHigherThreshold().getHeadingAsString();
 
         var originalTransform = g2d.getTransform();
 

@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
@@ -10,8 +11,8 @@ import java.awt.*;
 public class StripDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getCalculator();
 
         var stripLength = calculator.getStripLength();
         var stripPosition = calculator.getStripPosition();

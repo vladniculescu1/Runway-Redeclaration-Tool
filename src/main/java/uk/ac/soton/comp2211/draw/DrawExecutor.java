@@ -36,7 +36,7 @@ public class DrawExecutor {
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
         this.setupGraphics(g2d, panelWidth, panelHeight);
         if (runwaySelection.hasSelectedRunway()) {
-            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection));
+            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
         }
     }
 

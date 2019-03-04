@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import uk.ac.soton.comp2211.calculator.Calculator;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 /**
@@ -13,17 +14,17 @@ import uk.ac.soton.comp2211.model.RunwaySelection;
 public class ObstacleDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        if (runwaySelection.getSelectedRunway().getHigherThreshold().hasRunwayObstacle()) {
-            Calculator calc = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        if (physicalRunway.getHigherThreshold().hasRunwayObstacle()) {
+            Calculator calc = physicalRunway.getCalculator();
 
             int leftX = calc.getObstaclePosition();
-            int length = runwaySelection.getSelectedRunway().getHigherThreshold()
+            int length = physicalRunway.getHigherThreshold()
                     .getRunwayObstacle().getObstacle().getLength();
             double offsetY = 0;
-            if (runwaySelection.getSelectedRunway().getHigherThreshold()
+            if (physicalRunway.getHigherThreshold()
                     .getRunwayObstacle().getCentreLineDistance() != 0) {
-                offsetY = 1.5 + runwaySelection.getSelectedRunway().getHigherThreshold()
+                offsetY = 1.5 + physicalRunway.getHigherThreshold()
                         .getRunwayObstacle().getCentreLineDistance() / 30;
             }
             

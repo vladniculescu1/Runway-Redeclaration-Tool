@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -12,8 +13,8 @@ import java.awt.geom.Rectangle2D;
 public class RunwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
-        var calculator = runwaySelection.getSelectedRunway().getCalculator();
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+        var calculator = physicalRunway.getCalculator();
         var visualisationLength = calculator.getTotalVisualisationLength();
 
         var runwayLength = calculator.getRunwayLength();
