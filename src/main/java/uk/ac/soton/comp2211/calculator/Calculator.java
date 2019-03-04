@@ -4,7 +4,7 @@ import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
-public class Calculator {
+public abstract class Calculator {
     protected int blastProtectionValue =  300;
     protected int resaValue = 240;
     protected int stripValue = 60;
