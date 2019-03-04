@@ -66,6 +66,7 @@ public class Main {
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         
 
         // Validation example - TODO remove later
@@ -82,8 +83,7 @@ public class Main {
                                 new SideOnPanel()
                         ),
                         new EastPanel(
-                                new RunwayPanel(airport, runwaySelection,
-                                        new RunwaySelectionController(runwaySelection)),
+                                new RunwayPanel(airport, runwaySelection, runwaySelectionController),
                                 new ObstaclePanel(runwaySelection, assignObstacleController),
                                 new DistancesPanel(runwaySelection)
                         ),
@@ -95,6 +95,7 @@ public class Main {
                 )
         );
         assignObstacleController.addMainFrame(mainFrame);
+        runwaySelectionController.addMainFrame(mainFrame);
     }
 
 }

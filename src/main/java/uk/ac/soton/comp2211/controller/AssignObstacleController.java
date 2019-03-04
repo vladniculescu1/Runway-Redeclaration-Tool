@@ -15,7 +15,6 @@ import uk.ac.soton.comp2211.view.modal.AssignObstaclePanel;
 public class AssignObstacleController implements ActionListener {
 
     private RunwaySelection runwaySelection;
-    private MainFrame mainFrame;
     private AssignObstacleFrame assignObstacleFrame;
     private AssignObstaclePanel assignObstaclePanel;
     
@@ -25,11 +24,10 @@ public class AssignObstacleController implements ActionListener {
      */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
-        assignObstacleFrame = new AssignObstacleFrame(mainFrame);
     }
     
     public void addMainFrame(MainFrame mainFrame)  {
-        this.mainFrame = mainFrame;
+        assignObstacleFrame = new AssignObstacleFrame(mainFrame);
     }
     
     @Override

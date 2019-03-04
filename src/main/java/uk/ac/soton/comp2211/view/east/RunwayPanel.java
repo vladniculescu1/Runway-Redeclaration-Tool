@@ -20,6 +20,7 @@ public class RunwayPanel extends JPanel implements Observer {
     private JComboBox<PhysicalRunway> runwayComboBox;
 
     public static final String COMBOBOX_COMMAND = "runwayComboBox";
+    public static final String ADD_RUNWAY_COMMAND = "runwayAddCommand";
 
     private Airport airport;
 
@@ -42,8 +43,8 @@ public class RunwayPanel extends JPanel implements Observer {
         runwayComboBox.addActionListener(runwaySelectionController);
 
         JButton addButton = new JButton("Add");
-        // disable add button
-        addButton.setEnabled(false);
+        addButton.setActionCommand(ADD_RUNWAY_COMMAND);
+        addButton.addActionListener(runwaySelectionController);
 
         JButton removeButton = new JButton("Remove");
         // disable remove button
