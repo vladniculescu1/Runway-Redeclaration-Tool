@@ -14,7 +14,7 @@ public class DesignatorDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, RunwaySelection runwaySelection) {
         var runway = runwaySelection.getSelectedRunway();
-        var calculator = runway.getCalculator();
+        var calculator = runway.getConstantPositionCalculator();
 
         var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var lowerThresholdLetter = runway.getLowerThreshold().getLocation().toString();

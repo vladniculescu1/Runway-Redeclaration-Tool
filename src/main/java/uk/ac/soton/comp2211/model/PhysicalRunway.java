@@ -19,6 +19,10 @@ public class PhysicalRunway {
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
     private RunwaySide runwayDirection;
+    private ConstantLengthCalculator constantLengthCalculator;
+    private ConstantPositionCalculator constantPositionCalculator;
+    private DynamicLengthCalculator dynamicLengthCalculator;
+    private DynamicPositionCalculator dynamicPositionCalculator;
 
     /**
      * The PhysicalRunway constructor.
@@ -52,10 +56,6 @@ public class PhysicalRunway {
                 + getHigherThreshold().getHeadingAsString() + getHigherThreshold().getLocation();
     }
 
-    public Calculator getCalculator() {
-        return new Calculator(this);
-    }
-
     public void setRunwayDirection(RunwaySide runwayDirection) {
         this.runwayDirection = runwayDirection;
     }
@@ -78,4 +78,19 @@ public class PhysicalRunway {
         return Objects.hash(getHigherThreshold(), getLowerThreshold());
     }
 
+    public ConstantLengthCalculator getConstantLengthCalculator() {
+        return constantLengthCalculator;
+    }
+
+    public ConstantPositionCalculator getConstantPositionCalculator() {
+        return constantPositionCalculator;
+    }
+
+    public DynamicLengthCalculator getDynamicLengthCalculator() {
+        return dynamicLengthCalculator;
+    }
+
+    public DynamicPositionCalculator getDynamicPositionCalculator() {
+        return dynamicPositionCalculator;
+    }
 }
