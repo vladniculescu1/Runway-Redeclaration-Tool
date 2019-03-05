@@ -43,13 +43,13 @@ public class TopDownRotatedPanel extends JPanel implements Observer {
 
         // 3. scale the image
         at.scale(this.getHeight() / (this.getWidth() * Math.cos(Math.toRadians(
-                 runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10)) +
-                 this.getHeight() * Math.sin(Math.toRadians(
-                 runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10))) ,
-             this.getHeight() / ((this.getWidth() * Math.cos(Math.toRadians(
-                 runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10))) +
-                 (this.getHeight() * Math.sin(Math.toRadians(
-                 runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10)))) );
+                 runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10))
+                        + this.getHeight() * Math.sin(Math.toRadians(
+                                runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10))),
+                this.getHeight() / ((this.getWidth() * Math.cos(Math.toRadians(
+                        runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10)))
+                        + (this.getHeight() * Math.sin(Math.toRadians(
+                                runwaySelection.getSelectedRunway().getLowerThreshold().getHeading() * 10)))));
 
         // 2. do the actual rotation
         at.rotate(Math.toRadians(90 + (runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10));
