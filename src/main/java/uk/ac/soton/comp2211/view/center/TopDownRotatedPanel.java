@@ -35,7 +35,8 @@ public class TopDownRotatedPanel extends JPanel implements Observer {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         BufferedImage image = this.getImage();
-        double rotationAngle = Math.toRadians((runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10);
+        double rotationAngle =
+                Math.toRadians((runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10);
 
         // create the transform, note that the transformations happen in reversed order (so check them backwards)
         AffineTransform at = new AffineTransform();

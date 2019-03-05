@@ -44,33 +44,13 @@ public class Main {
         LogicalRunway logicalRunway4 = new LogicalRunway(2985, 2986,
                 2986, 2986, 25, ThresholdLocation.RIGHT);
 
-//        LogicalRunway logicalRunway5 = new LogicalRunway(2985, 3346,
-//                3346, 3346, 3, ThresholdLocation.LEFT);
-//        LogicalRunway logicalRunway6 = new LogicalRunway(2985, 2986,
-//                2986, 2986, 31, ThresholdLocation.RIGHT);
-//
-//        LogicalRunway logicalRunway7 = new LogicalRunway(2985, 3346,
-//                3346, 3346, 12, ThresholdLocation.LEFT);
-//        LogicalRunway logicalRunway8 = new LogicalRunway(2985, 2986,
-//                2986, 2986, 30, ThresholdLocation.RIGHT);
-//
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD);
-
-//        PhysicalRunway physicalRunway2 = new PhysicalRunway(logicalRunway4, logicalRunway3,
-//                RunwaySide.LOWER_THRESHOLD);
-//
-//        PhysicalRunway physicalRunway3 = new PhysicalRunway(logicalRunway6, logicalRunway5,
-//                RunwaySide.LOWER_THRESHOLD);
-//
-//        PhysicalRunway physicalRunway4 = new PhysicalRunway(logicalRunway8, logicalRunway7,
-//                RunwaySide.LOWER_THRESHOLD);
-
+        PhysicalRunway physicalRunway2 = new PhysicalRunway(logicalRunway4, logicalRunway3,
+                RunwaySide.LOWER_THRESHOLD);
 
         airport.addRunway(physicalRunway);
-//        airport.addRunway(physicalRunway2);
-//        airport.addRunway(physicalRunway3);
-//        airport.addRunway(physicalRunway4);
+        airport.addRunway(physicalRunway2);
 
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
