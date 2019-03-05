@@ -72,7 +72,7 @@ public class Main {
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new SideOnRunwayDrawer(), new SideOnThresholdDrawer(), 
-                new SideOnDesignatorDrawer(), new ObstacleDrawer()
+                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer()
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
