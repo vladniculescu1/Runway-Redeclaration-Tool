@@ -82,7 +82,7 @@ public class DrawUtils {
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
      */
-    public static void labelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
+    public static void dashedLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
         int height = (int) (fontHeight * offset);
@@ -103,6 +103,31 @@ public class DrawUtils {
                 (startX + startX + distance) / 2,  (int) (height + fontHeight * 0.8));
 
         g2d.setStroke(stroke);
+        g2d.setFont(font);
+    }
+    
+    /**
+     * Displays a length name and value onto the GUI.
+     *
+     * @param g2d the graphics2d object used for drawing
+     * @param startX the start position of the line/value
+     * @param distance the value of the distance (ASDA,TORA,TODA,LDA)
+     * @param offset the distance from the centre line as a factor of the current font size
+     * @param text the name of the value
+     */
+    public static void solidLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
+        Font font = g2d.getFont();
+        int fontHeight = g2d.getFontMetrics().getHeight();
+        int height = (int) (fontHeight * offset);
+
+        g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
+        g2d.drawLine(startX + distance, height + fontHeight / 4,
+                startX + distance, height - fontHeight / 4);
+        g2d.drawString(text, 5, (int) (height - fontHeight * 0.2));
+
+        
+        drawArrowLine(g2d,startX,height,startX + distance,height, fontHeight / 2, fontHeight / 4);
+
         g2d.setFont(font);
     }
 
