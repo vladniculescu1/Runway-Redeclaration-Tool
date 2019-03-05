@@ -9,14 +9,15 @@ import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
-import uk.ac.soton.comp2211.view.modal.AssignObstacleFrame;
 import uk.ac.soton.comp2211.view.modal.AssignObstaclePanel;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpPanel;
 
 public class AssignObstacleController implements ActionListener {
 
+    private String panelTitle = "Assign Obstacle to Runway";
     private RunwaySelection runwaySelection;
     private MainFrame mainFrame;
-    private AssignObstacleFrame assignObstacleFrame;
+    private DisplayPopUpPanel displayPopUpPanel;
     private AssignObstaclePanel assignObstaclePanel;
     
     /**
@@ -25,7 +26,7 @@ public class AssignObstacleController implements ActionListener {
      */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
-        assignObstacleFrame = new AssignObstacleFrame(mainFrame);
+        displayPopUpPanel = new DisplayPopUpPanel(mainFrame, panelTitle);
     }
     
     public void addMainFrame(MainFrame mainFrame)  {
@@ -38,7 +39,7 @@ public class AssignObstacleController implements ActionListener {
 
             case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
                 assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
-                assignObstacleFrame.create(assignObstaclePanel);
+                displayPopUpPanel.create(assignObstaclePanel);
                 break;
             }
             case ObstaclePanel.REMOVE_BUTTON_COMMAND: {
@@ -81,13 +82,13 @@ public class AssignObstacleController implements ActionListener {
                     
                     runwaySelection.notifyUpdate();
                     
-                    assignObstacleFrame.close();
+                    displayPopUpPanel.close();
                 }
                 break;
             }
             case AssignObstaclePanel.CANCEL_BUTTON_COMMAND: {
                 assignObstaclePanel.setVisible(false);
-                assignObstacleFrame.close();
+                displayPopUpPanel.close();
                 
                 break;
             }

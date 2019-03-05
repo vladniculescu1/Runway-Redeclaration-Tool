@@ -10,6 +10,7 @@ import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
+import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -18,6 +19,8 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * This panel shows both the original runway distances and the re-calculated runway distances to the user.
  */
 public class DistancesPanel extends JPanel implements Observer {
+
+    public static final String SHOW_CALCULATION_BUTTON_COMMAND = "showCalculationButton";
 
     private RunwaySelection runwaySelection;
 
@@ -32,8 +35,9 @@ public class DistancesPanel extends JPanel implements Observer {
     /**
      * Constructs a new distances panel.
      * @param runwaySelection The runway selection
+     * @param showCalculationController controller for button clicks
      */
-    public DistancesPanel(RunwaySelection runwaySelection) {
+    public DistancesPanel(RunwaySelection runwaySelection, ShowCalculationController showCalculationController) {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
 
@@ -73,6 +77,9 @@ public class DistancesPanel extends JPanel implements Observer {
         JPanel higherPanel = new JPanel(new BorderLayout());
         higherPanel.add(higherTable,BorderLayout.CENTER);
         higherPanel.add(higherTable.getTableHeader(),BorderLayout.NORTH);
+
+        showCalculation.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND);
+        showCalculation.addActionListener(showCalculationController);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
