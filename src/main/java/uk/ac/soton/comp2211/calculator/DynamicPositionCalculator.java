@@ -10,8 +10,11 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * change when an object is added.
  */
 public class DynamicPositionCalculator extends Calculator {
+
+
     private ConstantPositionCalculator constantPositionCalculator;
     private DynamicLengthCalculator dynamicLengthCalculator;
+    private ConstantLengthCalculator constantLengthCalculator;
 
     /**
      * Constructor for the Dynamic Position Calculator.
@@ -21,6 +24,7 @@ public class DynamicPositionCalculator extends Calculator {
         super(physicalRunway);
         constantPositionCalculator = physicalRunway.getConstantPositionCalculator();
         dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+        constantLengthCalculator = physicalRunway.getConstantLengthCalculator();
     }
 
     /**
@@ -35,9 +39,9 @@ public class DynamicPositionCalculator extends Calculator {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
             if (dynamicLengthCalculator.checkSide(runwayObstacle, side)) {
                 //Landing over obstacle
-                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation(runwayObstacle) + stripValue;
-                if (temporaryThresholdLength < blastProtectionValue) {
-                    temporaryThresholdLength = blastProtectionValue;
+                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation() + constantLengthCalculator.getStripMargin();
+                if (temporaryThresholdLength < constantLengthCalculator.getBlastProtection()) {
+                    temporaryThresholdLength = constantLengthCalculator.getBlastProtection();
                 }
                 switch (side) {
                     case LOWER_THRESHOLD:
@@ -76,11 +80,11 @@ public class DynamicPositionCalculator extends Calculator {
                     case LOWER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
-                                + blastProtectionValue;
+                                + constantLengthCalculator.getBlastProtection();
                     case HIGHER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
-                                - blastProtectionValue;
+                                - constantLengthCalculator.getBlastProtection();
                     default:
                         return 0;
                 }
@@ -99,7 +103,35 @@ public class DynamicPositionCalculator extends Calculator {
      */
 
     public int getObstaclePosition() {
-        return physicalRunway.getLowerThreshold().getRunwayObstacle().getThresholdDistance()
+        return physicalRunway.getRunwayObstacle().getThresholdDistance()
                 + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+    }
+
+    public int getResaPosition() {
+
+        var obstacleSide = physicalRunway.getObstacleSide();
+
+        switch (obstacleSide) {
+            case LOWER_THRESHOLD:
+                return this.getObstaclePosition() + physicalRunway.getObstacle().getLength() +  constantLengthCalculator.getResa();
+            case HIGHER_THRESHOLD:
+                return this.getObstaclePosition() - physicalRunway.getObstacle().getLength();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate RESA position for side " + obstacleSide);
+        }
+    }
+
+    public int getSlopePosition() {
+
+        var obstacleSide = physicalRunway.getObstacleSide();
+
+        switch (obstacleSide) {
+            case LOWER_THRESHOLD:
+                return this.getObstaclePosition() + physicalRunway.getObstacle().getLength();
+            case HIGHER_THRESHOLD:
+                return this.getObstaclePosition() - physicalRunway.getObstacle().getLength();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate slope position for side " + obstacleSide);
+        }
     }
 }

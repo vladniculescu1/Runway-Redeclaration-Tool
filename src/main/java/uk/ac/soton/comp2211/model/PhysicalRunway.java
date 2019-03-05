@@ -97,4 +97,25 @@ public class PhysicalRunway {
     public DynamicPositionCalculator getDynamicPositionCalculator() {
         return dynamicPositionCalculator;
     }
+
+    public boolean hasObstacle() {
+        return this.lowerThreshold.hasRunwayObstacle();
+    }
+
+    public Obstacle getObstacle() {
+        return this.lowerThreshold.getRunwayObstacle().getObstacle();
+    }
+
+    public RunwayObstacle getRunwayObstacle() {
+        return this.lowerThreshold.getRunwayObstacle();
+    }
+
+    public RunwaySide getObstacleSide() {
+        var runwayObstacle = this.getRunwayObstacle();
+        if (dynamicLengthCalculator.checkSide(runwayObstacle, RunwaySide.LOWER_THRESHOLD)) {
+            return RunwaySide.LOWER_THRESHOLD;
+        } else {
+            return RunwaySide.HIGHER_THRESHOLD;
+        }
+    }
 }

@@ -10,6 +10,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * change when an object is added.
  */
 public class DynamicLengthCalculator extends Calculator {
+
     private ConstantLengthCalculator constantLengthCalculator;
     private ConstantPositionCalculator constantPositionCalculator;
 
@@ -42,18 +43,18 @@ public class DynamicLengthCalculator extends Calculator {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
-                    - blastProtectionValue
+                    - constantLengthCalculator.getBlastProtection()
                     - constantLengthCalculator.getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
-            int slopeCalculation = getSlopeCalculation(runwayObstacle);
-            if (slopeCalculation < resaValue) {
-                slopeCalculation = resaValue;
+            int slopeCalculation = getSlopeCalculation();
+            if (slopeCalculation < constantLengthCalculator.getResa()) {
+                slopeCalculation = constantLengthCalculator.getResa();
             }
             return runwayObstacle.getThresholdDistance()
                     + constantLengthCalculator.getDisplacedThresholdLength(side)
                     - slopeCalculation
-                    - stripValue;
+                    - constantLengthCalculator.getStripMargin();
         }
     }
 
@@ -125,24 +126,15 @@ public class DynamicLengthCalculator extends Calculator {
 
         if (distanceToOppositeThreshold > distanceToCurrentThreshold) {
             //Plane landing over obstacle
-            int slopeCalculation = getSlopeCalculation(runwayObstacle) + stripValue;
-            if (slopeCalculation < blastProtectionValue) {
-                slopeCalculation = blastProtectionValue;
+            int slopeCalculation = getSlopeCalculation() + constantLengthCalculator.getStripMargin();
+            if (slopeCalculation < constantLengthCalculator.getBlastProtection()) {
+                slopeCalculation = constantLengthCalculator.getBlastProtection();
             }
             return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - slopeCalculation;
         } else {
             //Plane landing towards obstacle
-            return runwayObstacle.getThresholdDistance() - resaValue - stripValue;
+            return runwayObstacle.getThresholdDistance() - constantLengthCalculator.getResa() - constantLengthCalculator.getStripMargin();
         }
-    }
-
-    /**
-     * calculates the 1/50 slope for an obstacle.
-     * @param runwayObstacle the obstacle to calculate the slope for
-     * @return the slope calculation
-     */
-    protected int getSlopeCalculation(RunwayObstacle runwayObstacle) {
-        return runwayObstacle.getObstacle().getHeight() * 50;
     }
 
     /**
@@ -166,7 +158,15 @@ public class DynamicLengthCalculator extends Calculator {
         }
     }
 
-    protected boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
+    /**
+     * calculates the 1/50 slope for an obstacle.
+     * @return the slope calculation
+     */
+    public int getSlopeCalculation() {
+        return physicalRunway.getObstacle().getHeight() * 50;
+    }
+
+    public boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
         int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance()
                 + constantLengthCalculator.getDisplacedThresholdLength(side);
         int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))
@@ -179,4 +179,5 @@ public class DynamicLengthCalculator extends Calculator {
         //closer to opposite threshold
         return false;
     }
+
 }
