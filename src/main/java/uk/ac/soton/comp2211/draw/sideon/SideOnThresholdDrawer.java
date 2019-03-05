@@ -10,24 +10,17 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 
 /**
- * Draws both runway thresholds with respective offsets.
+ * Draws both side-on runway thresholds with respective offsets.
  */
 public class SideOnThresholdDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
         var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
         var thresholdWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
         var lowerThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
         var higherThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
-
-        var lowerRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherRunwayPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-
-        var lowerDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);
-        var higherDisplacedThresholdLength = lengthCalculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
 
         g2d.setColor(Color.white);
         
@@ -45,7 +38,5 @@ public class SideOnThresholdDrawer implements Drawer {
         // reset graphics to standards
         g2d.setColor(Color.black);
         g2d.setStroke(oldStroke);
-        
-
     }
 }

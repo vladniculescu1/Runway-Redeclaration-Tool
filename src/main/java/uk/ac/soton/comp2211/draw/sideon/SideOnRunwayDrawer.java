@@ -19,7 +19,6 @@ public class SideOnRunwayDrawer implements Drawer {
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         var lengthCalculator = physicalRunway.getConstantLengthCalculator();
         var positionCalculator = physicalRunway.getConstantPositionCalculator();
-        var visualisationLength = lengthCalculator.getTotalVisualisationLength();
 
         var runwayLength = lengthCalculator.getRunwayLength();
         var runwayWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();

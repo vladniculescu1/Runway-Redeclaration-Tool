@@ -8,7 +8,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the threshold designators, i.e. the runway heading and position on each side of the runway.
+ * Draws the threshold designators, i.e. the runway heading and position on each side of the side-on runway.
  */
 public class SideOnDesignatorDrawer implements Drawer {
 

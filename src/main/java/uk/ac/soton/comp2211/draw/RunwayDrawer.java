@@ -16,7 +16,6 @@ public class RunwayDrawer implements Drawer {
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         var lengthCalculator = physicalRunway.getConstantLengthCalculator();
         var positionCalculator = physicalRunway.getConstantPositionCalculator();
-        var visualisationLength = lengthCalculator.getTotalVisualisationLength();
 
         var runwayLength = lengthCalculator.getRunwayLength();
         var runwayWidth = DrawConstants.RUNWAY_WIDTH * g2d.getFontMetrics().getHeight();

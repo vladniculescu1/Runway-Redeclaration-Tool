@@ -11,7 +11,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the stopways on both sides of the runway.
+ * Draws the stopways on both sides of the side-on runway.
  */
 public class SideOnStopwayDrawer implements Drawer {
 

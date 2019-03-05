@@ -10,7 +10,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import java.awt.*;
 
 /**
- * Draws the clearway of both sides of the runway.
+ * Draws the clearway of both sides of the side-on runway.
  */
 public class SideOnClearwayDrawer implements Drawer {
 
@@ -25,7 +25,7 @@ public class SideOnClearwayDrawer implements Drawer {
         var clearwayLengthHigher = lengthCalculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
         var clearwayPositionHigher = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
-        // draw clearways as labelled rectangles only if they are present
+        // draw clearways as rectangles only if they are present
         if (clearwayLengthLower > 0) {
             
             DrawUtils.centeredFilledRectangle(g2d, Color.red, clearwayPositionLower, clearwayLengthLower,
