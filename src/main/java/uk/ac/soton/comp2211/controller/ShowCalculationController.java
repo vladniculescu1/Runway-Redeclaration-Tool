@@ -14,7 +14,8 @@ public class ShowCalculationController implements ActionListener {
         this.showCalculationFrame = new ShowCalculationFrame(mainFrame);
 
     }
-    public void addMainFrame(MainFrame mainFrame)  {
+
+    public void addMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
     }
 
