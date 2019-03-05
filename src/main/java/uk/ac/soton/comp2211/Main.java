@@ -47,12 +47,12 @@ public class Main {
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD);
-
         PhysicalRunway physicalRunway2 = new PhysicalRunway(logicalRunway4, logicalRunway3,
                 RunwaySide.LOWER_THRESHOLD);
 
         airport.addRunway(physicalRunway);
         airport.addRunway(physicalRunway2);
+
 
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
