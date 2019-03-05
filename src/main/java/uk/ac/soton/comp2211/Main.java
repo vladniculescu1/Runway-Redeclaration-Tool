@@ -70,7 +70,7 @@ public class Main {
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
-        ShowCalculationController showCalculationController = new ShowCalculationController();
+        ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         
 
         // Validation example - TODO remove later

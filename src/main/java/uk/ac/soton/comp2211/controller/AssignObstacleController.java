@@ -10,14 +10,14 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.modal.AssignObstaclePanel;
-import uk.ac.soton.comp2211.view.modal.DisplayPopUpPanel;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 
 public class AssignObstacleController implements ActionListener {
 
     private String panelTitle = "Assign Obstacle to Runway";
     private RunwaySelection runwaySelection;
     private MainFrame mainFrame;
-    private DisplayPopUpPanel displayPopUpPanel;
+    private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
     
     /**
@@ -26,7 +26,7 @@ public class AssignObstacleController implements ActionListener {
      */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
-        displayPopUpPanel = new DisplayPopUpPanel(mainFrame, panelTitle);
+        displayPopUpFrame = new DisplayPopUpFrame(mainFrame, panelTitle);
     }
     
     public void addMainFrame(MainFrame mainFrame)  {
@@ -39,7 +39,7 @@ public class AssignObstacleController implements ActionListener {
 
             case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
                 assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
-                displayPopUpPanel.create(assignObstaclePanel);
+                displayPopUpFrame.create(assignObstaclePanel);
                 break;
             }
             case ObstaclePanel.REMOVE_BUTTON_COMMAND: {
@@ -82,13 +82,13 @@ public class AssignObstacleController implements ActionListener {
                     
                     runwaySelection.notifyUpdate();
                     
-                    displayPopUpPanel.close();
+                    displayPopUpFrame.close();
                 }
                 break;
             }
             case AssignObstaclePanel.CANCEL_BUTTON_COMMAND: {
                 assignObstaclePanel.setVisible(false);
-                displayPopUpPanel.close();
+                displayPopUpFrame.close();
                 
                 break;
             }

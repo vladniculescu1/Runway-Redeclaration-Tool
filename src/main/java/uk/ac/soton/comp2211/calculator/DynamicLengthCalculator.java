@@ -141,7 +141,7 @@ public class DynamicLengthCalculator extends Calculator {
      * @param runwayObstacle the obstacle to calculate the slope for
      * @return the slope calculation
      */
-    protected int getSlopeCalculation(RunwayObstacle runwayObstacle) {
+    public int getSlopeCalculation(RunwayObstacle runwayObstacle) {
         return runwayObstacle.getObstacle().getHeight() * 50;
     }
 
@@ -166,7 +166,14 @@ public class DynamicLengthCalculator extends Calculator {
         }
     }
 
-    protected boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
+    /**
+     * checks if the obstacle is closer to the given side.
+     * @param runwayObstacle the obstacle
+     * @param side the side to check
+     * @return
+     */
+
+    public boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
         int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance()
                 + constantLengthCalculator.getDisplacedThresholdLength(side);
         int distanceToOppositeThreshold = getLogicalRunwayForSide(RunwaySide.opposite(side))

@@ -20,7 +20,8 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  */
 public class DistancesPanel extends JPanel implements Observer {
 
-    public static final String SHOW_CALCULATION_BUTTON_COMMAND = "showCalculationButton";
+    public static final String SHOW_CALCULATION_BUTTON_COMMAND_LOWER = "showCalculationButtonLower";
+    public static final String SHOW_CALCULATION_BUTTON_COMMAND_HIGHER = "showCalculationButtonHigher";
 
     private RunwaySelection runwaySelection;
 
@@ -30,7 +31,8 @@ public class DistancesPanel extends JPanel implements Observer {
     private JLabel lowerPanelLabel;
     private DefaultTableModel lowerTableModel;
 
-    private JButton showCalculation;
+    private JButton showCalculationLower;
+    private JButton showCalculationHigher;
     
     /**
      * Constructs a new distances panel.
@@ -45,7 +47,8 @@ public class DistancesPanel extends JPanel implements Observer {
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
         this.higherPanelLabel = new JLabel("Higher threshold");
-        this.showCalculation = new JButton("Show Calculation");
+        this.showCalculationLower = new JButton("Show Calculation");
+        this.showCalculationHigher = new JButton("Show Calculation");
 
         this.lowerTableModel = new DefaultTableModel(header, 4) {
             public boolean isCellEditable(int i, int i1) {
@@ -78,17 +81,25 @@ public class DistancesPanel extends JPanel implements Observer {
         higherPanel.add(higherTable,BorderLayout.CENTER);
         higherPanel.add(higherTable.getTableHeader(),BorderLayout.NORTH);
 
-        showCalculation.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND);
-        showCalculation.addActionListener(showCalculationController);
+        showCalculationController.setLowerTable(lowerTable);
+        showCalculationController.setHigherTable(higherTable);
+
+        showCalculationLower.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND_LOWER);
+        showCalculationLower.addActionListener(showCalculationController);
+
+        showCalculationHigher.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND_HIGHER);
+        showCalculationHigher.addActionListener(showCalculationController);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
         gridBag.row().separator();
+        gridBag.row().cell(showCalculationLower).fillX();
+        gridBag.row().separator();
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
         gridBag.row().separator();
-        gridBag.row().cell(showCalculation).fillX();
+        gridBag.row().cell(showCalculationHigher).fillX();
         gridBag.doneAndPushEverythingToTop();
 
         notifyUpdate();
