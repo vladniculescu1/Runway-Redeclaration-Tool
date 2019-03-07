@@ -5,7 +5,10 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
-public class SlopeDrawer implements Drawer {
+/**
+ * Draws the TOCS distance if an obstacle is present.
+ */
+public class TocsDrawer implements Drawer {
 
 
     @Override

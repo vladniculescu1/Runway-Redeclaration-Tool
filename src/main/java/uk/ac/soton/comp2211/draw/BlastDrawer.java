@@ -5,6 +5,9 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
+/**
+ * Draws the blast protection distance if an obstacle is present.
+ */
 public class BlastDrawer implements Drawer {
 
 

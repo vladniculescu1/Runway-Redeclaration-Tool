@@ -5,6 +5,9 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
+/**
+ * Draws the RESA if an obstacle is present.
+ */
 public class ResaDrawer implements Drawer {
 
 
