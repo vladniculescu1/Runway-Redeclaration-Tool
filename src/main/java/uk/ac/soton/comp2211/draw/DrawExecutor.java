@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.draw;
 
 import uk.ac.soton.comp2211.calculator.Calculator;
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class DrawExecutor {
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
         this.setupGraphics(g2d, panelWidth, panelHeight);
         if (runwaySelection.hasSelectedRunway()) {
-            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection));
+            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
         }
     }
 
@@ -48,7 +49,7 @@ public class DrawExecutor {
      * @param panelHeight the height of the panel
      */
     private void setupGraphics(Graphics2D g2d, int panelWidth, int panelHeight) {
-        Calculator calculator = runwaySelection.getSelectedRunway().getCalculator();
+        ConstantLengthCalculator calculator = runwaySelection.getSelectedRunway().getConstantLengthCalculator();
 
         // the margin around the draw display according to the font size
         var margin = g2d.getFontMetrics().getHeight() * DrawConstants.DRAW_MARGIN;

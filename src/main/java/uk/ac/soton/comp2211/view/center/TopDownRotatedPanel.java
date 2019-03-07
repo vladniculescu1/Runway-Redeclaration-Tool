@@ -35,17 +35,24 @@ public class TopDownRotatedPanel extends JPanel implements Observer {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         BufferedImage image = this.getImage();
+        double rotationAngle =
+                Math.toRadians((runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10);
 
         // create the transform, note that the transformations happen in reversed order (so check them backwards)
         AffineTransform at = new AffineTransform();
-        // 3. translate it to the center of the component
+        // 4. translate it to the center of the component
         at.translate(this.getWidth() / 2, this.getHeight() / 2);
+
+        // 3. scale the image
+        at.scale(this.getHeight() / ((this.getWidth() * Math.abs(Math.cos(rotationAngle)))
+                        + (this.getHeight() * Math.abs(Math.sin(rotationAngle)))),
+                this.getHeight() / ((this.getWidth() * Math.abs(Math.cos(rotationAngle)))
+                        + (this.getHeight() * Math.abs(Math.sin(rotationAngle)))));
+
         // 2. do the actual rotation
-        // at.rotate(0);
-        at.rotate(Math.toRadians(90 + (runwaySelection.getSelectedRunway().getLowerThreshold().getHeading()) * 10));
+        at.rotate(Math.toRadians(90) + rotationAngle);
         // 1. translate the object so that you rotate it around the center
         at.translate(-image.getWidth() / 2, -image.getHeight() / 2);
-
         g2d.drawImage(image, at,null);
     }
 

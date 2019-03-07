@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
@@ -12,7 +13,7 @@ public interface Drawer {
     /**
      * Draw a certain shape on the panel using the supplied graphics object and runway selection.
      * @param g2d the graphics object used for drawing
-     * @param runwaySelection the current runway selection
+     * @param physicalRunway the current selected runway
      */
-    void draw(Graphics2D g2d, RunwaySelection runwaySelection);
+    void draw(Graphics2D g2d, PhysicalRunway physicalRunway);
 }

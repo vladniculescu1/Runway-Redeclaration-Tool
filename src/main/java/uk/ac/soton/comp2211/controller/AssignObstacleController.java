@@ -55,7 +55,7 @@ public class AssignObstacleController implements ActionListener {
                             runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(runwayObstacle);
                             runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(
                                     new RunwayObstacle(
-                                            runwaySelection.getSelectedRunway().getCalculator()
+                                            runwaySelection.getSelectedRunway().getDynamicLengthCalculator()
                                                 .getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD),
                                             runwayObstacle.getCentreLineDistance(),
                                             runwayObstacle.getObstacle()));  
@@ -65,7 +65,7 @@ public class AssignObstacleController implements ActionListener {
                             runwaySelection.getSelectedRunway().getLowerThreshold().setRunwayObstacle(runwayObstacle);
                             runwaySelection.getSelectedRunway().getHigherThreshold().setRunwayObstacle(
                                     new RunwayObstacle(
-                                            runwaySelection.getSelectedRunway().getCalculator()
+                                            runwaySelection.getSelectedRunway().getDynamicLengthCalculator()
                                                 .getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD),
                                             runwayObstacle.getCentreLineDistance(),
                                             runwayObstacle.getObstacle()));
