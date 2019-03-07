@@ -106,12 +106,21 @@ public class PhysicalRunway {
         return this.lowerThreshold.getRunwayObstacle().getObstacle();
     }
 
-    public RunwayObstacle getRunwayObstacle() {
-        return this.lowerThreshold.getRunwayObstacle();
+    public RunwayObstacle getRunwayObstacle(RunwaySide side) {
+        switch (side) {
+            case LOWER_THRESHOLD:
+                return this.lowerThreshold.getRunwayObstacle();
+            case HIGHER_THRESHOLD:
+                return this.higherThreshold.getRunwayObstacle();
+            default:
+                throw new IllegalArgumentException("Cannot get obstacle for side " + side);
+        }
+
+        // return this.lowerThreshold.getRunwayObstacle();
     }
 
     public RunwaySide getObstacleSide() {
-        var runwayObstacle = this.getRunwayObstacle();
+        var runwayObstacle = this.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD);
         if (dynamicLengthCalculator.checkSide(runwayObstacle, RunwaySide.LOWER_THRESHOLD)) {
             return RunwaySide.LOWER_THRESHOLD;
         } else {

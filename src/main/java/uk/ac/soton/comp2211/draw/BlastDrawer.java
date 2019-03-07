@@ -5,7 +5,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
 
-public class ResaDrawer implements Drawer {
+public class BlastDrawer implements Drawer {
 
 
     @Override
@@ -17,27 +17,29 @@ public class ResaDrawer implements Drawer {
             var lengthCalculator = physicalRunway.getConstantLengthCalculator();
 
             var obstacleSide = physicalRunway.getObstacleSide();
-            var resaStart = positionCalculator.getResaPosition();
-            var resa = lengthCalculator.getResa();
+            var blastStart = positionCalculator.getBlastProtectionPosition();
+            var blast = lengthCalculator.getBlastProtection();
 
             if (obstacleSide == physicalRunway.getRunwayDirection()) {
 
-                if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, resaStart, resa, DrawConstants.TORA_POSITION, "RESA", 0.75F);
-                } else {
-                    DrawUtils.labelledDistance(g2d, resaStart, -resa, DrawConstants.TORA_POSITION, "RESA", 0.75F);
 
+                if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
+                    DrawUtils.labelledDistance(g2d, blastStart, blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
+                } else {
+                    DrawUtils.labelledDistance(g2d, blastStart, -blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
                 }
 
             } else {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, resaStart + resa, -resa, DrawConstants.LDA_POSITION, "RESA", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart + blast, -blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
                 } else {
-                    DrawUtils.labelledDistance(g2d, resaStart - resa, resa, DrawConstants.LDA_POSITION, "RESA", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart - blast, blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
                 }
 
+
             }
+
 
         }
 

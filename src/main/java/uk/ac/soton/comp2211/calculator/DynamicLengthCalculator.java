@@ -43,6 +43,7 @@ public class DynamicLengthCalculator extends Calculator {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
+                    - physicalRunway.getObstacle().getLength()
                     - constantLengthCalculator.getBlastProtection()
                     - constantLengthCalculator.getDisplacedThresholdLength(side);
         } else {
@@ -130,7 +131,10 @@ public class DynamicLengthCalculator extends Calculator {
             if (slopeCalculation < constantLengthCalculator.getBlastProtection()) {
                 slopeCalculation = constantLengthCalculator.getBlastProtection();
             }
-            return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - slopeCalculation;
+            return runway.getOriginalLda()
+                    - runwayObstacle.getThresholdDistance()
+                    - physicalRunway.getObstacle().getLength()
+                    - slopeCalculation;
         } else {
             //Plane landing towards obstacle
             return runwayObstacle.getThresholdDistance() - constantLengthCalculator.getResa() - constantLengthCalculator.getStripMargin();

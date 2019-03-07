@@ -7,6 +7,7 @@ import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.RunwaySide;
 
 /**
  * Draws the obstacle onto the runway.
@@ -19,14 +20,29 @@ public class ObstacleDrawer implements Drawer {
         if (physicalRunway.hasObstacle()) {
             DynamicPositionCalculator calc = physicalRunway.getDynamicPositionCalculator();
 
+            RunwaySide obstacleSide = physicalRunway.getObstacleSide();
             int leftX = calc.getObstaclePosition();
             int length = physicalRunway.getObstacle().getLength();
             double offsetY = 0;
-            if (physicalRunway.getRunwayObstacle().getCentreLineDistance() != 0) {
-                offsetY = 1.5 + physicalRunway.getRunwayObstacle().getCentreLineDistance() / 30;
+
+            if (physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() != 0) {
+                offsetY = 1.5 + physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 30;
             }
-            
-            DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY, length, 3, "Obstacle");
+
+            switch (obstacleSide) {
+                case LOWER_THRESHOLD: {
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY, length, 3, "OBS");
+                    break;
+                }
+
+                case HIGHER_THRESHOLD: {
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX-length, offsetY, length, 3, "OBS");
+                    break;
+                }
+
+                default:
+                    throw new UnsupportedOperationException("Cannot draw obstacle for side " + obstacleSide);
+            }
 
         }
     }

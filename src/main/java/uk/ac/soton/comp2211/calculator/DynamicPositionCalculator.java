@@ -47,10 +47,12 @@ public class DynamicPositionCalculator extends Calculator {
                     case LOWER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
+                                + physicalRunway.getObstacle().getLength()
                                 + temporaryThresholdLength;
                     case HIGHER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
+                                - physicalRunway.getObstacle().getLength()
                                 - temporaryThresholdLength;
                     default:
                         return 0;
@@ -80,10 +82,12 @@ public class DynamicPositionCalculator extends Calculator {
                     case LOWER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
+                                + physicalRunway.getObstacle().getLength()
                                 + constantLengthCalculator.getBlastProtection();
                     case HIGHER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
+                                - physicalRunway.getObstacle().getLength()
                                 - constantLengthCalculator.getBlastProtection();
                     default:
                         return 0;
@@ -103,22 +107,33 @@ public class DynamicPositionCalculator extends Calculator {
      */
 
     public int getObstaclePosition() {
-        return physicalRunway.getRunwayObstacle().getThresholdDistance()
-                + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-    }
-
-    public int getResaPosition() {
 
         var obstacleSide = physicalRunway.getObstacleSide();
 
         switch (obstacleSide) {
             case LOWER_THRESHOLD:
-                return this.getObstaclePosition() + physicalRunway.getObstacle().getLength() +  constantLengthCalculator.getResa();
+                return constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD)
+                        + physicalRunway.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD).getThresholdDistance();
             case HIGHER_THRESHOLD:
-                return this.getObstaclePosition() - physicalRunway.getObstacle().getLength();
+                return constantPositionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD)
+                        - physicalRunway.getRunwayObstacle(RunwaySide.HIGHER_THRESHOLD).getThresholdDistance();
             default:
-                throw new UnsupportedOperationException("Cannot calculate RESA position for side " + obstacleSide);
+                throw new UnsupportedOperationException("Cannot get obstacle position for side " + obstacleSide);
+
         }
+
+//        return physicalRunway.getRunwayObstacle().getThresholdDistance()
+//                + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+
+
+    }
+
+    public int getResaPosition() {
+        return getSlopePosition();
+    }
+
+    public int getBlastProtectionPosition() {
+        return getSlopePosition();
     }
 
     public int getSlopePosition() {
