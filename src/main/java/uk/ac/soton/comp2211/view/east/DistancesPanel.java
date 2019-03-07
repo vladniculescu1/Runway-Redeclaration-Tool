@@ -26,6 +26,8 @@ public class DistancesPanel extends JPanel implements Observer {
 
     private JLabel lowerPanelLabel;
     private DefaultTableModel lowerTableModel;
+
+    private JButton showCalculation;
     
     /**
      * Constructs a new distances panel.
@@ -39,6 +41,7 @@ public class DistancesPanel extends JPanel implements Observer {
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
         this.higherPanelLabel = new JLabel("Higher threshold");
+        this.showCalculation = new JButton("Show Calculation");
 
         this.lowerTableModel = new DefaultTableModel(header, 4) {
             public boolean isCellEditable(int i, int i1) {
@@ -77,6 +80,8 @@ public class DistancesPanel extends JPanel implements Observer {
         gridBag.row().separator();
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
+        gridBag.row().separator();
+        gridBag.row().cell(showCalculation).fillX();
         gridBag.doneAndPushEverythingToTop();
 
         notifyUpdate();
