@@ -111,7 +111,7 @@ public class DrawUtils {
      *
      * @param g2d the graphics2d object used for drawing
      * @param startX the start position of the line/value
-     * @param distance the value of the distance (ASDA,TORA,TODA,LDA)
+     * @param distance the value of the distance
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
      */
@@ -123,7 +123,8 @@ public class DrawUtils {
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,
                 startX + distance, height - fontHeight / 4);
-        g2d.drawString(text, 5, (int) (height - fontHeight * 0.2));
+        
+        g2d.drawString(text, (startX + startX + distance) / 6, (int) (height - fontHeight * 0.4));
 
         
         drawArrowLine(g2d,startX,height,startX + distance,height, fontHeight / 2, fontHeight / 4);

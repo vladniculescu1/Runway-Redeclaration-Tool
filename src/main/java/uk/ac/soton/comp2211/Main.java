@@ -59,7 +59,7 @@ public class Main {
 
         List<Drawer> topDownDrawer = List.of(
 
-                new SurroundingsDrawer(), new StripDrawer(),
+                new SurroundingsDrawer(), new StripDrawer(), new DirectionArrowDrawer(),
                 new StopwayDrawer(), new ClearwayDrawer(),
                 new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
