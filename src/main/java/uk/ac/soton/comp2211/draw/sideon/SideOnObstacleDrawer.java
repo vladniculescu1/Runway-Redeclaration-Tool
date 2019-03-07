@@ -26,9 +26,9 @@ public class SideOnObstacleDrawer implements Drawer {
                     .getRunwayObstacle().getObstacle().getLength();
             
           
-            DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX,  
+            DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX,  
                     height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
-                    length, height, "Obstacle");
+                    length, height, "OBS");
         }
     }
 }
