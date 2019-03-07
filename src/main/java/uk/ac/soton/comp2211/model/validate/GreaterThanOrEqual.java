@@ -2,14 +2,12 @@ package uk.ac.soton.comp2211.model.validate;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {GreaterThanOrEqualValidator.class})
+@Repeatable(GreaterThanOrEqual.List.class)
 public @interface GreaterThanOrEqual {
 
     /**
@@ -42,5 +40,11 @@ public @interface GreaterThanOrEqual {
      * @return the name of the comparison field.
      */
     String comparisonField();
+
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.TYPE})
+    @interface List {
+        GreaterThanOrEqual[] value();
+    }
 
 }

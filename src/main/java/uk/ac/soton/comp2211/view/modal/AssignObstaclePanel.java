@@ -128,7 +128,7 @@ public class AssignObstaclePanel extends JPanel implements Observer {
     
     /**
      * Returns the runway obstacle created from the options on this panel.
-     * @return null if not valid inputs, otherwise the runway obstacle
+     * @return Empty if not valid inputs, otherwise the runway obstacle
      */
     public Optional<RunwayObstacle> getObstacleFromInputs() {
         String issues = "";

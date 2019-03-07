@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.util.Optional;
 
 public class RunwaySelectionController implements ActionListener {
 
@@ -50,6 +51,10 @@ public class RunwaySelectionController implements ActionListener {
                 break;
             }
             case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
+                Optional<PhysicalRunway> runwayOptional = addRunwayPanel.getRunwayFromInputs();
+                if (runwayOptional.isPresent()) {
+                    //TODO
+                }
                 break;
             }
             case AddRunwayPanel.RUNWAY_CANCEL_BUTTON: {
