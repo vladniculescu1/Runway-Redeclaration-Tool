@@ -42,6 +42,7 @@ public class SideOnObstacleDrawer implements Drawer {
                 }
                 default:
                     throw new UnsupportedOperationException("Cannot draw obstacle for side " + obstacleSide);
+            
             }
         }
     }

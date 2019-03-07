@@ -17,24 +17,26 @@ public class SideOnSlopeDrawer implements Drawer {
         
         if (physicalRunway.hasObstacle()) {
             
-            RunwaySide side = physicalRunway.getRunwayDirection();
+            RunwaySide side = physicalRunway.getObstacleSide();
             DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
-            DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();
-    
+            DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();        
             
-            
-            int startX = positionCalculator.getTakeOffObstacleOffset(side);
-            int distance = lengthCalculator.getTora(side);
-    
+            int startY = -(physicalRunway.getObstacle().getHeight() * g2d.getFontMetrics().getHeight() / 6) 
+                    - (g2d.getFontMetrics().getHeight() / 4);
+
             switch (side) {
                 case LOWER_THRESHOLD:
                     // DrawUtils.angledDashedLabelledDistance(g2d, positionCalculator.getObstaclePosition(),
                     // physicalRunway.getObstacle().getHeight(), lengthCalculator.getSlopeCalculation(), 0, "00");
-                    g2d.drawLine(positionCalculator.getObstaclePosition(), 0, 2000, 0);
+                    g2d.drawLine(positionCalculator.getObstaclePosition() + physicalRunway.getObstacle().getLength(), 
+                            startY, lengthCalculator.getSlopeCalculation() + positionCalculator.getSlopePosition(), 0);
+                    
                     break;
                 case HIGHER_THRESHOLD:
-                    DrawUtils.angledDashedLabelledDistance(g2d, positionCalculator.getObstaclePosition(),
-                            physicalRunway.getObstacle().getHeight(), lengthCalculator.getSlopeCalculation(), 0, "000");
+                    //DrawUtils.angledDashedLabelledDistance(g2d, positionCalculator.getObstaclePosition(),
+                    //physicalRunway.getObstacle().getHeight(), lengthCalculator.getSlopeCalculation(), 0, "000");
+                    g2d.drawLine(positionCalculator.getObstaclePosition() - physicalRunway.getObstacle().getLength(), 
+                            startY, positionCalculator.getSlopePosition() - lengthCalculator.getSlopeCalculation(), 0);
                     break;
                 default:
                     throw new UnsupportedOperationException("Cannot draw ASL for side " + side);
