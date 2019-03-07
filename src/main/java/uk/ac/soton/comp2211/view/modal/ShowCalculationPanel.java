@@ -1,15 +1,18 @@
 package uk.ac.soton.comp2211.view.modal;
 
 import uk.ac.soton.comp2211.calculator.Calculator;
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.model.*;
 
 import javax.swing.*;
 
 public class ShowCalculationPanel extends JPanel {
-    private LogicalRunway logicalRunway;
+    private DynamicLengthCalculator dynamicLengthCalculator;
+    private ConstantLengthCalculator constantLengthCalculator;
     private RunwaySide runwaySide;
-    private RunwayObstacle runwayObstacle;
+    private LogicalRunway logicalRunway;
+    private PhysicalRunway physicalRunway;
     /**
      * Constructor for the show calculation panel.
      * @param physicalRunway the physical runway
@@ -21,6 +24,9 @@ public class ShowCalculationPanel extends JPanel {
         this.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.runwaySide = runwaySide;
+        this.physicalRunway = physicalRunway;
+        dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+        constantLengthCalculator = physicalRunway.getConstantLengthCalculator();
 
         switch (runwaySide) {
             case HIGHER_THRESHOLD:
@@ -32,9 +38,10 @@ public class ShowCalculationPanel extends JPanel {
             default:
                 throw new UnsupportedOperationException();
         }
+
         switch (rowNumber) {
             case 0:
-                showLdaCalculation(physicalRunway.getDynamicLengthCalculator());
+                showLdaCalculation();
                 break;
             case 1:
                 showTodaCalculation(physicalRunway.getDynamicLengthCalculator());
@@ -48,28 +55,34 @@ public class ShowCalculationPanel extends JPanel {
             default:
                 throw new UnsupportedOperationException();
         }
-        if (logicalRunway.hasRunwayObstacle()) {
-            this.runwayObstacle = logicalRunway.getRunwayObstacle();
-        }
+
     }
 
-    private void showLdaCalculation(DynamicLengthCalculator calculator) {
-
-        if (logicalRunway.hasRunwayObstacle()) {
-            if (calculator.checkSide(runwayObstacle, runwaySide)) {
-                //Landing over
-                this.add(new JLabel("LDA = OriginalLDA - Distance From Threshold - Slope Calculation - Strip End"));
-                this.add(new JLabel("    = " + logicalRunway.getOriginalLda() + " - "
-                        + runwayObstacle.getThresholdDistance()
-                        + " - (" + runwayObstacle.getObstacle().getHeight() + "*50) - 60"));
+    private void showLdaCalculation() {
+        if (physicalRunway.hasObstacle()) {
+            RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
+            if (physicalRunway.getObstacleSide() == runwaySide) {
+                //Landing Over
+                this.add(new JLabel("LDA = Original LDA - Distance From Threshold "
+                       + "- Obstacle Length - Slope Calculation = Strip End"));
+                this.add(new JLabel("LDA = " + logicalRunway.getOriginalLda() + " - "
+                        + runwayObstacle.getThresholdDistance() + " - "
+                        + runwayObstacle.getObstacle().getLength()
+                        + " - " + dynamicLengthCalculator.getSlopeCalculation()
+                        + " - "+ constantLengthCalculator.getStripMargin()));
             } else {
-                //Landing towards
-                this.add(new JLabel("LDA = Distance From Threshold - Strip End - RESA "));
+              //Landing Towards
+                this.add(new JLabel("LDA = Distance From Threshold - RESA - Strip End"));
+                this.add(new JLabel("    = " + runwayObstacle.getThresholdDistance() + " - "
+                        + constantLengthCalculator.getResa() + " - "
+                        + constantLengthCalculator.getStripMargin()));
             }
+
         } else {
+            //No obstacle
             this.add(new JLabel("LDA = Original LDA"));
         }
-        this.add(new JLabel("LDA = " + calculator.getLda(runwaySide)));
+        this.add(new JLabel("LDA = " + dynamicLengthCalculator.getLda(runwaySide)));
     }
 
     private void showToraCalculation(DynamicLengthCalculator calculator) {

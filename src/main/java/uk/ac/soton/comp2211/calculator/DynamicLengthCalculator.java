@@ -10,6 +10,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * change when an object is added.
  */
 public class DynamicLengthCalculator extends Calculator {
+
     private ConstantLengthCalculator constantLengthCalculator;
     private ConstantPositionCalculator constantPositionCalculator;
 
@@ -42,18 +43,19 @@ public class DynamicLengthCalculator extends Calculator {
             //Plane taking-off away from obstacle
             return runway.getOriginalTora()
                     - runwayObstacle.getThresholdDistance()
-                    - blastProtectionValue
+                    - physicalRunway.getObstacle().getLength()
+                    - constantLengthCalculator.getBlastProtection()
                     - constantLengthCalculator.getDisplacedThresholdLength(side);
         } else {
             //Plane taking-off towards obstacle
-            int slopeCalculation = getSlopeCalculation(runwayObstacle);
-            if (slopeCalculation < resaValue) {
-                slopeCalculation = resaValue;
+            int slopeCalculation = getSlopeCalculation();
+            if (slopeCalculation < constantLengthCalculator.getResa()) {
+                slopeCalculation = constantLengthCalculator.getResa();
             }
             return runwayObstacle.getThresholdDistance()
                     + constantLengthCalculator.getDisplacedThresholdLength(side)
                     - slopeCalculation
-                    - stripValue;
+                    - constantLengthCalculator.getStripMargin();
         }
     }
 
@@ -125,24 +127,20 @@ public class DynamicLengthCalculator extends Calculator {
 
         if (distanceToOppositeThreshold > distanceToCurrentThreshold) {
             //Plane landing over obstacle
-            int slopeCalculation = getSlopeCalculation(runwayObstacle) + stripValue;
-            if (slopeCalculation < blastProtectionValue) {
-                slopeCalculation = blastProtectionValue;
+            int slopeCalculation = getSlopeCalculation() + constantLengthCalculator.getStripMargin();
+            if (slopeCalculation < constantLengthCalculator.getBlastProtection()) {
+                slopeCalculation = constantLengthCalculator.getBlastProtection();
             }
-            return runway.getOriginalLda() - runwayObstacle.getThresholdDistance() - slopeCalculation;
+            return runway.getOriginalLda()
+                    - runwayObstacle.getThresholdDistance()
+                    - physicalRunway.getObstacle().getLength()
+                    - slopeCalculation;
         } else {
             //Plane landing towards obstacle
-            return runwayObstacle.getThresholdDistance() - resaValue - stripValue;
+            return runwayObstacle.getThresholdDistance()
+                    - constantLengthCalculator.getResa()
+                    - constantLengthCalculator.getStripMargin();
         }
-    }
-
-    /**
-     * calculates the 1/50 slope for an obstacle.
-     * @param runwayObstacle the obstacle to calculate the slope for
-     * @return the slope calculation
-     */
-    public int getSlopeCalculation(RunwayObstacle runwayObstacle) {
-        return runwayObstacle.getObstacle().getHeight() * 50;
     }
 
     /**
@@ -167,12 +165,20 @@ public class DynamicLengthCalculator extends Calculator {
     }
 
     /**
-     * checks if the obstacle is closer to the given side.
-     * @param runwayObstacle the obstacle
-     * @param side the side to check
-     * @return
+     * calculates the 1/50 slope for an obstacle.
+     * @return the slope calculation
      */
+    public int getSlopeCalculation() {
+        return physicalRunway.getObstacle().getHeight() * 50;
+    }
 
+    /**
+     * Checks the side of the runway obstacle.
+     *
+     * @param runwayObstacle the runway obstacle
+     * @param side teh runway side
+     * @return true if the obstacle is on the specified side, false otherwise
+     */
     public boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
         int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance()
                 + constantLengthCalculator.getDisplacedThresholdLength(side);
@@ -186,4 +192,5 @@ public class DynamicLengthCalculator extends Calculator {
         //closer to opposite threshold
         return false;
     }
+
 }

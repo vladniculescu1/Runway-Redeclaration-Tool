@@ -32,6 +32,12 @@
             <version>5.3.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-report-plugin</artifactId>
+            <version>3.0.0-M3</version>
+            <type>maven-plugin</type>
+        </dependency>
 
         <!-- Checkstyle for static code analysis -->
         <dependency>
@@ -72,6 +78,7 @@
     <build>
 
         <resources>
+
             <!-- adding java sourcecode and resources to final jar -->
             <resource>
                 <directory>src/main/java</directory>
@@ -85,6 +92,30 @@
             <resource>
                 <directory>src/test/resources</directory>
             </resource>
+
+            <!-- adding junit test report & checkstyle report resources to final jar -->
+            <resource>
+                <directory>target/site</directory>
+                <includes>
+                    <include>*.html</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>*/*.css</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>*/*.gif</include>
+                    <include>*/*.png</include>
+                    <include>*/logos/*.gif</include>
+                    <include>*/logos/*.png</include>
+                </includes>
+            </resource>
+
         </resources>
 
         <plugins>
@@ -97,42 +128,6 @@
                     <source>${project.javaversion}</source>
                     <target>${project.javaversion}</target>
                 </configuration>
-            </plugin>
-
-            <!-- run checkstyle -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <configLocation>checkstyle.xml</configLocation>
-                            <encoding>UTF-8</encoding>
-                            <consoleOutput>true</consoleOutput>
-                            <failsOnError>true</failsOnError>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>8.17</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <!-- run unit tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
             </plugin>
 
             <!-- clean all previous build artifacts -->
@@ -156,6 +151,55 @@
                 </configuration>
             </plugin>
 
+            <!-- run checkstyle and generate report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <configLocation>checkstyle.xml</configLocation>
+                            <encoding>UTF-8</encoding>
+                            <consoleOutput>true</consoleOutput>
+                            <failsOnError>true</failsOnError>
+                        </configuration>
+                        <goals>
+                            <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.17</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- run unit tests and generate test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- generate javadoc and get it ready for packaging -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -172,6 +216,21 @@
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- specifying phase for maven resources plugin (to include test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>filter</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>resources</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -208,6 +267,22 @@
 
     <reporting>
         <plugins>
+
+            <!-- disable default maven project reports -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+                <reportSets>
+                    <reportSet>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- checkstyle report -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -223,8 +298,15 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+
+            <!--junit test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M3</version>
+            </plugin>
+
         </plugins>
     </reporting>
-
 
 </project>
