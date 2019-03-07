@@ -106,6 +106,12 @@ public class PhysicalRunway {
         return this.lowerThreshold.getRunwayObstacle().getObstacle();
     }
 
+    /**
+     * Returns the runway obstacle for the specified runway side.
+     *
+     * @param side side of the runway
+     * @return the runway obstacle
+     */
     public RunwayObstacle getRunwayObstacle(RunwaySide side) {
         switch (side) {
             case LOWER_THRESHOLD:
@@ -115,10 +121,13 @@ public class PhysicalRunway {
             default:
                 throw new IllegalArgumentException("Cannot get obstacle for side " + side);
         }
-
-        // return this.lowerThreshold.getRunwayObstacle();
     }
 
+    /**
+     * Checks the side of the runway obstacle.
+     *
+     * @return the side of the runway obstacle
+     */
     public RunwaySide getObstacleSide() {
         var runwayObstacle = this.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD);
         if (dynamicLengthCalculator.checkSide(runwayObstacle, RunwaySide.LOWER_THRESHOLD)) {

@@ -39,7 +39,8 @@ public class DynamicPositionCalculator extends Calculator {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
             if (dynamicLengthCalculator.checkSide(runwayObstacle, side)) {
                 //Landing over obstacle
-                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation() + constantLengthCalculator.getStripMargin();
+                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation()
+                        + constantLengthCalculator.getStripMargin();
                 if (temporaryThresholdLength < constantLengthCalculator.getBlastProtection()) {
                     temporaryThresholdLength = constantLengthCalculator.getBlastProtection();
                 }
@@ -100,12 +101,13 @@ public class DynamicPositionCalculator extends Calculator {
             return constantPositionCalculator.getRunwayPosition(side);
         }
     }
-    /**
-     * Calculates the position of the left side of the obstacle.
-     *
-     * @return the position of the left side of the obstacle.
-     */
 
+    /**
+     * Calculates the position of the left side of the obstacle if on the lower side, otherwise the right side of the
+     * obstacle.
+     *
+     * @return the position of the obstacle.
+     */
     public int getObstaclePosition() {
 
         var obstacleSide = physicalRunway.getObstacleSide();
@@ -122,10 +124,6 @@ public class DynamicPositionCalculator extends Calculator {
 
         }
 
-//        return physicalRunway.getRunwayObstacle().getThresholdDistance()
-//                + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-
-
     }
 
     public int getResaPosition() {
@@ -136,8 +134,12 @@ public class DynamicPositionCalculator extends Calculator {
         return getSlopePosition();
     }
 
+    /**
+     * Calculates the start position of the TOCS slope.
+     *
+     * @return start position of TOCS slope
+     */
     public int getSlopePosition() {
-
         var obstacleSide = physicalRunway.getObstacleSide();
 
         switch (obstacleSide) {

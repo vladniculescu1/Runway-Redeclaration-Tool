@@ -26,17 +26,19 @@ public class ObstacleDrawer implements Drawer {
             double offsetY = 0;
 
             if (physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() != 0) {
-                offsetY = 1.5 + physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 30;
+                offsetY = 1.5 + (double) physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 30;
             }
 
             switch (obstacleSide) {
                 case LOWER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY, length, 3, "OBS");
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY,
+                            length, 3, "OBS");
                     break;
                 }
 
                 case HIGHER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX-length, offsetY, length, 3, "OBS");
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX - length, offsetY,
+                            length, 3, "OBS");
                     break;
                 }
 

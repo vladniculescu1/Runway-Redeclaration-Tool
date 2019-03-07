@@ -137,7 +137,9 @@ public class DynamicLengthCalculator extends Calculator {
                     - slopeCalculation;
         } else {
             //Plane landing towards obstacle
-            return runwayObstacle.getThresholdDistance() - constantLengthCalculator.getResa() - constantLengthCalculator.getStripMargin();
+            return runwayObstacle.getThresholdDistance()
+                    - constantLengthCalculator.getResa()
+                    - constantLengthCalculator.getStripMargin();
         }
     }
 
@@ -170,6 +172,13 @@ public class DynamicLengthCalculator extends Calculator {
         return physicalRunway.getObstacle().getHeight() * 50;
     }
 
+    /**
+     * Checks the side of the runway obstacle.
+     *
+     * @param runwayObstacle the runway obstacle
+     * @param side teh runway side
+     * @return true if the obstacle is on the specified side, false otherwise
+     */
     public boolean checkSide(RunwayObstacle runwayObstacle, RunwaySide side) {
         int distanceToCurrentThreshold = runwayObstacle.getThresholdDistance()
                 + constantLengthCalculator.getDisplacedThresholdLength(side);

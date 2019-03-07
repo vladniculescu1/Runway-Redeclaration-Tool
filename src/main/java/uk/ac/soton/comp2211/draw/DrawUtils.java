@@ -83,7 +83,7 @@ public class DrawUtils {
      * @param text the name of the value
      */
     public static void labelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
-        labelledDistance(g2d, startX, distance, offset, text, 1 );
+        labelledDistance(g2d, startX, distance, offset, text, 1);
     }
 
     /**
@@ -94,6 +94,7 @@ public class DrawUtils {
      * @param distance the value of the distance (ASDA,TORA,TODA,LDA)
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
+     * @param fontSizeFactor a factor for the font size
      */
     public static void labelledDistance(Graphics2D g2d, int startX, int distance, double offset,
                                         String text, float fontSizeFactor) {

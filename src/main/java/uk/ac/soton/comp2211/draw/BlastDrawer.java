@@ -24,17 +24,21 @@ public class BlastDrawer implements Drawer {
 
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, blastStart, blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart, blast, DrawConstants.ASDA_POSITION, "BLAST",
+                            0.75F);
                 } else {
-                    DrawUtils.labelledDistance(g2d, blastStart, -blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart, -blast, DrawConstants.ASDA_POSITION, "BLAST",
+                            0.75F);
                 }
 
             } else {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, blastStart + blast, -blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart + blast, -blast, DrawConstants.ASDA_POSITION,
+                            "BLAST", 0.75F);
                 } else {
-                    DrawUtils.labelledDistance(g2d, blastStart - blast, blast, DrawConstants.ASDA_POSITION, "BLAST", 0.75F);
+                    DrawUtils.labelledDistance(g2d, blastStart - blast, blast, DrawConstants.ASDA_POSITION,
+                            "BLAST", 0.75F);
                 }
 
 
