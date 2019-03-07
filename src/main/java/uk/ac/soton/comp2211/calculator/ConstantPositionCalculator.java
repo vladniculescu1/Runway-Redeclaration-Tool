@@ -8,6 +8,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * not change when an object is added.
  */
 public class ConstantPositionCalculator extends Calculator {
+
     private ConstantLengthCalculator constantLengthCalculator;
 
     /**
@@ -82,7 +83,7 @@ public class ConstantPositionCalculator extends Calculator {
     public int getStripPosition() {
         return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 - constantLengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD)
-                - stripValue;
+                - constantLengthCalculator.getStripMargin();
     }
     /**
      * Calculates the position of the displaced threshold on the given side of the runway.
