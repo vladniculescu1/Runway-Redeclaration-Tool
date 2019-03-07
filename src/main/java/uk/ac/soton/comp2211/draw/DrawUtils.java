@@ -102,6 +102,8 @@ public class DrawUtils {
         int fontHeight = g2d.getFontMetrics().getHeight();
         int height = (int) (fontHeight * offset);
 
+        String distanceString = Math.abs(distance) + "m";
+
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,
                 startX + distance, height - fontHeight / 4);
@@ -112,13 +114,18 @@ public class DrawUtils {
                 BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_BEVEL,
                 0, new float[]{25}, 0));
+
         drawArrowLine(g2d,startX,height,startX + distance,height, fontHeight / 2, fontHeight / 4);
 
         g2d.setFont(font.deriveFont(font.getSize() * fontSizeFactor));
 
-        g2d.drawString(text, (startX + startX + distance) / 2, (int) (height - fontHeight * 0.2));
-        g2d.drawString(String.valueOf(Math.abs(distance)) + "m",
-                (startX + startX + distance) / 2,  (int) (height + fontHeight * 0.8));
+        int textWidth = g2d.getFontMetrics().stringWidth(text);
+        int distanceWidth = g2d.getFontMetrics().stringWidth(distanceString);
+
+        g2d.drawString(text,
+                (startX + startX + distance) / 2 - textWidth / 2, (int) (height - fontHeight * 0.2));
+        g2d.drawString(distanceString,
+                (startX + startX + distance) / 2 - distanceWidth / 2,  (int) (height + fontHeight * 0.8));
 
         g2d.setStroke(stroke);
         g2d.setFont(font);

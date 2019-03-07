@@ -31,13 +31,13 @@ public class ObstacleDrawer implements Drawer {
 
             switch (obstacleSide) {
                 case LOWER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX, offsetY,
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX, offsetY,
                             length, 3, "OBS");
                     break;
                 }
 
                 case HIGHER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.RED, leftX - length, offsetY,
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX - length, offsetY,
                             length, 3, "OBS");
                     break;
                 }
