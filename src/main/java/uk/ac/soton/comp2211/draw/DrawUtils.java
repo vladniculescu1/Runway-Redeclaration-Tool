@@ -156,6 +156,11 @@ public class DrawUtils {
 
         g2d.setFont(font);
     }
+    
+    public static void angledDashedLabelledDistance(Graphics2D g2d, int startX, int startY,
+            int endX, int endY, String text) {
+        g2d.drawLine(startX, startY, endX, endY);
+    }
 
     /**
      * Draw an arrow line between two points.

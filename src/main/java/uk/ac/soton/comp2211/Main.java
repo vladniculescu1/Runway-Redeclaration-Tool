@@ -72,6 +72,7 @@ public class Main {
         List<Drawer> sideOnDrawer = List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
                 new SideOnRunwayDrawer(), new SideOnThresholdDrawer(), 
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );

@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
+import uk.ac.soton.comp2211.model.RunwaySide;
 
 /**
  * Draws the obstacle onto the side-on runway.
@@ -16,19 +17,32 @@ public class SideOnObstacleDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
    
-        if (physicalRunway.getHigherThreshold().hasRunwayObstacle()) {
+        if (physicalRunway.hasObstacle()) {
+            
             DynamicPositionCalculator calc = physicalRunway.getDynamicPositionCalculator();
             
-            double height = (double) physicalRunway.getHigherThreshold().getRunwayObstacle()
-                    .getObstacle().getHeight() / 6;
+            RunwaySide obstacleSide = physicalRunway.getObstacleSide();
+            double height = (double) physicalRunway.getObstacle().getHeight() / 6;
             int leftX = calc.getObstaclePosition();
-            int length = physicalRunway.getHigherThreshold()
-                    .getRunwayObstacle().getObstacle().getLength();
+            int length = physicalRunway.getObstacle().getLength();
             
-          
-            DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX,  
-                    height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
-                    length, height, "OBS");
+            switch (obstacleSide) {
+                case LOWER_THRESHOLD: {
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX,  
+                            height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
+                            length, height, "OBS");
+                    break;
+                }
+    
+                case HIGHER_THRESHOLD: {
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX - length,  
+                            height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
+                            length, height, "OBS");
+                    break;
+                }
+                default:
+                    throw new UnsupportedOperationException("Cannot draw obstacle for side " + obstacleSide);
+            }
         }
     }
 }
