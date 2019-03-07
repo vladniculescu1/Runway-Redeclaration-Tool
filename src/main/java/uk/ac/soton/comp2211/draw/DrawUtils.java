@@ -82,7 +82,7 @@ public class DrawUtils {
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
      */
-    public static void dashedLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
+    public static void labelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
         int height = (int) (fontHeight * offset);

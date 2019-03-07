@@ -25,10 +25,10 @@ public class TodaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA");
+                DrawUtils.labelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA");
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA");
+                DrawUtils.labelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw TODA for side " + side);
