@@ -1,5 +1,8 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.draw.DrawConstants;
+import uk.ac.soton.comp2211.draw.DrawUtils;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.draw.shape.ChevronSeries;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
@@ -10,7 +13,7 @@ import java.awt.*;
 /**
  * Draws the stopways on both sides of the runway.
  */
-public class StopwayDrawer implements Drawer {
+public class TopDownStopwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
