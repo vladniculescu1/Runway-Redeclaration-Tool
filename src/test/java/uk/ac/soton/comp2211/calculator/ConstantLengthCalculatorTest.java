@@ -8,6 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ConstantLengthCalculatorTest {
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the stopway on the lower side is equal to 0
+     */
     @Test
     void getStopwayLength_NoStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -17,6 +22,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(0, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the stopway on the higher side is equal to 0
+     */
     @Test
     void getStopwayLength_NoStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -26,6 +36,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(0, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with stopway on the lower side and no clearway
+     * WHEN no further action is taken
+     * THEN the stopway on the lower side is equal to ASDA - TORA
+     */
     @Test
     void getStopwayLength_stopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.stopWayNoClearwayLower();
@@ -36,6 +51,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedStopway, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with stopway on the higher side and no clearway
+     * WHEN no further action is taken
+     * THEN the stopway on the higher side is equal to ASDA - TORA
+     */
     @Test
     void getStopwayLength_stopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayNoClearwayLower();
@@ -46,6 +66,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedStopway, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with stopway and clearway on the lower side
+     * WHEN no further action is taken
+     * THEN the stopway on the lower side is equal to ASDA - TORA
+     */
     @Test
     void getStopwayLength_stopWayClearwayLower() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
@@ -56,6 +81,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedStopway, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with stopway and clearway on the higher side
+     * WHEN no further action is taken
+     * THEN the stopway on the higher side is equal to ASDA - TORA
+     */
     @Test
     void getStopwayLength_stopWayClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
@@ -66,6 +96,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedStopway, actualStopway);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the clearway on the lower side is equal to 0
+     */
     @Test
     void getClearwayLength_NoStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -75,6 +110,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(0, actualClearway);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the clearway on the higher side is equal to 0
+     */
     @Test
     void getClearwayLength_NoStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -84,7 +124,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(0, actualClearway);
     }
 
-
+    /**
+     * GIVEN a runway with no stopway and clearway on the lower side
+     * WHEN no further action is taken
+     * THEN the clearway on the lower side is equal to TODA - ASDA
+     */
     @Test
     void getClearwayLength_noStopWayClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayClearwayLower();
@@ -95,6 +139,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedClearway, actualClearway);
     }
 
+    /**
+     * GIVEN a runway with no stopway and clearway on the higher side
+     * WHEN no further action is taken
+     * THEN the clearway on the higher side is equal to TODA - ASDA
+     */
     @Test
     void getClearwayLength_noStopWayClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
@@ -105,6 +154,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedClearway, actualClearway);
     }
 
+    /**
+     * GIVEN a runway with stopway and clearway on the lower side
+     * WHEN no further action is taken
+     * THEN the clearway on the lower side is equal to TODA - TORA
+     */
     @Test
     void getClearwayLength_stopWayClearwayLower() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
@@ -115,6 +169,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedClearway, actualClearway);
     }
 
+    /**
+     * GIVEN a runway with stopway and clearway on the higher side
+     * WHEN no further action is taken
+     * THEN the clearway on the higher side is equal to TODA - TORA
+     */
     @Test
     void getClearwayLength_stopWayClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
@@ -125,6 +184,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedClearway, actualClearway);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the runway margin length is equal to 60
+     */
     @Test
     void getRunwayMarginLength_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -134,19 +198,14 @@ class ConstantLengthCalculatorTest {
         assertEquals(60, actualMargin);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold and clearway on the lower side and no stopway
+     * WHEN no further action is taken
+     * THEN the runway margin length is equal to the clearway length of the higher threshold
+     */
     @Test
     void getRunwayMarginLength_displacedThresholdNoStopwayClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayClearwayLower();
-        var calculator = runway.getConstantLengthCalculator();
-        var expectedMargin = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
-
-        assertEquals(expectedMargin, actualMargin);
-    }
-
-    @Test
-    void getRunwayMarginLength_displacedThresholdNoStopwayClearwayHigher() {
-        PhysicalRunway runway = Runways.displacedThresholdNoStopwayClearwayHigher();
         var calculator = runway.getConstantLengthCalculator();
         var expectedMargin = calculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
         var actualMargin = calculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
@@ -154,6 +213,26 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedMargin, actualMargin);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold and clearway on the higher side and no stopway
+     * WHEN no further action is taken
+     * THEN the runway margin length is equal to the clearway length of the lower threshold
+     */
+    @Test
+    void getRunwayMarginLength_displacedThresholdNoStopwayClearwayHigher() {
+        PhysicalRunway runway = Runways.displacedThresholdNoStopwayClearwayHigher();
+        var calculator = runway.getConstantLengthCalculator();
+        var expectedMargin = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
+        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
+
+        assertEquals(expectedMargin, actualMargin);
+    }
+
+    /**
+     * GIVEN a runway with no clearway and no stopway
+     * WHEN no further action is taken
+     * THEN the runway length is equal to the TORA
+     */
     @Test
     void getRunwayLength_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -164,6 +243,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold, stopway and clearway on the lower side
+     * WHEN no further action is taken
+     * THEN the runway length is equal to the TORA
+     */
     @Test
     void getRunwayLength_displacedThresholdStopwayClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayLower();
@@ -174,6 +258,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold, stopway and clearway on the higher side
+     * WHEN no further action is taken
+     * THEN the runway length is equal to the TORA
+     */
     @Test
     void getRunwayLength_displacedThresholdStopwayClearwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
@@ -184,6 +273,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with no clearway and no stopway
+     * WHEN no further action is taken
+     * THEN the strip length is equal to 2 * strip margin + runway length
+     */
     @Test
     void getStripLength_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
@@ -194,6 +288,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold, stopway and clearway on the lower side
+     * WHEN no further action is taken
+     * THEN the strip length is equal to 2 * strip margin + runway length + both clearway lengths
+     */
     @Test
     void getStripLength_displacedThresholdStopwayClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdStopwayClearwayLower();
@@ -205,6 +304,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold, stopway and clearway on the higher side
+     * WHEN no further action is taken
+     * THEN the strip length is equal to 2 * strip margin + runway length + both clearway lengths
+     */
     @Test
     void getStripLength_displacedThresholdStopwayClearwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdStopwayClearwayHigher();
@@ -216,6 +320,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with no displaced threshold, no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the displaced threshold on the lower side is equal to TORA - LDA
+     */
     @Test
     void getDisplacedThresholdLength_noStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
@@ -226,6 +335,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with no displaced threshold, no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the displaced threshold on the higher side is equal to TORA - LDA
+     */
     @Test
     void getDisplacedThresholdLength_noStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
@@ -236,6 +350,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold on the lower side, no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the displaced threshold is equal to TORA - LDA
+     */
     @Test
     void getDisplacedThresholdLength_displacedThresholdClearwayStopwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdStopwayClearwayLower();
@@ -246,6 +365,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with a displaced threshold on the higher side, no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the displaced threshold is equal to TORA - LDA
+     */
     @Test
     void getDisplacedThresholdLength_displacedThresholdClearwayStopwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdStopwayClearwayHigher();
@@ -256,6 +380,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(expectedLength, actualLength);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the RESA is equal to 240
+     */
     @Test
     void getResa_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -265,6 +394,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(240, actualResa);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the blast protection is equal to 300
+     */
     @Test
     void getBlastProtection_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
@@ -274,6 +408,11 @@ class ConstantLengthCalculatorTest {
         assertEquals(300, actualBlastProtection);
     }
 
+    /**
+     * GIVEN a runway with no stopway and no clearway
+     * WHEN no further action is taken
+     * THEN the length of the strip margin is equal to 60
+     */
     @Test
     void getStripMargin_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
