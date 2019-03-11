@@ -51,7 +51,7 @@ public class ShowCalculationController implements ActionListener {
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             default:
-                throw new IllegalArgumentException("Unhandled command input.");
+                throw new UnsupportedOperationException("Operation not supported");
         }
     }
 }
