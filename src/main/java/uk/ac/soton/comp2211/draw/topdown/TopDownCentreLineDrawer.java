@@ -1,5 +1,7 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.draw.DrawConstants;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -10,7 +12,7 @@ import java.awt.geom.Line2D;
 /**
  * Draws the centre line of the runway as a dashed line.
  */
-public class CentreLineDrawer implements Drawer {
+public class TopDownCentreLineDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
