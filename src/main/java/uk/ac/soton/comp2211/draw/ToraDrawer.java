@@ -24,10 +24,10 @@ public class ToraDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.labelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA");
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.labelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw TORA for side " + side);

@@ -27,20 +27,20 @@ public class TocsDrawer implements Drawer {
 
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, slopeStart, slope, DrawConstants.LDA_POSITION, "TOCS",
+                    DrawUtils.dashedLabelledDistance(g2d, slopeStart, slope, DrawConstants.LDA_POSITION, "TOCS",
                             0.75F);
                 } else {
-                    DrawUtils.labelledDistance(g2d, slopeStart, -slope, DrawConstants.LDA_POSITION, "TOCS",
+                    DrawUtils.dashedLabelledDistance(g2d, slopeStart, -slope, DrawConstants.LDA_POSITION, "TOCS",
                             0.75F);
                 }
 
             } else {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.labelledDistance(g2d, slopeStart + slope, -slope, DrawConstants.TORA_POSITION,
+                    DrawUtils.dashedLabelledDistance(g2d, slopeStart + slope, -slope, DrawConstants.TORA_POSITION,
                             "TOCS", 0.75F);
                 } else {
-                    DrawUtils.labelledDistance(g2d, slopeStart - slope, slope, DrawConstants.TORA_POSITION,
+                    DrawUtils.dashedLabelledDistance(g2d, slopeStart - slope, slope, DrawConstants.TORA_POSITION,
                             "TOCS", 0.75F);
                 }
 

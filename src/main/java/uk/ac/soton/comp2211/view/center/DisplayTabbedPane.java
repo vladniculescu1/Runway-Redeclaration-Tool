@@ -20,7 +20,5 @@ public class DisplayTabbedPane extends JTabbedPane {
         this.addTab("Top Down Rotated", topDownRotatedPanel);
         this.addTab("Side On", sideOnPanel);
 
-        // disable side on tab
-        this.setEnabledAt(2, false);
     }
 }
