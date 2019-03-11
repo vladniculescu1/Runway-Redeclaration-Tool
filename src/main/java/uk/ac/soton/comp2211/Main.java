@@ -3,7 +3,18 @@ package uk.ac.soton.comp2211;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
+import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.draw.*;
+import uk.ac.soton.comp2211.draw.sideon.*;
+import uk.ac.soton.comp2211.draw.topdown.TopDownCentreLineDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownClearwayDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownDesignatorDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownObstacleDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownRunwayDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownStopwayDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownStripDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownSurroundingsDrawer;
+import uk.ac.soton.comp2211.draw.topdown.TopDownThresholdDrawer;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -46,26 +57,40 @@ public class Main {
 
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1,
                 RunwaySide.LOWER_THRESHOLD);
-
         PhysicalRunway physicalRunway2 = new PhysicalRunway(logicalRunway4, logicalRunway3,
                 RunwaySide.LOWER_THRESHOLD);
 
         airport.addRunway(physicalRunway);
         airport.addRunway(physicalRunway2);
 
+
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-                new StripDrawer(), new StopwayDrawer(), new ClearwayDrawer(),
-                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
+
+                new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
+                new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
+                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new RunwayDrawer(), new CentreLineDrawer(), new ThresholdDrawer(),
-                new DesignatorDrawer(), new ObstacleDrawer()
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
+                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
+                new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
+
+        );
+        
+        List<Drawer> sideOnDrawer = List.of(
+                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
+                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(), 
+                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         
 
         // Validation example - TODO remove later
@@ -79,13 +104,13 @@ public class Main {
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
-                                new SideOnPanel()
+                                new SideOnPanel(runwaySelection, sideOnDrawExecutor)
                         ),
                         new EastPanel(
                                 new RunwayPanel(airport, runwaySelection,
                                         new RunwaySelectionController(runwaySelection)),
                                 new ObstaclePanel(runwaySelection, assignObstacleController),
-                                new DistancesPanel(runwaySelection)
+                                new DistancesPanel(runwaySelection, showCalculationController)
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),

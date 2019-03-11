@@ -10,8 +10,11 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * change when an object is added.
  */
 public class DynamicPositionCalculator extends Calculator {
+
+
     private ConstantPositionCalculator constantPositionCalculator;
     private DynamicLengthCalculator dynamicLengthCalculator;
+    private ConstantLengthCalculator constantLengthCalculator;
 
     /**
      * Constructor for the Dynamic Position Calculator.
@@ -21,6 +24,7 @@ public class DynamicPositionCalculator extends Calculator {
         super(physicalRunway);
         constantPositionCalculator = physicalRunway.getConstantPositionCalculator();
         dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+        constantLengthCalculator = physicalRunway.getConstantLengthCalculator();
     }
 
     /**
@@ -35,18 +39,21 @@ public class DynamicPositionCalculator extends Calculator {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
             if (dynamicLengthCalculator.checkSide(runwayObstacle, side)) {
                 //Landing over obstacle
-                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation(runwayObstacle) + stripValue;
-                if (temporaryThresholdLength < blastProtectionValue) {
-                    temporaryThresholdLength = blastProtectionValue;
+                int temporaryThresholdLength = dynamicLengthCalculator.getSlopeCalculation()
+                        + constantLengthCalculator.getStripMargin();
+                if (temporaryThresholdLength < constantLengthCalculator.getBlastProtection()) {
+                    temporaryThresholdLength = constantLengthCalculator.getBlastProtection();
                 }
                 switch (side) {
                     case LOWER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
+                                + physicalRunway.getObstacle().getLength()
                                 + temporaryThresholdLength;
                     case HIGHER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
+                                - physicalRunway.getObstacle().getLength()
                                 - temporaryThresholdLength;
                     default:
                         return 0;
@@ -76,11 +83,13 @@ public class DynamicPositionCalculator extends Calculator {
                     case LOWER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 + runwayObstacle.getThresholdDistance()
-                                + blastProtectionValue;
+                                + physicalRunway.getObstacle().getLength()
+                                + constantLengthCalculator.getBlastProtection();
                     case HIGHER_THRESHOLD:
                         return constantPositionCalculator.getThresholdPosition(side)
                                 - runwayObstacle.getThresholdDistance()
-                                - blastProtectionValue;
+                                - physicalRunway.getObstacle().getLength()
+                                - constantLengthCalculator.getBlastProtection();
                     default:
                         return 0;
                 }
@@ -92,14 +101,54 @@ public class DynamicPositionCalculator extends Calculator {
             return constantPositionCalculator.getRunwayPosition(side);
         }
     }
-    /**
-     * Calculates the position of the left side of the obstacle.
-     *
-     * @return the position of the left side of the obstacle.
-     */
 
+    /**
+     * Calculates the position of the left side of the obstacle if on the lower side, otherwise the right side of the
+     * obstacle.
+     *
+     * @return the position of the obstacle.
+     */
     public int getObstaclePosition() {
-        return physicalRunway.getLowerThreshold().getRunwayObstacle().getThresholdDistance()
-                + constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+
+        var obstacleSide = physicalRunway.getObstacleSide();
+
+        switch (obstacleSide) {
+            case LOWER_THRESHOLD:
+                return constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD)
+                        + physicalRunway.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD).getThresholdDistance();
+            case HIGHER_THRESHOLD:
+                return constantPositionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD)
+                        - physicalRunway.getRunwayObstacle(RunwaySide.HIGHER_THRESHOLD).getThresholdDistance();
+            default:
+                throw new UnsupportedOperationException("Cannot get obstacle position for side " + obstacleSide);
+
+        }
+
+    }
+
+    public int getResaPosition() {
+        return getSlopePosition();
+    }
+
+    public int getBlastProtectionPosition() {
+        return getSlopePosition();
+    }
+
+    /**
+     * Calculates the start position of the TOCS slope.
+     *
+     * @return start position of TOCS slope
+     */
+    public int getSlopePosition() {
+        var obstacleSide = physicalRunway.getObstacleSide();
+
+        switch (obstacleSide) {
+            case LOWER_THRESHOLD:
+                return this.getObstaclePosition() + physicalRunway.getObstacle().getLength();
+            case HIGHER_THRESHOLD:
+                return this.getObstaclePosition() - physicalRunway.getObstacle().getLength();
+            default:
+                throw new UnsupportedOperationException("Cannot calculate slope position for side " + obstacleSide);
+        }
     }
 }

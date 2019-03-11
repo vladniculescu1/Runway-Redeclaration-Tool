@@ -1,5 +1,7 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.draw.DrawConstants;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.draw.shape.ArrowSeries;
 import uk.ac.soton.comp2211.draw.shape.Stripes;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -12,7 +14,7 @@ import java.awt.geom.Line2D;
 /**
  * Draws both runway thresholds with respective offsets.
  */
-public class ThresholdDrawer implements Drawer {
+public class TopDownThresholdDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
