@@ -8,11 +8,10 @@ public class DisplayPopUpFrame extends JDialog {
 
     /**
      * (View) Constructor for DisplayPopUpFrame.
-     * @param mainFrame The frame of the main program, to allow blocking input to it.
      * @param title The title of the JDialog Box
      */
-    public DisplayPopUpFrame(MainFrame mainFrame, String title)    {
-        super(mainFrame, ModalityType.APPLICATION_MODAL);
+    public DisplayPopUpFrame(String title)    {
+        super(null, ModalityType.APPLICATION_MODAL);
         
         this.setTitle(title);
         this.pack();

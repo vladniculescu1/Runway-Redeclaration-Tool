@@ -119,8 +119,6 @@ public class Main {
                         )
                 )
         );
-        assignObstacleController.addMainFrame(mainFrame);
-        runwaySelectionController.addMainFrame(mainFrame);
     }
 
 }

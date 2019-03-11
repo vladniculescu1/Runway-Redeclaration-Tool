@@ -5,7 +5,7 @@ import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
-import uk.ac.soton.comp2211.view.modal.AddRunwayFrame;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 import uk.ac.soton.comp2211.view.modal.AddRunwayPanel;
 
 import javax.swing.*;
@@ -19,15 +19,17 @@ public class RunwaySelectionController implements ActionListener {
     private RunwaySelection runwaySelection;
     private Airport airport;
     private AddRunwayPanel addRunwayPanel;
-    private AddRunwayFrame addRunwayFrame;
+    private DisplayPopUpFrame displayPopUpFrame;
 
+    /**
+     * Constructor for this RunwaySelectionController.
+     * @param runwaySelection The application's runwaySelection variable.
+     * @param airport The application's airport variable.
+     */
     public RunwaySelectionController(RunwaySelection runwaySelection, Airport airport) {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
-    }
-
-    public void addMainFrame(MainFrame mainFrame) {
-        this.addRunwayFrame = new AddRunwayFrame(mainFrame);
+        this.displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
     }
 
     @Override
@@ -47,7 +49,7 @@ public class RunwaySelectionController implements ActionListener {
             }
             case RunwayPanel.ADD_RUNWAY_COMMAND: {
                 addRunwayPanel = new AddRunwayPanel(this);
-                addRunwayFrame.create(addRunwayPanel);
+                displayPopUpFrame.create(addRunwayPanel);
                 break;
             }
             case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
@@ -61,14 +63,14 @@ public class RunwaySelectionController implements ActionListener {
                         airport.addRunway(physicalRunway);
                         runwaySelection.setSelectedRunway(physicalRunway);
                         runwaySelection.notifyUpdate();
-                        addRunwayFrame.close();
+                        displayPopUpFrame.close();
                     }
 
                 }
                 break;
             }
             case AddRunwayPanel.RUNWAY_CANCEL_BUTTON: {
-                addRunwayFrame.close();
+                displayPopUpFrame.close();
                 break;
             }
             default:
