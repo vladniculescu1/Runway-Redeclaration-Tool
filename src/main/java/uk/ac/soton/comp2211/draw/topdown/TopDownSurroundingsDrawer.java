@@ -1,5 +1,7 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.draw.DrawConstants;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.awt.*;
 /**
  * Draws the cleared and graded areas around the runway.
  */
-public class SurroundingsDrawer implements Drawer {
+public class TopDownSurroundingsDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {

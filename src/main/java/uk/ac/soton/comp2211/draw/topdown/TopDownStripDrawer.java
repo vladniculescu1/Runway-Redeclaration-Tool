@@ -1,5 +1,8 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.draw.DrawConstants;
+import uk.ac.soton.comp2211.draw.DrawUtils;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
@@ -8,7 +11,7 @@ import java.awt.*;
 /**
  * Draws the strip around the runway.
  */
-public class StripDrawer implements Drawer {
+public class TopDownStripDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
