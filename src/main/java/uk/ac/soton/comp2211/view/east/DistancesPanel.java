@@ -93,12 +93,10 @@ public class DistancesPanel extends JPanel implements Observer {
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
-        gridBag.row().separator();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator();
+        gridBag.row().separator(new JLabel("   "));
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
-        gridBag.row().separator();
         gridBag.row().cell(showCalculationHigher).fillX();
         gridBag.doneAndPushEverythingToTop();
 
