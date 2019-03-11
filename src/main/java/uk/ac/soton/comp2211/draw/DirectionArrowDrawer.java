@@ -18,13 +18,9 @@ public class DirectionArrowDrawer implements Drawer {
         var positionCalculator = physicalRunway.getConstantPositionCalculator();
         var startX = positionCalculator.getStripPosition() + 100;
         String text = "Take-off/Landing Direction";
-        
-        
-        //var distance = g2d.getFontMetrics().stringWidth(text);
-        
+              
         var distance = (int) DrawConstants.DESIGNATOR_FONTSIZE * 1300;
-        
-        
+                
         switch (side) {
             case LOWER_THRESHOLD:
                 DrawUtils.solidLabelledDistance(g2d, startX, distance, -8, text);
