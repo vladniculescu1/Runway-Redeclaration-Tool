@@ -7,7 +7,7 @@ import uk.ac.soton.comp2211.model.ThresholdLocation;
 
 public class Runways {
 
-    public static PhysicalRunway NoStopWayNoClearway(){
+    public static PhysicalRunway noStopWayNoClearway(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -15,7 +15,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public  static PhysicalRunway StopWayNoClearwayLower(){
+    public static PhysicalRunway stopWayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -23,7 +23,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway StopWayNoClearwayHigher(){
+    public static PhysicalRunway stopWayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3500, 27, ThresholdLocation.RIGHT);
 
@@ -31,7 +31,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway NoStopWayClearwayLower(){
+    public static PhysicalRunway noStopWayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3700, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -39,7 +39,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway NoStopWayClearwayHigher(){
+    public static PhysicalRunway noStopWayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3700, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -47,7 +47,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway StopWayClearwayLower(){
+    public static PhysicalRunway stopWayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3700, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -55,7 +55,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway StopWayClearwayHigher(){
+    public static PhysicalRunway stopWayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3700, 3000, 3500, 27, ThresholdLocation.RIGHT);
 
@@ -63,7 +63,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdNoStopwayNoClearwayLower(){
+    public static PhysicalRunway displacedThresholdNoStopwayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -71,7 +71,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdNoStopwayNoClearwayHigher(){
+    public static PhysicalRunway displacedThresholdNoStopwayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -79,7 +79,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdStopwayNoClearwayLower(){
+    public static PhysicalRunway displacedThresholdStopwayNoClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3000, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -87,7 +87,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdStopwayNoClearwayHigher(){
+    public static PhysicalRunway displacedThresholdStopwayNoClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3000, 3000, 3500, 27, ThresholdLocation.RIGHT);
 
@@ -95,7 +95,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdNoStopwayClearwayLower(){
+    public static PhysicalRunway displacedThresholdNoStopwayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3700, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -103,7 +103,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdNoStopwayClearwayHigher(){
+    public static PhysicalRunway displacedThresholdNoStopwayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3700, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -111,7 +111,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdStopwayClearwayLower(){
+    public static PhysicalRunway displacedThresholdStopwayClearwayLower(){
         LogicalRunway logicalRunway1 = new LogicalRunway(2500, 3700, 3000, 3500, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3000, 3000, 3000, 3000, 27, ThresholdLocation.RIGHT);
 
@@ -119,7 +119,7 @@ public class Runways {
 
         return physicalRunway;
     }
-    public static PhysicalRunway DisplacedThresholdStopwayClearwayHigher(){
+    public static PhysicalRunway displacedThresholdStopwayClearwayHigher(){
         LogicalRunway logicalRunway1 = new LogicalRunway(3000, 3000, 3000, 3000, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(2500, 3700, 3000, 3500, 27, ThresholdLocation.RIGHT);
 
