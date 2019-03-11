@@ -3,6 +3,7 @@ package uk.ac.soton.comp2211;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.controller.DirectionController;
 import uk.ac.soton.comp2211.controller.RunwaySelectionController;
+import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.draw.sideon.*;
 import uk.ac.soton.comp2211.draw.topdown.TopDownCentreLineDrawer;
@@ -89,6 +90,7 @@ public class Main {
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         
 
         // Validation example - TODO remove later
@@ -108,7 +110,7 @@ public class Main {
                                 new RunwayPanel(airport, runwaySelection,
                                         new RunwaySelectionController(runwaySelection)),
                                 new ObstaclePanel(runwaySelection, assignObstacleController),
-                                new DistancesPanel(runwaySelection)
+                                new DistancesPanel(runwaySelection, showCalculationController)
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
