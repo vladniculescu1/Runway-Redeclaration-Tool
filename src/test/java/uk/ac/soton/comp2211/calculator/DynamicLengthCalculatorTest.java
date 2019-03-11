@@ -840,4 +840,36 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2500;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
+    //TODO obstacles for each distance
+    //Obstacle closer to and further away from threshold
+    //Obstacle for all cases above
+    //Obstacle with different lengths
+    //Obstacle with different heights
+    //Basically loads of possible scenarios
+
+    @Test
+    void getObstacleThresholdDistance(){
+        //with and without obstacle
+        //differnet obstacle lengths
+        //with and without displaced thresholds
+
+    }
+
+    @Test
+    void getSlopeCalculation(){
+        //Different height obstacles
+        //
+    }
+
+    @Test
+    void checkSide(){
+        //Cases
+        //Closer to current Both sides
+        //Closer to opposite Both sides
+        //Limit closer to current
+        //Limit closer to opposite
+        //All of these with and without displaced thresholds
+
+
+    }
 }
