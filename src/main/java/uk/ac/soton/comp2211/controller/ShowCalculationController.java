@@ -22,7 +22,7 @@ public class ShowCalculationController implements ActionListener {
 
     public ShowCalculationController(RunwaySelection runwaySelection) {
         this.runwaySelection = runwaySelection;
-        this.displayPopUpFrame = new DisplayPopUpFrame(mainFrame, panelTitle);
+        this.displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
     }
 
     public void setLowerTable(JTable lowerTable) {
@@ -51,7 +51,7 @@ public class ShowCalculationController implements ActionListener {
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             default:
-                throw new IllegalArgumentException("Unhandled command input.");
+                throw new UnsupportedOperationException("Operation not supported");
         }
     }
 }

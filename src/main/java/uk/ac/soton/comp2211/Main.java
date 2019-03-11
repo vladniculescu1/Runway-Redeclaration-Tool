@@ -90,6 +90,7 @@ public class Main {
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         
 
@@ -107,8 +108,7 @@ public class Main {
                                 new SideOnPanel(runwaySelection, sideOnDrawExecutor)
                         ),
                         new EastPanel(
-                                new RunwayPanel(airport, runwaySelection,
-                                        new RunwaySelectionController(runwaySelection)),
+                                new RunwayPanel(airport, runwaySelection, runwaySelectionController),
                                 new ObstaclePanel(runwaySelection, assignObstacleController),
                                 new DistancesPanel(runwaySelection, showCalculationController)
                         ),
@@ -119,7 +119,6 @@ public class Main {
                         )
                 )
         );
-        assignObstacleController.addMainFrame(mainFrame);
     }
 
 }

@@ -128,7 +128,7 @@ public class AssignObstaclePanel extends JPanel implements Observer {
     
     /**
      * Returns the runway obstacle created from the options on this panel.
-     * @return null if not valid inputs, otherwise the runway obstacle
+     * @return Empty if not valid inputs, otherwise the runway obstacle
      */
     public Optional<RunwayObstacle> getObstacleFromInputs() {
         String issues = "";
@@ -163,11 +163,7 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         Obstacle obstacle = new Obstacle(obstacleNameTextField.getText(), height, length);
         RunwayObstacle runwayObstacle = new RunwayObstacle(threshold, centreline, obstacle);
-        Validator validator = Validator.forObject(obstacle);
-        if (!validator.isValid()) {
-            issues += validator.getViolationMessages();
-        }
-        validator = Validator.forObject(runwayObstacle);
+        Validator validator = Validator.forObject(runwayObstacle);
         if (!validator.isValid()) {
             issues += validator.getViolationMessages();
         }

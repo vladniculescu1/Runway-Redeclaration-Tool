@@ -16,7 +16,6 @@ public class AssignObstacleController implements ActionListener {
 
     private String panelTitle = "Assign Obstacle to Runway";
     private RunwaySelection runwaySelection;
-    private MainFrame mainFrame;
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
     
@@ -26,11 +25,7 @@ public class AssignObstacleController implements ActionListener {
      */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
-        displayPopUpFrame = new DisplayPopUpFrame(mainFrame, panelTitle);
-    }
-    
-    public void addMainFrame(MainFrame mainFrame)  {
-        this.mainFrame = mainFrame;
+        displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
     }
     
     @Override
