@@ -37,6 +37,7 @@ public class LogicalRunway {
     @Range(min = 1000, max = 10000, message = "ASDA must be between 1000 and 10000 inclusive.")
     private int originalAsda;
 
+    @Range(min = 0, max = 35, message = "Heading must be between 0 and 35 inclusive.")
     private int heading;
     private ThresholdLocation location;
     private Optional<RunwayObstacle> runwayObstacle;

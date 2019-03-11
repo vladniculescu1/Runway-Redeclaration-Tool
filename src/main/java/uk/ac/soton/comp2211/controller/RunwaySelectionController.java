@@ -53,11 +53,22 @@ public class RunwaySelectionController implements ActionListener {
             case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
                 Optional<PhysicalRunway> runwayOptional = addRunwayPanel.getRunwayFromInputs();
                 if (runwayOptional.isPresent()) {
-                    //TODO
+                    if (airport.getRunways().contains(runwayOptional.get())) {
+                        JOptionPane.showMessageDialog(addRunwayPanel,
+                                "A runway with the same heading and location already exists.");
+                    } else {
+                        PhysicalRunway physicalRunway = runwayOptional.get();
+                        airport.addRunway(physicalRunway);
+                        runwaySelection.setSelectedRunway(physicalRunway);
+                        runwaySelection.notifyUpdate();
+                        addRunwayFrame.close();
+                    }
+
                 }
                 break;
             }
             case AddRunwayPanel.RUNWAY_CANCEL_BUTTON: {
+                addRunwayFrame.close();
                 break;
             }
             default:

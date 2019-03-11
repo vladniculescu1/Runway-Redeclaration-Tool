@@ -23,6 +23,7 @@ public class RunwayPanel extends JPanel implements Observer {
     public static final String ADD_RUNWAY_COMMAND = "runwayAddCommand";
 
     private Airport airport;
+    private RunwaySelection runwaySelection;
 
     /**
      * Constructs a new runway panel.
@@ -31,6 +32,7 @@ public class RunwayPanel extends JPanel implements Observer {
      * @param runwaySelectionController the controller reacting to user inputs
      */
     public RunwayPanel(Airport airport, RunwaySelection runwaySelection, ActionListener runwaySelectionController) {
+        this.runwaySelection = runwaySelection;
         runwaySelection.subscribe(this);
         this.airport = airport;
         airport.subscribe(this);
@@ -68,6 +70,8 @@ public class RunwayPanel extends JPanel implements Observer {
                 this.runwayComboBox.addItem(runway);
             }
         });
-
+        if (runwaySelection.hasSelectedRunway()) {
+            this.runwayComboBox.setSelectedItem(runwaySelection.getSelectedRunway());
+        }
     }
 }
