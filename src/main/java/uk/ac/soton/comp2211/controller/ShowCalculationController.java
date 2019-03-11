@@ -41,11 +41,13 @@ public class ShowCalculationController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_LOWER:
-                showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(), lowerTable.getSelectedRow(), RunwaySide.LOWER_THRESHOLD);
+                showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
+                        lowerTable.getSelectedRow(), RunwaySide.LOWER_THRESHOLD);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_HIGHER:
-                showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(), higherTable.getSelectedRow(), RunwaySide.HIGHER_THRESHOLD);
+                showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
+                        higherTable.getSelectedRow(), RunwaySide.HIGHER_THRESHOLD);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             default:

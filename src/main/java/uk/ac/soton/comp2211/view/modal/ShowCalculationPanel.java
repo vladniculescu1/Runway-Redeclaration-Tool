@@ -126,7 +126,8 @@ public class ShowCalculationPanel extends JPanel {
                             + constantLengthCalculator.getStripMargin()));
                 } else {
                     //Slope calculation greater than RESA
-                    this.add(new JLabel("TORA = Distance from Threshold + Displaced Threshold - Slope calculation - Strip End"));
+                    this.add(new JLabel("TORA = Distance from Threshold + "
+                            + "Displaced Threshold - Slope calculation - Strip End"));
                     this.add(new JLabel("            = " + runwayObstacle.getThresholdDistance() + " - "
                             + constantLengthCalculator.getDisplacedThresholdLength(runwaySide) + " - "
                             + dynamicLengthCalculator.getSlopeCalculation() + " - "
