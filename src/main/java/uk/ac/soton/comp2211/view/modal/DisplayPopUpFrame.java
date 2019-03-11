@@ -4,16 +4,17 @@ import javax.swing.*;
 
 import uk.ac.soton.comp2211.view.MainFrame;
 
-public class AssignObstacleFrame extends JDialog {
+public class DisplayPopUpFrame extends JDialog {
 
     /**
-     * (View) Constructor for AssignObstacleFrame.
+     * (View) Constructor for DisplayPopUpFrame.
      * @param mainFrame The frame of the main program, to allow blocking input to it.
+     * @param title The title of the JDialog Box
      */
-    public AssignObstacleFrame(MainFrame mainFrame)    {
+    public DisplayPopUpFrame(MainFrame mainFrame, String title)    {
         super(mainFrame, ModalityType.APPLICATION_MODAL);
         
-        this.setTitle("Assign Obstacle to Runway");
+        this.setTitle(title);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -25,10 +26,10 @@ public class AssignObstacleFrame extends JDialog {
     
     /**
      * 'Creates' this frame (makes it visible and fixes related issues).
-     * @param assignObstaclePanel The content visible in this frame.
+     * @param panel The content visible in this frame.
      */
-    public void create(AssignObstaclePanel assignObstaclePanel) {
-        this.setContentPane(assignObstaclePanel);
+    public void create(JPanel panel) {
+        this.setContentPane(panel);
         this.pack();
         this.setVisible(true);
     }
