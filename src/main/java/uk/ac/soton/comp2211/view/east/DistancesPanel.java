@@ -3,12 +3,10 @@ package uk.ac.soton.comp2211.view.east;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
-import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.model.LogicalRunway;
@@ -66,12 +64,16 @@ public class DistancesPanel extends JPanel implements Observer {
         lowerTable.setRowSelectionAllowed(true);
         lowerTable.getTableHeader().setFont(this.getFont());
         lowerTable.setFont(this.getFont());
+        lowerTable.setRowSelectionAllowed(true);
+        lowerTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 
         JTable higherTable = new JTable(this.higherTableModel);
         higherTable.setRowSelectionAllowed(true);
         higherTable.getTableHeader().setFont(this.getFont());
         higherTable.setFont(this.getFont());
+        higherTable.setRowSelectionAllowed(true);
+        higherTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JPanel lowerPanel = new JPanel(new BorderLayout());
         lowerPanel.add(lowerTable,BorderLayout.CENTER);
@@ -93,12 +95,10 @@ public class DistancesPanel extends JPanel implements Observer {
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
-        gridBag.row().separator();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator();
+        gridBag.row().separator(new JLabel(" "));
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
-        gridBag.row().separator();
         gridBag.row().cell(showCalculationHigher).fillX();
         gridBag.doneAndPushEverythingToTop();
 
