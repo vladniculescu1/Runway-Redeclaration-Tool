@@ -19,6 +19,7 @@ public class RunwaySelectionController implements ActionListener {
     private RunwaySelection runwaySelection;
     private Airport airport;
     private AddRunwayPanel addRunwayPanel;
+    private JComboBox runwayComboBox;
     private DisplayPopUpFrame displayPopUpFrame;
 
     /**
@@ -30,6 +31,10 @@ public class RunwaySelectionController implements ActionListener {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
         this.displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
+    }
+
+    public void addRunwayComboBox(JComboBox runwayComboBox) {
+        this.runwayComboBox = runwayComboBox;
     }
 
     @Override
@@ -50,6 +55,15 @@ public class RunwaySelectionController implements ActionListener {
             case RunwayPanel.ADD_RUNWAY_COMMAND: {
                 addRunwayPanel = new AddRunwayPanel(this);
                 displayPopUpFrame.create(addRunwayPanel);
+                break;
+            }
+            case RunwayPanel.REMOVE_RUNWAY_COMMAND: {
+                PhysicalRunway removedRunway = runwaySelection.getSelectedRunway();
+                airport.removeRunway(removedRunway);
+                //change combobox selected runway and remove
+                runwayComboBox.removeItem(removedRunway);
+                runwaySelection.notifyUpdate();
+                //TODO deal with issues due to no runway being present.
                 break;
             }
             case AddRunwayPanel.RUNWAY_ADD_BUTTON: {

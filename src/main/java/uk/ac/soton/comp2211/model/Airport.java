@@ -38,6 +38,11 @@ public class Airport implements Observable {
         this.observers.forEach(Observer::notifyUpdate);
     }
 
+    public void removeRunway(PhysicalRunway runway) {
+        this.runways.remove(runway);
+        this.observers.forEach(Observer::notifyUpdate);
+    }
+
     @Override
     public void subscribe(Observer observer) {
         this.observers.add(observer);

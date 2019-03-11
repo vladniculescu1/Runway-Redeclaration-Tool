@@ -2,12 +2,12 @@ package uk.ac.soton.comp2211.view.east;
 
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
+import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.model.Airport;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
 /**
  * This panel contains the settings for the runway. The user can select a runway from a dropdown list, add a
@@ -18,9 +18,11 @@ public class RunwayPanel extends JPanel implements Observer {
     private DefaultComboBoxModel<PhysicalRunway> runwayComboBoxModel;
 
     private JComboBox<PhysicalRunway> runwayComboBox;
+    private JButton removeButton;
 
     public static final String COMBOBOX_COMMAND = "runwayComboBox";
     public static final String ADD_RUNWAY_COMMAND = "runwayAddCommand";
+    public static final String REMOVE_RUNWAY_COMMAND = "runwayRemoveCommand";
 
     private Airport airport;
     private RunwaySelection runwaySelection;
@@ -31,7 +33,8 @@ public class RunwayPanel extends JPanel implements Observer {
      * @param runwaySelection the current runway selection - the model
      * @param runwaySelectionController the controller reacting to user inputs
      */
-    public RunwayPanel(Airport airport, RunwaySelection runwaySelection, ActionListener runwaySelectionController) {
+    public RunwayPanel(Airport airport, RunwaySelection runwaySelection,
+                       RunwaySelectionController runwaySelectionController) {
         this.runwaySelection = runwaySelection;
         runwaySelection.subscribe(this);
         this.airport = airport;
@@ -48,13 +51,14 @@ public class RunwayPanel extends JPanel implements Observer {
         addButton.setActionCommand(ADD_RUNWAY_COMMAND);
         addButton.addActionListener(runwaySelectionController);
 
-        JButton removeButton = new JButton("Remove");
-        // disable remove button
-        removeButton.setEnabled(false);
+        removeButton = new JButton("Remove");
+        removeButton.setActionCommand(REMOVE_RUNWAY_COMMAND);
+        removeButton.addActionListener(runwaySelectionController);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cellX(runwayComboBox,2).fillX();
         gridBag.row().cell(addButton).fillX().cell(removeButton).fillX();
+        runwaySelectionController.addRunwayComboBox(runwayComboBox);
 
         gridBag.done();
 
@@ -72,6 +76,10 @@ public class RunwayPanel extends JPanel implements Observer {
         });
         if (runwaySelection.hasSelectedRunway()) {
             this.runwayComboBox.setSelectedItem(runwaySelection.getSelectedRunway());
+            removeButton.setEnabled(true);
+        } else {
+            removeButton.setEnabled(false);
+
         }
     }
 }
