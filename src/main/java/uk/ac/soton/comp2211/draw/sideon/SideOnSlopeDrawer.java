@@ -26,15 +26,13 @@ public class SideOnSlopeDrawer implements Drawer {
 
             switch (side) {
                 case LOWER_THRESHOLD:
-                    // DrawUtils.angledDashedLabelledDistance(g2d, positionCalculator.getObstaclePosition(),
-                    // physicalRunway.getObstacle().getHeight(), lengthCalculator.getSlopeCalculation(), 0, "00");
+
                     g2d.drawLine(positionCalculator.getObstaclePosition() + physicalRunway.getObstacle().getLength(), 
                             startY, lengthCalculator.getSlopeCalculation() + positionCalculator.getSlopePosition(), 0);
                     
                     break;
                 case HIGHER_THRESHOLD:
-                    //DrawUtils.angledDashedLabelledDistance(g2d, positionCalculator.getObstaclePosition(),
-                    //physicalRunway.getObstacle().getHeight(), lengthCalculator.getSlopeCalculation(), 0, "000");
+
                     g2d.drawLine(positionCalculator.getObstaclePosition() - physicalRunway.getObstacle().getLength(), 
                             startY, positionCalculator.getSlopePosition() - lengthCalculator.getSlopeCalculation(), 0);
                     break;

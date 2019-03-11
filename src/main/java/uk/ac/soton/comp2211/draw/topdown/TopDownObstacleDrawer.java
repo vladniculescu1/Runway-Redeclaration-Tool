@@ -1,9 +1,11 @@
-package uk.ac.soton.comp2211.draw;
+package uk.ac.soton.comp2211.draw.topdown;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
 import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
+import uk.ac.soton.comp2211.draw.DrawUtils;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -12,7 +14,7 @@ import uk.ac.soton.comp2211.model.RunwaySide;
  * Draws the obstacle onto the runway.
  *
  */
-public class ObstacleDrawer implements Drawer {
+public class TopDownObstacleDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
