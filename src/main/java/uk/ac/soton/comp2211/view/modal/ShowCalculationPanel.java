@@ -53,7 +53,7 @@ public class ShowCalculationPanel extends JPanel {
                 showToraCalculation();
                 break;
             default:
-                throw new UnsupportedOperationException();
+                this.add(new JLabel("Please select a value from the corresponding table!"));
         }
 
     }
