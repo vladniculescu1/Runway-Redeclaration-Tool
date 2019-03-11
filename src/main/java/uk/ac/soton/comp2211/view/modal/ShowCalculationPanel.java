@@ -1,6 +1,5 @@
 package uk.ac.soton.comp2211.view.modal;
 
-import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.model.*;

@@ -3,12 +3,10 @@ package uk.ac.soton.comp2211.view.east;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
-import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.model.LogicalRunway;

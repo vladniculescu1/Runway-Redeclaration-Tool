@@ -1,6 +1,5 @@
 package uk.ac.soton.comp2211.controller;
 
-import antlr.debug.misc.JTreeASTPanel;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 import uk.ac.soton.comp2211.view.MainFrame;
