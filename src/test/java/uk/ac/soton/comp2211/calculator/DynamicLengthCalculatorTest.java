@@ -15,7 +15,8 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraNoStopWayNoClearwayLower() {
-        setUpNoStopwayNoClearwayLower()
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
@@ -27,7 +28,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -40,7 +41,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraNoStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -53,7 +54,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -66,7 +67,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraNoStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -79,7 +80,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -92,7 +93,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraNoStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -105,7 +106,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getToraStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -222,7 +223,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaNoStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -235,7 +236,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -248,7 +249,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaNoStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3700;
@@ -261,7 +262,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3700;
@@ -274,7 +275,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaNoStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -287,7 +288,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -300,7 +301,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaNoStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3700;
@@ -313,7 +314,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getTodaStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3700;
@@ -430,7 +431,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaNoStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -443,7 +444,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3500;
@@ -456,7 +457,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaNoStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -469,7 +470,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3500;
@@ -482,7 +483,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaNoStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -495,7 +496,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3500;
@@ -508,7 +509,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaNoStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -521,7 +522,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getAsdaStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3500;
@@ -638,7 +639,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaNoStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -651,7 +652,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaStopWayNoClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -664,7 +665,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaNoStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -677,7 +678,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaStopWayClearwayLower() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayLower();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -690,7 +691,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaNoStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayNoClearway();
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -703,7 +704,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaStopWayNoClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayNoClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -716,7 +717,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaNoStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.doStopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
@@ -729,7 +730,7 @@ class DynamicLengthCalculatorTest {
      */
     @Test
     void getLdaStopWayClearwayHigher() {
-        PhysicalRunway physicalRunway = Runways.dtopWayClearwayHigher();
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
         int expectedValue = 3000;
