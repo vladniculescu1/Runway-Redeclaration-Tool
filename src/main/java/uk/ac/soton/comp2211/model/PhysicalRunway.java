@@ -6,6 +6,7 @@ import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.validate.EqualTora;
 import uk.ac.soton.comp2211.model.validate.HeadingDiff;
 
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,8 +18,9 @@ import java.util.Set;
 @EqualTora(message = "The TORA of both logical runways must be equal.")
 @HeadingDiff(message = "The headings of the logical runways must have a difference of 18.")
 public class PhysicalRunway {
-
+    @Valid
     private LogicalRunway higherThreshold;
+    @Valid
     private LogicalRunway lowerThreshold;
     private RunwaySide runwayDirection;
     private ConstantLengthCalculator constantLengthCalculator;

@@ -422,15 +422,7 @@ public class AddRunwayPanel extends JPanel {
                                                 locationA);
         }
         PhysicalRunway physicalRunway = new PhysicalRunway(higherThreshold,lowerThreshold, RunwaySide.LOWER_THRESHOLD);
-        Validator validator = Validator.forObject(lowerThreshold);
-        if (!validator.isValid()) {
-            issues += validator.getViolationMessages();
-        }
-        validator = Validator.forObject(higherThreshold);
-        if (!validator.isValid()) {
-            issues += validator.getViolationMessages();
-        }
-        validator = Validator.forObject(physicalRunway);
+        Validator validator = Validator.forObject(physicalRunway);
         if (!validator.isValid()) {
             issues += validator.getViolationMessages();
         }

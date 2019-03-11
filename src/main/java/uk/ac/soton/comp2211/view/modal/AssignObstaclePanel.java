@@ -163,11 +163,7 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         Obstacle obstacle = new Obstacle(obstacleNameTextField.getText(), height, length);
         RunwayObstacle runwayObstacle = new RunwayObstacle(threshold, centreline, obstacle);
-        Validator validator = Validator.forObject(obstacle);
-        if (!validator.isValid()) {
-            issues += validator.getViolationMessages();
-        }
-        validator = Validator.forObject(runwayObstacle);
+        Validator validator = Validator.forObject(runwayObstacle);
         if (!validator.isValid()) {
             issues += validator.getViolationMessages();
         }

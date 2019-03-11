@@ -2,6 +2,8 @@ package uk.ac.soton.comp2211.model;
 
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.Valid;
+
 
 /**
  * The one obstacle that is on one runway.
@@ -14,7 +16,8 @@ public class RunwayObstacle {
 
     @Range(min = 0, max = 75, message = "Centreline must be between 0 and 75 inclusive.")
     private int centreLineDistance;
-    
+
+    @Valid
     private Obstacle obstacle;
 
     /**
