@@ -43,6 +43,10 @@ public class RunwaySelection implements Observable, Observer {
         return selectedRunway.get();
     }
 
+    public void removeSelectedRunway() {
+        this.selectedRunway = Optional.empty();
+    }
+
     @Override
     public void notifyUpdate() {
         this.observers.forEach(Observer::notifyUpdate);
