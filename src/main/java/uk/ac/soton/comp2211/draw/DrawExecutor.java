@@ -35,8 +35,8 @@ public class DrawExecutor {
      * @param panelHeight the height of the draw display panel
      */
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
-        this.setupGraphics(g2d, panelWidth, panelHeight);
         if (runwaySelection.hasSelectedRunway()) {
+            this.setupGraphics(g2d, panelWidth, panelHeight);
             this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
         }
     }
