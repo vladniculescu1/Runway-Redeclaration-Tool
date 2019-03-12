@@ -192,6 +192,8 @@ public class AddRunwayPanel extends JPanel {
 
         toraTextFieldA = new JFormattedTextField(integerFormatter);
         toraTextFieldB = new JFormattedTextField(integerFormatter);
+        toraTextFieldB.addPropertyChangeListener("value", e -> updateToraB());
+        toraTextFieldA.addPropertyChangeListener("value", e -> updateToraA());
         gridBag.row().cell(new JLabel("TORA (m):"))
                 .cell(toraTextFieldA).fillX().cell()
                 .cell(new JLabel("TORA (m):"))
@@ -205,6 +207,22 @@ public class AddRunwayPanel extends JPanel {
         cancelButton.addActionListener(controller);
         gridBag.row().cell().cellX(addButton,3).fillX().cell(cancelButton);
         gridBag.done();
+    }
+
+    private void updateToraA() {
+        if (!suppressChangeEvents) {
+            suppressChangeEvents = true;
+            toraTextFieldB.setValue(toraTextFieldA.getValue());
+            suppressChangeEvents = false;
+        }
+    }
+
+    private void updateToraB() {
+        if (!suppressChangeEvents) {
+            suppressChangeEvents = true;
+            toraTextFieldA.setValue(toraTextFieldB.getValue());
+            suppressChangeEvents = false;
+        }
     }
 
     private void updateNamesA() {
@@ -356,8 +374,10 @@ public class AddRunwayPanel extends JPanel {
         int headingA = 2;
         if (headingTextFieldA.getText().equals("")) {
             issues += "Heading must not be blank.\n";
+        } else if (!isInteger(headingTextFieldA.getText())) {
+            issues += "Heading must be an integer.\n";
         } else {
-            headingA =  Integer.parseInt(headingTextFieldA.getText());
+            headingA = Integer.parseInt(headingTextFieldA.getText());
         }
         ThresholdLocation locationA = getThresholdLocation((String)locationComboBoxA.getSelectedItem());
         int ldaB = 1000;
@@ -387,6 +407,8 @@ public class AddRunwayPanel extends JPanel {
         int headingB = 20;
         if (headingTextFieldB.getText().equals("")) {
             issues += "Heading must not be blank.\n";
+        } else if (!isInteger(headingTextFieldB.getText())) {
+            issues += "Heading must be an integer.\n";
         } else {
             headingB =  Integer.parseInt(headingTextFieldB.getText());
         }
@@ -433,6 +455,15 @@ public class AddRunwayPanel extends JPanel {
         } else {
             return Optional.of(physicalRunway);
         }
+    }
+
+    private boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 
