@@ -201,14 +201,14 @@ class ConstantLengthCalculatorTest {
     /**
      * GIVEN a runway with a displaced threshold and clearway on the lower side and no stopway
      * WHEN no further action is taken
-     * THEN the runway margin length is equal to the clearway length of the higher threshold
+     * THEN the runway margin length is equal to the clearway length of the lower threshold
      */
     @Test
     void getRunwayMarginLength_displacedThresholdNoStopwayClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayClearwayLower();
         var calculator = runway.getConstantLengthCalculator();
-        var expectedMargin = calculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
+        var expectedMargin = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
+        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedMargin, actualMargin);
     }
@@ -222,8 +222,8 @@ class ConstantLengthCalculatorTest {
     void getRunwayMarginLength_displacedThresholdNoStopwayClearwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayClearwayHigher();
         var calculator = runway.getConstantLengthCalculator();
-        var expectedMargin = calculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.HIGHER_THRESHOLD);
+        var expectedMargin = calculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
+        var actualMargin = calculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedMargin, actualMargin);
     }
