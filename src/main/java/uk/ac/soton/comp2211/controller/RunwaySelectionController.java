@@ -22,6 +22,8 @@ public class RunwaySelectionController implements ActionListener {
     private JComboBox runwayComboBox;
     private DisplayPopUpFrame displayPopUpFrame;
 
+    private boolean suppressEvents = false;
+
     /**
      * Constructor for this RunwaySelectionController.
      * @param runwaySelection The application's runwaySelection variable.
@@ -39,56 +41,63 @@ public class RunwaySelectionController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (!suppressEvents) {
+            switch (e.getActionCommand()) {
 
-        switch (e.getActionCommand()) {
+                case RunwayPanel.COMBOBOX_COMMAND: {
 
-            case RunwayPanel.COMBOBOX_COMMAND: {
+                    JComboBox runwayComboBox = (JComboBox) e.getSource();
+                    PhysicalRunway selectedRunway = (PhysicalRunway) runwayComboBox.getSelectedItem();
 
-                JComboBox runwayComboBox = (JComboBox) e.getSource();
-                PhysicalRunway selectedRunway = (PhysicalRunway) runwayComboBox.getSelectedItem();
+                    runwaySelection.setSelectedRunway(selectedRunway);
+                    runwaySelection.notifyUpdate();
 
-                runwaySelection.setSelectedRunway(selectedRunway);
-                runwaySelection.notifyUpdate();
-
-                break;
-            }
-            case RunwayPanel.ADD_RUNWAY_COMMAND: {
-                addRunwayPanel = new AddRunwayPanel(this);
-                displayPopUpFrame.create(addRunwayPanel);
-                break;
-            }
-            case RunwayPanel.REMOVE_RUNWAY_COMMAND: {
-                PhysicalRunway removedRunway = runwaySelection.getSelectedRunway();
-                airport.removeRunway(removedRunway);
-                //change combobox selected runway and remove
-                runwayComboBox.removeItem(removedRunway);
-                runwaySelection.notifyUpdate();
-                //TODO deal with issues due to no runway being present.
-                break;
-            }
-            case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
-                Optional<PhysicalRunway> runwayOptional = addRunwayPanel.getRunwayFromInputs();
-                if (runwayOptional.isPresent()) {
-                    if (airport.getRunways().contains(runwayOptional.get())) {
-                        JOptionPane.showMessageDialog(addRunwayPanel,
-                                "A runway with the same heading and location already exists.");
-                    } else {
-                        PhysicalRunway physicalRunway = runwayOptional.get();
-                        airport.addRunway(physicalRunway);
-                        runwaySelection.setSelectedRunway(physicalRunway);
-                        runwaySelection.notifyUpdate();
-                        displayPopUpFrame.close();
-                    }
-
+                    break;
                 }
-                break;
+                case RunwayPanel.ADD_RUNWAY_COMMAND: {
+                    addRunwayPanel = new AddRunwayPanel(this);
+                    displayPopUpFrame.create(addRunwayPanel);
+                    break;
+                }
+                case RunwayPanel.REMOVE_RUNWAY_COMMAND: {
+                    PhysicalRunway removedRunway = runwaySelection.getSelectedRunway();
+                    airport.removeRunway(removedRunway);
+                    //change combobox selected runway and remove
+                    suppressEvents = true;
+                    runwayComboBox.removeItem(removedRunway);
+                    suppressEvents = false;
+                    if (runwayComboBox.getItemCount() != 0) {
+                        runwaySelection.setSelectedRunway((PhysicalRunway) runwayComboBox.getSelectedItem());
+                    } else {
+                        runwaySelection.removeSelectedRunway();
+                    }
+                    runwaySelection.notifyUpdate();
+                    break;
+                }
+                case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
+                    Optional<PhysicalRunway> runwayOptional = addRunwayPanel.getRunwayFromInputs();
+                    if (runwayOptional.isPresent()) {
+                        if (airport.getRunways().contains(runwayOptional.get())) {
+                            JOptionPane.showMessageDialog(addRunwayPanel,
+                                    "A runway with the same heading and location already exists.");
+                        } else {
+                            PhysicalRunway physicalRunway = runwayOptional.get();
+                            airport.addRunway(physicalRunway);
+                            runwaySelection.setSelectedRunway(physicalRunway);
+                            runwaySelection.notifyUpdate();
+                            displayPopUpFrame.close();
+                        }
+
+                    }
+                    break;
+                }
+                case AddRunwayPanel.RUNWAY_CANCEL_BUTTON: {
+                    displayPopUpFrame.close();
+                    break;
+                }
+                default:
+                    throw new UnsupportedOperationException("Cannot handle action command " + e.getActionCommand());
             }
-            case AddRunwayPanel.RUNWAY_CANCEL_BUTTON: {
-                displayPopUpFrame.close();
-                break;
-            }
-            default:
-                throw new UnsupportedOperationException("Cannot handle action command " + e.getActionCommand());
         }
     }
 }
