@@ -46,12 +46,26 @@ public class DistancesPanel extends JPanel implements Observer {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
 
+        Font biggerFont = this.getFont().deriveFont(this.getFont().getSize() * 1.25F);
+        this.setFont(biggerFont);
+
+        Insets margin = new Insets(3, 0, 3, 0);
+
+        int tableRowHeight = 25;
+
+
         String[] header = {"Parameter", "Original", "Re-Calc"};
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
+        this.lowerPanelLabel.setFont(biggerFont);
         this.higherPanelLabel = new JLabel("Higher threshold");
+        this.higherPanelLabel.setFont(biggerFont);
         this.showCalculationLower = new JButton("Show Calculation");
+        this.showCalculationLower.setFont(biggerFont);
+        this.showCalculationLower.setMargin(margin);
         this.showCalculationHigher = new JButton("Show Calculation");
+        this.showCalculationHigher.setFont(biggerFont);
+        this.showCalculationHigher.setMargin(margin);
 
         this.lowerTableModel = new DefaultTableModel(header, 4) {
             public boolean isCellEditable(int i, int i1) {
@@ -66,25 +80,31 @@ public class DistancesPanel extends JPanel implements Observer {
         };
 
         JTable lowerTable = new JTable(this.lowerTableModel);
-        lowerTable.setRowSelectionAllowed(true);
         lowerTable.getTableHeader().setFont(this.getFont());
+        lowerTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
+        lowerTable.setRowHeight(tableRowHeight);
+        lowerTable.setRowSelectionAllowed(true);
         lowerTable.setFont(this.getFont());
         lowerTable.setRowSelectionAllowed(true);
         lowerTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 
         JTable higherTable = new JTable(this.higherTableModel);
-        higherTable.setRowSelectionAllowed(true);
         higherTable.getTableHeader().setFont(this.getFont());
+        higherTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
+        higherTable.setRowHeight(tableRowHeight);
+        higherTable.setRowSelectionAllowed(true);
         higherTable.setFont(this.getFont());
         higherTable.setRowSelectionAllowed(true);
         higherTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JPanel lowerPanel = new JPanel(new BorderLayout());
+        lowerPanel.setFont(biggerFont);
         lowerPanel.add(lowerTable, BorderLayout.CENTER);
         lowerPanel.add(lowerTable.getTableHeader(), BorderLayout.NORTH);
 
         JPanel higherPanel = new JPanel(new BorderLayout());
+        higherPanel.setFont(biggerFont);
         higherPanel.add(higherTable, BorderLayout.CENTER);
         higherPanel.add(higherTable.getTableHeader(), BorderLayout.NORTH);
 
@@ -98,14 +118,16 @@ public class DistancesPanel extends JPanel implements Observer {
         showCalculationHigher.addActionListener(showCalculationController);
 
         JPanel gridBagContainer = new JPanel();
-        this.add(gridBagContainer);
+        gridBagContainer.setFont(biggerFont);
+        this.setLayout(new BorderLayout());
+        this.add(gridBagContainer, BorderLayout.CENTER);
         gridBagAdded = true;
 
         PainlessGridBag gridBag = new PainlessGridBag(gridBagContainer, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator(new JLabel(" "));
+        gridBag.row().separator();
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
         gridBag.row().cell(showCalculationHigher).fillX();
@@ -126,11 +148,9 @@ public class DistancesPanel extends JPanel implements Observer {
         LogicalRunway lowerThreshold = runwaySelection.getSelectedRunway().getLowerThreshold();
         LogicalRunway higherThreshold = runwaySelection.getSelectedRunway().getHigherThreshold();
 
-        this.lowerPanelLabel.setText("From " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation()
-                + " towards " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
+        this.lowerPanelLabel.setText("Runway " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
 
-        this.higherPanelLabel.setText("From " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation()
-                + " towards " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
+        this.higherPanelLabel.setText("Runway " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
 
         for (int i = 0; i < 4; i++) {
             this.lowerTableModel.removeRow(0);

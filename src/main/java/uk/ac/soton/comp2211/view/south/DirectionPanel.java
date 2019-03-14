@@ -35,12 +35,12 @@ public class DirectionPanel extends JPanel implements Observer {
 
         this.setBorder(BorderFactory.createTitledBorder("Landing/Take-off Direction"));
 
-        fromLowerRadio = new JRadioButton("From lower threshold towards higher threshold");
+        fromLowerRadio = new JRadioButton("Lower threshold");
         fromLowerRadio.setEnabled(false);
         fromLowerRadio.setActionCommand(FROM_LOWER_COMMAND);
         fromLowerRadio.addActionListener(directionController);
 
-        fromHigherRadio = new JRadioButton("From higher threshold towards lower threshold");
+        fromHigherRadio = new JRadioButton("Higher threshold");
         fromHigherRadio.setEnabled(false);
         fromHigherRadio.setActionCommand(FROM_HIGHER_COMMAND);
         fromHigherRadio.addActionListener(directionController);
@@ -66,12 +66,10 @@ public class DirectionPanel extends JPanel implements Observer {
             LogicalRunway lowerThreshold = runway.getLowerThreshold();
             LogicalRunway higherThreshold = runway.getHigherThreshold();
 
-            fromLowerRadio.setText("From " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation()
-                    + " towards " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
+            fromLowerRadio.setText("Runway " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
             fromLowerRadio.setEnabled(true);
 
-            fromHigherRadio.setText("From " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation()
-                    + " towards " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
+            fromHigherRadio.setText("Runway " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
             fromHigherRadio.setEnabled(true);
 
 
@@ -93,6 +91,13 @@ public class DirectionPanel extends JPanel implements Observer {
                             + runway.getRunwayDirection());
 
             }
+        } else {
+
+            fromLowerRadio.setText("Lower threshold");
+            fromLowerRadio.setEnabled(false);
+
+            fromHigherRadio.setText("Higher threshold");
+            fromHigherRadio.setEnabled(false);
         }
     }
 }
