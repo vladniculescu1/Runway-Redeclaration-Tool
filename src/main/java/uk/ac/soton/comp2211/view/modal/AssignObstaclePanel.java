@@ -10,12 +10,11 @@ import javax.swing.text.NumberFormatter;
 
 import org.painlessgridbag.PainlessGridBag;
 
-import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
 
-public class AssignObstaclePanel extends JPanel implements Observer {
+public class AssignObstaclePanel extends JPanel {
 
     public static final String ASSIGN_OBSTACLE_BUTTON_COMMAND = "assignObstacleButton";
     public static final String CANCEL_BUTTON_COMMAND = "cancelButton";
@@ -123,8 +122,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         populate();
         gridBag.done();
-        
-        notifyUpdate();
     }
     
     private void populate() {
@@ -177,12 +174,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         } else {
             return RunwaySide.LOWER_THRESHOLD;
         }
-    }
-    
-    @Override
-    public void notifyUpdate() {
-        // TODO Auto-generated method stub (will be used with the combobox?)
-
     }
     
     /**
