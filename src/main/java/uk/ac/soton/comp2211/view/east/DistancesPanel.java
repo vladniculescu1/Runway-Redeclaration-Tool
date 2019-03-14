@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.controller.ShowCalculationController;
@@ -98,14 +99,15 @@ public class DistancesPanel extends JPanel implements Observer {
         showCalculationHigher.addActionListener(showCalculationController);
 
         JPanel gridBagContainer = new JPanel();
-        this.add(gridBagContainer);
+        this.setLayout(new BorderLayout());
+        this.add(gridBagContainer, BorderLayout.CENTER);
         gridBagAdded = true;
 
-        PainlessGridBag gridBag = new PainlessGridBag(gridBagContainer, false);
+        PainlessGridBag gridBag = new PainlessGridBag(gridBagContainer,false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator(new JLabel(" "));
+        gridBag.row().separator();
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
         gridBag.row().cell(showCalculationHigher).fillX();
