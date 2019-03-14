@@ -41,4 +41,8 @@ public class Obstacle {
     public int getLength() {
         return length;
     }
+
+    public String toString() {
+        return name;
+    }
 }
