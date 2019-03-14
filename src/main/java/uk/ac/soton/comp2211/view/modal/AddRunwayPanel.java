@@ -98,12 +98,12 @@ public class AddRunwayPanel extends JPanel {
     private JComboBox locationComboBoxB;
     private JTextField headingTextFieldA;
     private JTextField headingTextFieldB;
-    private JTextField ldaTextFieldA;
-    private JTextField ldaTextFieldB;
-    private JTextField todaTextFieldA;
-    private JTextField todaTextFieldB;
-    private JTextField asdaTextFieldA;
-    private JTextField asdaTextFieldB;
+    private JFormattedTextField ldaTextFieldA;
+    private JFormattedTextField ldaTextFieldB;
+    private JFormattedTextField todaTextFieldA;
+    private JFormattedTextField todaTextFieldB;
+    private JFormattedTextField asdaTextFieldA;
+    private JFormattedTextField asdaTextFieldB;
     private JFormattedTextField toraTextFieldA;
     private JFormattedTextField toraTextFieldB;
     private JButton addButton;
@@ -171,6 +171,8 @@ public class AddRunwayPanel extends JPanel {
 
         ldaTextFieldA = new JFormattedTextField(integerFormatter);
         ldaTextFieldB = new JFormattedTextField(integerFormatter);
+        ldaTextFieldA.addPropertyChangeListener("value", e -> updateValueBlank(ldaTextFieldA, ldaTextFieldB));
+        ldaTextFieldB.addPropertyChangeListener("value", e -> updateValueBlank(ldaTextFieldB, ldaTextFieldA));
         gridBag.row().cell(new JLabel("LDA (m):"))
                 .cell(ldaTextFieldA).fillX().cell()
                 .cell(new JLabel("LDA (m):"))
@@ -178,6 +180,8 @@ public class AddRunwayPanel extends JPanel {
 
         todaTextFieldA = new JFormattedTextField(integerFormatter);
         todaTextFieldB = new JFormattedTextField(integerFormatter);
+        todaTextFieldA.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldA, todaTextFieldB));
+        todaTextFieldB.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldB, todaTextFieldA));
         gridBag.row().cell(new JLabel("TODA (m):"))
                 .cell(todaTextFieldA).fillX().cell()
                 .cell(new JLabel("TODA (m):"))
@@ -185,6 +189,8 @@ public class AddRunwayPanel extends JPanel {
 
         asdaTextFieldA = new JFormattedTextField(integerFormatter);
         asdaTextFieldB = new JFormattedTextField(integerFormatter);
+        asdaTextFieldA.addPropertyChangeListener("value", e -> updateValueBlank(asdaTextFieldA, asdaTextFieldB));
+        asdaTextFieldB.addPropertyChangeListener("value", e -> updateValueBlank(asdaTextFieldB, asdaTextFieldA));
         gridBag.row().cell(new JLabel("ASDA (m):"))
                 .cell(asdaTextFieldA).fillX().cell()
                 .cell(new JLabel("ASDA (m):"))
@@ -207,6 +213,16 @@ public class AddRunwayPanel extends JPanel {
         cancelButton.addActionListener(controller);
         gridBag.row().cell().cellX(addButton,3).fillX().cell(cancelButton);
         gridBag.done();
+    }
+
+    private void updateValueBlank(JFormattedTextField changedField, JFormattedTextField otherField) {
+        if (!suppressChangeEvents) {
+            if (otherField.getText().equals("")) {
+                suppressChangeEvents = true;
+                otherField.setValue(changedField.getValue());
+                suppressChangeEvents = false;
+            }
+        }
     }
 
     private void updateToraA() {
