@@ -42,14 +42,19 @@ public class ShowCalculationController implements ActionListener {
         switch (e.getActionCommand()) {
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_LOWER:
                 showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
-                        lowerTable.getSelectedRow(), RunwaySide.LOWER_THRESHOLD);
+                        lowerTable.getSelectedRow(), RunwaySide.LOWER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_HIGHER:
                 showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
-                        higherTable.getSelectedRow(), RunwaySide.HIGHER_THRESHOLD);
+                        higherTable.getSelectedRow(), RunwaySide.HIGHER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
+            case ShowCalculationPanel.CANCEL_BUTTON_COMMAND:
+                showCalculationPanel.setVisible(false);
+                displayPopUpFrame.close();
+                break;
+
             default:
                 throw new UnsupportedOperationException("Operation not supported");
         }
