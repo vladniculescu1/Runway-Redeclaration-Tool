@@ -18,9 +18,7 @@ import java.util.Set;
 @EqualTora(message = "The TORA of both logical runways must be equal.")
 @HeadingDiff(message = "The headings of the logical runways must have a difference of 18.")
 public class PhysicalRunway {
-    @Valid
     private LogicalRunway higherThreshold;
-    @Valid
     private LogicalRunway lowerThreshold;
     private RunwaySide runwayDirection;
     private ConstantLengthCalculator constantLengthCalculator;
