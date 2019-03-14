@@ -4,25 +4,24 @@ import java.text.NumberFormat;
 import java.util.Optional;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.NumberFormatter;
 
 import org.painlessgridbag.PainlessGridBag;
 
-import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
-import uk.ac.soton.comp2211.model.Obstacle;
-import uk.ac.soton.comp2211.model.RunwayObstacle;
-import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.model.RunwaySide;
+import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.model.validate.Validator;
 
-public class AssignObstaclePanel extends JPanel implements Observer {
+public class AssignObstaclePanel extends JPanel {
 
     public static final String ASSIGN_OBSTACLE_BUTTON_COMMAND = "assignObstacleButton";
     public static final String CANCEL_BUTTON_COMMAND = "cancelButton";
+    public static final String OBSTACLE_COMBOBOX_COMMAND = "obstacleComboBox";
     
     private RunwaySelection runwaySelection;
-    private JComboBox obstacleComboBox;
+    private JComboBox<Obstacle> obstacleComboBox;
     private JTextField obstacleNameTextField;
     private JTextField obstacleHeightTextField;
     private JTextField obstacleLengthTextField;
@@ -32,20 +31,32 @@ public class AssignObstaclePanel extends JPanel implements Observer {
     private JTextField thresholdDistanceTextField;
     private JButton assignButton;
     private JButton cancelButton;
-    
+
+    private AssignObstacleController assignObstacleController;
+
+    private Obstacle noneObstacle;
+    private boolean ignoreActions;
+
     /**
      * (View) Constructor for AssignObstaclePanel.
      * @param runwaySelection (Model) The runway selector for the program
      * @param assignObstacleController (Controller) The controller for this view's inputs.
      */
     public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
-
+        this.assignObstacleController = assignObstacleController;
         this.runwaySelection = runwaySelection;
         
         this.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         
         PainlessGridBag gridBag = new PainlessGridBag(this,false);
-        obstacleComboBox = new JComboBox(); //TODO populate and link to event listener
+        obstacleComboBox = new JComboBox();
+        noneObstacle = new Obstacle("(None)", 0,0);
+        obstacleComboBox.addItem(noneObstacle);
+        for (Obstacle o: new ObstacleStorage().getObstacles()) {
+            obstacleComboBox.addItem(o);
+        }
+        obstacleComboBox.setSelectedItem(noneObstacle);
+        obstacleComboBox.setActionCommand(OBSTACLE_COMBOBOX_COMMAND);
         obstacleComboBox.addActionListener(assignObstacleController);
         gridBag.row().cell(new JLabel("Select predefined:")).cellX(obstacleComboBox, 2).fillX();
         
@@ -58,12 +69,30 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         obstacleNameTextField = new JTextField();
         gridBag.row().cell(new JLabel("Name of obstacle:")).cellX(obstacleNameTextField, 2).fillX();
-        
+        obstacleNameTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                changeObstacleTextbox();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                changeObstacleTextbox();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                changeObstacleTextbox();
+            }
+        });
+
         obstacleHeightTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cell().cell(new JLabel("Height (m):")).cell(obstacleHeightTextField).fillX();
+        obstacleHeightTextField.addPropertyChangeListener("value", e -> changeObstacleTextbox());
         
         obstacleLengthTextField = new JFormattedTextField(integerFormatter);
         gridBag.row().cell().cell(new JLabel("Length (m):")).cell(obstacleLengthTextField).fillX();
+        obstacleLengthTextField.addPropertyChangeListener("value", e -> changeObstacleTextbox());
         
         gridBag.row().separator();
         
@@ -93,8 +122,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         
         populate();
         gridBag.done();
-        
-        notifyUpdate();
     }
     
     private void populate() {
@@ -104,10 +131,39 @@ public class AssignObstaclePanel extends JPanel implements Observer {
                 .getLowerThreshold().getHeadingAsString());
         
         assignButton.setText("Assign to Runway " + runwaySelection.getSelectedRunway().toString());
-        
-        
     }
-    
+
+    /**
+     * Fills in the obstacle-specific textboxes with data based on the selected obstacle.
+     */
+    public void changeObstacleCombobox() {
+        if (!ignoreActions) {
+            ignoreActions = true;
+            Obstacle o = (Obstacle)obstacleComboBox.getSelectedItem();
+            if (o == noneObstacle) {
+                obstacleNameTextField.setText("");
+                obstacleHeightTextField.setText("");
+                obstacleLengthTextField.setText("");
+            } else {
+                obstacleNameTextField.setText(o.getName());
+                obstacleHeightTextField.setText(Integer.toString(o.getHeight()));
+                obstacleLengthTextField.setText(Integer.toString(o.getLength()));
+            }
+            ignoreActions = false;
+        }
+    }
+
+    private void changeObstacleTextbox() {
+        if (!ignoreActions) {
+            ignoreActions = true;
+            assignObstacleController.setIgnoreActions(true);
+            obstacleComboBox.setSelectedItem(noneObstacle);
+            assignObstacleController.setIgnoreActions(false);
+            ignoreActions = false;
+        }
+    }
+
+
     /**
      * Reads the radio buttons to determine which threshold the obstacle is to be assigned to.
      * @return RunwaySide that the obstacle is to be assigned to.
@@ -118,12 +174,6 @@ public class AssignObstaclePanel extends JPanel implements Observer {
         } else {
             return RunwaySide.LOWER_THRESHOLD;
         }
-    }
-    
-    @Override
-    public void notifyUpdate() {
-        // TODO Auto-generated method stub (will be used with the combobox?)
-
     }
     
     /**
