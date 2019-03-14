@@ -45,8 +45,8 @@ public class TopDownThresholdDrawer implements Drawer {
                     RunwaySide.LOWER_THRESHOLD));
         }
         if (higherDisplacedThresholdLength > 0) {
-            g2d.draw(new ArrowSeries(higherRunwayPosition, thresholdWidth, higherDisplacedThresholdLength,
-                    RunwaySide.LOWER_THRESHOLD));
+            g2d.draw(new ArrowSeries(higherRunwayPosition - higherDisplacedThresholdLength, thresholdWidth,
+                    higherDisplacedThresholdLength, RunwaySide.HIGHER_THRESHOLD));
         }
 
         // increase the thickness of the stroke by 2 for the threshold stripes

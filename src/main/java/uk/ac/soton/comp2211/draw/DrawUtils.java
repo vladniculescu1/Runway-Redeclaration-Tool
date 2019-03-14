@@ -148,10 +148,14 @@ public class DrawUtils {
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,
                 startX + distance, height - fontHeight / 4);
-        
-        g2d.drawString(text, (startX + startX + distance) / 6, (int) (height - fontHeight * 0.4));
 
-        
+        int distanceWidth = g2d.getFontMetrics().stringWidth(text);
+
+        g2d.drawString(text,
+                (startX + startX + distance) / 2 - distanceWidth / 2,  (int) (height - fontHeight * 0.2));
+
+
+
         drawArrowLine(g2d,startX,height,startX + distance,height, fontHeight / 2, fontHeight / 4);
 
         g2d.setFont(font);
