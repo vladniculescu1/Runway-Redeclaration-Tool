@@ -105,7 +105,7 @@ public class DistancesPanel extends JPanel implements Observer {
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator(new JLabel(" "));
+        //gridBag.row().separator(new JLabel(" "));
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
         gridBag.row().cell(showCalculationHigher).fillX();
