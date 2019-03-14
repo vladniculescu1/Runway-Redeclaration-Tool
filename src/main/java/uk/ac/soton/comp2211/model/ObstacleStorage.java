@@ -20,7 +20,6 @@ public class ObstacleStorage {
         obstacles.add(new Obstacle("Airbus A320", 12, 40));
         obstacles.add(new Obstacle("Airbus A321", 12, 45));
         obstacles.add(new Obstacle("Airbus A330-200ceo", 18, 59));
-        obstacles.add(new Obstacle("Airbus A340-600", 59, 76));
         obstacles.add(new Obstacle("Airbus A350-800", 18, 61));
         obstacles.add(new Obstacle("Airbus A380", 25, 73));
         obstacles.add(new Obstacle("Boeing 737-700", 13, 34));
