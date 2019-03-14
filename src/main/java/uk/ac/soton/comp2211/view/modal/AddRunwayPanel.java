@@ -365,66 +365,66 @@ public class AddRunwayPanel extends JPanel {
         String issues = "";
         int ldaA = 1000;
         if (ldaTextFieldA.getText().equals("")) {
-            issues += "LDA must not be blank.\n";
+            issues += "LDA (left column) must not be blank.\n";
         } else {
             ldaA =  Integer.parseInt(ldaTextFieldA.getText());
         }
         int todaA = 1000;
         if (todaTextFieldA.getText().equals("")) {
-            issues += "TODA must not be blank.\n";
+            issues += "TODA (left column) must not be blank.\n";
         } else {
             todaA =  Integer.parseInt(todaTextFieldA.getText());
         }
         int toraA = 1000;
         if (toraTextFieldA.getText().equals("")) {
-            issues += "TORA must not be blank.\n";
+            issues += "TORA (left column) must not be blank.\n";
         } else {
             toraA =  Integer.parseInt(toraTextFieldA.getText());
         }
         int asdaA = 1000;
         if (asdaTextFieldA.getText().equals("")) {
-            issues += "ASDA must not be blank.\n";
+            issues += "ASDA (left column) must not be blank.\n";
         } else {
             asdaA =  Integer.parseInt(asdaTextFieldA.getText());
         }
         int headingA = 2;
         if (headingTextFieldA.getText().equals("")) {
-            issues += "Heading must not be blank.\n";
+            issues += "Heading (left column) must not be blank.\n";
         } else if (!isInteger(headingTextFieldA.getText())) {
-            issues += "Heading must be an integer.\n";
+            issues += "Heading (left column) must be an integer.\n";
         } else {
             headingA = Integer.parseInt(headingTextFieldA.getText());
         }
         ThresholdLocation locationA = getThresholdLocation((String)locationComboBoxA.getSelectedItem());
         int ldaB = 1000;
         if (ldaTextFieldB.getText().equals("")) {
-            issues += "LDA must not be blank.\n";
+            issues += "LDA (right column) must not be blank.\n";
         } else {
             ldaB =  Integer.parseInt(ldaTextFieldB.getText());
         }
         int todaB = 1000;
         if (todaTextFieldB.getText().equals("")) {
-            issues += "TODA must not be blank.\n";
+            issues += "TODA (right column) must not be blank.\n";
         } else {
             todaB =  Integer.parseInt(todaTextFieldB.getText());
         }
         int toraB = 1000;
         if (toraTextFieldB.getText().equals("")) {
-            issues += "TORA must not be blank.\n";
+            issues += "TORA (right column) must not be blank.\n";
         } else {
             toraB =  Integer.parseInt(toraTextFieldB.getText());
         }
         int asdaB = 1000;
         if (asdaTextFieldB.getText().equals("")) {
-            issues += "ASDA must not be blank.\n";
+            issues += "ASDA (right column) must not be blank.\n";
         } else {
             asdaB =  Integer.parseInt(asdaTextFieldB.getText());
         }
         int headingB = 20;
         if (headingTextFieldB.getText().equals("")) {
-            issues += "Heading must not be blank.\n";
+            issues += "Heading (right column) must not be blank.\n";
         } else if (!isInteger(headingTextFieldB.getText())) {
-            issues += "Heading must be an integer.\n";
+            issues += "Heading (right column) must be an integer.\n";
         } else {
             headingB =  Integer.parseInt(headingTextFieldB.getText());
         }
@@ -460,7 +460,21 @@ public class AddRunwayPanel extends JPanel {
                                                 locationA);
         }
         PhysicalRunway physicalRunway = new PhysicalRunway(higherThreshold,lowerThreshold, RunwaySide.LOWER_THRESHOLD);
-        Validator validator = Validator.forObject(physicalRunway);
+        Validator validator = Validator.forObject(lowerThreshold);
+        if (!validator.isValid()) {
+            String[] messages = validator.getViolationMessages().split("\n");
+            for (String message: messages) {
+                issues += "(Lower threshold) " + message + "\n";
+            }
+        }
+        validator = Validator.forObject(higherThreshold);
+        if (!validator.isValid()) {
+            String[] messages = validator.getViolationMessages().split("\n");
+            for (String message: messages) {
+                issues += "(Higher threshold) " + message + "\n";
+            }
+        }
+        validator = Validator.forObject(physicalRunway);
         if (!validator.isValid()) {
             issues += validator.getViolationMessages();
         }
