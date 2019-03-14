@@ -16,10 +16,12 @@ public class DirectionArrowDrawer implements Drawer {
         RunwaySide side = physicalRunway.getRunwayDirection();
 
         var positionCalculator = physicalRunway.getConstantPositionCalculator();
-        var startX = positionCalculator.getStripPosition() + 100;
+
         String text = "Take-off/Landing Direction";
               
-        var distance = (int) DrawConstants.DESIGNATOR_FONTSIZE * 1300;
+        var distance = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
+
+        var startX = positionCalculator.getStripPosition() + distance / 10;
                 
         switch (side) {
             case LOWER_THRESHOLD:
