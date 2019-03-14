@@ -1,9 +1,6 @@
 package uk.ac.soton.comp2211.calculator;
 
-import uk.ac.soton.comp2211.model.LogicalRunway;
-import uk.ac.soton.comp2211.model.PhysicalRunway;
-import uk.ac.soton.comp2211.model.RunwaySide;
-import uk.ac.soton.comp2211.model.ThresholdLocation;
+import uk.ac.soton.comp2211.model.*;
 
 public class Runways {
 
@@ -126,5 +123,23 @@ public class Runways {
         PhysicalRunway physicalRunway = new PhysicalRunway(logicalRunway2, logicalRunway1, RunwaySide.LOWER_THRESHOLD);
 
         return physicalRunway;
+    }
+    public static void setLowerThresholdObstacle(RunwayObstacle runwayObstacle, PhysicalRunway physicalRunway){
+        physicalRunway.getLowerThreshold().setRunwayObstacle(runwayObstacle);
+        physicalRunway.getHigherThreshold().setRunwayObstacle(
+                new RunwayObstacle(
+                        physicalRunway.getDynamicLengthCalculator()
+                                .getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD),
+                        runwayObstacle.getCentreLineDistance(),
+                        runwayObstacle.getObstacle()));
+    }
+    public static void setHigherThresholdObstacle(RunwayObstacle runwayObstacle, PhysicalRunway physicalRunway){
+        physicalRunway.getHigherThreshold().setRunwayObstacle(runwayObstacle);
+        physicalRunway.getLowerThreshold().setRunwayObstacle(
+                new RunwayObstacle(
+                        physicalRunway.getDynamicLengthCalculator()
+                                .getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD),
+                        runwayObstacle.getCentreLineDistance(),
+                        runwayObstacle.getObstacle()));
     }
 }
