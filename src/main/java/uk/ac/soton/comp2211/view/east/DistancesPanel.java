@@ -1,6 +1,9 @@
 package uk.ac.soton.comp2211.view.east;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -87,6 +90,15 @@ public class DistancesPanel extends JPanel implements Observer {
         lowerTable.setFont(this.getFont());
         lowerTable.setRowSelectionAllowed(true);
         lowerTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lowerTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    showCalculationController.actionPerformed(new ActionEvent(e.getSource(),
+                            e.getID(), SHOW_CALCULATION_BUTTON_COMMAND_LOWER));
+                }
+            }
+        });
+
 
 
         JTable higherTable = new JTable(this.higherTableModel);
@@ -97,6 +109,14 @@ public class DistancesPanel extends JPanel implements Observer {
         higherTable.setFont(this.getFont());
         higherTable.setRowSelectionAllowed(true);
         higherTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        higherTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    showCalculationController.actionPerformed(new ActionEvent(e.getSource(),
+                            e.getID(), SHOW_CALCULATION_BUTTON_COMMAND_HIGHER));
+                }
+            }
+        });
 
         JPanel lowerPanel = new JPanel(new BorderLayout());
         lowerPanel.setFont(biggerFont);
