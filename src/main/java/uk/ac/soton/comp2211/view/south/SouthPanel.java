@@ -13,14 +13,11 @@ public class SouthPanel extends JPanel {
      *
      * @param directionPanel the panel for setting the landing direction
      * @param xmlPanel the panel for importing and exporting xml files
-     * @param notificationsPanel the panel for displaying notifications
      */
-    public SouthPanel(DirectionPanel directionPanel, XmlPanel xmlPanel,
-                      NotificationsPanel notificationsPanel) {
+    public SouthPanel(DirectionPanel directionPanel, XmlPanel xmlPanel) {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(directionPanel).fillX().cell(xmlPanel).fillX();
-        gridBag.row().cellXRemainder(notificationsPanel).fillX();
         gridBag.done();
     }
 

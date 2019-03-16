@@ -92,15 +92,9 @@ public class Main {
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
-        
 
-        // Validation example - TODO remove later
-        Validator validator = Validator.forObject(physicalRunway);
-        if (!validator.isValid()) {
-            System.out.println(validator.getViolationMessages());
-        }
 
-        MainFrame mainFrame = new MainFrame(
+        new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
@@ -114,9 +108,9 @@ public class Main {
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new XmlPanel(),
-                                new NotificationsPanel()
-                        )
+                                new XmlPanel()
+                        ),
+                        new NotificationsPanel()
                 )
         );
     }

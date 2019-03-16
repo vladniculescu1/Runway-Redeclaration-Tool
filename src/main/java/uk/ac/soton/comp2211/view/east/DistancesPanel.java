@@ -1,6 +1,9 @@
 package uk.ac.soton.comp2211.view.east;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -31,22 +34,41 @@ public class DistancesPanel extends JPanel implements Observer {
 
     private JButton showCalculationLower;
     private JButton showCalculationHigher;
-    
+
+    private JPanel gridBagContainer;
+    private JPanel noRunwayPanel;
+    private boolean gridBagAdded;
+
     /**
      * Constructs a new distances panel.
-     * @param runwaySelection The runway selection
+     *
+     * @param runwaySelection           The runway selection
      * @param showCalculationController controller for button clicks
      */
     public DistancesPanel(RunwaySelection runwaySelection, ShowCalculationController showCalculationController) {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
 
+        Font biggerFont = this.getFont().deriveFont(this.getFont().getSize() * 1.25F);
+        this.setFont(biggerFont);
+
+        Insets margin = new Insets(3, 0, 3, 0);
+
+        int tableRowHeight = 25;
+
+
         String[] header = {"Parameter", "Original", "Re-Calc"};
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
+        this.lowerPanelLabel.setFont(biggerFont);
         this.higherPanelLabel = new JLabel("Higher threshold");
+        this.higherPanelLabel.setFont(biggerFont);
         this.showCalculationLower = new JButton("Show Calculation");
+        this.showCalculationLower.setFont(biggerFont);
+        this.showCalculationLower.setMargin(margin);
         this.showCalculationHigher = new JButton("Show Calculation");
+        this.showCalculationHigher.setFont(biggerFont);
+        this.showCalculationHigher.setMargin(margin);
 
         this.lowerTableModel = new DefaultTableModel(header, 4) {
             public boolean isCellEditable(int i, int i1) {
@@ -61,27 +83,50 @@ public class DistancesPanel extends JPanel implements Observer {
         };
 
         JTable lowerTable = new JTable(this.lowerTableModel);
-        lowerTable.setRowSelectionAllowed(true);
         lowerTable.getTableHeader().setFont(this.getFont());
+        lowerTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
+        lowerTable.setRowHeight(tableRowHeight);
+        lowerTable.setRowSelectionAllowed(true);
         lowerTable.setFont(this.getFont());
         lowerTable.setRowSelectionAllowed(true);
         lowerTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lowerTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    showCalculationController.actionPerformed(new ActionEvent(e.getSource(),
+                            e.getID(), SHOW_CALCULATION_BUTTON_COMMAND_LOWER));
+                }
+            }
+        });
+
 
 
         JTable higherTable = new JTable(this.higherTableModel);
-        higherTable.setRowSelectionAllowed(true);
         higherTable.getTableHeader().setFont(this.getFont());
+        higherTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
+        higherTable.setRowHeight(tableRowHeight);
+        higherTable.setRowSelectionAllowed(true);
         higherTable.setFont(this.getFont());
         higherTable.setRowSelectionAllowed(true);
         higherTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        higherTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    showCalculationController.actionPerformed(new ActionEvent(e.getSource(),
+                            e.getID(), SHOW_CALCULATION_BUTTON_COMMAND_HIGHER));
+                }
+            }
+        });
 
         JPanel lowerPanel = new JPanel(new BorderLayout());
-        lowerPanel.add(lowerTable,BorderLayout.CENTER);
-        lowerPanel.add(lowerTable.getTableHeader(),BorderLayout.NORTH);
+        lowerPanel.setFont(biggerFont);
+        lowerPanel.add(lowerTable, BorderLayout.CENTER);
+        lowerPanel.add(lowerTable.getTableHeader(), BorderLayout.NORTH);
 
         JPanel higherPanel = new JPanel(new BorderLayout());
-        higherPanel.add(higherTable,BorderLayout.CENTER);
-        higherPanel.add(higherTable.getTableHeader(),BorderLayout.NORTH);
+        higherPanel.setFont(biggerFont);
+        higherPanel.add(higherTable, BorderLayout.CENTER);
+        higherPanel.add(higherTable.getTableHeader(), BorderLayout.NORTH);
 
         showCalculationController.setLowerTable(lowerTable);
         showCalculationController.setHigherTable(higherTable);
@@ -92,76 +137,89 @@ public class DistancesPanel extends JPanel implements Observer {
         showCalculationHigher.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND_HIGHER);
         showCalculationHigher.addActionListener(showCalculationController);
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        JPanel gridBagContainer = new JPanel();
+        gridBagContainer.setFont(biggerFont);
+        this.setLayout(new BorderLayout());
+        this.add(gridBagContainer, BorderLayout.CENTER);
+        gridBagAdded = true;
+
+        PainlessGridBag gridBag = new PainlessGridBag(gridBagContainer, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
         gridBag.row().cell(lowerPanel).fillX();
         gridBag.row().cell(showCalculationLower).fillX();
-        gridBag.row().separator(new JLabel(" "));
+        gridBag.row().separator();
         gridBag.row().cell(higherPanelLabel).fillX();
         gridBag.row().cell(higherPanel).fillX();
         gridBag.row().cell(showCalculationHigher).fillX();
         gridBag.doneAndPushEverythingToTop();
 
+        JLabel noRunwayLabel =
+                new JLabel("<html>A runway must be declared in order<br> to view distances.</html>");
+        noRunwayPanel = new JPanel();
+        noRunwayPanel.add(noRunwayLabel);
+
         notifyUpdate();
     }
-    
+
     /**
      * Creates tables and fills in their data if applicable.
      */
     private void fillIn() {
+        LogicalRunway lowerThreshold = runwaySelection.getSelectedRunway().getLowerThreshold();
+        LogicalRunway higherThreshold = runwaySelection.getSelectedRunway().getHigherThreshold();
 
-        if (runwaySelection.hasSelectedRunway()) {
-            LogicalRunway lowerThreshold = runwaySelection.getSelectedRunway().getLowerThreshold();
-            LogicalRunway higherThreshold = runwaySelection.getSelectedRunway().getHigherThreshold();
+        this.lowerPanelLabel.setText("Runway " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
 
-            this.lowerPanelLabel.setText("From " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation()
-                    + " towards " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
+        this.higherPanelLabel.setText("Runway " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation());
 
-            this.higherPanelLabel.setText("From " + higherThreshold.getHeadingAsString() + higherThreshold.getLocation()
-                    + " towards " + lowerThreshold.getHeadingAsString() + lowerThreshold.getLocation());
+        for (int i = 0; i < 4; i++) {
+            this.lowerTableModel.removeRow(0);
+            this.higherTableModel.removeRow(0);
+        }
 
-            for (int i = 0; i < 4; i++) {
-                this.lowerTableModel.removeRow(0);
-                this.higherTableModel.removeRow(0);
-            }
-
-            DynamicLengthCalculator calc = runwaySelection.getSelectedRunway().getDynamicLengthCalculator();
-            Object[][] lowerData = {
-                {"LDA",  lowerThreshold.getOriginalLda(),
-                    calc.getLda(RunwaySide.LOWER_THRESHOLD)},
+        DynamicLengthCalculator calc = runwaySelection.getSelectedRunway().getDynamicLengthCalculator();
+        Object[][] lowerData = {
+                {"LDA", lowerThreshold.getOriginalLda(),
+                        calc.getLda(RunwaySide.LOWER_THRESHOLD)},
                 {"TODA", lowerThreshold.getOriginalToda(),
-                    calc.getToda(RunwaySide.LOWER_THRESHOLD)},
+                        calc.getToda(RunwaySide.LOWER_THRESHOLD)},
                 {"ASDA", lowerThreshold.getOriginalAsda(),
-                    calc.getAsda(RunwaySide.LOWER_THRESHOLD)},
+                        calc.getAsda(RunwaySide.LOWER_THRESHOLD)},
                 {"TORA", lowerThreshold.getOriginalTora(),
-                    calc.getTora(RunwaySide.LOWER_THRESHOLD)}};
-            Object[][] higherData = {
-                {"LDA",  higherThreshold.getOriginalLda(),
-                    calc.getLda(RunwaySide.HIGHER_THRESHOLD)},
+                        calc.getTora(RunwaySide.LOWER_THRESHOLD)}};
+        Object[][] higherData = {
+                {"LDA", higherThreshold.getOriginalLda(),
+                        calc.getLda(RunwaySide.HIGHER_THRESHOLD)},
                 {"TODA", higherThreshold.getOriginalToda(),
-                    calc.getToda(RunwaySide.HIGHER_THRESHOLD)},
+                        calc.getToda(RunwaySide.HIGHER_THRESHOLD)},
                 {"ASDA", higherThreshold.getOriginalAsda(),
-                    calc.getAsda(RunwaySide.HIGHER_THRESHOLD)},
+                        calc.getAsda(RunwaySide.HIGHER_THRESHOLD)},
                 {"TORA", higherThreshold.getOriginalTora(),
-                    calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
+                        calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
 
-            for (var row : lowerData) {
-                this.lowerTableModel.addRow(row);
-            }
+        for (var row : lowerData) {
+            this.lowerTableModel.addRow(row);
+        }
 
-            for (var row : higherData) {
-                this.higherTableModel.addRow(row);
-            }
-
-
-        } else {
-            this.add(new JLabel("A runway must be selected to view distances."));
+        for (var row : higherData) {
+            this.higherTableModel.addRow(row);
         }
     }
 
     @Override
     public void notifyUpdate() {
-        fillIn();
+        if (runwaySelection.hasSelectedRunway()) {
+            fillIn();
+            if (!gridBagAdded) {
+                this.removeAll();
+                this.add(gridBagContainer);
+            }
+        } else {
+            if (gridBagAdded) {
+                this.removeAll();
+                this.add(noRunwayPanel);
+            }
+        }
         repaint();
     }
 }
