@@ -37,7 +37,6 @@ public class DistancesPanel extends JPanel implements Observer {
 
     private JPanel gridBagContainer;
     private JPanel noRunwayPanel;
-    private boolean gridBagAdded;
 
     /**
      * Constructs a new distances panel.
@@ -137,11 +136,10 @@ public class DistancesPanel extends JPanel implements Observer {
         showCalculationHigher.setActionCommand(SHOW_CALCULATION_BUTTON_COMMAND_HIGHER);
         showCalculationHigher.addActionListener(showCalculationController);
 
-        JPanel gridBagContainer = new JPanel();
+        gridBagContainer = new JPanel();
         gridBagContainer.setFont(biggerFont);
         this.setLayout(new BorderLayout());
         this.add(gridBagContainer, BorderLayout.CENTER);
-        gridBagAdded = true;
 
         PainlessGridBag gridBag = new PainlessGridBag(gridBagContainer, false);
         gridBag.row().cell(lowerPanelLabel).fillX();
@@ -210,15 +208,11 @@ public class DistancesPanel extends JPanel implements Observer {
     public void notifyUpdate() {
         if (runwaySelection.hasSelectedRunway()) {
             fillIn();
-            if (!gridBagAdded) {
-                this.removeAll();
-                this.add(gridBagContainer);
-            }
+            this.removeAll();
+            this.add(gridBagContainer);
         } else {
-            if (gridBagAdded) {
-                this.removeAll();
-                this.add(noRunwayPanel);
-            }
+            this.removeAll();
+            this.add(noRunwayPanel);
         }
         repaint();
     }
