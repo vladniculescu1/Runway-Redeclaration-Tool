@@ -33,7 +33,7 @@ public class DynamicPositionCalculator extends Calculator {
      * @param side the side the value will be calculated for
      * @return the calculated value
      */
-    public int getLandingObstacleOffest(RunwaySide side) {
+    public int getLandingObstacleOffset(RunwaySide side) {
         LogicalRunway runway = getLogicalRunwayForSide(side);
         if (runway.hasRunwayObstacle()) {
             RunwayObstacle runwayObstacle = runway.getRunwayObstacle();
