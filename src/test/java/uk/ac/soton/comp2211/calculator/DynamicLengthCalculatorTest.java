@@ -8308,7 +8308,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //###################ObstacleheightdoesntpassBlastProtectionCheck#########[####################
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8319,7 +8319,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8330,7 +8330,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8341,7 +8341,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8352,7 +8352,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8363,7 +8363,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8374,7 +8374,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8385,7 +8385,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8396,7 +8396,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8407,7 +8407,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8418,7 +8418,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8429,7 +8429,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8440,7 +8440,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3050;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8451,7 +8451,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8462,7 +8462,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8473,7 +8473,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8485,7 +8485,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8496,7 +8496,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8507,7 +8507,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8518,7 +8518,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8529,7 +8529,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8540,7 +8540,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8551,7 +8551,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8562,7 +8562,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8574,7 +8574,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //Lower Distances near and far obstacles with higher and lower clearways
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8585,7 +8585,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8596,7 +8596,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8607,7 +8607,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3250;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8618,7 +8618,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8629,7 +8629,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8640,7 +8640,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8651,7 +8651,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8663,7 +8663,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8674,7 +8674,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8685,7 +8685,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8696,7 +8696,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8707,7 +8707,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8718,7 +8718,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8729,7 +8729,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8740,7 +8740,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8752,7 +8752,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //lower with near and far obstacle with stopway and clearway
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8763,7 +8763,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8774,7 +8774,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8785,7 +8785,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3250;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8796,7 +8796,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3050;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8807,7 +8807,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8818,7 +8818,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8829,7 +8829,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8841,7 +8841,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8852,7 +8852,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8863,7 +8863,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8874,7 +8874,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8885,7 +8885,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8896,7 +8896,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8907,7 +8907,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8918,7 +8918,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8930,7 +8930,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //Now Distances from Higher threshold towards lower######################################################
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8941,7 +8941,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8952,7 +8952,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8963,7 +8963,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8974,7 +8974,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8985,7 +8985,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -8996,7 +8996,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9007,7 +9007,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheck(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9018,7 +9018,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9029,7 +9029,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9040,7 +9040,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9051,7 +9051,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9062,7 +9062,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9073,7 +9073,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9084,7 +9084,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9095,7 +9095,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9107,7 +9107,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9118,7 +9118,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9129,7 +9129,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9140,7 +9140,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9151,7 +9151,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9162,7 +9162,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9173,7 +9173,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9184,7 +9184,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9196,7 +9196,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //Lower Distances near and far obstacles with higher and lower clearways
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9207,7 +9207,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9218,7 +9218,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9229,7 +9229,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9240,7 +9240,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9251,7 +9251,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9262,7 +9262,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9273,7 +9273,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3250;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9285,7 +9285,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9296,7 +9296,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9307,7 +9307,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9318,7 +9318,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9329,7 +9329,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9340,7 +9340,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9351,7 +9351,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9362,7 +9362,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9374,7 +9374,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //lower with near and far obstacle with stopway and clearway
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9385,7 +9385,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9396,7 +9396,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9407,7 +9407,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9418,7 +9418,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9429,7 +9429,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9440,7 +9440,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9451,7 +9451,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3250;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9463,7 +9463,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9474,7 +9474,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9485,7 +9485,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9496,7 +9496,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9507,7 +9507,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9518,7 +9518,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9529,7 +9529,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9540,7 +9540,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2550;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleHeightFailsBlastProtectionCheckStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9552,7 +9552,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //###################MinimumLength#########[####################
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9563,7 +9563,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9574,7 +9574,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9585,7 +9585,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9596,7 +9596,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9607,7 +9607,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9618,7 +9618,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9629,7 +9629,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9640,7 +9640,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9651,7 +9651,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9662,7 +9662,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9673,7 +9673,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9684,7 +9684,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3099;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9695,7 +9695,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9706,7 +9706,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9717,7 +9717,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9729,7 +9729,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9740,7 +9740,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9751,7 +9751,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9762,7 +9762,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9773,7 +9773,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9784,7 +9784,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9795,7 +9795,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9806,7 +9806,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9818,7 +9818,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //Lower Distances near and far obstacles with higher and lower clearways
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9829,7 +9829,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9840,7 +9840,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9851,7 +9851,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3299;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9862,7 +9862,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9873,7 +9873,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9884,7 +9884,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9895,7 +9895,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9907,7 +9907,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9918,7 +9918,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9929,7 +9929,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9940,7 +9940,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9951,7 +9951,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9962,7 +9962,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9973,7 +9973,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9984,7 +9984,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -9996,7 +9996,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //lower with near and far obstacle with stopway and clearway
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10007,7 +10007,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10018,7 +10018,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10029,7 +10029,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3299;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10040,7 +10040,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3099;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10051,7 +10051,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10062,7 +10062,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10073,7 +10073,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10085,7 +10085,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10096,7 +10096,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10107,7 +10107,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10118,7 +10118,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10129,7 +10129,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerLdaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10140,7 +10140,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerToraFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10151,7 +10151,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerTodaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10162,7 +10162,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getLowerAsdaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10174,7 +10174,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
     }
     //Now Distances from Higher threshold towards lower######################################################
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10185,7 +10185,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10196,7 +10196,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10207,7 +10207,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10218,7 +10218,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10229,7 +10229,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10240,7 +10240,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10251,7 +10251,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLength(){
         PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10262,7 +10262,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10273,7 +10273,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10284,7 +10284,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10295,7 +10295,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10306,7 +10306,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10317,7 +10317,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10328,7 +10328,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10339,7 +10339,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10351,7 +10351,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10362,7 +10362,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10373,7 +10373,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10384,7 +10384,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthStopwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10395,7 +10395,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10406,7 +10406,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10417,7 +10417,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10428,7 +10428,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthStopwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10440,7 +10440,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //Lower Distances near and far obstacles with higher and lower clearways
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10451,7 +10451,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10462,7 +10462,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10473,7 +10473,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10484,7 +10484,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10495,7 +10495,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10506,7 +10506,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10517,7 +10517,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3299;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10529,7 +10529,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10540,7 +10540,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10551,7 +10551,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10562,7 +10562,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthClearwayLower(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10573,7 +10573,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10584,7 +10584,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10595,7 +10595,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10606,7 +10606,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10618,7 +10618,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
     //lower with near and far obstacle with stopway and clearway
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10629,7 +10629,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10640,7 +10640,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10651,7 +10651,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10662,7 +10662,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10673,7 +10673,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10684,7 +10684,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10695,7 +10695,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 3299;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaNearObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10707,7 +10707,7 @@ class DynamicLengthCalculatorTest {
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10718,7 +10718,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10729,7 +10729,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10740,7 +10740,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthStopwayClearwayLower(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10751,7 +10751,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherLdaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10762,7 +10762,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2599;
         assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherToraFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10773,7 +10773,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherTodaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10784,7 +10784,7 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void getHigherAsdaFarObstacleMinimumLengthStopwayClearwayHigher(){
         PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
         DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -10795,50 +10795,2650 @@ class DynamicLengthCalculatorTest {
         int expectedValue = 2339;
         assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
     }
+    //##################eMaxLengthMaxDistance#########[####################
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
 
-//////OTHER CASES///////
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
-    //heaight = 0
-    //distance = 0
-    //centre-line distance = max
-    //
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
-    //TODO obstacles for each distance
-    //Test with obstacle height under limit so RESA/BLast protection can be used
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2200;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //Lower Distances near and far obstacles with higher and lower clearways
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2400;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //lower with near and far obstacle with stopway and clearway
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2400;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2200;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //Now Distances from Higher threshold towards lower######################################################
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2200;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    //Lower Distances near and far obstacles with higher and lower clearways
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2400;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    //lower with near and far obstacle with stopway and clearway
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2400;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2200;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 1700;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxLengthMaxHeightMaxDistanceStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 500));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 190;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    //Obstacle with Max distance to centre line//
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3050;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //Lower Distances near and far obstacles with higher and lower clearways
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3250;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //lower with near and far obstacle with stopway and clearway
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3250;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3050;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerLdaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerToraFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerTodaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.LOWER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getLowerAsdaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.LOWER_THRESHOLD));
+    }
+    //Now Distances from Higher threshold towards lower######################################################
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLine(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3050;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineStopwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineStopwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    //Lower Distances near and far obstacles with higher and lower clearways
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3250;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    //lower with near and far obstacle with stopway and clearway
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3250;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaNearObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 3050;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineStopwayClearwayLower(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayLower();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherLdaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2550;
+        assertEquals(expectedValue, dynamicLengthCalculator.getLda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherToraFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getTora(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherTodaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getToda(RunwaySide.HIGHER_THRESHOLD));
+    }
+    @org.junit.jupiter.api.Test
+    void getHigherAsdaFarObstacleMaxCentreLineStopwayClearwayHigher(){
+        PhysicalRunway physicalRunway = Runways.stopWayClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 75, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2290;
+        assertEquals(expectedValue, dynamicLengthCalculator.getAsda(RunwaySide.HIGHER_THRESHOLD));
+    }
 
     @Test
-    void getObstacleThresholdDistance(){
-        //with and without obstacle
-        //differnet obstacle lengths
-        //with and without displaced thresholds
+    void getHigherObstacleThresholdDistanceNoObstacle(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD);
+        });
+    }
+
+    @Test
+    void getLowerObstacleThresholdDistanceNoObstacle(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD);
+        });
+    }
+
+    @Test
+    void getHigherObstacleThresholdDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 100;
+        assertEquals(expectedValue, dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @Test
+    void getLowerObstacleThresholdDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 100;
+        assertEquals(expectedValue, dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @Test
+    void getOppositeObstacleThresholdDistance(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 2850;
+        assertEquals(expectedValue, dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @Test
+    void getObstacleThresholdDistanceWithDisplacedThreshold(){
+        PhysicalRunway physicalRunway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 10, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 100;
+        assertEquals(expectedValue, dynamicLengthCalculator.getObstacleThresholdDistance(RunwaySide.HIGHER_THRESHOLD));
     }
 
     @Test
     void getSlopeCalculation(){
-        //Different height obstacles
-        //
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 10, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        int expectedValue = 500;
+        assertEquals(expectedValue, dynamicLengthCalculator.getSlopeCalculation());
     }
 
     @Test
-    void checkSide(){
-        //Cases
-        //Closer to current Both sides
-        //Closer to opposite Both sides
-        //Limit closer to current
-        //Limit closer to opposite
-        //All of these with and without displaced thresholds
+    void getSlopeCalculationMaxHeight(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
 
+        int expectedValue = 35*50;
+        assertEquals(expectedValue, dynamicLengthCalculator.getSlopeCalculation());
+    }
+
+    @Test
+    void checkSideLower(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertTrue(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @Test
+    void checkSideHigher(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(100, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertTrue(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @Test
+    void checkSideLowerBoundary(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertTrue(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @Test
+    void checkSideHigherBoundary(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertTrue(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.HIGHER_THRESHOLD));
+    }
+
+    @Test
+    void checkSideLowerOpposite(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setHigherThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertFalse(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.LOWER_THRESHOLD));
+    }
+
+    @Test
+    void checkSideHigherOpposite(){
+        PhysicalRunway physicalRunway = Runways.noStopWayNoClearway();
+        DynamicLengthCalculator dynamicLengthCalculator = physicalRunway.getDynamicLengthCalculator();
+
+        RunwayObstacle runwayObstacle = new RunwayObstacle(500, 0, new Obstacle("obstacle", 35, 50));
+        Runways.setLowerThresholdObstacle(runwayObstacle, physicalRunway);
+
+        assertFalse(dynamicLengthCalculator.checkSide(runwayObstacle,RunwaySide.HIGHER_THRESHOLD));
     }
 }
