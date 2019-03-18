@@ -1,5 +1,9 @@
 package uk.ac.soton.comp2211.model;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,15 +11,18 @@ import java.util.Set;
 /**
  * The set of available obstacles available to the user (in storage). No two obstacles can be the same.
  */
+@XmlRootElement
 public class ObstacleStorage {
 
+    @XmlElementWrapper
+    @XmlElement(name = "predefinedObstacle")
     private Set<Obstacle> obstacles;
 
     /**
      * Creates this ObstacleStorage with a set of predefined obstacles.
      */
     public ObstacleStorage() {
-        obstacles = new HashSet<Obstacle>();
+        obstacles = new HashSet<>();
         obstacles.add(new Obstacle("Airbus A319", 12, 34));
         obstacles.add(new Obstacle("Airbus A320", 12, 40));
         obstacles.add(new Obstacle("Airbus A321", 12, 45));

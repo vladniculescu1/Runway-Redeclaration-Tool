@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
 
+import uk.ac.soton.comp2211.model.ObstacleStorage;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -18,14 +19,17 @@ public class AssignObstacleController implements ActionListener {
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
 
+    private ObstacleStorage obstacleStorage;
+
     private boolean ignoreActions = false;
     
     /**
      * Creates this AssignObstacleController.
      * @param runwaySelection The runwaySelection.
      */
-    public AssignObstacleController(RunwaySelection runwaySelection)    {
+    public AssignObstacleController(RunwaySelection runwaySelection, ObstacleStorage obstacleStorage)    {
         this.runwaySelection = runwaySelection;
+        this.obstacleStorage = obstacleStorage;
         displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
     }
 
@@ -39,7 +43,7 @@ public class AssignObstacleController implements ActionListener {
             switch (e.getActionCommand()) {
 
                 case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
-                    assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
+                    assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this, obstacleStorage);
                     displayPopUpFrame.create(assignObstaclePanel);
                     break;
                 }

@@ -42,7 +42,7 @@ public class AssignObstaclePanel extends JPanel {
      * @param runwaySelection (Model) The runway selector for the program
      * @param assignObstacleController (Controller) The controller for this view's inputs.
      */
-    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
+    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController, ObstacleStorage obstacleStorage) {
         this.assignObstacleController = assignObstacleController;
         this.runwaySelection = runwaySelection;
         
@@ -52,7 +52,7 @@ public class AssignObstaclePanel extends JPanel {
         obstacleComboBox = new JComboBox();
         noneObstacle = new Obstacle("(None)", 0,0);
         obstacleComboBox.addItem(noneObstacle);
-        for (Obstacle o: new ObstacleStorage().getObstacles()) {
+        for (Obstacle o: obstacleStorage.getObstacles()) {
             obstacleComboBox.addItem(o);
         }
         obstacleComboBox.setSelectedItem(noneObstacle);

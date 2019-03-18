@@ -28,7 +28,15 @@ import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
+import uk.ac.soton.comp2211.xml.XmlContainer;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.List;
 
 /**
@@ -67,6 +75,8 @@ public class Main {
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
+        ObstacleStorage obstacleStorage = new ObstacleStorage();
+
         List<Drawer> topDownDrawer = List.of(
 
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
@@ -89,7 +99,7 @@ public class Main {
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
-        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection, obstacleStorage);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
 
@@ -113,6 +123,32 @@ public class Main {
                         new NotificationsPanel()
                 )
         );
+
+        testXML(new XmlContainer(airport, runwaySelection, obstacleStorage));
+
+
+
+    }
+
+    private static void testXML(XmlContainer xmlContainer) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(XmlContainer.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(xmlContainer, new File("airport.xml"));
+
+//            Unmarshaller unmarshaller = context.createUnmarshaller();
+//            BookXML bookXML2 = (BookXML) unmarshaller.unmarshal(new FileReader("bookstore.xml"));
+//            BookStore bookStore2 = bookXML2.getStore();
+//
+//            bookStore2.getBookList().stream()
+//                    .map(Book::getTitle)
+//                    .forEach(System.out::println);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

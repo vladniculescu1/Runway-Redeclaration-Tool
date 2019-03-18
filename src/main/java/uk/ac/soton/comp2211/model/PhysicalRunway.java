@@ -7,6 +7,7 @@ import uk.ac.soton.comp2211.model.validate.EqualTora;
 import uk.ac.soton.comp2211.model.validate.HeadingDiff;
 
 import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,14 +18,26 @@ import java.util.Set;
  */
 @EqualTora(message = "The TORA of both logical runways must be equal.")
 @HeadingDiff(message = "The headings of the logical runways must have a difference of 18.")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class PhysicalRunway {
+
+    @XmlElement
     private LogicalRunway higherThreshold;
+
+    @XmlElement
     private LogicalRunway lowerThreshold;
+
+    @XmlElement
     private RunwaySide runwayDirection;
+
     private ConstantLengthCalculator constantLengthCalculator;
     private ConstantPositionCalculator constantPositionCalculator;
     private DynamicLengthCalculator dynamicLengthCalculator;
     private DynamicPositionCalculator dynamicPositionCalculator;
+
+    private PhysicalRunway() {
+    }
 
     /**
      * The PhysicalRunway constructor.
@@ -55,6 +68,11 @@ public class PhysicalRunway {
         return runwayDirection;
     }
 
+    @XmlElement
+    @XmlID
+    public String getId() {
+        return this.toString();
+    }
 
     @Override
     public String toString() {
