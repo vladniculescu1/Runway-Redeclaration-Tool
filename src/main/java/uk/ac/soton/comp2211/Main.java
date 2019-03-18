@@ -53,10 +53,21 @@ public class Main {
 
         Airport airport = new Airport();
 
+        ObstacleStorage obstacleStorage = new ObstacleStorage();
+
         LogicalRunway logicalRunway1 = new LogicalRunway(3360, 3660,
                 3660, 3810, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
                 3660, 3810, 27, ThresholdLocation.RIGHT);
+
+        Obstacle obstacle = new Obstacle("TestObstacle", 12, 40); // obstacleStorage.getObstacleByName("Airbus A320")
+
+        RunwayObstacle runwayObstacleLower = new RunwayObstacle(100,0, obstacle);
+        logicalRunway1.setRunwayObstacle(runwayObstacleLower);
+
+        RunwayObstacle runwayObstacleHigher = new RunwayObstacle(3120,0, obstacle);
+        logicalRunway2.setRunwayObstacle(runwayObstacleHigher);
+
 
         LogicalRunway logicalRunway3 = new LogicalRunway(2985, 3346,
                 3346, 3346, 7, ThresholdLocation.LEFT);
@@ -75,7 +86,7 @@ public class Main {
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
-        ObstacleStorage obstacleStorage = new ObstacleStorage();
+
 
         List<Drawer> topDownDrawer = List.of(
 
@@ -132,7 +143,7 @@ public class Main {
 
     private static void testXML(XmlContainer xmlContainer) {
         try {
-            JAXBContext context = JAXBContext.newInstance(XmlContainer.class);
+            JAXBContext context = JAXBContext.newInstance(XmlContainer.class, RunwayObstacle.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(xmlContainer, new File("airport.xml"));

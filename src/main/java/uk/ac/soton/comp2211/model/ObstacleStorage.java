@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -38,5 +39,13 @@ public class ObstacleStorage {
 
     public Set<Obstacle> getObstacles() {
         return obstacles;
+    }
+
+    public Obstacle getObstacleByName(String name) {
+        for (Obstacle obstacle : obstacles) {
+            if (obstacle.getName().equals(name))
+                return obstacle;
+        }
+        throw new NoSuchElementException("Obstacle " + name + " does not exist in storage.");
     }
 }
