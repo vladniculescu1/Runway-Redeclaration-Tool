@@ -7,12 +7,12 @@ public class OptionalAdapter extends XmlAdapter<Object, Optional<?>> {
 
 
     @Override
-    public Optional<?> unmarshal(Object obj) throws Exception {
+    public Optional<?> unmarshal(Object obj) {
         return Optional.of(obj);
     }
 
     @Override
-    public Object marshal(Optional<?> optional) throws Exception {
+    public Object marshal(Optional<?> optional) {
         return optional.orElse(null);
     }
 }
