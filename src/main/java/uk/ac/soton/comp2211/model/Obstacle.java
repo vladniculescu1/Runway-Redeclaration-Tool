@@ -19,7 +19,6 @@ public class Obstacle {
 
     @NotBlank(message = "Name must not be blank.")
     @XmlElement
-    @XmlID
     private String name;
     
     @Range(min = 1, max = 35, message = "Height must be between 1 and 35 inclusive.")

@@ -60,7 +60,7 @@ public class Main {
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
                 3660, 3810, 27, ThresholdLocation.RIGHT);
 
-        Obstacle obstacle = new Obstacle("TestObstacle", 12, 40); // obstacleStorage.getObstacleByName("Airbus A320")
+        Obstacle obstacle = obstacleStorage.getObstacleByName("Airbus A320");
 
         RunwayObstacle runwayObstacleLower = new RunwayObstacle(100,0, obstacle);
         logicalRunway1.setRunwayObstacle(runwayObstacleLower);

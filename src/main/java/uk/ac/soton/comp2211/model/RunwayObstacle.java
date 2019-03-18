@@ -25,7 +25,6 @@ public class RunwayObstacle {
 
     @Valid
     @XmlElement
-    @XmlIDREF
     private Obstacle obstacle;
 
     private RunwayObstacle() {
