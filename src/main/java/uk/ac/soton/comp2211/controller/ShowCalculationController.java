@@ -22,7 +22,6 @@ public class ShowCalculationController implements ActionListener {
 
     public ShowCalculationController(RunwaySelection runwaySelection) {
         this.runwaySelection = runwaySelection;
-        //this.displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
     }
 
     public void setLowerTable(JTable lowerTable) {
