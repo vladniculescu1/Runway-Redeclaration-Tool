@@ -1,11 +1,12 @@
 package uk.ac.soton.comp2211.controller;
 
 import org.apache.commons.io.FilenameUtils;
+import uk.ac.soton.comp2211.Application;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.south.ExportPanel;
 import uk.ac.soton.comp2211.view.south.ImportPanel;
-import uk.ac.soton.comp2211.xml.XmlContainer;
+import uk.ac.soton.comp2211.ApplicationData;
 import uk.ac.soton.comp2211.xml.XmlImporterExporter;
 
 import javax.imageio.ImageIO;
@@ -23,24 +24,24 @@ public class ImportExportController implements ActionListener {
 
     private DrawExecutor sideOnDrawExecutor;
     private DrawExecutor topDownDrawExecutor;
-    private XmlContainer xmlContainer;
+    private Application application;
 
-    private MainFrame mainFrame;
+    private JFrame mainFrame;
 
     /**
      * (Controller) Provides the functionality for the exporting and importing buttons.
      * @param sideOnDrawExectutor Used in exporting as PNG.
      * @param topDownDrawExecutor Used in exporting as PNG.
-     * @param xmlContainer Used in exporting as XML
+     * @param application Used in exporting as XML
      */
     public ImportExportController(DrawExecutor topDownDrawExecutor,
-                                  DrawExecutor sideOnDrawExectutor, XmlContainer xmlContainer) {
-        this.xmlContainer = xmlContainer;
+                                  DrawExecutor sideOnDrawExectutor, Application application) {
+        this.application = application;
         this.sideOnDrawExecutor = sideOnDrawExectutor;
         this.topDownDrawExecutor = topDownDrawExecutor;
     }
 
-    public void addMainFrame(MainFrame mainFrame) {
+    public void addMainFrame(JFrame mainFrame) {
         this.mainFrame = mainFrame;
     }
 
@@ -96,10 +97,11 @@ public class ImportExportController implements ActionListener {
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, xmlContainer);
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
                         xmlImporterExporter.exportXML();
                         JOptionPane.showMessageDialog(mainFrame, "Successfully saved as XML.");
                     } catch (JAXBException e1) {
+                        e1.printStackTrace();
                         JOptionPane.showMessageDialog(mainFrame, "Failed to save as XML.");
                     }
                 }
@@ -111,14 +113,13 @@ public class ImportExportController implements ActionListener {
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, xmlContainer);
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
                         xmlImporterExporter.importXML();
                         JOptionPane.showMessageDialog(mainFrame, "Successfully imported airport settings");
                     } catch (JAXBException | ClassCastException e2) {
+                        e2.printStackTrace();
                         JOptionPane.showMessageDialog(mainFrame, "Failed to import airport settings");
                     }
-
-
                 }
                 break;
             }
@@ -128,10 +129,7 @@ public class ImportExportController implements ActionListener {
     }
 
     private Optional<File> getImportLocation(String fileType) {
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(fileType.toUpperCase() + " Files",
-                fileType.toLowerCase());
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
+        JFileChooser fileChooser = this.createFileChooser(fileType);
         fileChooser.setDialogType(JFileChooser.OPEN_DIALOG);
 
         do {
@@ -156,10 +154,7 @@ public class ImportExportController implements ActionListener {
 
     private Optional<File> getExportLocation(String fileType) {
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(fileType.toUpperCase() + " Files",
-                fileType.toLowerCase());
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
+        JFileChooser fileChooser = this.createFileChooser(fileType);
         fileChooser.setDialogType(JFileChooser.SAVE_DIALOG);
 
         do {
@@ -191,5 +186,13 @@ public class ImportExportController implements ActionListener {
             }
 
         } while (true);
+    }
+
+    private JFileChooser createFileChooser(String fileType) {
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(fileType.toUpperCase() + " Files",
+                fileType.toLowerCase());
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        return fileChooser;
     }
 }

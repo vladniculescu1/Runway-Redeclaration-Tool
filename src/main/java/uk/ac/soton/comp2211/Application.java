@@ -1,0 +1,109 @@
+package uk.ac.soton.comp2211;
+
+import uk.ac.soton.comp2211.controller.*;
+import uk.ac.soton.comp2211.draw.*;
+import uk.ac.soton.comp2211.draw.sideon.*;
+import uk.ac.soton.comp2211.draw.topdown.*;
+import uk.ac.soton.comp2211.model.Airport;
+import uk.ac.soton.comp2211.model.ObstacleStorage;
+import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.view.MainFrame;
+import uk.ac.soton.comp2211.view.MainPanel;
+import uk.ac.soton.comp2211.view.center.DisplayTabbedPane;
+import uk.ac.soton.comp2211.view.center.SideOnPanel;
+import uk.ac.soton.comp2211.view.center.TopDownPanel;
+import uk.ac.soton.comp2211.view.center.TopDownRotatedPanel;
+import uk.ac.soton.comp2211.view.east.DistancesPanel;
+import uk.ac.soton.comp2211.view.east.EastPanel;
+import uk.ac.soton.comp2211.view.east.ObstaclePanel;
+import uk.ac.soton.comp2211.view.east.RunwayPanel;
+import uk.ac.soton.comp2211.view.south.*;
+
+import javax.swing.*;
+import java.util.List;
+
+public class Application {
+    private JFrame mainframe;
+    private ApplicationData data;
+
+    public Application() {
+        Airport airport = new Airport();
+        ObstacleStorage obstacleStorage = new ObstacleStorage();
+        RunwaySelection runwaySelection = new RunwaySelection();
+        this.data = new ApplicationData(airport, runwaySelection, obstacleStorage);
+
+    }
+
+    public Application(ApplicationData applicationData) {
+        this.data = applicationData;
+    }
+
+    public void createMainframe() {
+
+        if (mainframe != null) {
+            mainframe.dispose();
+        }
+        Airport airport = data.getAirport();
+        ObstacleStorage obstacleStorage = data.getObstacleStorage();
+        RunwaySelection runwaySelection = data.getRunwaySelection();
+
+        List<Drawer> topDownDrawer = List.of(
+
+                new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
+                new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
+                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
+                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
+                new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
+
+        );
+
+        List<Drawer> sideOnDrawer = List.of(
+                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
+                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
+                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
+        );
+
+        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection, obstacleStorage);
+        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
+        ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
+        ImportExportController importExportController =
+                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
+
+
+        this.mainframe = new MainFrame(
+                new MainPanel(
+                        new DisplayTabbedPane(
+                                new TopDownPanel(runwaySelection, topDownDrawExecutor),
+                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
+                                new SideOnPanel(runwaySelection, sideOnDrawExecutor)
+                        ),
+                        new EastPanel(
+                                new RunwayPanel(airport, runwaySelection, runwaySelectionController),
+                                new ObstaclePanel(runwaySelection, assignObstacleController),
+                                new DistancesPanel(runwaySelection, showCalculationController)
+                        ),
+                        new SouthPanel(
+                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
+                                new ExportPanel(importExportController),
+                                new ImportPanel(importExportController)
+                        ),
+                        new NotificationsPanel()
+                )
+        );
+        importExportController.addMainFrame(mainframe);
+    }
+
+    public ApplicationData getData() {
+        return data;
+    }
+
+    public void setData(ApplicationData data) {
+        this.data = data;
+    }
+}

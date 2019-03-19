@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.xml;
+package uk.ac.soton.comp2211;
 
 import uk.ac.soton.comp2211.model.Airport;
 import uk.ac.soton.comp2211.model.ObstacleStorage;
@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class XmlContainer {
+public class ApplicationData {
 
-    public XmlContainer(Airport airport, RunwaySelection runwaySelection, ObstacleStorage obstacleStorage) {
+    public ApplicationData(Airport airport, RunwaySelection runwaySelection, ObstacleStorage obstacleStorage) {
         this.airport = airport;
         this.runwaySelection = runwaySelection;
         this.obstacleStorage = obstacleStorage;
     }
 
-    private XmlContainer() {
+    private ApplicationData() {
     }
 
     @XmlElement

@@ -24,16 +24,8 @@ import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
-import uk.ac.soton.comp2211.xml.XmlContainer;
 
 import javax.swing.*;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.List;
 
 /**
@@ -48,6 +40,20 @@ public class Main {
      * @param args command line arguments
      */
     public static void main(String[] args) {
+        Application application;
+        if (args.length >= 1) {
+            ApplicationData data = getDemoData();
+            application = new Application(data);
+        } else {
+            application = new Application();
+        }
+        application.createMainframe();
+
+
+    }
+
+    private static ApplicationData getDemoData() {
+
         Airport airport = new Airport();
 
         ObstacleStorage obstacleStorage = new ObstacleStorage();
@@ -69,76 +75,13 @@ public class Main {
         airport.addRunway(physicalRunway);
         airport.addRunway(physicalRunway2);
 
-
-        RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
+        RunwaySelection runwaySelection = new RunwaySelection();
         runwaySelection.setSelectedRunway(physicalRunway);
 
-        XmlContainer xmlContainer = new XmlContainer(airport, runwaySelection, obstacleStorage);
+        return new ApplicationData(airport, runwaySelection, obstacleStorage);
 
-        createWindow(xmlContainer);
     }
 
-    public static void disposeWindow(){
-        Main.mainframe.dispose();
-    }
-
-    public static void createWindow(XmlContainer xmlContainer) {
-        Airport airport = xmlContainer.getAirport();
-        ObstacleStorage obstacleStorage = xmlContainer.getObstacleStorage();
-        RunwaySelection runwaySelection = xmlContainer.getRunwaySelection();
-
-        List<Drawer> topDownDrawer = List.of(
-
-                new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
-                new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
-                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
-                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
-                new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
-                new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
-
-        );
-
-        List<Drawer> sideOnDrawer = List.of(
-                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
-                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
-                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
-                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
-        );
-
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
-        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
-        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection, obstacleStorage);
-        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
-        ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
-        ImportExportController importExportController =
-                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, xmlContainer);
-
-
-        MainFrame mainframe = new MainFrame(
-                new MainPanel(
-                        new DisplayTabbedPane(
-                                new TopDownPanel(runwaySelection, topDownDrawExecutor),
-                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
-                                new SideOnPanel(runwaySelection, sideOnDrawExecutor)
-                        ),
-                        new EastPanel(
-                                new RunwayPanel(airport, runwaySelection, runwaySelectionController),
-                                new ObstaclePanel(runwaySelection, assignObstacleController),
-                                new DistancesPanel(runwaySelection, showCalculationController)
-                        ),
-                        new SouthPanel(
-                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new ExportPanel(importExportController),
-                                new ImportPanel(importExportController)
-                        ),
-                        new NotificationsPanel()
-                )
-        );
-        importExportController.addMainFrame(mainframe);
-        Main.mainframe = mainframe;
-    }
 
 
 }

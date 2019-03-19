@@ -17,34 +17,21 @@ import java.util.Set;
 @XmlAccessorType(XmlAccessType.NONE)
 public class RunwaySelection implements Observable, Observer {
 
-    private DrawMode drawMode;
-
     @XmlElement
-    // @XmlElementRef(name="physicalRunway", type=PhysicalRunway.class)
     @XmlIDREF
     @XmlJavaTypeAdapter(OptionalAdapter.class)
     private Optional<PhysicalRunway> selectedRunway;
 
     private Set<Observer> observers;
 
-
-    private RunwaySelection() {
+    /**
+     * RunwaySelection constructor.
+     */
+    public RunwaySelection() {
         this.selectedRunway = Optional.empty();
         this.observers = new HashSet<>();
     }
 
-    /**
-     * RunwaySelection constructor.
-     * @param drawMode the drawing mode; where the drawing is done.
-     */
-    public RunwaySelection(DrawMode drawMode) {
-        this();
-        this.drawMode = drawMode;
-    }
-
-    public DrawMode getDrawMode() {
-        return drawMode;
-    }
 
     public void setSelectedRunway(PhysicalRunway physicalRunway) {
         this.selectedRunway = Optional.of(physicalRunway);
