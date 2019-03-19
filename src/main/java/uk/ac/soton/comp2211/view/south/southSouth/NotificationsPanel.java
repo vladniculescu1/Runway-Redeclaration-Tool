@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.view.south;
+package uk.ac.soton.comp2211.view.south.southSouth;
 
 import javax.swing.*;
 

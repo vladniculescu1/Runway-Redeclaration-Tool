@@ -96,6 +96,7 @@ public class RunwaySelectionController implements ActionListener {
                     break;
                 }
                 default:
+                    System.out.println(e.getActionCommand());
                     throw new UnsupportedOperationException("Cannot handle action command " + e.getActionCommand());
             }
         }

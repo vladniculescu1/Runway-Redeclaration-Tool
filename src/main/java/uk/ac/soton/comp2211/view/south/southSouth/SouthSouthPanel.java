@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.view.south;
+package uk.ac.soton.comp2211.view.south.southSouth;
 
 import javax.swing.*;
 import org.painlessgridbag.PainlessGridBag;
@@ -10,20 +10,17 @@ import uk.ac.soton.comp2211.view.south.southSouth.XmlPanel;
 /**
  * This panel contains all panels that are placed in the south of the main application window.
  */
-public class SouthPanel extends JPanel {
+public class SouthSouthPanel extends JPanel {
 
     /**
-     * Constructs a new south panel and places the supplied child panels inside.
      *
-     * @param southNorthPanel Contains the checkbox display values panel
-     * @param southSouthPanel Contains the DirectionPanel, NotificationPanel and XmlPanel
+     * @param directionPanel
+     * @param xmlPanel
      */
-    public SouthPanel(SouthNorthPanel southNorthPanel, SouthSouthPanel southSouthPanel) {
+    public SouthSouthPanel(DirectionPanel directionPanel, XmlPanel xmlPanel) {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cell(southNorthPanel).fillX();
-        gridBag.row().cell(southSouthPanel).fillX();
+        gridBag.row().cell(directionPanel).fillX().cell(xmlPanel).fillX();
         gridBag.done();
     }
-
 }
