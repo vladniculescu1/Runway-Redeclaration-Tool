@@ -58,8 +58,7 @@ public class PhysicalRunway {
 
     @Override
     public String toString() {
-        return getLowerThreshold().getHeadingAsString() + getLowerThreshold().getLocation() + "/"
-                + getHigherThreshold().getHeadingAsString() + getHigherThreshold().getLocation();
+        return getLowerThreshold().toString() + "/" + getHigherThreshold().toString();
     }
 
     public void setRunwayDirection(RunwaySide runwayDirection) {

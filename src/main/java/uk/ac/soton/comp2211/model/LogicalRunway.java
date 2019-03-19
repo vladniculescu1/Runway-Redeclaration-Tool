@@ -123,4 +123,9 @@ public class LogicalRunway {
     public int hashCode() {
         return Objects.hash(heading, getLocation());
     }
+
+    @Override
+    public String toString() {
+        return getHeadingAsString() + getLocation();
+    }
 }
