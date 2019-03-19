@@ -37,6 +37,10 @@ public class PhysicalRunway {
     private DynamicPositionCalculator dynamicPositionCalculator;
 
     private PhysicalRunway() {
+        this.constantLengthCalculator = new ConstantLengthCalculator(this);
+        this.constantPositionCalculator = new ConstantPositionCalculator(this);
+        this.dynamicLengthCalculator = new DynamicLengthCalculator(this);
+        this.dynamicPositionCalculator = new DynamicPositionCalculator(this);
     }
 
     /**
@@ -47,13 +51,11 @@ public class PhysicalRunway {
      */
     public PhysicalRunway(LogicalRunway higherThreshold, LogicalRunway lowerThreshold,
                           RunwaySide runwayDirection) {
+        this();
         this.higherThreshold = higherThreshold;
         this.lowerThreshold = lowerThreshold;
         this.runwayDirection = runwayDirection;
-        this.constantLengthCalculator = new ConstantLengthCalculator(this);
-        this.constantPositionCalculator = new ConstantPositionCalculator(this);
-        this.dynamicLengthCalculator = new DynamicLengthCalculator(this);
-        this.dynamicPositionCalculator = new DynamicPositionCalculator(this);
+
     }
 
     public LogicalRunway getHigherThreshold() {

@@ -30,6 +30,7 @@ public class RunwaySelection implements Observable, Observer {
 
     private RunwaySelection() {
         this.selectedRunway = Optional.empty();
+        this.observers = new HashSet<>();
     }
 
     /**
@@ -37,9 +38,8 @@ public class RunwaySelection implements Observable, Observer {
      * @param drawMode the drawing mode; where the drawing is done.
      */
     public RunwaySelection(DrawMode drawMode) {
+        this();
         this.drawMode = drawMode;
-        this.selectedRunway = Optional.empty();
-        this.observers = new HashSet<>();
     }
 
     public DrawMode getDrawMode() {

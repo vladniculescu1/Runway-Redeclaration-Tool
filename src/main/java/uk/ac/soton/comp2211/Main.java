@@ -75,14 +75,14 @@ public class Main {
 
         XmlContainer xmlContainer = new XmlContainer(airport, runwaySelection, obstacleStorage);
 
-        mainframe = createWindow(xmlContainer);
+        createWindow(xmlContainer);
     }
 
     public static void disposeWindow(){
-        mainframe.dispose();
+        Main.mainframe.dispose();
     }
 
-    public static JFrame createWindow(XmlContainer xmlContainer) {
+    public static void createWindow(XmlContainer xmlContainer) {
         Airport airport = xmlContainer.getAirport();
         ObstacleStorage obstacleStorage = xmlContainer.getObstacleStorage();
         RunwaySelection runwaySelection = xmlContainer.getRunwaySelection();
@@ -137,7 +137,7 @@ public class Main {
                 )
         );
         importExportController.addMainFrame(mainframe);
-        return mainframe;
+        Main.mainframe = mainframe;
     }
 
 

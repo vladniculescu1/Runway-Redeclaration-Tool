@@ -75,13 +75,13 @@ public class LogicalRunway {
      */
     public LogicalRunway(int originalLda, int originalToda, int originalTora, int originalAsda,
                          int heading, ThresholdLocation location) {
+        this();
         this.originalLda = originalLda;
         this.originalToda = originalToda;
         this.originalTora = originalTora;
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle = Optional.empty();
     }
 
     public int getOriginalLda() {

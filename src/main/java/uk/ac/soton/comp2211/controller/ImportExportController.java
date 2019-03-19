@@ -106,7 +106,7 @@ public class ImportExportController implements ActionListener {
                 break;
             }
             case (ImportPanel.XML_IMPORT_BUTTON_COMMAND): {
-                Optional<File> fileOptional = getExportLocation("xml");
+                Optional<File> fileOptional = getImportLocation("xml");
 
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
@@ -125,6 +125,33 @@ public class ImportExportController implements ActionListener {
             default:
                 throw new UnsupportedOperationException("Operation not supported");
         }
+    }
+
+    private Optional<File> getImportLocation(String fileType) {
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(fileType.toUpperCase() + " Files",
+                fileType.toLowerCase());
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        fileChooser.setDialogType(JFileChooser.OPEN_DIALOG);
+
+        do {
+            int fileChooserOutput = fileChooser.showOpenDialog(mainFrame);
+
+            if (fileChooserOutput == JFileChooser.APPROVE_OPTION) {
+
+                File file = fileChooser.getSelectedFile();
+
+                if (file.exists()) {
+                    return Optional.of(file);
+
+                } else {
+                    JOptionPane.showMessageDialog(mainFrame, "File does not exist");
+                }
+            } else {
+                return Optional.empty();
+            }
+
+        } while (true);
     }
 
     private Optional<File> getExportLocation(String fileType) {
