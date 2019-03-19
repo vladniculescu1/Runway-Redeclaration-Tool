@@ -32,7 +32,6 @@ public class RunwaySelectionController implements ActionListener {
     public RunwaySelectionController(RunwaySelection runwaySelection, Airport airport) {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
-        this.displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
     }
 
     public void addRunwayComboBox(JComboBox runwayComboBox) {
@@ -55,6 +54,7 @@ public class RunwaySelectionController implements ActionListener {
                     break;
                 }
                 case RunwayPanel.ADD_RUNWAY_COMMAND: {
+                    displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
                     addRunwayPanel = new AddRunwayPanel(this);
                     displayPopUpFrame.create(addRunwayPanel);
                     break;
