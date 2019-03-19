@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.view.south;
 
+import javax.management.Notification;
 import javax.swing.*;
 
 /**
@@ -13,7 +14,7 @@ public class XmlPanel extends JPanel {
     public XmlPanel() {
 
         this.setBorder(BorderFactory.createTitledBorder("XML"));
-
+        
         // this is just a placeholder label, remove later
         this.add(new JLabel("... content placeholder ..."));
     }

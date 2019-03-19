@@ -22,7 +22,7 @@ public class ShowCalculationController implements ActionListener {
 
     public ShowCalculationController(RunwaySelection runwaySelection) {
         this.runwaySelection = runwaySelection;
-        this.displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
+        //this.displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
     }
 
     public void setLowerTable(JTable lowerTable) {
@@ -41,17 +41,18 @@ public class ShowCalculationController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_LOWER:
+                displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
                 showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
                         lowerTable.getSelectedRow(), RunwaySide.LOWER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_HIGHER:
+                displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
                 showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
                         higherTable.getSelectedRow(), RunwaySide.HIGHER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
             case ShowCalculationPanel.CANCEL_BUTTON_COMMAND:
-                showCalculationPanel.setVisible(false);
                 displayPopUpFrame.close();
                 break;
 
