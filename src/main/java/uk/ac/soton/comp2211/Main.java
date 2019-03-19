@@ -26,6 +26,7 @@ import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
 import uk.ac.soton.comp2211.xml.XmlContainer;
 
+import javax.swing.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -40,13 +41,13 @@ import java.util.List;
  */
 public class Main {
 
+    private static JFrame mainframe;
     /**
      * Constructs the main window frame.
      *
      * @param args command line arguments
      */
     public static void main(String[] args) {
-
         Airport airport = new Airport();
 
         ObstacleStorage obstacleStorage = new ObstacleStorage();
@@ -55,16 +56,6 @@ public class Main {
                 3660, 3810, 9, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway2 = new LogicalRunway(3660, 4060,
                 3660, 3810, 27, ThresholdLocation.RIGHT);
-
-        Obstacle obstacle = obstacleStorage.getObstacleByName("Airbus A320");
-
-        RunwayObstacle runwayObstacleLower = new RunwayObstacle(100,0, obstacle);
-        logicalRunway1.setRunwayObstacle(runwayObstacleLower);
-
-        RunwayObstacle runwayObstacleHigher = new RunwayObstacle(3120,0, obstacle);
-        logicalRunway2.setRunwayObstacle(runwayObstacleHigher);
-
-
         LogicalRunway logicalRunway3 = new LogicalRunway(2985, 3346,
                 3346, 3346, 7, ThresholdLocation.LEFT);
         LogicalRunway logicalRunway4 = new LogicalRunway(2985, 2986,
@@ -82,7 +73,19 @@ public class Main {
         RunwaySelection runwaySelection = new RunwaySelection(DrawMode.TOP_DOWN);
         runwaySelection.setSelectedRunway(physicalRunway);
 
+        XmlContainer xmlContainer = new XmlContainer(airport, runwaySelection, obstacleStorage);
 
+        mainframe = createWindow(xmlContainer);
+    }
+
+    public static void disposeWindow(){
+        mainframe.dispose();
+    }
+
+    public static JFrame createWindow(XmlContainer xmlContainer) {
+        Airport airport = xmlContainer.getAirport();
+        ObstacleStorage obstacleStorage = xmlContainer.getObstacleStorage();
+        RunwaySelection runwaySelection = xmlContainer.getRunwaySelection();
 
         List<Drawer> topDownDrawer = List.of(
 
@@ -95,12 +98,12 @@ public class Main {
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
 
         );
-        
+
         List<Drawer> sideOnDrawer = List.of(
-                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
+                new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
-                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(), 
+                new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
@@ -110,12 +113,11 @@ public class Main {
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =
-                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor);
+                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, xmlContainer);
 
 
-        importExportController.addMainFrame(
-                new MainFrame(
-                    new MainPanel(
+        MainFrame mainframe = new MainFrame(
+                new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
@@ -132,35 +134,11 @@ public class Main {
                                 new ImportPanel(importExportController)
                         ),
                         new NotificationsPanel()
-                    )
                 )
         );
-
-        testXML(new XmlContainer(airport, runwaySelection, obstacleStorage));
-
-
-
+        importExportController.addMainFrame(mainframe);
+        return mainframe;
     }
 
-    private static void testXML(XmlContainer xmlContainer) {
-        try {
-            JAXBContext context = JAXBContext.newInstance(XmlContainer.class, RunwayObstacle.class);
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(xmlContainer, new File("airport.xml"));
-
-//            Unmarshaller unmarshaller = context.createUnmarshaller();
-//            BookXML bookXML2 = (BookXML) unmarshaller.unmarshal(new FileReader("bookstore.xml"));
-//            BookStore bookStore2 = bookXML2.getStore();
-//
-//            bookStore2.getBookList().stream()
-//                    .map(Book::getTitle)
-//                    .forEach(System.out::println);
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }

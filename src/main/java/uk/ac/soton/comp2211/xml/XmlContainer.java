@@ -28,4 +28,15 @@ public class XmlContainer {
     @XmlElement
     private ObstacleStorage obstacleStorage;
 
+    public RunwaySelection getRunwaySelection() {
+        return runwaySelection;
+    }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public ObstacleStorage getObstacleStorage() {
+        return obstacleStorage;
+    }
 }
