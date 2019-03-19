@@ -13,7 +13,6 @@ import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 
 public class AssignObstacleController implements ActionListener {
 
-    private String panelTitle = "Assign Obstacle to Runway";
     private RunwaySelection runwaySelection;
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
@@ -26,7 +25,6 @@ public class AssignObstacleController implements ActionListener {
      */
     public AssignObstacleController(RunwaySelection runwaySelection)    {
         this.runwaySelection = runwaySelection;
-        displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
     }
 
     public void setIgnoreActions(boolean ignoreActions) {
@@ -39,6 +37,8 @@ public class AssignObstacleController implements ActionListener {
             switch (e.getActionCommand()) {
 
                 case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
+                    
+                    displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
                     assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
                     displayPopUpFrame.create(assignObstaclePanel);
                     break;
@@ -94,9 +94,7 @@ public class AssignObstacleController implements ActionListener {
                     break;
                 }
                 case AssignObstaclePanel.CANCEL_BUTTON_COMMAND: {
-                    assignObstaclePanel.setVisible(false);
                     displayPopUpFrame.close();
-
                     break;
                 }
                 default: {

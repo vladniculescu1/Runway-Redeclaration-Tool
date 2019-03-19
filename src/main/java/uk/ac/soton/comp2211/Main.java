@@ -1,9 +1,6 @@
 package uk.ac.soton.comp2211;
 
-import uk.ac.soton.comp2211.controller.AssignObstacleController;
-import uk.ac.soton.comp2211.controller.DirectionController;
-import uk.ac.soton.comp2211.controller.RunwaySelectionController;
-import uk.ac.soton.comp2211.controller.ShowCalculationController;
+import uk.ac.soton.comp2211.controller.*;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.draw.sideon.*;
 import uk.ac.soton.comp2211.draw.topdown.TopDownCentreLineDrawer;
@@ -16,7 +13,6 @@ import uk.ac.soton.comp2211.draw.topdown.TopDownStripDrawer;
 import uk.ac.soton.comp2211.draw.topdown.TopDownSurroundingsDrawer;
 import uk.ac.soton.comp2211.draw.topdown.TopDownThresholdDrawer;
 import uk.ac.soton.comp2211.model.*;
-import uk.ac.soton.comp2211.model.validate.Validator;
 import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.MainPanel;
 import uk.ac.soton.comp2211.view.center.DisplayTabbedPane;
@@ -92,10 +88,13 @@ public class Main {
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
+        ImportExportController importExportController =
+                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor);
 
 
-        new MainFrame(
-                new MainPanel(
+        importExportController.addMainFrame(
+                new MainFrame(
+                    new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
                                 new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
@@ -108,9 +107,11 @@ public class Main {
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new XmlPanel()
+                                new ExportPanel(importExportController),
+                                new ImportPanel(importExportController)
                         ),
                         new NotificationsPanel()
+                    )
                 )
         );
     }
