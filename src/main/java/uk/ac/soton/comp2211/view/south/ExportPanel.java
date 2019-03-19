@@ -30,9 +30,11 @@ public class ExportPanel extends JPanel {
         JButton txtButton = new JButton("Working (TXT)");
         txtButton.setActionCommand(TXT_EXPORT_BUTTON_COMMAND);
         txtButton.addActionListener(actionListener);
+        txtButton.setEnabled(false);
         JButton xmlButton = new JButton("Airport (XML)");
         xmlButton.setActionCommand(XML_EXPORT_BUTTON_COMMAND);
         xmlButton.addActionListener(actionListener);
+        xmlButton.setEnabled(false);
 
         gridBag.row().cell(pngButton).fillX().cell(txtButton).fillX().cell(xmlButton).fillX();
         gridBag.done();
