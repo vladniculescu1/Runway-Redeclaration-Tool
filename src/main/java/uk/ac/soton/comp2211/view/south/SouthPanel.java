@@ -12,12 +12,13 @@ public class SouthPanel extends JPanel {
      * Constructs a new south panel and places the supplied child panels inside.
      *
      * @param directionPanel the panel for setting the landing direction
-     * @param xmlPanel the panel for importing and exporting xml files
+     * @param exportPanel the panel for exporting various files
+     * @param importPanel the panel for importing (xml) files
      */
-    public SouthPanel(DirectionPanel directionPanel, XmlPanel xmlPanel) {
+    public SouthPanel(DirectionPanel directionPanel, ExportPanel exportPanel, ImportPanel importPanel) {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cell(directionPanel).fillX().cell(xmlPanel).fillX();
+        gridBag.row().cell(directionPanel).fillX().cell(exportPanel).fillX().cell(importPanel).fillX();
         gridBag.done();
     }
 
