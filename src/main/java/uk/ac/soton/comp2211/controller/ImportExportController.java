@@ -3,9 +3,9 @@ package uk.ac.soton.comp2211.controller;
 import org.apache.commons.io.FilenameUtils;
 import org.checkerframework.checker.nullness.Opt;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
-import uk.ac.soton.comp2211.model.DrawMode;
-import uk.ac.soton.comp2211.model.RunwaySelection;
+import uk.ac.soton.comp2211.model.*;
 import uk.ac.soton.comp2211.view.MainFrame;
+import uk.ac.soton.comp2211.view.modal.ShowCalculationPanel;
 import uk.ac.soton.comp2211.view.south.ExportPanel;
 
 import javax.imageio.ImageIO;
@@ -16,13 +16,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class ImportExportController implements ActionListener {
 
     private DrawExecutor sideOnDrawExecutor;
     private DrawExecutor topDownDrawExecutor;
+    private Airport airport;
 
     private MainFrame mainFrame;
 
@@ -30,11 +34,14 @@ public class ImportExportController implements ActionListener {
      * (Controller) Provides the functionality for the exporting and importing buttons.
      * @param sideOnDrawExectutor Used in exporting as PNG.
      * @param topDownDrawExecutor Used in exporting as PNG.
+     * @param airport Used in exporting as TXT.
      */
     public ImportExportController(DrawExecutor topDownDrawExecutor,
-                                  DrawExecutor sideOnDrawExectutor) {
+                                  DrawExecutor sideOnDrawExectutor,
+                                  Airport airport) {
         this.sideOnDrawExecutor = sideOnDrawExectutor;
         this.topDownDrawExecutor = topDownDrawExecutor;
+        this.airport = airport;
     }
 
     public void addMainFrame(MainFrame mainFrame) {
@@ -50,8 +57,8 @@ public class ImportExportController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case (ExportPanel.PNG_EXPORT_BUTTON_COMMAND):
-                Optional<File> fileOptional = getExportLocation("png");
-                if (fileOptional.isPresent()) {
+                Optional<File> pngFileOptional = getExportLocation("png");
+                if (pngFileOptional.isPresent()) {
                     int height = 800;
                     int width = (int)(((float)height) * 1.5);
 
@@ -71,7 +78,7 @@ public class ImportExportController implements ActionListener {
 
                     //export to location
                     try {
-                        if (ImageIO.write(exportedImage, "png", fileOptional.get())) {
+                        if (ImageIO.write(exportedImage, "png", pngFileOptional.get())) {
                             JOptionPane.showMessageDialog(mainFrame, "Successfully saved to PNG.");
                         }
                     } catch (Exception ex) {
@@ -83,10 +90,47 @@ public class ImportExportController implements ActionListener {
 
 
                 break;
-            //case (ExportPanel.TXT_EXPORT_BUTTON_COMMAND):
-            //TODO
-            //    break;
-            //case (ExportPanel.XML_EXPORT_BUTTON_COMMAND):
+            case (ExportPanel.TXT_EXPORT_BUTTON_COMMAND):
+                Optional<File> txtFileOptional = getExportLocation("txt");
+                if (txtFileOptional.isPresent()) {
+                    ArrayList<String> outputStrings = new ArrayList<String>();
+
+
+                    for (PhysicalRunway runway : airport.getRunways()) {
+                        outputStrings.add("Physical Runway " + runway.toString() + ":");
+                        outputStrings.add("Logical Runway " + runway.getLowerThreshold().toString() + ":");
+                        ShowCalculationPanel textMaker = new ShowCalculationPanel(runway,
+                                0, RunwaySide.LOWER_THRESHOLD, null);
+                        addStringArray(outputStrings, textMaker.getLdaCalculation());
+                        addStringArray(outputStrings, textMaker.getToraCalculation());
+                        addStringArray(outputStrings, textMaker.getTodaCalculation(false));
+                        addStringArray(outputStrings, textMaker.getAsdaCalculation(false));
+
+
+                        outputStrings.add("");
+                        outputStrings.add("Logical Runway " + runway.getHigherThreshold().toString() + ":");
+                        textMaker = new ShowCalculationPanel(runway,
+                                0, RunwaySide.HIGHER_THRESHOLD, null);
+                        addStringArray(outputStrings, textMaker.getLdaCalculation());
+                        addStringArray(outputStrings, textMaker.getToraCalculation());
+                        addStringArray(outputStrings, textMaker.getTodaCalculation(false));
+                        addStringArray(outputStrings, textMaker.getAsdaCalculation(false));
+                        outputStrings.add("");
+                        outputStrings.add("");
+                    }
+
+                    try (PrintWriter out = new PrintWriter(txtFileOptional.get())) {
+                        for (String outputString: outputStrings) {
+                            out.println(outputString);
+                        }
+                        out.println();
+                        JOptionPane.showMessageDialog(mainFrame, "Successfully saved to TXT.");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(mainFrame,"Failed to save TXT.");
+                    }
+                }
+                break;
+            case (ExportPanel.XML_EXPORT_BUTTON_COMMAND):
             //TODO
             //    break;
             //case (ImportPanel.XML_IMPORT_BUTTON_COMMAND):
@@ -94,6 +138,12 @@ public class ImportExportController implements ActionListener {
             //    break;
             default:
                 throw new UnsupportedOperationException("Operation not supported");
+        }
+    }
+
+    private void addStringArray(ArrayList<String> list, String[] array) {
+        for (String arrayElem: array) {
+            list.add(arrayElem);
         }
     }
 
