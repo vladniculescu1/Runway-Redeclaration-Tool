@@ -70,7 +70,6 @@ public class Main {
         runwaySelection.setSelectedRunway(physicalRunway);
 
         List<Drawer> topDownDrawer = List.of(
-
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
@@ -80,7 +79,7 @@ public class Main {
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
 
         );
-        
+
         List<Drawer> sideOnDrawer = List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(), 
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
@@ -95,6 +94,7 @@ public class Main {
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection);
+        DirectionController directionController = new DirectionController(runwaySelection);
 
         new MainFrame(
                 new MainPanel(
@@ -109,11 +109,11 @@ public class Main {
                                 new DistancesPanel(runwaySelection, showCalculationController)
                         ),
                         new SouthPanel(
-                                new SouthNorthPanel(new VisibleDistancesPanel(runwaySelection, visibleDistancesController)
-
+                                new SouthNorthPanel(
+                                        new VisibleDistancesPanel(runwaySelection, visibleDistancesController)
                                 ),
                                 new SouthSouthPanel(
-                                        new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
+                                        new DirectionPanel(runwaySelection, directionController),
                                         new XmlPanel()
                                 )
                         ),
@@ -121,5 +121,4 @@ public class Main {
                 )
         );
     }
-
 }

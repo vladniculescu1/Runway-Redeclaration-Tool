@@ -14,15 +14,6 @@ import java.awt.*;
  */
 public class AsdaDrawer implements Drawer {
 
-    private boolean globalASDAFlag = true;
-
-    public boolean getGlobalASDAFlag() {
-        return globalASDAFlag;
-    }
-
-    public void setGlobalASDAFlag(boolean globalASDAFlag) {
-        this.globalASDAFlag = globalASDAFlag;
-    }
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
@@ -35,17 +26,16 @@ public class AsdaDrawer implements Drawer {
         int startX = positionCalculator.getTakeOffObstacleOffset(side);
         int distance = lengthCalculator.getAsda(side);
 
-        if (getGlobalASDAFlag()) {
-            switch (side) {
-                case LOWER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION, "ASDA");
-                    break;
-                case HIGHER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION, "ASDA");
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Cannot draw ASDA for side " + side);
-            }
+        switch (side) {
+            case LOWER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION, "ASDA");
+                break;
+            case HIGHER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION, "ASDA");
+                break;
+            default:
+                throw new UnsupportedOperationException("Cannot draw ASDA for side " + side);
+
         }
 
     }

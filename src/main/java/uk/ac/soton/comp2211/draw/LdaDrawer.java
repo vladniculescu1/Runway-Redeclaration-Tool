@@ -12,16 +12,6 @@ import java.awt.*;
  */
 public class LdaDrawer implements Drawer {
 
-    private boolean globalLDAFlag = true;
-
-    public boolean getGlobalLDAFlag() {
-        return globalLDAFlag;
-    }
-
-    public void setGlobalLDAFlag(boolean globalLDAFlag) {
-        this.globalLDAFlag = globalLDAFlag;
-    }
-
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         RunwaySide side = physicalRunway.getRunwayDirection();
@@ -31,17 +21,16 @@ public class LdaDrawer implements Drawer {
         int startX = positionCalculator.getLandingObstacleOffset(side);
         int distance = lengthCalculator.getLda(side);
 
-        if (getGlobalLDAFlag()) {
-            switch (side) {
-                case LOWER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.LDA_POSITION, "LDA");
-                    break;
-                case HIGHER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.LDA_POSITION, "LDA");
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Cannot draw LDA for side " + side);
-            }
+        switch (side) {
+            case LOWER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.LDA_POSITION, "LDA");
+                break;
+            case HIGHER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.LDA_POSITION, "LDA");
+                break;
+            default:
+                throw new UnsupportedOperationException("Cannot draw LDA for side " + side);
+
         }
     }
 }

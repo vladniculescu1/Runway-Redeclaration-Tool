@@ -14,15 +14,6 @@ import java.awt.*;
  */
 public class TodaDrawer implements Drawer {
 
-    private boolean globalTODAFlag = true;
-
-    public boolean getGlobalTODAFlag() {
-        return globalTODAFlag;
-    }
-
-    public void setGlobalTODAFlag(boolean globalTODAFlag) {
-        this.globalTODAFlag = globalTODAFlag;
-    }
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
@@ -33,17 +24,16 @@ public class TodaDrawer implements Drawer {
         int startX = positionCalculator.getTakeOffObstacleOffset(side);
         int distance = lengthCalculator.getToda(side);
 
-        if (getGlobalTODAFlag()) {
-            switch (side) {
-                case LOWER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA");
-                    break;
-                case HIGHER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA");
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Cannot draw TODA for side " + side);
-            }
+        switch (side) {
+            case LOWER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA");
+                break;
+            case HIGHER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA");
+                break;
+            default:
+                throw new UnsupportedOperationException("Cannot draw TODA for side " + side);
+
         }
 
     }

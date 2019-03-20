@@ -14,16 +14,6 @@ import java.awt.*;
  */
 public class ToraDrawer implements Drawer {
 
-    private boolean globalTORAFlag = true;
-
-    public boolean getGlobalTORAFlag() {
-        return globalTORAFlag;
-    }
-
-    public void setGlobalTORAFlag(boolean globalTORAFlag) {
-        this.globalTORAFlag = globalTORAFlag;
-    }
-
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         RunwaySide side = physicalRunway.getRunwayDirection();
@@ -33,17 +23,15 @@ public class ToraDrawer implements Drawer {
         int startX = positionCalculator.getTakeOffObstacleOffset(side);
         int distance = lengthCalculator.getTora(side);
 
-        if (getGlobalTORAFlag()) {
-            switch (side) {
-                case LOWER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA");
-                    break;
-                case HIGHER_THRESHOLD:
-                    DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA");
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Cannot draw TORA for side " + side);
-            }
+        switch (side) {
+            case LOWER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA");
+                break;
+            case HIGHER_THRESHOLD:
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA");
+                break;
+            default:
+                throw new UnsupportedOperationException("Cannot draw TORA for side " + side);
         }
     }
 }
