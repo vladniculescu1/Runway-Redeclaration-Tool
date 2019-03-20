@@ -5,6 +5,7 @@ import uk.ac.soton.comp2211.calculator.*;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.validate.EqualTora;
 import uk.ac.soton.comp2211.model.validate.HeadingDiff;
+import uk.ac.soton.comp2211.model.validate.LdaSumCheck;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -17,6 +18,7 @@ import java.util.Set;
  */
 @EqualTora(message = "The TORA of both logical runways must be equal.")
 @HeadingDiff(message = "The headings of the logical runways must have a difference of 18.")
+@LdaSumCheck(message = "The LDA of both logical runways must sum to at least 500 more than the TORA.")
 public class PhysicalRunway {
     private LogicalRunway higherThreshold;
     private LogicalRunway lowerThreshold;
