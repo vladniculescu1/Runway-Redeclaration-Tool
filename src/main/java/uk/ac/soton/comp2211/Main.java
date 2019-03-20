@@ -89,7 +89,7 @@ public class Main {
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =
-                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor);
+                new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, airport);
 
 
         importExportController.addMainFrame(
