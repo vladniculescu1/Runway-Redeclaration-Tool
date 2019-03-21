@@ -33,11 +33,14 @@ public class MainPanel extends JPanel {
         gridbagConfiguration.setLastRowBottomSpacing(0);
         gridbagConfiguration.setFirstColumnLeftSpacing(0);
         gridbagConfiguration.setLastColumnRightSpacing(0);
+        gridbagConfiguration.setHorizontalSpacing(0);
+        gridbagConfiguration.setVirticalSpacing(0);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration, false);
         gridBag.row().cell(displayTabbedPane).fillXY().cellY(eastPanel, 2).fillY();
         gridBag.row().cell(southPanel).fillX();
         gridBag.row().cellX(notificationsPanel, 2).fillX();
+        
 
         gridBag.done();
 

@@ -18,9 +18,7 @@ public class AssignObstacleController implements ActionListener {
     private RunwaySelection runwaySelection;
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
-
     private ObstacleStorage obstacleStorage;
-    
     private Notification notification;
 
     private boolean ignoreActions = false;
@@ -61,6 +59,7 @@ public class AssignObstacleController implements ActionListener {
                     runwaySelection.getSelectedRunway().getLowerThreshold().removeRunwayObstacle();
 
                     runwaySelection.notifyUpdate();
+                    notification.notificationUpdate("Obstacle successfully removed");
                     break;
                 }
                 case AssignObstaclePanel.OBSTACLE_COMBOBOX_COMMAND: {
@@ -101,7 +100,7 @@ public class AssignObstacleController implements ActionListener {
                         }
 
                         runwaySelection.notifyUpdate();
-                        notification.notificationUpdate("it works");
+                        notification.notificationUpdate("Obstacle successfully assigned");
 
                         displayPopUpFrame.close();
                     }

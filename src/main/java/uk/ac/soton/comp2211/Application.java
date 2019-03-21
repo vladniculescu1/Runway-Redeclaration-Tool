@@ -89,7 +89,8 @@ public class Application {
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
                 obstacleStorage, notification);
-        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
+        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,
+                airport, notification);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
@@ -109,8 +110,7 @@ public class Application {
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new ExportPanel(importExportController),
-                                new ImportPanel(importExportController)
+                                new ExportPanel(importExportController),new ImportPanel(importExportController)
                         ),
                         new NotificationsPanel(notification)
                 )

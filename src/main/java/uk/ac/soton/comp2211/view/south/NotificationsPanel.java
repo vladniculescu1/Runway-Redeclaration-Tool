@@ -20,10 +20,17 @@ public class NotificationsPanel extends JPanel {
      */
     public NotificationsPanel(Notification notif) {
         
+        JLabel test = new JLabel("LOOKS GOOD");
+        
+        
         notification = notif;
         Font font = new Font("Courier", Font.BOLD,16);
         notification.setFont(font);;
         notification.setForeground(Color.RED);
-        this.add(notification);
+        //this.add(notification);
+        
+        test.setFont(font);
+        test.setForeground(Color.RED);;
+        this.add(test);
     }
 }
