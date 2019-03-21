@@ -1,13 +1,5 @@
 package uk.ac.soton.comp2211.view.east;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
@@ -15,6 +7,13 @@ import uk.ac.soton.comp2211.controller.ShowCalculationController;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * This panel shows both the original runway distances and the re-calculated runway distances to the user.

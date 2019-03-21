@@ -1,16 +1,15 @@
 package uk.ac.soton.comp2211.model;
 
-import uk.ac.soton.comp2211.Observable;
-import uk.ac.soton.comp2211.calculator.*;
-import uk.ac.soton.comp2211.Observer;
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
+import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
+import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.validate.EqualTora;
 import uk.ac.soton.comp2211.model.validate.HeadingDiff;
 import uk.ac.soton.comp2211.model.validate.LdaSumCheck;
 
-import javax.validation.Valid;
-import java.util.HashSet;
+import javax.xml.bind.annotation.*;
 import java.util.Objects;
-import java.util.Set;
 
 
 /**
@@ -19,14 +18,30 @@ import java.util.Set;
 @EqualTora(message = "The TORA of both logical runways must be equal.")
 @HeadingDiff(message = "The headings of the logical runways must have a difference of 18.")
 @LdaSumCheck(message = "The LDA of both logical runways must sum to at least 500 more than the TORA.")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class PhysicalRunway {
+
+    @XmlElement
     private LogicalRunway higherThreshold;
+
+    @XmlElement
     private LogicalRunway lowerThreshold;
+
+    @XmlElement
     private RunwaySide runwayDirection;
+
     private ConstantLengthCalculator constantLengthCalculator;
     private ConstantPositionCalculator constantPositionCalculator;
     private DynamicLengthCalculator dynamicLengthCalculator;
     private DynamicPositionCalculator dynamicPositionCalculator;
+
+    private PhysicalRunway() {
+        this.constantLengthCalculator = new ConstantLengthCalculator(this);
+        this.constantPositionCalculator = new ConstantPositionCalculator(this);
+        this.dynamicLengthCalculator = new DynamicLengthCalculator(this);
+        this.dynamicPositionCalculator = new DynamicPositionCalculator(this);
+    }
 
     /**
      * The PhysicalRunway constructor.
@@ -36,13 +51,11 @@ public class PhysicalRunway {
      */
     public PhysicalRunway(LogicalRunway higherThreshold, LogicalRunway lowerThreshold,
                           RunwaySide runwayDirection) {
+        this();
         this.higherThreshold = higherThreshold;
         this.lowerThreshold = lowerThreshold;
         this.runwayDirection = runwayDirection;
-        this.constantLengthCalculator = new ConstantLengthCalculator(this);
-        this.constantPositionCalculator = new ConstantPositionCalculator(this);
-        this.dynamicLengthCalculator = new DynamicLengthCalculator(this);
-        this.dynamicPositionCalculator = new DynamicPositionCalculator(this);
+
     }
 
     public LogicalRunway getHigherThreshold() {
@@ -57,6 +70,11 @@ public class PhysicalRunway {
         return runwayDirection;
     }
 
+    @XmlElement
+    @XmlID
+    public String getId() {
+        return this.toString();
+    }
 
     @Override
     public String toString() {

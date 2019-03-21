@@ -1,9 +1,6 @@
 package uk.ac.soton.comp2211.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Optional;
-
+import uk.ac.soton.comp2211.model.ObstacleStorage;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -11,20 +8,30 @@ import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.modal.AssignObstaclePanel;
 import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Optional;
+
 public class AssignObstacleController implements ActionListener {
 
     private RunwaySelection runwaySelection;
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
 
+    private ObstacleStorage obstacleStorage;
+
     private boolean ignoreActions = false;
     
     /**
      * Creates this AssignObstacleController.
-     * @param runwaySelection The runwaySelection.
+     *
+     * @param runwaySelection selection of the current runway
+     * @param obstacleStorage storage for predefined obstacles
      */
-    public AssignObstacleController(RunwaySelection runwaySelection)    {
+    public AssignObstacleController(RunwaySelection runwaySelection, ObstacleStorage obstacleStorage)    {
         this.runwaySelection = runwaySelection;
+        this.obstacleStorage = obstacleStorage;
+        displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
     }
 
     public void setIgnoreActions(boolean ignoreActions) {
@@ -37,9 +44,9 @@ public class AssignObstacleController implements ActionListener {
             switch (e.getActionCommand()) {
 
                 case ObstaclePanel.OPEN_ASSIGN_BUTTON_COMMAND: {
-                    
+
                     displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
-                    assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this);
+                    assignObstaclePanel = new AssignObstaclePanel(runwaySelection, this, obstacleStorage);
                     displayPopUpFrame.create(assignObstaclePanel);
                     break;
                 }

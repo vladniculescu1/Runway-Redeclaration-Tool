@@ -25,7 +25,6 @@ public class ImportPanel extends JPanel {
         JButton xmlButton = new JButton("Airport (XML)");
         xmlButton.setActionCommand(XML_IMPORT_BUTTON_COMMAND);
         xmlButton.addActionListener(actionListener);
-        xmlButton.setEnabled(false);
 
         gridBag.row().cell(xmlButton).fillX();
         gridBag.done();

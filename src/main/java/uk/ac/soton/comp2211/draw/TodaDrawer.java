@@ -1,10 +1,8 @@
 package uk.ac.soton.comp2211.draw;
 
-import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
-import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;

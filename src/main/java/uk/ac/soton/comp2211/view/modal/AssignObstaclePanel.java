@@ -1,18 +1,16 @@
 package uk.ac.soton.comp2211.view.modal;
 
-import java.text.NumberFormat;
-import java.util.Optional;
+import org.painlessgridbag.PainlessGridBag;
+import uk.ac.soton.comp2211.controller.AssignObstacleController;
+import uk.ac.soton.comp2211.model.*;
+import uk.ac.soton.comp2211.model.validate.Validator;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.NumberFormatter;
-
-import org.painlessgridbag.PainlessGridBag;
-
-import uk.ac.soton.comp2211.controller.AssignObstacleController;
-import uk.ac.soton.comp2211.model.*;
-import uk.ac.soton.comp2211.model.validate.Validator;
+import java.text.NumberFormat;
+import java.util.Optional;
 
 public class AssignObstaclePanel extends JPanel {
 
@@ -41,8 +39,10 @@ public class AssignObstaclePanel extends JPanel {
      * (View) Constructor for AssignObstaclePanel.
      * @param runwaySelection (Model) The runway selector for the program
      * @param assignObstacleController (Controller) The controller for this view's inputs.
+     * @param obstacleStorage storage for predefined obstacles
      */
-    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController) {
+    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController,
+                               ObstacleStorage obstacleStorage) {
         this.assignObstacleController = assignObstacleController;
         this.runwaySelection = runwaySelection;
         
@@ -52,7 +52,7 @@ public class AssignObstaclePanel extends JPanel {
         obstacleComboBox = new JComboBox();
         noneObstacle = new Obstacle("(None)", 0,0);
         obstacleComboBox.addItem(noneObstacle);
-        for (Obstacle o: new ObstacleStorage().getObstacles()) {
+        for (Obstacle o: obstacleStorage.getObstacles()) {
             obstacleComboBox.addItem(o);
         }
         obstacleComboBox.setSelectedItem(noneObstacle);
@@ -107,10 +107,12 @@ public class AssignObstaclePanel extends JPanel {
                      .cell(higherThresholdRadioButton);
         
         centrelineDistanceTextField = new JFormattedTextField(integerFormatter);
-        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2).cell(centrelineDistanceTextField).fillX();
+        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2)
+                .cell(centrelineDistanceTextField).fillX();
         
         thresholdDistanceTextField = new JFormattedTextField(integerFormatter);
-        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2).cell(thresholdDistanceTextField).fillX();
+        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2)
+                .cell(thresholdDistanceTextField).fillX();
         
         assignButton = new JButton();
         assignButton.addActionListener(assignObstacleController);

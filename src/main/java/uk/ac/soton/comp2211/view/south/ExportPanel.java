@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
- * This panel contains ui elements for the export.
+ * This panel contains ui elements for the exportXML.
  */
 public class ExportPanel extends JPanel {
 
@@ -33,7 +33,7 @@ public class ExportPanel extends JPanel {
         JButton xmlButton = new JButton("Airport (XML)");
         xmlButton.setActionCommand(XML_EXPORT_BUTTON_COMMAND);
         xmlButton.addActionListener(actionListener);
-        xmlButton.setEnabled(false);
+
 
         gridBag.row().cell(pngButton).fillX().cell(txtButton).fillX().cell(xmlButton).fillX();
         gridBag.done();
