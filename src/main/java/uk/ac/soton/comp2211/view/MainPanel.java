@@ -1,13 +1,13 @@
 package uk.ac.soton.comp2211.view;
 
-import javax.swing.*;
-
 import org.painlessgridbag.PainlessGridBag;
 import org.painlessgridbag.PainlessGridbagConfiguration;
 import uk.ac.soton.comp2211.view.center.DisplayTabbedPane;
 import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.south.southSouth.NotificationsPanel;
 import uk.ac.soton.comp2211.view.south.SouthPanel;
+
+import javax.swing.*;
 
 /**
  * The main panel of the application, containing all other panels.

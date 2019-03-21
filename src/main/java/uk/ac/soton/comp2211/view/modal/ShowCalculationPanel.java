@@ -1,13 +1,16 @@
 package uk.ac.soton.comp2211.view.modal;
 
-import antlr.debug.misc.JTreeASTPanel;
 import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.controller.ShowCalculationController;
-import uk.ac.soton.comp2211.model.*;
+import uk.ac.soton.comp2211.model.LogicalRunway;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
+import uk.ac.soton.comp2211.model.RunwayObstacle;
+import uk.ac.soton.comp2211.model.RunwaySide;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ShowCalculationPanel extends JPanel {
     private DynamicLengthCalculator dynamicLengthCalculator;
@@ -52,16 +55,16 @@ public class ShowCalculationPanel extends JPanel {
 
         switch (rowNumber) {
             case 0:
-                showLdaCalculation();
+                showCalculation(getLdaCalculation());
                 break;
             case 1:
-                showTodaCalculation();
+                showCalculation(getTodaCalculation(false));
                 break;
             case 2:
-                showAsdaCalculation();
+                showCalculation(getAsdaCalculation(false));
                 break;
             case 3:
-                showToraCalculation();
+                showCalculation(getToraCalculation());
                 break;
             default:
                 this.add(new JLabel("Please select a value from the corresponding table!"));
@@ -80,10 +83,18 @@ public class ShowCalculationPanel extends JPanel {
 
     }
 
+    private void showCalculation(String[] calculationStrings) {
+        for (String calcStringLine : calculationStrings) {
+            calculationPanel.add(new JLabel(calcStringLine));
+        }
+    }
+
     /**
      * displays the steps of calculation for the LDA value.
+     * @return The LDA calculation in text format.
      */
-    private void showLdaCalculation() {
+    public String[] getLdaCalculation() {
+        ArrayList<String> returnStrings = new ArrayList();
         if (physicalRunway.hasObstacle()) {
             RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
             if (physicalRunway.getObstacleSide() == runwaySide) {
@@ -91,132 +102,160 @@ public class ShowCalculationPanel extends JPanel {
                 if (dynamicLengthCalculator.getSlopeCalculation()
                         + constantLengthCalculator.getStripMargin() < constantLengthCalculator.getBlastProtection()) {
                     //Slope calculation + strip end value less than Blast protection value
-                    calculationPanel.add(new JLabel("(Blast Protection = "
+                    returnStrings.add("(Blast Protection = "
                             + constantLengthCalculator.getBlastProtection() + "  >  Slope Calculation = "
-                            + dynamicLengthCalculator.getSlopeCalculation() + " so using Blast Protection Value)"));
-                    calculationPanel.add(new JLabel("LDA = Original LDA - Distance From Threshold "
-                            + "- Obstacle Length - Blast Protection value "));
-                    calculationPanel.add(new JLabel("         = " + logicalRunway.getOriginalLda() + " - "
+                            + dynamicLengthCalculator.getSlopeCalculation() + " so using Blast Protection Value)");
+                    returnStrings.add("LDA = Original LDA - Distance From Threshold "
+                            + "- Obstacle Length - Blast Protection value ");
+                    returnStrings.add("         = " + logicalRunway.getOriginalLda() + " - "
                             + runwayObstacle.getThresholdDistance() + " - "
                             + runwayObstacle.getObstacle().getLength()
-                            + " - " + constantLengthCalculator.getBlastProtection()));
+                            + " - " + constantLengthCalculator.getBlastProtection());
                 } else {
                     //Slope calculation + strip end value greater than Blast protection value
-                    calculationPanel.add(new JLabel("LDA = Original LDA - Distance From Threshold "
-                            + "- Obstacle Length - Slope Calculation - Strip End"));
-                    calculationPanel.add(new JLabel("         = " + logicalRunway.getOriginalLda() + " - "
+                    returnStrings.add("LDA = Original LDA - Distance From Threshold "
+                            + "- Obstacle Length - Slope Calculation - Strip End");
+                    returnStrings.add("         = " + logicalRunway.getOriginalLda() + " - "
                             + runwayObstacle.getThresholdDistance() + " - "
                             + runwayObstacle.getObstacle().getLength()
                             + " - " + dynamicLengthCalculator.getSlopeCalculation()
-                            + " - " + constantLengthCalculator.getStripMargin()));
+                            + " - " + constantLengthCalculator.getStripMargin());
                 }
 
             } else {
                 //Landing Towards
-                calculationPanel.add(new JLabel("LDA = Distance From Threshold - RESA - Strip End"));
-                calculationPanel.add(new JLabel("         = " + runwayObstacle.getThresholdDistance() + " - "
+                returnStrings.add("LDA = Distance From Threshold - RESA - Strip End");
+                returnStrings.add("         = " + runwayObstacle.getThresholdDistance() + " - "
                         + constantLengthCalculator.getResa() + " - "
-                        + constantLengthCalculator.getStripMargin()));
+                        + constantLengthCalculator.getStripMargin());
             }
         } else {
             //No obstacle
-            calculationPanel.add(new JLabel("LDA = Original LDA"));
+            returnStrings.add("LDA = Original LDA");
         }
-        calculationPanel.add(new JLabel("         = " + dynamicLengthCalculator.getLda(runwaySide)));
+        returnStrings.add("         = " + dynamicLengthCalculator.getLda(runwaySide));
+
+        String[] output = new String[returnStrings.size()];
+        return returnStrings.toArray(output);
     }
 
     /**
-     * displays the steps of calculation for the TORA value.
+     * Displays the steps of calculation for the TORA value.
+     * @return The TORA calculation in text format.
      */
-    private void showToraCalculation() {
+    public String[] getToraCalculation() {
+        ArrayList<String> returnStrings = new ArrayList();
         if (physicalRunway.hasObstacle()) {
             RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
             if (physicalRunway.getObstacleSide() == runwaySide) {
                 //Take-off away
-                calculationPanel.add(new JLabel("TORA = Original TORA - Distance From Threshold "
-                        + "- Displaced Threshold - Obstacle Length - Blast Protection"));
-                calculationPanel.add(new JLabel("            = " + logicalRunway.getOriginalTora() + " - "
+                returnStrings.add("TORA = Original TORA - Distance From Threshold "
+                        + "- Displaced Threshold - Obstacle Length - Blast Protection");
+                returnStrings.add("            = " + logicalRunway.getOriginalTora() + " - "
                         + runwayObstacle.getThresholdDistance() + " - "
                         + constantLengthCalculator.getDisplacedThresholdLength(runwaySide) + " - "
                         + runwayObstacle.getObstacle().getLength()
-                        + " - " + constantLengthCalculator.getBlastProtection()));
+                        + " - " + constantLengthCalculator.getBlastProtection());
             } else {
                 //Take-off towards
                 if (dynamicLengthCalculator.getSlopeCalculation()  < constantLengthCalculator.getResa()) {
                     //Slope calculation less than RESA value
-                    calculationPanel.add(new JLabel("(RESA = "
+                    returnStrings.add("(RESA = "
                             + constantLengthCalculator.getResa() + "  >  Slope Calculation = "
-                            + dynamicLengthCalculator.getSlopeCalculation() + " so using RESA Value)"));
-                    calculationPanel.add(new JLabel("TORA = Distance from Threshold + "
-                           + "Displaced Threshold - RESA - Strip End"));
-                    calculationPanel.add(new JLabel("            = " + runwayObstacle.getThresholdDistance() + " - "
+                            + dynamicLengthCalculator.getSlopeCalculation() + " so using RESA Value)");
+                    returnStrings.add("TORA = Distance from Threshold + "
+                           + "Displaced Threshold - RESA - Strip End");
+                    returnStrings.add("            = " + runwayObstacle.getThresholdDistance() + " - "
                             + constantLengthCalculator.getDisplacedThresholdLength(runwaySide) + " - "
                             + constantLengthCalculator.getResa() + " - "
-                            + constantLengthCalculator.getStripMargin()));
+                            + constantLengthCalculator.getStripMargin());
                 } else {
                     //Slope calculation greater than RESA
-                    calculationPanel.add(new JLabel("TORA = Distance from Threshold + "
-                            + "Displaced Threshold - Slope calculation - Strip End"));
-                    calculationPanel.add(new JLabel("            = " + runwayObstacle.getThresholdDistance() + " + "
+                    returnStrings.add("TORA = Distance from Threshold + "
+                            + "Displaced Threshold - Slope calculation - Strip End");
+                    returnStrings.add("            = " + runwayObstacle.getThresholdDistance() + " + "
                             + constantLengthCalculator.getDisplacedThresholdLength(runwaySide) + " - "
                             + dynamicLengthCalculator.getSlopeCalculation() + " - "
-                            + constantLengthCalculator.getStripMargin()));
+                            + constantLengthCalculator.getStripMargin());
                 }
             }
         } else {
             //No obstacle
-            calculationPanel.add(new JLabel("TORA = Original TORA"));
+            returnStrings.add("TORA = Original TORA");
         }
-        calculationPanel.add(new JLabel("            = " + dynamicLengthCalculator.getTora(runwaySide)));
+        returnStrings.add("            = " + dynamicLengthCalculator.getTora(runwaySide));
+
+        String[] output = new String[returnStrings.size()];
+        return returnStrings.toArray(output);
     }
 
     /**
      * displays the steps of calculation for the ASDA value.
+     * @param showTora If true the TORA calculation will be included.
+     * @return The ASDA calculation in text format.
      */
-    private void showAsdaCalculation() {
+    public String[] getAsdaCalculation(boolean showTora) {
+        ArrayList<String> returnStrings = new ArrayList();
         if (physicalRunway.hasObstacle()) {
-            showToraCalculation();
+            if (showTora) {
+                for (String toraString : getToraCalculation()) {
+                    returnStrings.add(toraString);
+                }
+            }
             RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
             if (physicalRunway.getObstacleSide() == runwaySide) {
                 //Take-off away
-                calculationPanel.add(new JLabel("ASDA = (R)TORA + STOPWAY"));
-                calculationPanel.add(new JLabel("            = "
+                returnStrings.add("ASDA = (R)TORA + STOPWAY");
+                returnStrings.add("            = "
                         + dynamicLengthCalculator.getTora(runwaySide)
-                        + " + " + constantLengthCalculator.getStopwayLength(runwaySide)));
+                        + " + " + constantLengthCalculator.getStopwayLength(runwaySide));
             } else {
                 //Take-off towards
-                calculationPanel.add(new JLabel("ASDA = (R)TORA"));
+                returnStrings.add("ASDA = (R)TORA");
             }
         } else {
             //No obstacle
-            calculationPanel.add(new JLabel("ASDA = Original ASDA"));
+            returnStrings.add("ASDA = Original ASDA");
         }
-        calculationPanel.add(new JLabel("            = " + dynamicLengthCalculator.getAsda(runwaySide)));
+        returnStrings.add("            = " + dynamicLengthCalculator.getAsda(runwaySide));
+
+        String[] output = new String[returnStrings.size()];
+        return returnStrings.toArray(output);
     }
 
     /**
      * displays the steps of calculation for the TODA value.
+     * @param showTora If true the TORA calculation will be included.
+     * @return The TODA calculation in text format.
      */
-    private void showTodaCalculation() {
+    public String[] getTodaCalculation(boolean showTora) {
+        ArrayList<String> returnStrings = new ArrayList();
         if (physicalRunway.hasObstacle()) {
-            showToraCalculation();
+            if (showTora) {
+                for (String toraString : getToraCalculation()) {
+                    returnStrings.add(toraString);
+                }
+            }
             RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
             if (physicalRunway.getObstacleSide() == runwaySide) {
                 //Take-off away
-                calculationPanel.add(new JLabel("TODA = (R)TORA + CLEARWAY"));
-                calculationPanel.add(new JLabel("            = "
+                returnStrings.add("TODA = (R)TORA + CLEARWAY");
+                returnStrings.add("            = "
                         + dynamicLengthCalculator.getTora(runwaySide)
-                        + " + " + constantLengthCalculator.getClearwayLength(runwaySide)));
+                        + " + " + constantLengthCalculator.getClearwayLength(runwaySide));
             } else {
                 //Take-off towards
-                calculationPanel.add(new JLabel("TODA = (R)TORA"));
+                returnStrings.add("TODA = (R)TORA");
             }
 
         } else {
             //No obstacle
-            calculationPanel.add(new JLabel("TODA = Original TODA"));
+            returnStrings.add("TODA = Original TODA");
         }
-        calculationPanel.add(new JLabel("            = " + dynamicLengthCalculator.getToda(runwaySide)));
+        returnStrings.add("            = " + dynamicLengthCalculator.getToda(runwaySide));
+
+        String[] output = new String[returnStrings.size()];
+        return returnStrings.toArray(output);
     }
 
 }

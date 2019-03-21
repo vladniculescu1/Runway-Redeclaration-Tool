@@ -1,10 +1,10 @@
 package uk.ac.soton.comp2211.view.south.southSouth;
 
 import org.painlessgridbag.PainlessGridBag;
+import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.Observer;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

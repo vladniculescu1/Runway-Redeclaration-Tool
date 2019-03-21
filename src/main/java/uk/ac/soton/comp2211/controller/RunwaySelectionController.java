@@ -3,15 +3,13 @@ package uk.ac.soton.comp2211.controller;
 import uk.ac.soton.comp2211.model.Airport;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
-import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 import uk.ac.soton.comp2211.view.modal.AddRunwayPanel;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.util.Optional;
 
 public class RunwaySelectionController implements ActionListener {
@@ -32,7 +30,6 @@ public class RunwaySelectionController implements ActionListener {
     public RunwaySelectionController(RunwaySelection runwaySelection, Airport airport) {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
-        this.displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
     }
 
     public void addRunwayComboBox(JComboBox runwayComboBox) {
@@ -55,6 +52,7 @@ public class RunwaySelectionController implements ActionListener {
                     break;
                 }
                 case RunwayPanel.ADD_RUNWAY_COMMAND: {
+                    displayPopUpFrame = new DisplayPopUpFrame("Add Runway");
                     addRunwayPanel = new AddRunwayPanel(this);
                     displayPopUpFrame.create(addRunwayPanel);
                     break;

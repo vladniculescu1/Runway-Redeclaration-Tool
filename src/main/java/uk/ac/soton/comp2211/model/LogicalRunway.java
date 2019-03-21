@@ -2,7 +2,13 @@ package uk.ac.soton.comp2211.model;
 
 import org.hibernate.validator.constraints.Range;
 import uk.ac.soton.comp2211.model.validate.GreaterThanOrEqual;
+import uk.ac.soton.comp2211.xml.OptionalAdapter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -22,25 +28,41 @@ import java.util.Optional;
 @GreaterThanOrEqual(message = "TORA must be greater than or equal to LDA",
         baseField = "originalTora",
         comparisonField = "originalLda")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class LogicalRunway {
 
 
     @Range(min = 500, max = 5000, message = "LDA must be between 500 and 5000 inclusive.")
+    @XmlElement
     private int originalLda;
 
     @Range(min = 1000, max = 10000, message = "TODA must be between 1000 and 10000 inclusive.")
+    @XmlElement
     private int originalToda;
 
     @Range(min = 1000, max = 5000, message = "TORA must be between 1000 and 5000 inclusive.")
+    @XmlElement
     private int originalTora;
 
     @Range(min = 1000, max = 10000, message = "ASDA must be between 1000 and 10000 inclusive.")
+    @XmlElement
     private int originalAsda;
 
     @Range(min = 0, max = 35, message = "Heading must be between 0 and 35 inclusive.")
+    @XmlElement
     private int heading;
+
+    @XmlElement
     private ThresholdLocation location;
+
+    @XmlElement
+    @XmlJavaTypeAdapter(OptionalAdapter.class)
     private Optional<RunwayObstacle> runwayObstacle;
+
+    private LogicalRunway() {
+        this.runwayObstacle = Optional.empty();
+    }
 
     /**
      * The LogicalRunway constructor.
@@ -53,13 +75,13 @@ public class LogicalRunway {
      */
     public LogicalRunway(int originalLda, int originalToda, int originalTora, int originalAsda,
                          int heading, ThresholdLocation location) {
+        this();
         this.originalLda = originalLda;
         this.originalToda = originalToda;
         this.originalTora = originalTora;
         this.originalAsda = originalAsda;
         this.heading = heading;
         this.location = location;
-        this.runwayObstacle = Optional.empty();
     }
 
     public int getOriginalLda() {
@@ -122,5 +144,10 @@ public class LogicalRunway {
     @Override
     public int hashCode() {
         return Objects.hash(heading, getLocation());
+    }
+
+    @Override
+    public String toString() {
+        return getHeadingAsString() + getLocation();
     }
 }

@@ -1,7 +1,7 @@
 package uk.ac.soton.comp2211.view;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * The main frame of the application, showing the main panel.
@@ -18,7 +18,7 @@ public class MainFrame extends JFrame {
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Runway Redeclaration Tool");
-        this.setPreferredSize(new Dimension(800, 800));
+        this.setPreferredSize(new Dimension(1200, 800));
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
