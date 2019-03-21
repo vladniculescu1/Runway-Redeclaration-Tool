@@ -88,19 +88,23 @@ public class Main {
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+        VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection);
+        List<Drawer> getTopDownDrawerWithoutMainDistances = visibleDistancesController.getTopDownDrawerWithoutMainDistances();
+
+        DrawExecutor topDownDrawExecutorWithoutMainDistances =
+                new DrawExecutor(getTopDownDrawerWithoutMainDistances, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
-        VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection);
+
         DirectionController directionController = new DirectionController(runwaySelection);
 
         new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
-                                new TopDownPanel(runwaySelection, topDownDrawExecutor),
-                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
+                                new TopDownPanel(runwaySelection, topDownDrawExecutorWithoutMainDistances),
+                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutorWithoutMainDistances),
                                 new SideOnPanel(runwaySelection, sideOnDrawExecutor)
                         ),
                         new EastPanel(
