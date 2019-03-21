@@ -41,8 +41,10 @@ public class AssignObstaclePanel extends JPanel {
      * (View) Constructor for AssignObstaclePanel.
      * @param runwaySelection (Model) The runway selector for the program
      * @param assignObstacleController (Controller) The controller for this view's inputs.
+     * @param obstacleStorage storage for predefined obstacles
      */
-    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController, ObstacleStorage obstacleStorage) {
+    public AssignObstaclePanel(RunwaySelection runwaySelection, AssignObstacleController assignObstacleController,
+                               ObstacleStorage obstacleStorage) {
         this.assignObstacleController = assignObstacleController;
         this.runwaySelection = runwaySelection;
         
@@ -107,10 +109,12 @@ public class AssignObstaclePanel extends JPanel {
                      .cell(higherThresholdRadioButton);
         
         centrelineDistanceTextField = new JFormattedTextField(integerFormatter);
-        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2).cell(centrelineDistanceTextField).fillX();
+        gridBag.row().cellX(new JLabel("Distance to centre line (m):"),2)
+                .cell(centrelineDistanceTextField).fillX();
         
         thresholdDistanceTextField = new JFormattedTextField(integerFormatter);
-        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2).cell(thresholdDistanceTextField).fillX();
+        gridBag.row().cellX(new JLabel("Distance to threshold (m):"),2)
+                .cell(thresholdDistanceTextField).fillX();
         
         assignButton = new JButton();
         assignButton.addActionListener(assignObstacleController);

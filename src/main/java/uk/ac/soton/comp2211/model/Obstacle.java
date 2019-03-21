@@ -62,8 +62,12 @@ public class Obstacle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Obstacle obstacle = (Obstacle) o;
         return Objects.equals(getName(), obstacle.getName());
     }

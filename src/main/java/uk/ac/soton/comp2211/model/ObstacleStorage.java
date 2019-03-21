@@ -41,10 +41,17 @@ public class ObstacleStorage {
         return obstacles;
     }
 
+    /**
+     * Returns an obstacle with the given name, or throws NoSuchElementException if not found.
+     *
+     * @param name name of the obstacle
+     * @return obstacle matching the given name
+     */
     public Obstacle getObstacleByName(String name) {
         for (Obstacle obstacle : obstacles) {
-            if (obstacle.getName().equals(name))
+            if (obstacle.getName().equals(name)) {
                 return obstacle;
+            }
         }
         throw new NoSuchElementException("Obstacle " + name + " does not exist in storage.");
     }

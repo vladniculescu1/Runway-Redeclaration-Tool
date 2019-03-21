@@ -25,7 +25,9 @@ public class AssignObstacleController implements ActionListener {
     
     /**
      * Creates this AssignObstacleController.
-     * @param runwaySelection The runwaySelection.
+     *
+     * @param runwaySelection selection of the current runway
+     * @param obstacleStorage storage for predefined obstacles
      */
     public AssignObstacleController(RunwaySelection runwaySelection, ObstacleStorage obstacleStorage)    {
         this.runwaySelection = runwaySelection;

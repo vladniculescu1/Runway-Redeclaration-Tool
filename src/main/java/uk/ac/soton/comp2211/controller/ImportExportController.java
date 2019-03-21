@@ -3,7 +3,6 @@ package uk.ac.soton.comp2211.controller;
 import org.apache.commons.io.FilenameUtils;
 import uk.ac.soton.comp2211.Application;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
-import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.south.ExportPanel;
 import uk.ac.soton.comp2211.view.south.ImportPanel;
 import uk.ac.soton.comp2211.ApplicationData;
@@ -97,8 +96,8 @@ public class ImportExportController implements ActionListener {
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
-                        xmlImporterExporter.exportXML();
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file);
+                        xmlImporterExporter.exportXml(application.getData());
                         JOptionPane.showMessageDialog(mainFrame, "Successfully saved as XML.");
                     } catch (JAXBException e1) {
                         e1.printStackTrace();
@@ -113,8 +112,10 @@ public class ImportExportController implements ActionListener {
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
-                        xmlImporterExporter.importXML();
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file);
+                        ApplicationData data = xmlImporterExporter.importXml();
+                        application.setData(data);
+                        application.createMainframe();
                         JOptionPane.showMessageDialog(mainFrame, "Successfully imported airport settings");
                     } catch (JAXBException | ClassCastException e2) {
                         e2.printStackTrace();

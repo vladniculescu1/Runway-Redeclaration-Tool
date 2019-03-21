@@ -34,6 +34,7 @@ import java.util.List;
 public class Main {
 
     private static JFrame mainframe;
+
     /**
      * Constructs the main window frame.
      *
@@ -81,7 +82,5 @@ public class Main {
         return new ApplicationData(airport, runwaySelection, obstacleStorage);
 
     }
-
-
 
 }
