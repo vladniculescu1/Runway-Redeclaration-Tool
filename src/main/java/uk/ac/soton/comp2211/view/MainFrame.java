@@ -1,7 +1,7 @@
 package uk.ac.soton.comp2211.view;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * The main frame of the application, showing the main panel.

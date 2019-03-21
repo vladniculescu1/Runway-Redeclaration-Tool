@@ -22,10 +22,18 @@ import uk.ac.soton.comp2211.view.south.*;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * Represents the application consisting of the main UI frame and its data.
+ *
+ */
 public class Application {
+
     private JFrame mainframe;
     private ApplicationData data;
 
+    /**
+     * Constructs a new application with empty application data.
+     */
     public Application() {
         Airport airport = new Airport();
         ObstacleStorage obstacleStorage = new ObstacleStorage();
@@ -34,10 +42,18 @@ public class Application {
 
     }
 
+    /**
+     * Constructs a new application with the given application data.
+     *
+     * @param applicationData initial data of the application
+     */
     public Application(ApplicationData applicationData) {
         this.data = applicationData;
     }
 
+    /**
+     * Creates the main UI window.
+     */
     public void createMainframe() {
 
         if (mainframe != null) {
@@ -69,7 +85,8 @@ public class Application {
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
-        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection, obstacleStorage);
+        AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
+                obstacleStorage);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =

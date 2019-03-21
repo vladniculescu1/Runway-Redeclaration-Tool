@@ -1,9 +1,9 @@
 package uk.ac.soton.comp2211.draw;
 
-import java.awt.Graphics2D;
-
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
+
+import java.awt.*;
 
 /**
  * Draws the take-off/landing direction arrow for both views.

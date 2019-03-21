@@ -4,42 +4,13 @@ package uk.ac.soton.comp2211;
 import com.alee.laf.WebLookAndFeel;
 import de.javasoft.synthetica.dark.SyntheticaDarkLookAndFeel;
 import de.javasoft.synthetica.plain.SyntheticaPlainLookAndFeel;
-import mdlaf.MaterialLookAndFeel;
-import uk.ac.soton.comp2211.controller.*;
-import uk.ac.soton.comp2211.draw.*;
-import uk.ac.soton.comp2211.draw.sideon.*;
-import uk.ac.soton.comp2211.draw.topdown.TopDownCentreLineDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownClearwayDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownDesignatorDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownObstacleDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownRunwayDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownStopwayDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownStripDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownSurroundingsDrawer;
-import uk.ac.soton.comp2211.draw.topdown.TopDownThresholdDrawer;
 import uk.ac.soton.comp2211.model.*;
-import uk.ac.soton.comp2211.view.MainFrame;
-import uk.ac.soton.comp2211.view.MainPanel;
-import uk.ac.soton.comp2211.view.center.DisplayTabbedPane;
-import uk.ac.soton.comp2211.view.center.SideOnPanel;
-import uk.ac.soton.comp2211.view.center.TopDownPanel;
-import uk.ac.soton.comp2211.view.center.TopDownRotatedPanel;
-import uk.ac.soton.comp2211.view.east.DistancesPanel;
-import uk.ac.soton.comp2211.view.east.EastPanel;
-import uk.ac.soton.comp2211.view.east.ObstaclePanel;
-import uk.ac.soton.comp2211.view.east.RunwayPanel;
-import uk.ac.soton.comp2211.view.south.*;
-
-import javax.swing.*;
-import java.text.ParseException;
-import java.util.List;
 
 /**
  * The class containing the application's main method.
  */
 public class Main {
 
-    private static JFrame mainframe;
     /**
      * Constructs the main window frame.
      *

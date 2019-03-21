@@ -2,11 +2,13 @@ package uk.ac.soton.comp2211.controller;
 
 import org.apache.commons.io.FilenameUtils;
 import uk.ac.soton.comp2211.Application;
+import uk.ac.soton.comp2211.ApplicationData;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
-import uk.ac.soton.comp2211.view.MainFrame;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
+import uk.ac.soton.comp2211.model.RunwaySide;
+import uk.ac.soton.comp2211.view.modal.ShowCalculationPanel;
 import uk.ac.soton.comp2211.view.south.ExportPanel;
 import uk.ac.soton.comp2211.view.south.ImportPanel;
-import uk.ac.soton.comp2211.ApplicationData;
 import uk.ac.soton.comp2211.xml.XmlImporterExporter;
 
 import javax.imageio.ImageIO;
@@ -18,6 +20,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class ImportExportController implements ActionListener {
@@ -52,30 +56,35 @@ public class ImportExportController implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case (ExportPanel.PNG_EXPORT_BUTTON_COMMAND): {
-                Optional<File> fileOptional = getExportLocation("png");
-                if (fileOptional.isPresent()) {
-                    int height = 800;
-                    int width = (int)(((float)height) * 1.5);
 
-                    BufferedImage topImage = new BufferedImage(width,height, BufferedImage.TYPE_INT_ARGB);
+        switch (e.getActionCommand()) {
+
+            case (ExportPanel.PNG_EXPORT_BUTTON_COMMAND): {
+
+                Optional<File> pngFileOptional = getExportLocation("png");
+
+                if (pngFileOptional.isPresent()) {
+
+                    int height = 800;
+                    int width = (int) (((float) height) * 1.5);
+
+                    BufferedImage topImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D topGraphics = topImage.createGraphics();
                     topGraphics.setBackground(Color.white);
                     topDownDrawExecutor.executeDrawers(topGraphics, width, height);
-                    BufferedImage sideImage = new BufferedImage(width,height, BufferedImage.TYPE_INT_ARGB);
+                    BufferedImage sideImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D sideGraphics = sideImage.createGraphics();
                     sideGraphics.setBackground(Color.white);
                     sideOnDrawExecutor.executeDrawers(sideGraphics, width, height);
 
                     BufferedImage exportedImage = new BufferedImage(width * 2, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D exportedGraphics = exportedImage.createGraphics();
-                    exportedGraphics.drawImage(topImage, 0,0, null);
+                    exportedGraphics.drawImage(topImage, 0, 0, null);
                     exportedGraphics.drawImage(sideImage, width, 0, null);
 
-                    //exportXML to location
+                    //export to location
                     try {
-                        if (ImageIO.write(exportedImage, "png", fileOptional.get())) {
+                        if (ImageIO.write(exportedImage, "png", pngFileOptional.get())) {
                             JOptionPane.showMessageDialog(mainFrame, "Successfully saved to PNG.");
                         }
                     } catch (Exception ex) {
@@ -85,20 +94,60 @@ public class ImportExportController implements ActionListener {
 
                 }
 
-
                 break;
             }
-            //case (ExportPanel.TXT_EXPORT_BUTTON_COMMAND):
-            //TODO
-            //    break;
+
+            case (ExportPanel.TXT_EXPORT_BUTTON_COMMAND): {
+
+                Optional<File> txtFileOptional = getExportLocation("txt");
+                if (txtFileOptional.isPresent()) {
+                    ArrayList<String> outputStrings = new ArrayList<String>();
+
+
+                    for (PhysicalRunway runway : application.getData().getAirport().getRunways()) {
+                        outputStrings.add("Physical Runway " + runway.toString() + ":");
+                        outputStrings.add("Logical Runway " + runway.getLowerThreshold().toString() + ":");
+                        ShowCalculationPanel textMaker = new ShowCalculationPanel(runway,
+                                0, RunwaySide.LOWER_THRESHOLD, null);
+                        addStringArray(outputStrings, textMaker.getLdaCalculation());
+                        addStringArray(outputStrings, textMaker.getToraCalculation());
+                        addStringArray(outputStrings, textMaker.getTodaCalculation(false));
+                        addStringArray(outputStrings, textMaker.getAsdaCalculation(false));
+
+
+                        outputStrings.add("");
+                        outputStrings.add("Logical Runway " + runway.getHigherThreshold().toString() + ":");
+                        textMaker = new ShowCalculationPanel(runway,
+                                0, RunwaySide.HIGHER_THRESHOLD, null);
+                        addStringArray(outputStrings, textMaker.getLdaCalculation());
+                        addStringArray(outputStrings, textMaker.getToraCalculation());
+                        addStringArray(outputStrings, textMaker.getTodaCalculation(false));
+                        addStringArray(outputStrings, textMaker.getAsdaCalculation(false));
+                        outputStrings.add("");
+                        outputStrings.add("");
+                    }
+
+                    try (PrintWriter out = new PrintWriter(txtFileOptional.get())) {
+                        for (String outputString : outputStrings) {
+                            out.println(outputString);
+                        }
+                        out.println();
+                        JOptionPane.showMessageDialog(mainFrame, "Successfully saved to TXT.");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(mainFrame, "Failed to save TXT.");
+                    }
+                }
+                break;
+            }
+
             case (ExportPanel.XML_EXPORT_BUTTON_COMMAND): {
                 Optional<File> fileOptional = getExportLocation("xml");
 
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
-                        xmlImporterExporter.exportXML();
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file);
+                        xmlImporterExporter.exportXml(application.getData());
                         JOptionPane.showMessageDialog(mainFrame, "Successfully saved as XML.");
                     } catch (JAXBException e1) {
                         e1.printStackTrace();
@@ -107,14 +156,17 @@ public class ImportExportController implements ActionListener {
                 }
                 break;
             }
+
             case (ImportPanel.XML_IMPORT_BUTTON_COMMAND): {
                 Optional<File> fileOptional = getImportLocation("xml");
 
                 if (fileOptional.isPresent()) {
                     File file = fileOptional.get();
                     try {
-                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file, application);
-                        xmlImporterExporter.importXML();
+                        XmlImporterExporter xmlImporterExporter = new XmlImporterExporter(file);
+                        ApplicationData data = xmlImporterExporter.importXml();
+                        application.setData(data);
+                        application.createMainframe();
                         JOptionPane.showMessageDialog(mainFrame, "Successfully imported airport settings");
                     } catch (JAXBException | ClassCastException e2) {
                         e2.printStackTrace();
@@ -123,6 +175,7 @@ public class ImportExportController implements ActionListener {
                 }
                 break;
             }
+
             default:
                 throw new UnsupportedOperationException("Operation not supported");
         }
@@ -194,5 +247,11 @@ public class ImportExportController implements ActionListener {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
         return fileChooser;
+    }
+
+    private void addStringArray(ArrayList<String> list, String[] array) {
+        for (String arrayElem: array) {
+            list.add(arrayElem);
+        }
     }
 }

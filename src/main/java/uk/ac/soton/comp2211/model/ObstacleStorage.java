@@ -2,10 +2,8 @@ package uk.ac.soton.comp2211.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -41,10 +39,17 @@ public class ObstacleStorage {
         return obstacles;
     }
 
+    /**
+     * Returns an obstacle with the given name, or throws NoSuchElementException if not found.
+     *
+     * @param name name of the obstacle
+     * @return obstacle matching the given name
+     */
     public Obstacle getObstacleByName(String name) {
         for (Obstacle obstacle : obstacles) {
-            if (obstacle.getName().equals(name))
+            if (obstacle.getName().equals(name)) {
                 return obstacle;
+            }
         }
         throw new NoSuchElementException("Obstacle " + name + " does not exist in storage.");
     }

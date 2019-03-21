@@ -1,7 +1,6 @@
 package uk.ac.soton.comp2211.view.modal;
 
 import org.painlessgridbag.PainlessGridBag;
-import uk.ac.soton.comp2211.controller.RunwaySelectionController;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
@@ -12,9 +11,9 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.NumberFormatter;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.Optional;
 
 public class AddRunwayPanel extends JPanel {

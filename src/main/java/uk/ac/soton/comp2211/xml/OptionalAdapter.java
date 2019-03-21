@@ -5,7 +5,6 @@ import java.util.Optional;
 
 public class OptionalAdapter extends XmlAdapter<Object, Optional<?>> {
 
-
     @Override
     public Optional<?> unmarshal(Object obj) {
         return Optional.of(obj);
