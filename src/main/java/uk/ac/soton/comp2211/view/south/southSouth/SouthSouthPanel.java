@@ -2,6 +2,8 @@ package uk.ac.soton.comp2211.view.south.southSouth;
 
 import javax.swing.*;
 import org.painlessgridbag.PainlessGridBag;
+import uk.ac.soton.comp2211.view.south.ExportPanel;
+import uk.ac.soton.comp2211.view.south.ImportPanel;
 import uk.ac.soton.comp2211.view.south.southNorth.SouthNorthPanel;
 import uk.ac.soton.comp2211.view.south.southSouth.DirectionPanel;
 import uk.ac.soton.comp2211.view.south.southSouth.SouthSouthPanel;
@@ -13,14 +15,15 @@ import uk.ac.soton.comp2211.view.south.southSouth.XmlPanel;
 public class SouthSouthPanel extends JPanel {
 
     /**
-     *
-     * @param directionPanel
-     * @param xmlPanel
+     * Constructs a new southSouth panel and places the supplied child panels inside.
+     * @param directionPanel the direction Panel
+     * @param exportPanel export XML panel
+     * @param importPanel import XML panel
      */
-    public SouthSouthPanel(DirectionPanel directionPanel, XmlPanel xmlPanel) {
+    public SouthSouthPanel(DirectionPanel directionPanel, ExportPanel exportPanel, ImportPanel importPanel) {
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
-        gridBag.row().cell(directionPanel).fillX().cell(xmlPanel).fillX();
+        gridBag.row().cell(directionPanel).fillX().cell(exportPanel).fillX().cell(importPanel).fillX();
         gridBag.done();
     }
 }

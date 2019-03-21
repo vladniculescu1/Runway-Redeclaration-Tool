@@ -8,7 +8,7 @@ import uk.ac.soton.comp2211.view.south.southSouth.SouthSouthPanel;
 import uk.ac.soton.comp2211.view.south.southSouth.XmlPanel;
 
 /**
- * This panel contains all panels that are placed in the south of the main application window.
+ * This panel contains all panels that are placed in the southNorth of the main application window.
  */
 public class SouthNorthPanel extends JPanel {
 

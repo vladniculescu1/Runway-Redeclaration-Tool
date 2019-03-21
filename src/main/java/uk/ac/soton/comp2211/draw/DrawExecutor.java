@@ -84,4 +84,13 @@ public class DrawExecutor {
         // set draw color to black
         g2d.setColor(Color.BLACK);
     }
+
+    public void addDrawer(Drawer drawer) {
+        this.drawers.add(drawer);
+    }
+
+    public void removeDrawer(Drawer drawer) {
+        this.drawers.remove(drawer);
+    }
+
 }

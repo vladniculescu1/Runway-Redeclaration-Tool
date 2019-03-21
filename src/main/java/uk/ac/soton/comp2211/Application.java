@@ -18,8 +18,15 @@ import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
+import uk.ac.soton.comp2211.view.south.southNorth.SouthNorthPanel;
+import uk.ac.soton.comp2211.view.south.southNorth.VisibleDistancesPanel;
+import uk.ac.soton.comp2211.view.south.southSouth.DirectionPanel;
+import uk.ac.soton.comp2211.view.south.southSouth.NotificationsPanel;
+import uk.ac.soton.comp2211.view.south.southSouth.SouthSouthPanel;
+import uk.ac.soton.comp2211.view.south.southSouth.XmlPanel;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,17 +70,16 @@ public class Application {
         ObstacleStorage obstacleStorage = data.getObstacleStorage();
         RunwaySelection runwaySelection = data.getRunwaySelection();
 
-        List<Drawer> topDownDrawer = List.of(
+        List<Drawer> topDownDrawerWithoutDistance = new ArrayList<>(List.of(
 
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
-                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
 
-        );
+        ));
 
         List<Drawer> sideOnDrawer = List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
@@ -83,14 +89,18 @@ public class Application {
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
+
+        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawerWithoutDistance, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
+
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
                 obstacleStorage);
         RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
+        VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection,
+                topDownDrawExecutor);
 
 
         this.mainframe = new MainFrame(
@@ -106,9 +116,15 @@ public class Application {
                                 new DistancesPanel(runwaySelection, showCalculationController)
                         ),
                         new SouthPanel(
-                                new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new ExportPanel(importExportController),
-                                new ImportPanel(importExportController)
+                                new SouthNorthPanel(
+                                        new VisibleDistancesPanel(runwaySelection, visibleDistancesController)
+                                ),
+                                new SouthSouthPanel(
+                                        new DirectionPanel(runwaySelection,
+                                        new DirectionController(runwaySelection)),
+
+                                        new ExportPanel(importExportController),
+                                        new ImportPanel(importExportController))
                         ),
                         new NotificationsPanel()
                 )
