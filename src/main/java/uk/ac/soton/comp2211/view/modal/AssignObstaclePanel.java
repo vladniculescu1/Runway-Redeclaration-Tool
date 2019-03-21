@@ -1,18 +1,16 @@
 package uk.ac.soton.comp2211.view.modal;
 
-import java.text.NumberFormat;
-import java.util.Optional;
+import org.painlessgridbag.PainlessGridBag;
+import uk.ac.soton.comp2211.controller.AssignObstacleController;
+import uk.ac.soton.comp2211.model.*;
+import uk.ac.soton.comp2211.model.validate.Validator;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.NumberFormatter;
-
-import org.painlessgridbag.PainlessGridBag;
-
-import uk.ac.soton.comp2211.controller.AssignObstacleController;
-import uk.ac.soton.comp2211.model.*;
-import uk.ac.soton.comp2211.model.validate.Validator;
+import java.text.NumberFormat;
+import java.util.Optional;
 
 public class AssignObstaclePanel extends JPanel {
 

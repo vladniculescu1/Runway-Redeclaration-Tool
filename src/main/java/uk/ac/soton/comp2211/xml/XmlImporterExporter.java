@@ -1,9 +1,12 @@
 package uk.ac.soton.comp2211.xml;
 
-import uk.ac.soton.comp2211.Application;
 import uk.ac.soton.comp2211.ApplicationData;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
-import javax.xml.bind.*;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 /**

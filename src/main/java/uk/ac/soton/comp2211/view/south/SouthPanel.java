@@ -1,7 +1,8 @@
 package uk.ac.soton.comp2211.view.south;
 
-import javax.swing.*;
 import org.painlessgridbag.PainlessGridBag;
+
+import javax.swing.*;
 
 /**
  * This panel contains all panels that are placed in the south of the main application window.

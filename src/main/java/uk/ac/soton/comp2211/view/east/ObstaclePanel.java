@@ -1,12 +1,11 @@
 package uk.ac.soton.comp2211.view.east;
 
-import javax.swing.*;
-
 import org.painlessgridbag.PainlessGridBag;
-
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.controller.AssignObstacleController;
 import uk.ac.soton.comp2211.model.RunwaySelection;
+
+import javax.swing.*;
 
 /**
  * This panel contains the settings for an obstacle. The user can see the current obstacle, assign an obstacle to

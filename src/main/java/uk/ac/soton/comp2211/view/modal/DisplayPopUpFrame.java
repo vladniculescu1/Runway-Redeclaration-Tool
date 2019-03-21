@@ -2,8 +2,6 @@ package uk.ac.soton.comp2211.view.modal;
 
 import javax.swing.*;
 
-import uk.ac.soton.comp2211.view.MainFrame;
-
 public class DisplayPopUpFrame extends JDialog {
 
     /**
