@@ -1,5 +1,10 @@
 package uk.ac.soton.comp2211;
 
+
+import com.alee.laf.WebLookAndFeel;
+import de.javasoft.synthetica.dark.SyntheticaDarkLookAndFeel;
+import de.javasoft.synthetica.plain.SyntheticaPlainLookAndFeel;
+import mdlaf.MaterialLookAndFeel;
 import uk.ac.soton.comp2211.controller.*;
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.draw.sideon.*;
@@ -26,6 +31,7 @@ import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
 
 import javax.swing.*;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -40,6 +46,17 @@ public class Main {
      * @param args command line arguments
      */
     public static void main(String[] args) {
+
+        try {
+            //UIManager.setLookAndFeel(new SyntheticaPlainLookAndFeel());
+            //UIManager.setLookAndFeel (new MaterialLookAndFeel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        WebLookAndFeel.install();
+
+
         Application application;
         if (args.length >= 1) {
             ApplicationData data = getDemoData();
