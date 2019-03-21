@@ -1,8 +1,7 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
-import uk.ac.soton.comp2211.draw.*;
+import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
-import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;

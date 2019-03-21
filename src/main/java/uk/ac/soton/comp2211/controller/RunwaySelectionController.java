@@ -3,15 +3,13 @@ package uk.ac.soton.comp2211.controller;
 import uk.ac.soton.comp2211.model.Airport;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.view.MainFrame;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
-import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 import uk.ac.soton.comp2211.view.modal.AddRunwayPanel;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.util.Optional;
 
 public class RunwaySelectionController implements ActionListener {

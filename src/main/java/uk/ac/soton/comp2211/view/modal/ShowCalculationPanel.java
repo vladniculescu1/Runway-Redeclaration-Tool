@@ -1,10 +1,12 @@
 package uk.ac.soton.comp2211.view.modal;
 
-import antlr.debug.misc.JTreeASTPanel;
 import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
 import uk.ac.soton.comp2211.controller.ShowCalculationController;
-import uk.ac.soton.comp2211.model.*;
+import uk.ac.soton.comp2211.model.LogicalRunway;
+import uk.ac.soton.comp2211.model.PhysicalRunway;
+import uk.ac.soton.comp2211.model.RunwayObstacle;
+import uk.ac.soton.comp2211.model.RunwaySide;
 
 import javax.swing.*;
 import java.awt.*;

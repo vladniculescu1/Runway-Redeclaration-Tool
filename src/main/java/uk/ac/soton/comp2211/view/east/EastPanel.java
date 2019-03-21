@@ -1,8 +1,8 @@
 package uk.ac.soton.comp2211.view.east;
 
-import javax.swing.*;
-
 import org.painlessgridbag.PainlessGridBag;
+
+import javax.swing.*;
 
 /**
  * This panel contains all panels that are placed in the east of the main application window.

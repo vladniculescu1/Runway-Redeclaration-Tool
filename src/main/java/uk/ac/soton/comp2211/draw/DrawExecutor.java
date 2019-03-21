@@ -1,6 +1,5 @@
 package uk.ac.soton.comp2211.draw;
 
-import uk.ac.soton.comp2211.calculator.Calculator;
 import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
