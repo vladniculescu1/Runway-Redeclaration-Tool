@@ -16,7 +16,9 @@ public class TopDownObstacleDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+
         if (physicalRunway.hasObstacle()) {
+
             DynamicPositionCalculator calc = physicalRunway.getDynamicPositionCalculator();
 
             RunwaySide obstacleSide = physicalRunway.getObstacleSide();

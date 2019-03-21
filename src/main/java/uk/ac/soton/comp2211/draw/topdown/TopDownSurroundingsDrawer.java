@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -14,8 +16,8 @@ public class TopDownSurroundingsDrawer implements Drawer {
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
 
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
 
         // set colour for cleared and graded areas
         g2d.setColor(new Color(44, 149, 32, 172));

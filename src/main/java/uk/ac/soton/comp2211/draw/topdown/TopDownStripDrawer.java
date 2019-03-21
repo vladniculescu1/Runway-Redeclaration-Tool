@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.draw.Drawer;
@@ -14,11 +16,12 @@ public class TopDownStripDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var stripLength = lengthCalculator.getStripLength();
-        var stripPosition = positionCalculator.getStripPosition();
+        ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
+
+        int stripLength = lengthCalculator.getStripLength();
+        int stripPosition = positionCalculator.getStripPosition();
 
         // draw the strip as a filled and labelled rectangle
         DrawUtils.centeredFilledRectangle(g2d, new Color(43, 166, 32, 172),

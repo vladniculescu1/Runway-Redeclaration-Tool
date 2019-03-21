@@ -9,8 +9,6 @@ import javax.swing.*;
  */
 public class Main {
 
-    private static JFrame mainframe;
-
     /**
      * Constructs the main window frame. Includes demo data if at least one arbitrary argument is specified.
      *
