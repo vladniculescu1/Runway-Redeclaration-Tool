@@ -1,10 +1,10 @@
 package uk.ac.soton.comp2211;
 
-
+import com.alee.laf.LookAndFeelException;
 import com.alee.laf.WebLookAndFeel;
-import de.javasoft.synthetica.dark.SyntheticaDarkLookAndFeel;
-import de.javasoft.synthetica.plain.SyntheticaPlainLookAndFeel;
 import uk.ac.soton.comp2211.model.*;
+
+import java.awt.*;
 
 /**
  * The class containing the application's main method.
@@ -18,25 +18,28 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        final SplashScreen splash = SplashScreen.getSplashScreen();
+
         try {
-            //UIManager.setLookAndFeel(new SyntheticaPlainLookAndFeel());
-            //UIManager.setLookAndFeel (new MaterialLookAndFeel());
-        } catch (Exception e) {
-            e.printStackTrace();
+            WebLookAndFeel.install();
+        } catch (LookAndFeelException e) {
+            System.err.println(e.getMessage());
         }
 
-        WebLookAndFeel.install();
-
-
         Application application;
+
         if (args.length >= 1) {
             ApplicationData data = getDemoData();
             application = new Application(data);
         } else {
             application = new Application();
         }
-        application.createMainframe();
 
+        if (splash != null) {
+            splash.close();
+        }
+
+        application.createMainframe();
 
     }
 
@@ -69,7 +72,5 @@ public class Main {
         return new ApplicationData(airport, runwaySelection, obstacleStorage);
 
     }
-
-
 
 }

@@ -59,6 +59,7 @@ public class Application {
         if (mainframe != null) {
             mainframe.dispose();
         }
+
         Airport airport = data.getAirport();
         ObstacleStorage obstacleStorage = data.getObstacleStorage();
         RunwaySelection runwaySelection = data.getRunwaySelection();
