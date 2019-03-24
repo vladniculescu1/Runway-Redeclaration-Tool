@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        final SplashScreen splash = SplashScreen.getSplashScreen();
+        SplashScreen.getSplashScreen();
 
         try {
             WebLookAndFeel.install();
@@ -33,10 +33,6 @@ public class Main {
             application = new Application(data);
         } else {
             application = new Application();
-        }
-
-        if (splash != null) {
-            splash.close();
         }
 
         application.createMainframe();
