@@ -24,6 +24,8 @@ public class RunwaySelectionController implements ActionListener {
 
     private boolean suppressEvents = false;
 
+    private JFrame mainFrame;
+
     /**
      * Constructor for this RunwaySelectionController.
      * @param runwaySelection The application's runwaySelection variable.
@@ -35,6 +37,10 @@ public class RunwaySelectionController implements ActionListener {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
         this.notification = notification;
+    }
+
+    public void addMainFrame(JFrame mainFrame) {
+        this.mainFrame = mainFrame;
     }
 
     public void addRunwayComboBox(JComboBox runwayComboBox) {
@@ -63,19 +69,25 @@ public class RunwaySelectionController implements ActionListener {
                     break;
                 }
                 case RunwayPanel.REMOVE_RUNWAY_COMMAND: {
-                    PhysicalRunway removedRunway = runwaySelection.getSelectedRunway();
-                    airport.removeRunway(removedRunway);
-                    //change combobox selected runway and remove
-                    suppressEvents = true;
-                    runwayComboBox.removeItem(removedRunway);
-                    suppressEvents = false;
-                    if (runwayComboBox.getItemCount() != 0) {
-                        runwaySelection.setSelectedRunway((PhysicalRunway) runwayComboBox.getSelectedItem());
-                    } else {
-                        runwaySelection.removeSelectedRunway();
+                    //show are you sure
+                    if (JOptionPane.showConfirmDialog(DisplayPopUpFrame.getMainFrame(),
+                                "Are you sure you want to remove the runway?","Remove?",
+                                JOptionPane.YES_NO_OPTION)
+                            == JOptionPane.YES_OPTION) {
+                        PhysicalRunway removedRunway = runwaySelection.getSelectedRunway();
+                        airport.removeRunway(removedRunway);
+                        //change combobox selected runway and remove
+                        suppressEvents = true;
+                        runwayComboBox.removeItem(removedRunway);
+                        suppressEvents = false;
+                        if (runwayComboBox.getItemCount() != 0) {
+                            runwaySelection.setSelectedRunway((PhysicalRunway) runwayComboBox.getSelectedItem());
+                        } else {
+                            runwaySelection.removeSelectedRunway();
+                        }
+                        runwaySelection.notifyUpdate();
+                        notification.notificationUpdate("Runway successfully removed");
                     }
-                    runwaySelection.notifyUpdate();
-                    notification.notificationUpdate("Runway successfully removed");
                     break;
                 }
                 case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
