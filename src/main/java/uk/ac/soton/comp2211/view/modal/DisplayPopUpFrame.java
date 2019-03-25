@@ -15,6 +15,7 @@ public class DisplayPopUpFrame extends JDialog {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(false);
+        this.setResizable(false);
     }
 
     public void close() {
