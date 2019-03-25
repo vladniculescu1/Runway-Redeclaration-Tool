@@ -46,7 +46,6 @@ public class Application {
         ObstacleStorage obstacleStorage = new ObstacleStorage();
         RunwaySelection runwaySelection = new RunwaySelection();
         this.data = new ApplicationData(airport, runwaySelection, obstacleStorage);
-
     }
 
     /**
@@ -70,11 +69,12 @@ public class Application {
         ObstacleStorage obstacleStorage = data.getObstacleStorage();
         RunwaySelection runwaySelection = data.getRunwaySelection();
 
-        List<Drawer> topDownDrawerWithoutDistance = new ArrayList<>(List.of(
+        List<Drawer> topDownDrawer = new ArrayList<>(List.of(
 
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
+                new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
@@ -89,8 +89,7 @@ public class Application {
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
-
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawerWithoutDistance, runwaySelection);
+        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
 
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
@@ -101,7 +100,6 @@ public class Application {
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
         VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection,
                 topDownDrawExecutor);
-
 
         this.mainframe = new MainFrame(
                 new MainPanel(
