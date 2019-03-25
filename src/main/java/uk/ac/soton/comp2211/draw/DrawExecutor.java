@@ -92,10 +92,10 @@ public class DrawExecutor {
 
     /**
      * Removes a given drawer given a class.
-     * @param classtype the class of the drawer that will be removed
+     * @param clazz the class of the drawer that will be removed
      */
-    public void removeDrawerByClass(Class classtype) {
-        this.drawers.removeIf(drawer -> drawer.getClass().equals(classtype));
+    public void removeDrawerByClass(Class<? extends Drawer> clazz) {
+        this.drawers.removeIf(drawer -> drawer.getClass() == clazz);
     }
 
 }

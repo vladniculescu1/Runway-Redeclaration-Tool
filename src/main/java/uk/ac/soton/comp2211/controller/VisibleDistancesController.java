@@ -58,29 +58,29 @@ public class VisibleDistancesController implements ActionListener {
                         this.topDownDrawExecutor.addDrawer(new AsdaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new AsdaDrawer());
                     } else {
-                        this.topDownDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
-                        this.sideOnDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
+                        this.topDownDrawExecutor.removeDrawerByClass(AsdaDrawer.class);
+                        this.sideOnDrawExecutor.removeDrawerByClass(AsdaDrawer.class);
                     }
                     if (toraCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new ToraDrawer());
                         this.sideOnDrawExecutor.addDrawer(new ToraDrawer());
                     } else {
-                        this.topDownDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
-                        this.sideOnDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
+                        this.topDownDrawExecutor.removeDrawerByClass(ToraDrawer.class);
+                        this.sideOnDrawExecutor.removeDrawerByClass(ToraDrawer.class);
                     }
                     if (todaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new TodaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new TodaDrawer());
                     } else {
-                        this.topDownDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
-                        this.sideOnDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
+                        this.topDownDrawExecutor.removeDrawerByClass(TodaDrawer.class);
+                        this.sideOnDrawExecutor.removeDrawerByClass(TodaDrawer.class);
                     }
                     if (ldaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new LdaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new LdaDrawer());
                     } else {
-                        this.topDownDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
-                        this.sideOnDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
+                        this.topDownDrawExecutor.removeDrawerByClass(LdaDrawer.class);
+                        this.sideOnDrawExecutor.removeDrawerByClass(LdaDrawer.class);
                     }
                     runwaySelection.notifyUpdate();
                     break;
