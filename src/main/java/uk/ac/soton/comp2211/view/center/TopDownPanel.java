@@ -24,6 +24,7 @@ public class TopDownPanel  extends JPanel implements Observer {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
         this.drawExecutor = drawExecutor;
+        this.setBackground(new Color(20, 181, 227, 25));
     }
 
     @Override
