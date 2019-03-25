@@ -17,10 +17,10 @@ public class Stripes extends Path2D.Double {
      */
     public Stripes(double width, double length, double position, int number) {
 
-        var margin = width / number;
-        var currentPos = - width / 2 + margin / 2;
+        double margin = width / number;
+        double currentPos = - width / 2 + margin / 2;
 
-        for (var i = 0; i < number; i++) {
+        for (int i = 0; i < number; i++) {
             moveTo(position, currentPos);
             lineTo(position + length, currentPos);
             currentPos += margin;

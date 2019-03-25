@@ -1,10 +1,12 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 /**
  * Draws the threshold designators, i.e. the runway heading and position on each side of the side-on runway.
@@ -14,21 +16,21 @@ public class SideOnDesignatorDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getConstantPositionCalculator();
 
-        var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var lowerThresholdLetter = physicalRunway.getLowerThreshold().getLocation().toString();
-        var lowerThresholdNumber = physicalRunway.getLowerThreshold().getHeadingAsString();
+        ConstantPositionCalculator calculator = physicalRunway.getConstantPositionCalculator();
 
-        var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
-        var higherThresholdLetter = physicalRunway.getHigherThreshold().getLocation().toString();
-        var higherThresholdNumber = physicalRunway.getHigherThreshold().getHeadingAsString();
+        int lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        String lowerThresholdLetter = physicalRunway.getLowerThreshold().getLocation().toString();
+        String lowerThresholdNumber = physicalRunway.getLowerThreshold().getHeadingAsString();
 
-        var originalTransform = g2d.getTransform();
+        int higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        String higherThresholdLetter = physicalRunway.getHigherThreshold().getLocation().toString();
+        String higherThresholdNumber = physicalRunway.getHigherThreshold().getHeadingAsString();
+
+        AffineTransform originalTransform = g2d.getTransform();
 
         // get the font size for the designators
-        var fontHeight = g2d.getFontMetrics().getHeight();
-
+        int fontHeight = g2d.getFontMetrics().getHeight();
 
         // draw the designators for the lower threshold
         g2d.drawString(lowerThresholdNumber, lowerThresholdPosition - fontHeight / 2, (int) (fontHeight * 1.1));

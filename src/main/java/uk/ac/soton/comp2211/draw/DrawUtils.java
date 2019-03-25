@@ -44,7 +44,7 @@ public class DrawUtils {
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
         g2d.setColor(outline);
         g2d.draw(rectangle);
-        var fontHeight = g2d.getFontMetrics().getHeight();
+        double fontHeight = g2d.getFontMetrics().getHeight();
         g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4)));
         g2d.setColor(Color.black);
     }
@@ -68,7 +68,7 @@ public class DrawUtils {
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2) - positionY, length, width);
         g2d.setColor(outline);
         g2d.draw(rectangle);
-        var fontHeight = g2d.getFontMetrics().getHeight();
+        double fontHeight = g2d.getFontMetrics().getHeight();
         g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4) - positionY));
         g2d.setColor(Color.black);
     }

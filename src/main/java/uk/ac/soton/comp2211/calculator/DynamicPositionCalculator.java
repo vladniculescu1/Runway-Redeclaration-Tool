@@ -110,7 +110,7 @@ public class DynamicPositionCalculator extends Calculator {
      */
     public int getObstaclePosition() {
 
-        var obstacleSide = physicalRunway.getObstacleSide();
+        RunwaySide obstacleSide = physicalRunway.getObstacleSide();
 
         switch (obstacleSide) {
             case LOWER_THRESHOLD:
@@ -140,7 +140,7 @@ public class DynamicPositionCalculator extends Calculator {
      * @return start position of TOCS slope
      */
     public int getSlopePosition() {
-        var obstacleSide = physicalRunway.getObstacleSide();
+        RunwaySide obstacleSide = physicalRunway.getObstacleSide();
 
         switch (obstacleSide) {
             case LOWER_THRESHOLD:

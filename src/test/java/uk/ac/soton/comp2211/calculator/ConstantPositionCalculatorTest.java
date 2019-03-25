@@ -16,10 +16,10 @@ class ConstantPositionCalculatorTest {
     @Test
     void getRunwayPosition_noStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
-        var actualPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -33,11 +33,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getRunwayPosition_noStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD)
                 + lengthCalculator.getRunwayLength();
-        var actualPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -50,10 +50,10 @@ class ConstantPositionCalculatorTest {
     @Test
     void getRunwayPosition_stopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.stopWayNoClearwayLower();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
-        var actualPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -67,11 +67,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getRunwayPosition_stopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayNoClearwayHigher();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = lengthCalculator.getRunwayMarginLength(RunwaySide.LOWER_THRESHOLD)
                 + lengthCalculator.getRunwayLength();
-        var actualPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -84,11 +84,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStripPosition_noStopWayNoClearway() {
         PhysicalRunway runway = Runways.stopWayNoClearwayHigher();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 - lengthCalculator.getStripMargin();
-        var actualPosition = positionCalculator.getStripPosition();
+        int actualPosition = positionCalculator.getStripPosition();
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -101,11 +101,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStripPosition_stopWayClearwayLower() {
         PhysicalRunway runway = Runways.stopWayClearwayLower();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 - lengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD) - lengthCalculator.getStripMargin();;
-        var actualPosition = positionCalculator.getStripPosition();
+        int actualPosition = positionCalculator.getStripPosition();
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -118,9 +118,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStopwayPosition_noStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -133,9 +133,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStopwayPosition_noStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var actualPosition = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -148,9 +148,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStopwayPosition_stopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.stopWayNoClearwayLower();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -164,11 +164,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getStopwayPosition_stopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.stopWayNoClearwayHigher();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 - lengthCalculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -181,9 +181,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getClearwayPosition_noStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -196,9 +196,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getClearwayPosition_noStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var actualPosition = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -211,9 +211,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getClearwayPosition_noStopWayClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayClearwayLower();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -227,11 +227,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getClearwayPosition_noStopWayClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayClearwayHigher();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 - lengthCalculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -244,9 +244,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getThresholdPosition_noStopWayNoClearwayLower() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
-        var actualPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -259,9 +259,9 @@ class ConstantPositionCalculatorTest {
     @Test
     void getThresholdPosition_noStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.noStopWayNoClearway();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -275,11 +275,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getThresholdPosition_displacedThresholdNoStopwayNoClearwayLower() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayLower();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
                 + lengthCalculator.getDisplacedThresholdLength(RunwaySide.LOWER_THRESHOLD);;
-        var actualPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        int actualPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }
@@ -293,11 +293,11 @@ class ConstantPositionCalculatorTest {
     @Test
     void getThresholdPosition_displacedThresholdNoStopWayNoClearwayHigher() {
         PhysicalRunway runway = Runways.displacedThresholdNoStopwayNoClearwayHigher();
-        var positionCalculator = runway.getConstantPositionCalculator();
-        var lengthCalculator = runway.getConstantLengthCalculator();
-        var expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD)
+        ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
+        ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
+        int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.HIGHER_THRESHOLD)
                 - lengthCalculator.getDisplacedThresholdLength(RunwaySide.HIGHER_THRESHOLD);
-        var actualPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        int actualPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
         assertEquals(expectedPosition, actualPosition);
     }

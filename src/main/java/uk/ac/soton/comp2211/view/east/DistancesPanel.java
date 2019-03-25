@@ -194,11 +194,11 @@ public class DistancesPanel extends JPanel implements Observer {
                 {"TORA", higherThreshold.getOriginalTora(),
                         calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
 
-        for (var row : lowerData) {
+        for (Object[] row : lowerData) {
             this.lowerTableModel.addRow(row);
         }
 
-        for (var row : higherData) {
+        for (Object[] row : higherData) {
             this.higherTableModel.addRow(row);
         }
     }
