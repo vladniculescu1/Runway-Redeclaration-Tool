@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -16,12 +18,12 @@ public class ResaDrawer implements Drawer {
 
         if (physicalRunway.hasObstacle()) {
 
-            var positionCalculator = physicalRunway.getDynamicPositionCalculator();
-            var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+            DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();
+            ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
 
-            var obstacleSide = physicalRunway.getObstacleSide();
-            var resaStart = positionCalculator.getResaPosition();
-            var resa = lengthCalculator.getResa();
+            RunwaySide obstacleSide = physicalRunway.getObstacleSide();
+            int resaStart = positionCalculator.getResaPosition();
+            int resa = lengthCalculator.getResa();
 
             if (obstacleSide == physicalRunway.getRunwayDirection()) {
 

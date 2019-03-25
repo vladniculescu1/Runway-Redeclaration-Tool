@@ -11,6 +11,7 @@ public interface Drawer {
 
     /**
      * Draw a certain shape on the panel using the supplied graphics object and runway selection.
+     *
      * @param g2d the graphics object used for drawing
      * @param physicalRunway the current selected runway
      */

@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -16,12 +18,13 @@ public class SideOnRunwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var runwayLength = lengthCalculator.getRunwayLength();
-        var runwayWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
-        var runwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
+
+        int runwayLength = lengthCalculator.getRunwayLength();
+        double runwayWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
+        int runwayPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw runway as a filled gray rectangle
         g2d.setColor(Color.lightGray);

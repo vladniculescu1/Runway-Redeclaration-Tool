@@ -154,7 +154,7 @@ public class DynamicLengthCalculator extends Calculator {
         LogicalRunway logicalRunway = this.getLogicalRunwayForSide(RunwaySide.opposite(side));
         if (logicalRunway.hasRunwayObstacle()) {
             RunwayObstacle runwayObstacle = logicalRunway.getRunwayObstacle();
-            var distanceBetweenThresholds = constantPositionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD)
+            int distanceBetweenThresholds = constantPositionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD)
                     - constantPositionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
             return distanceBetweenThresholds - (runwayObstacle.getThresholdDistance()
                     + runwayObstacle.getObstacle().getLength());

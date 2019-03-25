@@ -12,6 +12,7 @@ import java.awt.*;
  * Draws the ASL value onto the side-on runway.
  */
 public class SideOnSlopeDrawer implements Drawer {
+
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         
@@ -25,17 +26,19 @@ public class SideOnSlopeDrawer implements Drawer {
                     - (g2d.getFontMetrics().getHeight() / 4);
 
             switch (side) {
+
                 case LOWER_THRESHOLD:
 
                     g2d.drawLine(positionCalculator.getObstaclePosition() + physicalRunway.getObstacle().getLength(), 
                             startY, lengthCalculator.getSlopeCalculation() + positionCalculator.getSlopePosition(), 0);
                     
                     break;
-                case HIGHER_THRESHOLD:
 
+                case HIGHER_THRESHOLD:
                     g2d.drawLine(positionCalculator.getObstaclePosition() - physicalRunway.getObstacle().getLength(), 
                             startY, positionCalculator.getSlopePosition() - lengthCalculator.getSlopeCalculation(), 0);
                     break;
+
                 default:
                     throw new UnsupportedOperationException("Cannot draw ASL for side " + side);
             }

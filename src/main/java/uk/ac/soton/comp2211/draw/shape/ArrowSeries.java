@@ -21,8 +21,9 @@ public class ArrowSeries extends Path2D.Double {
     public ArrowSeries(double startPos, double width, double length, RunwaySide side) {
 
         switch (side) {
+
             case LOWER_THRESHOLD: {
-                var currentPos = startPos + length;
+                double currentPos = startPos + length;
                 while (currentPos >= startPos + 70) {
                     moveTo(currentPos, 0);
                     lineTo(currentPos - 30, - width / 25);
@@ -34,9 +35,10 @@ public class ArrowSeries extends Path2D.Double {
                 }
                 break;
             }
+
             case HIGHER_THRESHOLD: {
-                var currentPos = startPos;
-                var endPos = currentPos + length;
+                double currentPos = startPos;
+                double endPos = currentPos + length;
                 while (currentPos <= endPos - 70) {
                     moveTo(currentPos, 0);
                     lineTo(currentPos + 30, - width / 25);

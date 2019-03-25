@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -15,15 +16,16 @@ public class SideOnThresholdDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var thresholdWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
-        var lowerThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
+
+        double thresholdWidth = DrawConstants.CONSTANT_WIDTH_SIDE_ON * g2d.getFontMetrics().getHeight();
+        int lowerThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        int higherThresholdPosition = positionCalculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
         g2d.setColor(Color.white);
         
-        var oldStroke = (BasicStroke) g2d.getStroke();
+        BasicStroke oldStroke = (BasicStroke) g2d.getStroke();
         
         g2d.setStroke(new BasicStroke(oldStroke.getLineWidth() * 2));
 

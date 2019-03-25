@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -15,13 +16,12 @@ public class DirectionArrowDrawer implements Drawer {
         
         RunwaySide side = physicalRunway.getRunwayDirection();
 
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
 
         String text = "Take-off/Landing Direction";
               
-        var distance = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
-
-        var startX = positionCalculator.getStripPosition() + distance / 10;
+        int distance = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
+        int startX = positionCalculator.getStripPosition() + distance / 10;
                 
         switch (side) {
             case LOWER_THRESHOLD:

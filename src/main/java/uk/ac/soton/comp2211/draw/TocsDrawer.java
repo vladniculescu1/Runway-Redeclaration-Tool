@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
+import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -16,12 +18,12 @@ public class TocsDrawer implements Drawer {
 
         if (physicalRunway.hasObstacle()) {
 
-            var positionCalculator = physicalRunway.getDynamicPositionCalculator();
-            var lengthCalculator = physicalRunway.getDynamicLengthCalculator();
+            DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();
+            DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
 
-            var obstacleSide = physicalRunway.getObstacleSide();
-            var slopeStart = positionCalculator.getSlopePosition();
-            var slope = lengthCalculator.getSlopeCalculation();
+            RunwaySide obstacleSide = physicalRunway.getObstacleSide();
+            int slopeStart = positionCalculator.getSlopePosition();
+            int slope = lengthCalculator.getSlopeCalculation();
 
             if (obstacleSide == physicalRunway.getRunwayDirection()) {
 

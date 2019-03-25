@@ -11,8 +11,10 @@ import java.awt.*;
  * Draws the TORA value onto the runway.
  */
 public class ToraDrawer implements Drawer {
+
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
         DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();
