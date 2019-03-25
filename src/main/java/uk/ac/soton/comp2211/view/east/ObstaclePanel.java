@@ -18,7 +18,7 @@ public class ObstaclePanel extends JPanel implements Observer {
 
     private RunwaySelection runwaySelection;
     private JButton assignObstacleButton;
-    private JTextField obstacleTextField;
+    private JLabel obstacleLabel;
     private JButton removeObstacleButton;
     
     /**
@@ -37,13 +37,12 @@ public class ObstaclePanel extends JPanel implements Observer {
         assignObstacleButton.setActionCommand(OPEN_ASSIGN_BUTTON_COMMAND);
         assignObstacleButton.addActionListener(assignObstacleController);
         gridBag.row().cellX(assignObstacleButton,3).fillX();
-        
-        obstacleTextField = new JTextField("");
-        obstacleTextField.setEnabled(false);
+
+        obstacleLabel = new JLabel("No obstacle present");
         removeObstacleButton = new JButton("Remove");
         removeObstacleButton.setActionCommand(REMOVE_BUTTON_COMMAND);
         removeObstacleButton.addActionListener(assignObstacleController);
-        gridBag.row().cellX(obstacleTextField,2).fillX().cell(removeObstacleButton).fillX();
+        gridBag.row().cellX(obstacleLabel,2).fillX().cell(removeObstacleButton).fillX();
         
         gridBag.done();
         
@@ -55,17 +54,17 @@ public class ObstaclePanel extends JPanel implements Observer {
         if (runwaySelection.hasSelectedRunway()) {
             if (runwaySelection.getSelectedRunway().getHigherThreshold().hasRunwayObstacle()) {
                 assignObstacleButton.setEnabled(false);
-                obstacleTextField.setText(runwaySelection.getSelectedRunway().getHigherThreshold()
+                obstacleLabel.setText(runwaySelection.getSelectedRunway().getHigherThreshold()
                                  .getRunwayObstacle().getObstacle().getName());
                 removeObstacleButton.setEnabled(true);
             } else { //no obstacle on runway
                 assignObstacleButton.setEnabled(true);
-                obstacleTextField.setText("");
+                obstacleLabel.setText("No obstacle present");
                 removeObstacleButton.setEnabled(false);                
             }
         } else { //no runway (hence no obstacle can be assigned)
             assignObstacleButton.setEnabled(false);
-            obstacleTextField.setText("");
+            obstacleLabel.setText("No obstacle present");
             removeObstacleButton.setEnabled(false);            
         }
     }
