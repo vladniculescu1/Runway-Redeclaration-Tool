@@ -20,11 +20,8 @@ import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 import uk.ac.soton.comp2211.view.south.*;
-import uk.ac.soton.comp2211.view.south.southnorth.SouthNorthPanel;
-import uk.ac.soton.comp2211.view.south.southnorth.VisibleDistancesPanel;
-import uk.ac.soton.comp2211.view.south.southsouth.DirectionPanel;
-import uk.ac.soton.comp2211.view.south.southsouth.NotificationsPanel;
-import uk.ac.soton.comp2211.view.south.southsouth.SouthSouthPanel;
+import uk.ac.soton.comp2211.view.south.VisibleDistancesPanel;
+import uk.ac.soton.comp2211.view.south.DirectionPanel;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -106,28 +103,23 @@ public class Application {
 
         this.mainFrame = new MainFrame(
                 new MainPanel(
-                        new DisplayTabbedPane(
-                                new TopDownPanel(runwaySelection, topDownDrawExecutor),
-                                new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
-                                new SideOnPanel(runwaySelection, sideOnDrawExecutor)
-                        ),
-                        new EastPanel(
-                                new RunwayPanel(airport, runwaySelection, runwaySelectionController),
-                                new ObstaclePanel(runwaySelection, assignObstacleController),
-                                new DistancesPanel(runwaySelection, showCalculationController)
-                        ),
-                        new SouthPanel(
-                                new SouthNorthPanel(
-                                        new VisibleDistancesPanel(runwaySelection, visibleDistancesController)
-                                ),
-                                new SouthSouthPanel(
-                                        new DirectionPanel(runwaySelection,
-                                                new DirectionController(runwaySelection)),
-
-                                        new ExportPanel(importExportController),
-                                        new ImportPanel(importExportController))
-                        ),
-                        new NotificationsPanel(notification)
+                    new DisplayTabbedPane(
+                        new TopDownPanel(runwaySelection, topDownDrawExecutor),
+                        new TopDownRotatedPanel(runwaySelection, topDownDrawExecutor),
+                        new SideOnPanel(runwaySelection, sideOnDrawExecutor)
+                    ),
+                    new EastPanel(
+                        new RunwayPanel(airport, runwaySelection, runwaySelectionController),
+                        new ObstaclePanel(runwaySelection, assignObstacleController),
+                        new DistancesPanel(runwaySelection, showCalculationController)
+                    ),
+                    new SouthPanel(
+                        new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
+                        new VisibleDistancesPanel(runwaySelection, visibleDistancesController),
+                        new ExportPanel(importExportController),
+                        new ImportPanel(importExportController)
+                    ),
+                    new NotificationsPanel(notification)
                 )
         );
         importExportController.addMainFrame(mainFrame);

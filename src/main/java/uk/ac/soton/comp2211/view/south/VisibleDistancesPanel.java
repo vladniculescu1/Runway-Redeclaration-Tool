@@ -1,11 +1,13 @@
-package uk.ac.soton.comp2211.view.south.southnorth;
+package uk.ac.soton.comp2211.view.south;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 import uk.ac.soton.comp2211.controller.VisibleDistancesController;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.Observer;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class VisibleDistancesPanel extends JPanel implements Observer {
 
@@ -59,8 +61,15 @@ public class VisibleDistancesPanel extends JPanel implements Observer {
         checkBoxPanel.add(toraCheckbox);
         checkBoxPanel.add(asdaCheckbox);
         checkBoxPanel.add(todaCheckbox);
+        ((FlowLayout) checkBoxPanel.getLayout()).setVgap(5);
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setFirstColumnLeftSpacing(0);
+        gridbagConfiguration.setLastColumnRightSpacing(0);
+        gridbagConfiguration.setFirstRowTopSpacing(0);
+        gridbagConfiguration.setLastRowBottomSpacing(0);
+
+        PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration,false);
         gridBag.row().cell(checkBoxPanel).fillX();
         gridBag.done();
     }

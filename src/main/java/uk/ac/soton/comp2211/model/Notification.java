@@ -21,7 +21,7 @@ public class Notification extends JLabel {
      */
     public void notificationUpdate(String text) {
         
-        secondsToWait = 2;
+        secondsToWait = 5;
         Notification notif = this;
         this.setText(text);
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);

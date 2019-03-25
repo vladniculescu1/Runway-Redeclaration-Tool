@@ -2,7 +2,7 @@ package uk.ac.soton.comp2211.controller;
 
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.view.south.southnorth.VisibleDistancesPanel;
+import uk.ac.soton.comp2211.view.south.VisibleDistancesPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -24,6 +24,7 @@ public class EastPanel extends JPanel {
         PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
         gridbagConfiguration.setLastRowBottomSpacing(0);
         gridbagConfiguration.setFirstRowTopSpacing(0);
+        gridbagConfiguration.setLastColumnRightSpacing(0);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration, false);
         gridBag.row().cell(runwayPanel).fillX();

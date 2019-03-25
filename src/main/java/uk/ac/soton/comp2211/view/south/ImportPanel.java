@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.view.south;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -18,9 +19,13 @@ public class ImportPanel extends JPanel {
      */
     public ImportPanel(ActionListener actionListener) {
 
-        this.setBorder(BorderFactory.createTitledBorder("Import status"));
+        this.setBorder(BorderFactory.createTitledBorder("Import"));
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setFirstRowTopSpacing(5);
+        gridbagConfiguration.setLastRowBottomSpacing(5);
+
+        PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration,false);
 
         JButton xmlButton = new JButton("Airport (XML)");
         xmlButton.setActionCommand(XML_IMPORT_BUTTON_COMMAND);
