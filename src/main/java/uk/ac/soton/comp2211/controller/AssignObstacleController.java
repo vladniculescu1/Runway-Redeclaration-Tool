@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.controller;
 
+import uk.ac.soton.comp2211.model.Notification;
 import uk.ac.soton.comp2211.model.ObstacleStorage;
 import uk.ac.soton.comp2211.model.RunwayObstacle;
 import uk.ac.soton.comp2211.model.RunwaySelection;
@@ -17,8 +18,8 @@ public class AssignObstacleController implements ActionListener {
     private RunwaySelection runwaySelection;
     private DisplayPopUpFrame displayPopUpFrame;
     private AssignObstaclePanel assignObstaclePanel;
-
     private ObstacleStorage obstacleStorage;
+    private Notification notification;
 
     private boolean ignoreActions = false;
     
@@ -27,10 +28,13 @@ public class AssignObstacleController implements ActionListener {
      *
      * @param runwaySelection selection of the current runway
      * @param obstacleStorage storage for predefined obstacles
+     * @param notification notification displayed whenever an obstacle is added
      */
-    public AssignObstacleController(RunwaySelection runwaySelection, ObstacleStorage obstacleStorage)    {
+    public AssignObstacleController(RunwaySelection runwaySelection, 
+            ObstacleStorage obstacleStorage, Notification notification)    {
         this.runwaySelection = runwaySelection;
         this.obstacleStorage = obstacleStorage;
+        this.notification = notification;
         displayPopUpFrame = new DisplayPopUpFrame("Assign Obstacle to Runway");
     }
 
@@ -55,6 +59,7 @@ public class AssignObstacleController implements ActionListener {
                     runwaySelection.getSelectedRunway().getLowerThreshold().removeRunwayObstacle();
 
                     runwaySelection.notifyUpdate();
+                    notification.notificationUpdate("Obstacle successfully removed");
                     break;
                 }
                 case AssignObstaclePanel.OBSTACLE_COMBOBOX_COMMAND: {
@@ -95,6 +100,7 @@ public class AssignObstacleController implements ActionListener {
                         }
 
                         runwaySelection.notifyUpdate();
+                        notification.notificationUpdate("Obstacle successfully assigned");
 
                         displayPopUpFrame.close();
                     }

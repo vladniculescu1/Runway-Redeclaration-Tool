@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.view.south;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 
 import javax.swing.*;
 
@@ -17,8 +18,11 @@ public class SouthPanel extends JPanel {
      * @param importPanel the panel for importing (xml) files
      */
     public SouthPanel(DirectionPanel directionPanel, ExportPanel exportPanel, ImportPanel importPanel) {
+        
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setLastRowBottomSpacing(0);
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration, false);
         gridBag.row().cell(directionPanel).fillX().cell(exportPanel).fillX().cell(importPanel).fillX();
         gridBag.done();
     }
