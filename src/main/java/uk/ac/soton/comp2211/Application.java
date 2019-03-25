@@ -18,6 +18,7 @@ import uk.ac.soton.comp2211.view.east.DistancesPanel;
 import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
+import uk.ac.soton.comp2211.view.modal.DisplayPopUpFrame;
 import uk.ac.soton.comp2211.view.south.*;
 
 import javax.swing.*;
@@ -29,7 +30,7 @@ import java.util.List;
  */
 public class Application {
 
-    private JFrame mainframe;
+    private JFrame mainFrame;
     private ApplicationData data;
 
     /**
@@ -57,8 +58,8 @@ public class Application {
      */
     public void createMainframe() {
 
-        if (mainframe != null) {
-            mainframe.dispose();
+        if (mainFrame != null) {
+            mainFrame.dispose();
         }
 
         Airport airport = data.getAirport();
@@ -97,7 +98,7 @@ public class Application {
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
 
 
-        this.mainframe = new MainFrame(
+        this.mainFrame = new MainFrame(
                 new MainPanel(
                         new DisplayTabbedPane(
                                 new TopDownPanel(runwaySelection, topDownDrawExecutor),
@@ -116,7 +117,9 @@ public class Application {
                         new NotificationsPanel(notification)
                 )
         );
-        importExportController.addMainFrame(mainframe);
+        importExportController.addMainFrame(mainFrame);
+        runwaySelectionController.addMainFrame(mainFrame);
+        DisplayPopUpFrame.setMainFrame(mainFrame);
     }
 
     public ApplicationData getData() {
