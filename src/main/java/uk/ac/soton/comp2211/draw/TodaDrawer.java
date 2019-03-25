@@ -12,7 +12,6 @@ import java.awt.*;
  */
 public class TodaDrawer implements Drawer {
 
-
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
         RunwaySide side = physicalRunway.getRunwayDirection();

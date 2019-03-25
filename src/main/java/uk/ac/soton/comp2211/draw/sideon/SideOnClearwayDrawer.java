@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.draw.Drawer;
@@ -15,14 +17,15 @@ public class SideOnClearwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var clearwayLengthLower = lengthCalculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var clearwayPositionLower = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var clearwayLengthHigher = lengthCalculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
-        var clearwayPositionHigher = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
+        int clearwayLengthLower = lengthCalculator.getClearwayLength(RunwaySide.HIGHER_THRESHOLD);
+        int clearwayPositionLower = positionCalculator.getClearwayPosition(RunwaySide.HIGHER_THRESHOLD);
+
+        int clearwayLengthHigher = lengthCalculator.getClearwayLength(RunwaySide.LOWER_THRESHOLD);
+        int clearwayPositionHigher = positionCalculator.getClearwayPosition(RunwaySide.LOWER_THRESHOLD);
 
         // draw clearways as rectangles only if they are present
         if (clearwayLengthLower > 0) {

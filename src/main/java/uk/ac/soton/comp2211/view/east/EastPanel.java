@@ -1,6 +1,9 @@
 package uk.ac.soton.comp2211.view.east;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
+
+import java.awt.GridBagConstraints;
 
 import javax.swing.*;
 
@@ -17,8 +20,12 @@ public class EastPanel extends JPanel {
      * @param distancesPanel the panel showing the runway distances
      */
     public EastPanel(RunwayPanel runwayPanel, ObstaclePanel obstaclePanel, DistancesPanel distancesPanel) {
+        
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setLastRowBottomSpacing(0);
+        gridbagConfiguration.setFirstRowTopSpacing(0);
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration, false);
         gridBag.row().cell(runwayPanel).fillX();
         gridBag.row().cell(obstaclePanel).fillX();
         gridBag.row().cell(new DistancePanelContainer(distancesPanel)).fillXY();

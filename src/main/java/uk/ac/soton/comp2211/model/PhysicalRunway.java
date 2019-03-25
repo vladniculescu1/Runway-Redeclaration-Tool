@@ -150,7 +150,7 @@ public class PhysicalRunway {
      * @return the side of the runway obstacle
      */
     public RunwaySide getObstacleSide() {
-        var runwayObstacle = this.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD);
+        RunwayObstacle runwayObstacle = this.getRunwayObstacle(RunwaySide.LOWER_THRESHOLD);
         if (dynamicLengthCalculator.checkSide(runwayObstacle, RunwaySide.LOWER_THRESHOLD)) {
             return RunwaySide.LOWER_THRESHOLD;
         } else {

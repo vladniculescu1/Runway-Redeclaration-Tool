@@ -1,5 +1,6 @@
 package uk.ac.soton.comp2211.draw.topdown;
 
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -15,16 +16,17 @@ public class TopDownCentreLineDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var calculator = physicalRunway.getConstantPositionCalculator();
 
-        var lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
-        var higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
+        ConstantPositionCalculator calculator = physicalRunway.getConstantPositionCalculator();
+
+        int lowerThresholdPosition = calculator.getThresholdPosition(RunwaySide.LOWER_THRESHOLD);
+        int higherThresholdPosition = calculator.getThresholdPosition(RunwaySide.HIGHER_THRESHOLD);
 
         // the start and end positions are different from the threshold positions because the centre line can only
         // start/end after/before the threshold designators
-        var startPosition = lowerThresholdPosition
+        double startPosition = lowerThresholdPosition
                 + 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE);
-        var endPosition = higherThresholdPosition
+        double endPosition = higherThresholdPosition
                 - 3 * (g2d.getFontMetrics().getHeight() * DrawConstants.DESIGNATOR_FONTSIZE);
 
         BasicStroke normal = (BasicStroke) g2d.getStroke();

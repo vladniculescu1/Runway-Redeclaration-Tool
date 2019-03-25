@@ -52,16 +52,16 @@ public class DrawExecutor {
         ConstantLengthCalculator calculator = runwaySelection.getSelectedRunway().getConstantLengthCalculator();
 
         // the margin around the draw display according to the font size
-        var margin = g2d.getFontMetrics().getHeight() * DrawConstants.DRAW_MARGIN;
+        double margin = g2d.getFontMetrics().getHeight() * DrawConstants.DRAW_MARGIN;
 
         // the total length (in metres) of all elements that need to be visualised
-        var visualisationLength = calculator.getTotalVisualisationLength();
+        int visualisationLength = calculator.getTotalVisualisationLength();
 
         // the width of the drawing
-        var drawWidth = panelWidth;
+        int drawWidth = panelWidth;
 
         // additional margin used to centre the drawing
-        var centreMargin = 0;
+        int centreMargin = 0;
 
         // if the panel is too wide and lacks height to draw everything, adjust drawWidth and centreMargin
         if (panelWidth > panelHeight * 1.5) {
@@ -73,14 +73,14 @@ public class DrawExecutor {
         g2d.setFont(g2d.getFont().deriveFont((float) visualisationLength / 40));
 
         // move the origin down to the extended centre line and add some margin
-        g2d.translate(margin + centreMargin, panelHeight / 2);
+        g2d.translate(margin + centreMargin, (double) panelHeight / 2);
 
         // the factor by which the both axes are scaled in order to visualise the specified total length
-        var axesScaleFactor = (drawWidth - 2 * margin) / visualisationLength;
+        double axesScaleFactor = (drawWidth - 2 * margin) / visualisationLength;
         g2d.scale(axesScaleFactor, axesScaleFactor);
 
         // set stroke according to visualisation length
-        g2d.setStroke(new BasicStroke(visualisationLength / 500));
+        g2d.setStroke(new BasicStroke((float) visualisationLength / 500));
 
         // set draw color to black
         g2d.setColor(Color.BLACK);

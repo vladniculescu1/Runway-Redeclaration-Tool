@@ -1,5 +1,8 @@
 package uk.ac.soton.comp2211.draw;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
+import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
@@ -16,12 +19,12 @@ public class BlastDrawer implements Drawer {
 
         if (physicalRunway.hasObstacle()) {
 
-            var positionCalculator = physicalRunway.getDynamicPositionCalculator();
-            var lengthCalculator = physicalRunway.getConstantLengthCalculator();
+            DynamicPositionCalculator positionCalculator = physicalRunway.getDynamicPositionCalculator();
+            ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
 
-            var obstacleSide = physicalRunway.getObstacleSide();
-            var blastStart = positionCalculator.getBlastProtectionPosition();
-            var blast = lengthCalculator.getBlastProtection();
+            RunwaySide obstacleSide = physicalRunway.getObstacleSide();
+            int blastStart = positionCalculator.getBlastProtectionPosition();
+            int blast = lengthCalculator.getBlastProtection();
 
             if (obstacleSide == physicalRunway.getRunwayDirection()) {
 

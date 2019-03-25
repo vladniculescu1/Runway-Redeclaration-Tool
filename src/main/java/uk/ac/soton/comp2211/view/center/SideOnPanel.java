@@ -24,6 +24,7 @@ public class SideOnPanel extends JPanel implements Observer {
         runwaySelection.subscribe(this);
         this.runwaySelection = runwaySelection;
         this.drawExecutor = drawExecutor;
+        this.setBackground(new Color(208, 240, 249));
     }
 
     @Override

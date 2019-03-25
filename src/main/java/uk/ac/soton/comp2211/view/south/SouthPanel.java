@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.view.south;
 
 import javax.swing.*;
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 import uk.ac.soton.comp2211.view.south.southnorth.SouthNorthPanel;
 import uk.ac.soton.comp2211.view.south.southsouth.SouthSouthPanel;
 
@@ -17,6 +18,9 @@ public class SouthPanel extends JPanel {
      * @param southSouthPanel Contains the DirectionPanel, NotificationPanel and XmlPanel
      */
     public SouthPanel(SouthNorthPanel southNorthPanel, SouthSouthPanel southSouthPanel) {
+
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setLastRowBottomSpacing(0);
 
         PainlessGridBag gridBag = new PainlessGridBag(this, false);
         gridBag.row().cell(southNorthPanel).fillX();

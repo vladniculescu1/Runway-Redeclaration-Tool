@@ -12,10 +12,8 @@ import java.awt.*;
  */
 public class AsdaDrawer implements Drawer {
 
-
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-
 
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();

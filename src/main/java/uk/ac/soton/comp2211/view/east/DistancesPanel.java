@@ -65,7 +65,7 @@ public class DistancesPanel extends JPanel implements Observer {
         int tableRowHeight = 25;
 
 
-        String[] header = {"Parameter", "Original", "Re-Calc"};
+        String[] header = {"Value", "Original", "Recalc"};
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
         this.lowerPanelLabel.setFont(biggerFont);
@@ -208,11 +208,11 @@ public class DistancesPanel extends JPanel implements Observer {
                 {"TORA", higherThreshold.getOriginalTora(),
                         calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
 
-        for (var row : lowerData) {
+        for (Object[] row : lowerData) {
             this.lowerTableModel.addRow(row);
         }
 
-        for (var row : higherData) {
+        for (Object[] row : higherData) {
             this.higherTableModel.addRow(row);
         }
     }

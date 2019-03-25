@@ -1,5 +1,7 @@
 package uk.ac.soton.comp2211.draw.sideon;
 
+import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
+import uk.ac.soton.comp2211.calculator.ConstantPositionCalculator;
 import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.draw.Drawer;
@@ -15,14 +17,15 @@ public class SideOnStopwayDrawer implements Drawer {
 
     @Override
     public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
-        var lengthCalculator = physicalRunway.getConstantLengthCalculator();
-        var positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var stopwayLengthHigher = lengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
-        var stopwayPositionHigher = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+        ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
+        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
 
-        var stopwayLengthLower = lengthCalculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
-        var stopwayPositionLower = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
+        int stopwayLengthHigher = lengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD);
+        int stopwayPositionHigher = positionCalculator.getStopwayPosition(RunwaySide.LOWER_THRESHOLD);
+
+        int stopwayLengthLower = lengthCalculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD);
+        int stopwayPositionLower = positionCalculator.getStopwayPosition(RunwaySide.HIGHER_THRESHOLD);
 
         // draw lower stopway if there is one
         if (stopwayLengthLower > 0) {

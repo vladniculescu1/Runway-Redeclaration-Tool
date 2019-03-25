@@ -1,29 +1,40 @@
 package uk.ac.soton.comp2211;
 
+import com.alee.laf.LookAndFeelException;
+import com.alee.laf.WebLookAndFeel;
 import uk.ac.soton.comp2211.model.*;
 
-import javax.swing.*;
+import java.awt.*;
 
 /**
  * The class containing the application's main method.
  */
 public class Main {
 
-    private static JFrame mainframe;
-
     /**
-     * Constructs the main window frame. Includes demo data if at least one arbitrary argument is specified.
+     * Constructs the main window frame.
      *
      * @param args command line arguments
      */
     public static void main(String[] args) {
+
+        SplashScreen.getSplashScreen();
+
+        try {
+            WebLookAndFeel.install();
+        } catch (LookAndFeelException e) {
+            System.err.println(e.getMessage());
+        }
+
         Application application;
+
         if (args.length >= 1) {
             ApplicationData data = getDemoData();
             application = new Application(data);
         } else {
             application = new Application();
         }
+
         application.createMainframe();
 
     }

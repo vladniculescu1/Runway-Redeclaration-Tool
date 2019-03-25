@@ -245,5 +245,11 @@
             <property name="exceptionVariableName" value="expected"/>
         </module>
         <module name="CommentsIndentation"/>
+        <module name="Regexp">
+            <property name="format" value="var .*"/>
+            <property name="illegalPattern" value="true"/>
+            <property name="ignoreComments" value="true"/>
+            <property name="message" value="Usage of var is not allowed. Please use explicit type."/>
+        </module>
     </module>
 </module>
