@@ -13,12 +13,9 @@ public class VisibleDistancesController implements ActionListener {
     private RunwaySelection runwaySelection;
     private DrawExecutor drawExecutor;
 
-
-
     public VisibleDistancesController(RunwaySelection runwaySelection, DrawExecutor drawExecutor) {
         this.runwaySelection = runwaySelection;
         this.drawExecutor = drawExecutor;
-
     }
 
     @Override
@@ -48,9 +45,7 @@ public class VisibleDistancesController implements ActionListener {
                 default: {
                     throw new UnsupportedOperationException("Cannot process action command " + e.getActionCommand());
                 }
-
             }
         }
-
     }
 }
