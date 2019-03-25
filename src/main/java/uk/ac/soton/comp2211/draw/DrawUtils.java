@@ -63,6 +63,16 @@ public class DrawUtils {
         g2d.setColor(Color.black);
     }
 
+    /**
+     * Draws a filled rectangle that is centered then offset from x axis.
+     *
+     * @param g2d the graphics object used to draw the shape
+     * @param positionX the left position on the x axis
+     * @param positionY the vertical offset (such that increasing positionY moves the rectangle up)
+     * @param length the length of the rectangle
+     * @param width the width of the rectangle as a factor of the current font size
+     * @param fill the colour of the filling
+     */
     public static void uncenteredFilledRectangle(Graphics2D g2d, Color fill,
                                                  double positionX, double positionY, double length, double width) {
         width = g2d.getFontMetrics().getHeight() * width;

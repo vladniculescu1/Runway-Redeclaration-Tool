@@ -70,17 +70,19 @@ public class ImportExportController implements ActionListener {
 
                     BufferedImage topImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D topGraphics = topImage.createGraphics();
-                    topGraphics.setBackground(Color.white);
                     topDownDrawExecutor.executeDrawers(topGraphics, width, height);
+
                     BufferedImage sideImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D sideGraphics = sideImage.createGraphics();
-                    sideGraphics.setBackground(Color.white);
                     sideOnDrawExecutor.executeDrawers(sideGraphics, width, height);
 
                     BufferedImage exportedImage = new BufferedImage(width * 2, height, BufferedImage.TYPE_INT_ARGB);
                     Graphics2D exportedGraphics = exportedImage.createGraphics();
+                    exportedGraphics.setBackground(new Color(20, 181, 227, 50));
+                    exportedGraphics.clearRect(0, 0, width * 2, height);
                     exportedGraphics.drawImage(topImage, 0, 0, null);
                     exportedGraphics.drawImage(sideImage, width, 0, null);
+
 
                     //export to location
                     try {
