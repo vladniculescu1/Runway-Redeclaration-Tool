@@ -55,7 +55,7 @@ public class DistancesPanel extends JPanel implements Observer {
         int tableRowHeight = 25;
 
 
-        String[] header = {"Parameter", "Original", "Re-Calc"};
+        String[] header = {"Value", "Original", "Recalc"};
 
         this.lowerPanelLabel = new JLabel("Lower threshold");
         this.lowerPanelLabel.setFont(biggerFont);
