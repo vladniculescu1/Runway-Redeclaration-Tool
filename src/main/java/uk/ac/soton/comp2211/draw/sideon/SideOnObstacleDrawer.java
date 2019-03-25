@@ -26,19 +26,26 @@ public class SideOnObstacleDrawer implements Drawer {
             double height = (double) physicalRunway.getObstacle().getHeight() / 6;
             int leftX = calc.getObstaclePosition();
             int length = physicalRunway.getObstacle().getLength();
+
+            Color obstacleOutline = new Color(136, 53, 227);
+            Color obstacleFill = new Color(136, 53, 227, 130);
             
             switch (obstacleSide) {
                 case LOWER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX,  
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
                             length, height, "OBS");
+                    DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX,
+                            height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5, length, height);
                     break;
                 }
     
                 case HIGHER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX - length,  
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX - length,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
                             length, height, "OBS");
+                    DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX - length,
+                            height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5, length, height);
                     break;
                 }
                 default:
