@@ -74,20 +74,20 @@ public class Application {
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
-                new LdaDrawer(),
+                new LdaDrawer(), new AsdaDrawer(), new ToraDrawer(), new TodaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
 
         ));
 
-        List<Drawer> sideOnDrawer = List.of(
+        List<Drawer> sideOnDrawer = new ArrayList<> (List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
                 new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
-        );
+        ));
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
@@ -99,7 +99,7 @@ public class Application {
         ImportExportController importExportController =
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
         VisibleDistancesController visibleDistancesController = new VisibleDistancesController(runwaySelection,
-                topDownDrawExecutor);
+                topDownDrawExecutor, sideOnDrawExecutor);
 
         this.mainframe = new MainFrame(
                 new MainPanel(

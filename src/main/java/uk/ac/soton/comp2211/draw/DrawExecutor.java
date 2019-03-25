@@ -4,6 +4,7 @@ import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -91,6 +92,15 @@ public class DrawExecutor {
 
     public void removeDrawer(Drawer drawer) {
         this.drawers.remove(drawer);
+    }
+
+    public void removeDrawerByClass(Class classtype){
+        Iterator<Drawer> it = this.drawers.iterator();
+        while(it.hasNext()){
+            if(it.next().getClass().equals(classtype)){
+                it.remove();
+            }
+        }
     }
 
 }

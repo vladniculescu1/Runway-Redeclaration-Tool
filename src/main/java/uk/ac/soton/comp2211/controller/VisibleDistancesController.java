@@ -4,6 +4,7 @@ import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.view.south.southNorth.VisibleDistancesPanel;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,34 +12,70 @@ import java.awt.event.ActionListener;
 public class VisibleDistancesController implements ActionListener {
 
     private RunwaySelection runwaySelection;
-    private DrawExecutor drawExecutor;
+    private DrawExecutor topDownDrawExecutor;
+    private DrawExecutor sideOnDrawExecutor;
 
-    public VisibleDistancesController(RunwaySelection runwaySelection, DrawExecutor drawExecutor) {
+    private JCheckBox LDACheckbox;
+    private JCheckBox TODACheckbox;
+    private JCheckBox ASDACheckbox;
+    private JCheckBox TORACheckbox;
+
+
+    public VisibleDistancesController(RunwaySelection runwaySelection, DrawExecutor topDownDrawExecutor, DrawExecutor sideOnDrawExecutor) {
         this.runwaySelection = runwaySelection;
-        this.drawExecutor = drawExecutor;
+        this.topDownDrawExecutor = topDownDrawExecutor;
+        this.sideOnDrawExecutor = sideOnDrawExecutor;
+    }
+
+    public void setLDACheckbox(JCheckBox LDACheckbox) {
+        this.LDACheckbox = LDACheckbox;
+    }
+
+    public void setTODACheckbox(JCheckBox TODACheckbox) {
+        this.TODACheckbox = TODACheckbox;
+    }
+
+    public void setASDACheckbox(JCheckBox ASDACheckbox) {
+        this.ASDACheckbox = ASDACheckbox;
+    }
+
+    public void setTORACheckbox(JCheckBox TORACheckbox) {
+        this.TORACheckbox = TORACheckbox;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (runwaySelection.hasSelectedRunway()) {
             switch (e.getActionCommand()) {
-                case VisibleDistancesPanel.SELECT_LDA_COMMAND: {
-                    this.drawExecutor.removeDrawer(new LdaDrawer());
-                    runwaySelection.notifyUpdate();
-                    break;
-                }
-                case VisibleDistancesPanel.SELECT_TODA_COMMAND: {
-                    this.drawExecutor.addDrawer(new TodaDrawer());
-                    runwaySelection.notifyUpdate();
-                    break;
-                }
-                case VisibleDistancesPanel.SELECT_ASDA_COMMAND: {
-                    this.drawExecutor.addDrawer(new AsdaDrawer());
-                    runwaySelection.notifyUpdate();
-                    break;
-                }
-                case VisibleDistancesPanel.SELECT_TORA_COMMAND: {
-                    this.drawExecutor.addDrawer(new ToraDrawer());
+                case VisibleDistancesPanel.CHANGE_SELECTED: {
+                    if(ASDACheckbox.isSelected()){
+                        this.topDownDrawExecutor.addDrawer(new AsdaDrawer());
+                        this.sideOnDrawExecutor.addDrawer(new AsdaDrawer());
+                    }else{
+                        this.topDownDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
+                        this.sideOnDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
+                    }
+                    if(TORACheckbox.isSelected()){
+                        this.topDownDrawExecutor.addDrawer(new ToraDrawer());
+                        this.sideOnDrawExecutor.addDrawer(new ToraDrawer());
+                    }else{
+                        this.topDownDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
+                        this.sideOnDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
+                    }
+                    if(TODACheckbox.isSelected()){
+                        this.topDownDrawExecutor.addDrawer(new TodaDrawer());
+                        this.sideOnDrawExecutor.addDrawer(new TodaDrawer());
+                    }else{
+                        this.topDownDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
+                        this.sideOnDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
+                    }
+                    if(LDACheckbox.isSelected()){
+                        this.topDownDrawExecutor.addDrawer(new LdaDrawer());
+                        this.sideOnDrawExecutor.addDrawer(new LdaDrawer());
+                    }else {
+                        this.topDownDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
+                        this.sideOnDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
+                    }
                     runwaySelection.notifyUpdate();
                     break;
                 }
