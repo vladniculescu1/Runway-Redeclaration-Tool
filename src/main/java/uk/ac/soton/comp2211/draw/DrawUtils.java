@@ -20,11 +20,7 @@ public class DrawUtils {
      */
     public static void centeredFilledRectangle(Graphics2D g2d, Color fill,
                                                         double positionX, double length, double width) {
-        width = g2d.getFontMetrics().getHeight() * width;
-        Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
-        g2d.setColor(fill);
-        g2d.fill(rectangle);
-        g2d.setColor(Color.black);
+        DrawUtils.uncenteredFilledRectangle(g2d, fill, positionX, 0, length, width);
     }
 
     /**
@@ -40,13 +36,7 @@ public class DrawUtils {
     public static void centeredRectangleWithLabel(Graphics2D g2d, Color outline,
                                                   double positionX, double length, double width,
                                                   String label) {
-        width = g2d.getFontMetrics().getHeight() * width;
-        Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2), length, width);
-        g2d.setColor(outline);
-        g2d.draw(rectangle);
-        double fontHeight = g2d.getFontMetrics().getHeight();
-        g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4)));
-        g2d.setColor(Color.black);
+        DrawUtils.uncenteredRectangleWithLabel(g2d, outline, positionX, 0, length, width, label);
     }
 
     /**
@@ -70,6 +60,16 @@ public class DrawUtils {
         g2d.draw(rectangle);
         double fontHeight = g2d.getFontMetrics().getHeight();
         g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4) - positionY));
+        g2d.setColor(Color.black);
+    }
+
+    public static void uncenteredFilledRectangle(Graphics2D g2d, Color fill,
+                                                 double positionX, double positionY, double length, double width) {
+        width = g2d.getFontMetrics().getHeight() * width;
+        positionY = g2d.getFontMetrics().getHeight() * positionY;
+        Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2) - positionY, length, width);
+        g2d.setColor(fill);
+        g2d.fill(rectangle);
         g2d.setColor(Color.black);
     }
 
