@@ -30,16 +30,22 @@ public class TopDownObstacleDrawer implements Drawer {
                 offsetY = 1.5 + (double) physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 30;
             }
 
+            Color obstacleOutline = new Color(136, 53, 227);
+            Color obstacleFill = new Color(136, 53, 227, 130);
+
             switch (obstacleSide) {
                 case LOWER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX, offsetY,
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX, offsetY,
                             length, 3, "OBS");
+                    DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX, offsetY, length, 3);
                     break;
                 }
 
                 case HIGHER_THRESHOLD: {
-                    DrawUtils.uncenteredRectangleWithLabel(g2d, Color.BLUE, leftX - length, offsetY,
+                    DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX - length, offsetY,
                             length, 3, "OBS");
+                    DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX - length, offsetY,
+                            length, 3);
                     break;
                 }
 
