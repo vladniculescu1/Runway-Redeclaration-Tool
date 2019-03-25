@@ -4,18 +4,28 @@ import javax.swing.*;
 
 public class DisplayPopUpFrame extends JDialog {
 
+    private static JFrame mainFrame;
+
     /**
      * (View) Constructor for DisplayPopUpFrame.
      * @param title The title of the JDialog Box
      */
-    public DisplayPopUpFrame(String title)    {
-        super(null, ModalityType.APPLICATION_MODAL);
+    public DisplayPopUpFrame(String title) {
+        super(DisplayPopUpFrame.mainFrame, ModalityType.DOCUMENT_MODAL);
         
         this.setTitle(title);
         this.pack();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(DisplayPopUpFrame.mainFrame);
         this.setVisible(false);
         this.setResizable(false);
+    }
+
+    public static void setMainFrame(JFrame parent) {
+        DisplayPopUpFrame.mainFrame = parent;
+    }
+
+    public static JFrame getMainFrame() {
+        return DisplayPopUpFrame.mainFrame;
     }
 
     public void close() {
