@@ -90,17 +90,12 @@ public class DrawExecutor {
         this.drawers.add(drawer);
     }
 
-    public void removeDrawer(Drawer drawer) {
-        this.drawers.remove(drawer);
-    }
-
-    public void removeDrawerByClass(Class classtype){
-        Iterator<Drawer> it = this.drawers.iterator();
-        while(it.hasNext()){
-            if(it.next().getClass().equals(classtype)){
-                it.remove();
-            }
-        }
+    /**
+     * Removes a given drawer given a class.
+     * @param classtype the class of the drawer that will be removed
+     */
+    public void removeDrawerByClass(Class classtype) {
+        this.drawers.removeIf(drawer -> drawer.getClass().equals(classtype));
     }
 
 }

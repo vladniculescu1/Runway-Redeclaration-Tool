@@ -18,12 +18,11 @@ import uk.ac.soton.comp2211.view.east.EastPanel;
 import uk.ac.soton.comp2211.view.east.ObstaclePanel;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
 import uk.ac.soton.comp2211.view.south.*;
-import uk.ac.soton.comp2211.view.south.southNorth.SouthNorthPanel;
-import uk.ac.soton.comp2211.view.south.southNorth.VisibleDistancesPanel;
-import uk.ac.soton.comp2211.view.south.southSouth.DirectionPanel;
-import uk.ac.soton.comp2211.view.south.southSouth.NotificationsPanel;
-import uk.ac.soton.comp2211.view.south.southSouth.SouthSouthPanel;
-import uk.ac.soton.comp2211.view.south.southSouth.XmlPanel;
+import uk.ac.soton.comp2211.view.south.southnorth.SouthNorthPanel;
+import uk.ac.soton.comp2211.view.south.southnorth.VisibleDistancesPanel;
+import uk.ac.soton.comp2211.view.south.southsouth.DirectionPanel;
+import uk.ac.soton.comp2211.view.south.southsouth.NotificationsPanel;
+import uk.ac.soton.comp2211.view.south.southsouth.SouthSouthPanel;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -81,7 +80,7 @@ public class Application {
 
         ));
 
-        List<Drawer> sideOnDrawer = new ArrayList<> (List.of(
+        List<Drawer> sideOnDrawer = new ArrayList<>(List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),

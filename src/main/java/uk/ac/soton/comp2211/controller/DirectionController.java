@@ -3,7 +3,7 @@ package uk.ac.soton.comp2211.controller;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.model.RunwaySide;
-import uk.ac.soton.comp2211.view.south.southSouth.DirectionPanel;
+import uk.ac.soton.comp2211.view.south.southsouth.DirectionPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -2,7 +2,7 @@ package uk.ac.soton.comp2211.controller;
 
 import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.model.RunwaySelection;
-import uk.ac.soton.comp2211.view.south.southNorth.VisibleDistancesPanel;
+import uk.ac.soton.comp2211.view.south.southnorth.VisibleDistancesPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,32 +15,38 @@ public class VisibleDistancesController implements ActionListener {
     private DrawExecutor topDownDrawExecutor;
     private DrawExecutor sideOnDrawExecutor;
 
-    private JCheckBox LDACheckbox;
-    private JCheckBox TODACheckbox;
-    private JCheckBox ASDACheckbox;
-    private JCheckBox TORACheckbox;
+    private JCheckBox ldaCheckbox;
+    private JCheckBox todaCheckbox;
+    private JCheckBox asdaCheckbox;
+    private JCheckBox toraCheckbox;
 
-
-    public VisibleDistancesController(RunwaySelection runwaySelection, DrawExecutor topDownDrawExecutor, DrawExecutor sideOnDrawExecutor) {
+    /**
+     * The controller for displaying visible distances.
+     * @param runwaySelection the runway that is currently selected
+     * @param topDownDrawExecutor the top down draw executor
+     * @param sideOnDrawExecutor the side on draw executor
+     */
+    public VisibleDistancesController(RunwaySelection runwaySelection, DrawExecutor topDownDrawExecutor,
+                                      DrawExecutor sideOnDrawExecutor) {
         this.runwaySelection = runwaySelection;
         this.topDownDrawExecutor = topDownDrawExecutor;
         this.sideOnDrawExecutor = sideOnDrawExecutor;
     }
 
-    public void setLDACheckbox(JCheckBox LDACheckbox) {
-        this.LDACheckbox = LDACheckbox;
+    public void setLdaCheckbox(JCheckBox ldaCheckbox) {
+        this.ldaCheckbox = ldaCheckbox;
     }
 
-    public void setTODACheckbox(JCheckBox TODACheckbox) {
-        this.TODACheckbox = TODACheckbox;
+    public void setTodaCheckbox(JCheckBox todaCheckbox) {
+        this.todaCheckbox = todaCheckbox;
     }
 
-    public void setASDACheckbox(JCheckBox ASDACheckbox) {
-        this.ASDACheckbox = ASDACheckbox;
+    public void setAsdaCheckbox(JCheckBox asdaCheckbox) {
+        this.asdaCheckbox = asdaCheckbox;
     }
 
-    public void setTORACheckbox(JCheckBox TORACheckbox) {
-        this.TORACheckbox = TORACheckbox;
+    public void setToraCheckbox(JCheckBox toraCheckbox) {
+        this.toraCheckbox = toraCheckbox;
     }
 
     @Override
@@ -48,31 +54,31 @@ public class VisibleDistancesController implements ActionListener {
         if (runwaySelection.hasSelectedRunway()) {
             switch (e.getActionCommand()) {
                 case VisibleDistancesPanel.CHANGE_SELECTED: {
-                    if(ASDACheckbox.isSelected()){
+                    if (asdaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new AsdaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new AsdaDrawer());
-                    }else{
+                    } else {
                         this.topDownDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
                         this.sideOnDrawExecutor.removeDrawerByClass(new AsdaDrawer().getClass());
                     }
-                    if(TORACheckbox.isSelected()){
+                    if (toraCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new ToraDrawer());
                         this.sideOnDrawExecutor.addDrawer(new ToraDrawer());
-                    }else{
+                    } else {
                         this.topDownDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
                         this.sideOnDrawExecutor.removeDrawerByClass(new ToraDrawer().getClass());
                     }
-                    if(TODACheckbox.isSelected()){
+                    if (todaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new TodaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new TodaDrawer());
-                    }else{
+                    } else {
                         this.topDownDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
                         this.sideOnDrawExecutor.removeDrawerByClass(new TodaDrawer().getClass());
                     }
-                    if(LDACheckbox.isSelected()){
+                    if (ldaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.addDrawer(new LdaDrawer());
                         this.sideOnDrawExecutor.addDrawer(new LdaDrawer());
-                    }else {
+                    } else {
                         this.topDownDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
                         this.sideOnDrawExecutor.removeDrawerByClass(new LdaDrawer().getClass());
                     }

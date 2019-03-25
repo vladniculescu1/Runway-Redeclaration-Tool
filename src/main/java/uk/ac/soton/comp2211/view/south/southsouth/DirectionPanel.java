@@ -1,4 +1,4 @@
-package uk.ac.soton.comp2211.view.south.southSouth;
+package uk.ac.soton.comp2211.view.south.southsouth;
 
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
