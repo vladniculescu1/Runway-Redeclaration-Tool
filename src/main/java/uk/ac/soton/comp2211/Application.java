@@ -5,6 +5,7 @@ import uk.ac.soton.comp2211.draw.*;
 import uk.ac.soton.comp2211.draw.sideon.*;
 import uk.ac.soton.comp2211.draw.topdown.*;
 import uk.ac.soton.comp2211.model.Airport;
+import uk.ac.soton.comp2211.model.Notification;
 import uk.ac.soton.comp2211.model.ObstacleStorage;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.view.MainFrame;
@@ -63,6 +64,7 @@ public class Application {
         Airport airport = data.getAirport();
         ObstacleStorage obstacleStorage = data.getObstacleStorage();
         RunwaySelection runwaySelection = data.getRunwaySelection();
+        Notification notification = new Notification(" ");
 
         List<Drawer> topDownDrawer = List.of(
 
@@ -87,8 +89,9 @@ public class Application {
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
-                obstacleStorage);
-        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,airport);
+                obstacleStorage, notification);
+        RunwaySelectionController runwaySelectionController = new RunwaySelectionController(runwaySelection,
+                airport, notification);
         ShowCalculationController showCalculationController = new ShowCalculationController(runwaySelection);
         ImportExportController importExportController =
                 new ImportExportController(topDownDrawExecutor, sideOnDrawExecutor, this);
@@ -108,10 +111,9 @@ public class Application {
                         ),
                         new SouthPanel(
                                 new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
-                                new ExportPanel(importExportController),
-                                new ImportPanel(importExportController)
+                                new ExportPanel(importExportController),new ImportPanel(importExportController)
                         ),
-                        new NotificationsPanel()
+                        new NotificationsPanel(notification)
                 )
         );
         importExportController.addMainFrame(mainframe);

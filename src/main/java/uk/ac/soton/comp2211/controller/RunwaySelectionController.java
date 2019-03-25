@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.controller;
 
 import uk.ac.soton.comp2211.model.Airport;
+import uk.ac.soton.comp2211.model.Notification;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 import uk.ac.soton.comp2211.view.east.RunwayPanel;
@@ -19,6 +20,7 @@ public class RunwaySelectionController implements ActionListener {
     private AddRunwayPanel addRunwayPanel;
     private JComboBox runwayComboBox;
     private DisplayPopUpFrame displayPopUpFrame;
+    private Notification notification;
 
     private boolean suppressEvents = false;
 
@@ -26,10 +28,13 @@ public class RunwaySelectionController implements ActionListener {
      * Constructor for this RunwaySelectionController.
      * @param runwaySelection The application's runwaySelection variable.
      * @param airport The application's airport variable.
+     * @param notification notification displayed whenever an obstacle is added
      */
-    public RunwaySelectionController(RunwaySelection runwaySelection, Airport airport) {
+    public RunwaySelectionController(RunwaySelection runwaySelection, Airport airport,
+            Notification notification) {
         this.runwaySelection = runwaySelection;
         this.airport = airport;
+        this.notification = notification;
     }
 
     public void addRunwayComboBox(JComboBox runwayComboBox) {
@@ -70,6 +75,7 @@ public class RunwaySelectionController implements ActionListener {
                         runwaySelection.removeSelectedRunway();
                     }
                     runwaySelection.notifyUpdate();
+                    notification.notificationUpdate("Runway successfully removed");
                     break;
                 }
                 case AddRunwayPanel.RUNWAY_ADD_BUTTON: {
@@ -84,6 +90,7 @@ public class RunwaySelectionController implements ActionListener {
                             runwaySelection.setSelectedRunway(physicalRunway);
                             runwaySelection.notifyUpdate();
                             displayPopUpFrame.close();
+                            notification.notificationUpdate("Runway successfully assigned");
                         }
 
                     }
