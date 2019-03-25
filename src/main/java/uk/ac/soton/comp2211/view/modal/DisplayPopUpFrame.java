@@ -15,7 +15,6 @@ public class DisplayPopUpFrame extends JDialog {
         
         this.setTitle(title);
         this.pack();
-        this.setLocationRelativeTo(DisplayPopUpFrame.mainFrame);
         this.setVisible(false);
         this.setResizable(false);
     }
@@ -39,6 +38,7 @@ public class DisplayPopUpFrame extends JDialog {
     public void create(JPanel panel) {
         this.setContentPane(panel);
         this.pack();
+        this.setLocationRelativeTo(DisplayPopUpFrame.mainFrame);
         this.setVisible(true);
     }
     
