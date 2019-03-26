@@ -1,5 +1,15 @@
 package uk.ac.soton.comp2211.view.east;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 import org.painlessgridbag.PainlessGridBag;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.calculator.DynamicLengthCalculator;
@@ -81,6 +91,8 @@ public class DistancesPanel extends JPanel implements Observer {
         };
 
         JTable lowerTable = new JTable(this.lowerTableModel);
+        TableRowSorter<TableModel> sorterLower = new TableRowSorter<>(lowerTable.getModel());
+        lowerTable.setRowSorter(sorterLower);
         lowerTable.getTableHeader().setFont(this.getFont());
         lowerTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
         lowerTable.setRowHeight(tableRowHeight);
@@ -100,6 +112,8 @@ public class DistancesPanel extends JPanel implements Observer {
 
 
         JTable higherTable = new JTable(this.higherTableModel);
+        TableRowSorter<TableModel> sorterHigher = new TableRowSorter<>(higherTable.getModel());
+        higherTable.setRowSorter(sorterHigher);
         higherTable.getTableHeader().setFont(this.getFont());
         higherTable.getTableHeader().setPreferredSize(new Dimension(this.getWidth(), tableRowHeight));
         higherTable.setRowHeight(tableRowHeight);

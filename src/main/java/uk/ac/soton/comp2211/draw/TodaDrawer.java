@@ -31,6 +31,7 @@ public class TodaDrawer implements Drawer {
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw TODA for side " + side);
+
         }
 
     }

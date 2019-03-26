@@ -4,6 +4,7 @@ import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -84,4 +85,17 @@ public class DrawExecutor {
         // set draw color to black
         g2d.setColor(Color.BLACK);
     }
+
+    public void addDrawer(Drawer drawer) {
+        this.drawers.add(drawer);
+    }
+
+    /**
+     * Removes a given drawer given a class.
+     * @param clazz the class of the drawer that will be removed
+     */
+    public void removeDrawerByClass(Class<? extends Drawer> clazz) {
+        this.drawers.removeIf(drawer -> drawer.getClass() == clazz);
+    }
+
 }
