@@ -68,7 +68,7 @@ public class Application {
         RunwaySelection runwaySelection = data.getRunwaySelection();
         Notification notification = new Notification(" ");
 
-        List<Drawer> topDownDrawer = new ArrayList<> (List.of(
+        List<Drawer> topDownDrawer = new ArrayList<>(List.of(
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
