@@ -24,13 +24,14 @@ public class AsdaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION,"ASDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION, "ASDA");
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION,"ASDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION, "ASDA");
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw ASDA for side " + side);
+
         }
 
     }

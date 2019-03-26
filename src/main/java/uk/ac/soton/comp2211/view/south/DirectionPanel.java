@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.view.south;
 
 import org.painlessgridbag.PainlessGridBag;
+import org.painlessgridbag.PainlessGridbagConfiguration;
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.model.LogicalRunway;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -49,7 +50,11 @@ public class DirectionPanel extends JPanel implements Observer {
         radioButtons.add(fromLowerRadio);
         radioButtons.add(fromHigherRadio);
 
-        PainlessGridBag gridBag = new PainlessGridBag(this, false);
+        PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
+        gridbagConfiguration.setVirticalSpacing(15);
+
+
+        PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration,false);
         gridBag.row().cell(fromLowerRadio).fillX();
         gridBag.row().cell(fromHigherRadio).fillX();
         gridBag.done();

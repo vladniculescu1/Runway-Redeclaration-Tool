@@ -31,6 +31,7 @@ public class LdaDrawer implements Drawer {
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw LDA for side " + side);
+
         }
     }
 }
