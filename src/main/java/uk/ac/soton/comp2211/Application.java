@@ -86,8 +86,8 @@ public class Application {
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection);
-        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection);
+        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection, true);
+        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection, false);
 
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
                 obstacleStorage, notification);

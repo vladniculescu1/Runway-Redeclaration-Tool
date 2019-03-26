@@ -9,6 +9,20 @@ import java.awt.geom.Rectangle2D;
 public class DrawUtils {
 
 
+    private static int distanceBelow; //if 1, distances are below. If -1, distances are above.
+
+    /**
+     * Sets whether distances are drawn below the runway.
+     * @param distancesBelow If true, distances are drawn below the runway.
+     */
+    public static void setDistancesBelow(boolean distancesBelow) {
+        if (distancesBelow) {
+            DrawUtils.distanceBelow = 1;
+        } else {
+            DrawUtils.distanceBelow = -1;
+        }
+    }
+
     /**
      * Draws a filled rectangle that is centered around the x axis.
      *
@@ -110,7 +124,7 @@ public class DrawUtils {
                                         String text, float fontSizeFactor) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
-        int height = (int) (fontHeight * offset);
+        int height = (int) (fontHeight * offset * distanceBelow);
 
         String distanceString = Math.abs(distance) + "m";
 
@@ -153,7 +167,7 @@ public class DrawUtils {
     public static void solidLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
-        int height = (int) (fontHeight * offset);
+        int height = (int) (fontHeight * offset * distanceBelow);
 
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,

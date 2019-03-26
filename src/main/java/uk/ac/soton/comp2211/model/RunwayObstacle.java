@@ -18,7 +18,7 @@ public class RunwayObstacle {
     @XmlElement
     private int thresholdDistance;
 
-    @Range(min = 0, max = 75, message = "Centreline must be between 0 and 75 inclusive.")
+    @Range(min = -75, max = 75, message = "Distance from centreline must be between -75 and 75 inclusive.")
     @XmlElement
     private int centreLineDistance;
 

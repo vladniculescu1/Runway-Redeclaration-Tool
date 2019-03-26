@@ -4,7 +4,6 @@ import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -15,16 +14,20 @@ public class DrawExecutor {
 
     private List<Drawer> drawers;
     private RunwaySelection runwaySelection;
+    private boolean affectedByCentrelineOffset;
 
     /**
      * Instatiate a new DrawExecutor with the given list of drawers and a runway selection.
      *
      * @param drawers list of drawers used to draw
      * @param runwaySelection current runway selection
+     * @param affectedByCentrelineDistance if true, distances will be drawn above the runway iff the obstacle has a
+     *                                   negative centreline distance.
      */
-    public DrawExecutor(List<Drawer> drawers, RunwaySelection runwaySelection) {
+    public DrawExecutor(List<Drawer> drawers, RunwaySelection runwaySelection, boolean affectedByCentrelineDistance) {
         this.drawers = drawers;
         this.runwaySelection = runwaySelection;
+        this.affectedByCentrelineOffset = affectedByCentrelineDistance;
     }
 
     /**
@@ -84,6 +87,12 @@ public class DrawExecutor {
 
         // set draw color to black
         g2d.setColor(Color.BLACK);
+
+        // set distance position (above or below)
+        DrawUtils.setDistancesBelow(!(affectedByCentrelineOffset
+                && runwaySelection.getSelectedRunway().hasObstacle()
+                && runwaySelection.getSelectedRunway().getLowerThreshold().getRunwayObstacle().getCentreLineDistance()
+                    < 0));
     }
 
     public void addDrawer(Drawer drawer) {
