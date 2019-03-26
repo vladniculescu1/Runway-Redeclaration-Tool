@@ -22,7 +22,7 @@ public class NotificationsPanel extends JPanel {
    
         notification = notif;
         Font font = this.getFont().deriveFont(Font.BOLD).deriveFont(16f);
-        notification.setFont(font);;
+        notification.setFont(font);
         notification.setForeground(Color.RED);
         this.add(notification);
     }
