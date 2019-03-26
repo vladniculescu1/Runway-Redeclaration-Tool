@@ -20,6 +20,8 @@ public class ShowCalculationPanel extends JPanel {
     private PhysicalRunway physicalRunway;
     private ShowCalculationController showCalculationController;
     private JPanel calculationPanel;
+    private Font currentFont;
+    private float fontSize;
 
     public static final String CANCEL_BUTTON_COMMAND = "cancelButton";
     /**
@@ -32,6 +34,9 @@ public class ShowCalculationPanel extends JPanel {
 
     public ShowCalculationPanel(PhysicalRunway physicalRunway, int rowNumber,
                                 RunwaySide runwaySide, ShowCalculationController showCalculationController) {
+        currentFont = new JLabel().getFont();
+        fontSize = (float) 1.5 * currentFont.getSize();
+        
         this.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         this.setLayout(new BorderLayout());
         this.runwaySide = runwaySide;
@@ -67,12 +72,15 @@ public class ShowCalculationPanel extends JPanel {
                 showCalculation(getToraCalculation());
                 break;
             default:
-                this.add(new JLabel("Please select a value from the corresponding table!"));
+                JLabel warningText = new JLabel("Please select a value from the corresponding table!");
+                warningText.setFont(currentFont.deriveFont(fontSize));
+                this.add(warningText);
         }
 
         this.add(calculationPanel, BorderLayout.WEST);
 
         JButton cancelButton = new JButton("Done");
+        cancelButton.setFont(currentFont.deriveFont(fontSize));
         cancelButton.addActionListener(showCalculationController);
         cancelButton.setActionCommand(CANCEL_BUTTON_COMMAND);
 
@@ -85,7 +93,9 @@ public class ShowCalculationPanel extends JPanel {
 
     private void showCalculation(String[] calculationStrings) {
         for (String calcStringLine : calculationStrings) {
-            calculationPanel.add(new JLabel(calcStringLine));
+            JLabel textToDisplay = new JLabel(calcStringLine);
+            textToDisplay.setFont(currentFont.deriveFont(fontSize));
+            calculationPanel.add(textToDisplay);
         }
     }
 
