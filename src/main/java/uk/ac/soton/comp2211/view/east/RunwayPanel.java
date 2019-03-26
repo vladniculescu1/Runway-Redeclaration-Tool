@@ -47,11 +47,11 @@ public class RunwayPanel extends JPanel implements Observer {
         runwayComboBox.setActionCommand(COMBOBOX_COMMAND);
         runwayComboBox.addActionListener(runwaySelectionController);
 
-        JButton addButton = new JButton("Add");
+        JButton addButton = new JButton("Add Runway");
         addButton.setActionCommand(ADD_RUNWAY_COMMAND);
         addButton.addActionListener(runwaySelectionController);
 
-        removeButton = new JButton("Remove");
+        removeButton = new JButton("Remove Runway");
         removeButton.setActionCommand(REMOVE_RUNWAY_COMMAND);
         removeButton.addActionListener(runwaySelectionController);
 
