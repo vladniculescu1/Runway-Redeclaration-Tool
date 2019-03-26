@@ -192,21 +192,21 @@ public class DistancesPanel extends JPanel implements Observer {
         Object[][] lowerData = {
                 {"LDA", lowerThreshold.getOriginalLda(),
                         calc.getLda(RunwaySide.LOWER_THRESHOLD)},
-                {"TODA", lowerThreshold.getOriginalToda(),
-                        calc.getToda(RunwaySide.LOWER_THRESHOLD)},
+                {"TORA", lowerThreshold.getOriginalTora(),
+                            calc.getTora(RunwaySide.LOWER_THRESHOLD)},
                 {"ASDA", lowerThreshold.getOriginalAsda(),
                         calc.getAsda(RunwaySide.LOWER_THRESHOLD)},
-                {"TORA", lowerThreshold.getOriginalTora(),
-                        calc.getTora(RunwaySide.LOWER_THRESHOLD)}};
+                {"TODA", lowerThreshold.getOriginalToda(),
+                            calc.getToda(RunwaySide.LOWER_THRESHOLD)}};
         Object[][] higherData = {
                 {"LDA", higherThreshold.getOriginalLda(),
                         calc.getLda(RunwaySide.HIGHER_THRESHOLD)},
-                {"TODA", higherThreshold.getOriginalToda(),
-                        calc.getToda(RunwaySide.HIGHER_THRESHOLD)},
+                {"TORA", higherThreshold.getOriginalTora(),
+                            calc.getTora(RunwaySide.HIGHER_THRESHOLD)},
                 {"ASDA", higherThreshold.getOriginalAsda(),
                         calc.getAsda(RunwaySide.HIGHER_THRESHOLD)},
-                {"TORA", higherThreshold.getOriginalTora(),
-                        calc.getTora(RunwaySide.HIGHER_THRESHOLD)}};
+                {"TODA", higherThreshold.getOriginalToda(),
+                            calc.getToda(RunwaySide.HIGHER_THRESHOLD)}};
 
         for (Object[] row : lowerData) {
             this.lowerTableModel.addRow(row);
