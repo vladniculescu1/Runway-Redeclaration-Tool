@@ -68,7 +68,7 @@ public class Application {
         RunwaySelection runwaySelection = data.getRunwaySelection();
         Notification notification = new Notification(" ");
 
-        List<Drawer> topDownDrawer = List.of(
+        List<Drawer> topDownDrawer = new ArrayList<>(List.of(
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
@@ -80,13 +80,13 @@ public class Application {
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer()
         );
 
-        List<Drawer> sideOnDrawer = List.of(
+        List<Drawer> sideOnDrawer = new ArrayList<>(List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
                 new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
-        );
+        ));
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, topDownDistancesDrawer, runwaySelection);
         DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, List.of(), runwaySelection);
