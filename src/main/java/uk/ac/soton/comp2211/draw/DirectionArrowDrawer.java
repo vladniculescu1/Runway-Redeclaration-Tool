@@ -21,14 +21,14 @@ public class DirectionArrowDrawer implements Drawer {
         String text = "Take-off/Landing Direction";
               
         int distance = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
-        int startX = positionCalculator.getStripPosition() + distance / 10;
+        int startX = positionCalculator.getStripPosition() + 4 * distance / 10;
                 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.solidLabelledDistance(g2d, startX, distance, -8, text);
+                DrawUtils.solidLabelledDistance(g2d, startX, distance, -10.5, text);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.solidLabelledDistance(g2d, startX + distance, -distance, -8, text);
+                DrawUtils.solidLabelledDistance(g2d, startX + distance, -distance, -10.5, text);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw take-off/landing line");

@@ -72,10 +72,12 @@ public class Application {
                 new TopDownSurroundingsDrawer(), new TopDownStripDrawer(), new DirectionArrowDrawer(),
                 new TopDownStopwayDrawer(), new TopDownClearwayDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
-                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
-                new ResaDrawer(), new TocsDrawer(), new BlastDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
+        );
+        List<Drawer> topDownDistancesDrawer = List.of(
+                new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
+                new ResaDrawer(), new TocsDrawer(), new BlastDrawer()
         );
 
         List<Drawer> sideOnDrawer = List.of(
@@ -86,8 +88,8 @@ public class Application {
                 new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
         );
 
-        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, runwaySelection, true);
-        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, runwaySelection, false);
+        DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, topDownDistancesDrawer, runwaySelection);
+        DrawExecutor sideOnDrawExecutor = new DrawExecutor(sideOnDrawer, List.of(), runwaySelection);
 
         AssignObstacleController assignObstacleController = new AssignObstacleController(runwaySelection,
                 obstacleStorage, notification);

@@ -13,21 +13,20 @@ import java.util.List;
 public class DrawExecutor {
 
     private List<Drawer> drawers;
+    private List<Drawer> distanceDrawers;
     private RunwaySelection runwaySelection;
-    private boolean affectedByCentrelineOffset;
 
     /**
      * Instatiate a new DrawExecutor with the given list of drawers and a runway selection.
      *
      * @param drawers list of drawers used to draw
+     * @param distanceDrawers list of drawers that may be drawn above the runway instead of below
      * @param runwaySelection current runway selection
-     * @param affectedByCentrelineDistance if true, distances will be drawn above the runway iff the obstacle has a
-     *                                   negative centreline distance.
      */
-    public DrawExecutor(List<Drawer> drawers, RunwaySelection runwaySelection, boolean affectedByCentrelineDistance) {
+    public DrawExecutor(List<Drawer> drawers, List<Drawer> distanceDrawers, RunwaySelection runwaySelection) {
         this.drawers = drawers;
+        this.distanceDrawers = distanceDrawers;
         this.runwaySelection = runwaySelection;
-        this.affectedByCentrelineOffset = affectedByCentrelineDistance;
     }
 
     /**
@@ -41,6 +40,17 @@ public class DrawExecutor {
         if (runwaySelection.hasSelectedRunway()) {
             this.setupGraphics(g2d, panelWidth, panelHeight);
             this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
+
+            double verticalOffset = panelHeight * 2.5;
+
+            if (runwaySelection.hasObstacleSouth()) {
+                g2d.translate(0,-verticalOffset);
+            }
+            this.distanceDrawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
+
+            if (runwaySelection.hasObstacleSouth()) {
+                g2d.translate(0,verticalOffset); //?
+            }
         }
     }
 
@@ -87,12 +97,6 @@ public class DrawExecutor {
 
         // set draw color to black
         g2d.setColor(Color.BLACK);
-
-        // set distance position (above or below)
-        DrawUtils.setDistancesBelow(!(affectedByCentrelineOffset
-                && runwaySelection.getSelectedRunway().hasObstacle()
-                && runwaySelection.getSelectedRunway().getLowerThreshold().getRunwayObstacle().getCentreLineDistance()
-                    < 0));
     }
 
     public void addDrawer(Drawer drawer) {
