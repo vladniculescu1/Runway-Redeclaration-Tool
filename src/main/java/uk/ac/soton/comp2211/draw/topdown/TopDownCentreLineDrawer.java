@@ -15,7 +15,7 @@ import java.awt.geom.Line2D;
 public class TopDownCentreLineDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantPositionCalculator calculator = physicalRunway.getConstantPositionCalculator();
 

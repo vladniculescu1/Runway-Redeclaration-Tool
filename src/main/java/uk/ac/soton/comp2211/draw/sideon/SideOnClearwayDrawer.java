@@ -17,7 +17,7 @@ import java.awt.*;
 public class SideOnClearwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();

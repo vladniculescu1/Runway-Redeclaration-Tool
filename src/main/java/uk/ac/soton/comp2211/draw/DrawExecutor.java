@@ -33,6 +33,7 @@ public class DrawExecutor {
      * @param g2d the graphics2d object used for drawing
      * @param panelWidth the width of the draw display panel
      * @param panelHeight the height of the draw display panel
+     * @param rotate whether to flip the text
      */
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight, Boolean rotate) {
         if (runwaySelection.hasSelectedRunway()) {

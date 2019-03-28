@@ -13,7 +13,7 @@ public class DirectionArrowDrawer implements Drawer {
 
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
         
         RunwaySide side = physicalRunway.getRunwayDirection();
 
