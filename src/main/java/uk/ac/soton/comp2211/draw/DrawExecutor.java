@@ -91,8 +91,8 @@ public class DrawExecutor {
         int centreMargin = 0;
 
         // if the panel is too wide and lacks height to draw everything, adjust drawWidth and centreMargin
-        if (panelWidth > panelHeight * 1.5) {
-            drawWidth = (int) (panelHeight * 1.5);
+        if (panelWidth > panelHeight * 1.45) {
+            drawWidth = (int) (panelHeight * 1.45);
             centreMargin = (panelWidth - drawWidth) / 2;
         }
 
