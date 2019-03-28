@@ -49,11 +49,11 @@ public class DrawExecutor {
             this.setupGraphics(g2d, panelWidth, panelHeight);
 
             this.drawers.stream()
-                    .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
-                    .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway())
-                    );
+                .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
+                .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway())
+                );
 
-            double verticalOffset = (DrawConstants.STRIP_WIDTH/2 + DrawConstants.RUNWAY_WIDTH/2)
+            double verticalOffset = (DrawConstants.STRIP_WIDTH / 2 + DrawConstants.RUNWAY_WIDTH / 2)
                     * g2d.getFontMetrics().getHeight();
 
             if (runwaySelection.hasObstacleSouth()) {
@@ -61,9 +61,9 @@ public class DrawExecutor {
             }
 
             this.distanceDrawers.stream()
-                    .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
-                    .forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway())
-                    );
+                .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
+                .forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway())
+                );
 
             if (runwaySelection.hasObstacleSouth()) {
                 g2d.translate(0,verticalOffset);
@@ -116,18 +116,30 @@ public class DrawExecutor {
         g2d.setColor(Color.BLACK);
     }
 
+    /**
+     * Enables drawer by class. Throws an exception if drawer for this class doesn't exist.
+     *
+     * @param clazz the class of the drawer to be enabled
+     */
     public void enableDrawer(Class<? extends Drawer> clazz) {
-        if (this.drawerExists(clazz))
+        if (this.drawerExists(clazz)) {
             this.drawerEnabled.put(clazz, true);
-        else
+        } else {
             throw new IllegalArgumentException("Instance of class " + clazz + " is not in drawers");
+        }
     }
 
+    /**
+     * Disables drawer by class. Throws an exception if drawer for this class doesn't exist.
+     *
+     * @param clazz the class of the drawer to be disabled
+     */
     public void disableDrawer(Class<? extends Drawer> clazz) {
-        if (this.drawerExists(clazz))
+        if (this.drawerExists(clazz)) {
             this.drawerEnabled.put(clazz, false);
-        else
+        } else {
             throw new IllegalArgumentException("Instance of class " + clazz + " is not in drawers");
+        }
     }
 
     private boolean drawerExists(Class<? extends Drawer> clazz) {

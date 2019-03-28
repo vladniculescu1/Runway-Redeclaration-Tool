@@ -21,7 +21,7 @@ public class DirectionArrowDrawer implements Drawer {
         int totalLength = physicalRunway.getConstantLengthCalculator().getTotalVisualisationLength();
         int textLength = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
 
-        int startX = totalLength/2 - textLength/2;
+        int startX = totalLength / 2 - textLength / 2;
                 
         switch (side) {
             case LOWER_THRESHOLD:
