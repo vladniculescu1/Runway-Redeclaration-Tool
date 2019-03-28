@@ -63,13 +63,13 @@ public class ShowCalculationPanel extends JPanel {
                 showCalculation(getLdaCalculation());
                 break;
             case 1:
-                showCalculation(getTodaCalculation(false));
+                showCalculation(getToraCalculation());
                 break;
             case 2:
                 showCalculation(getAsdaCalculation(false));
                 break;
             case 3:
-                showCalculation(getToraCalculation());
+                showCalculation(getTodaCalculation(false));
                 break;
             default:
                 JLabel warningText = new JLabel("Please select a value from the corresponding table!");
