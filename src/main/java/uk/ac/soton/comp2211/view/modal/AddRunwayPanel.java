@@ -177,14 +177,14 @@ public class AddRunwayPanel extends JPanel {
                 .cell(new JLabel("LDA (m):"))
                 .cell(ldaTextFieldB).fillX();
 
-        todaTextFieldA = new JFormattedTextField(integerFormatter);
-        todaTextFieldB = new JFormattedTextField(integerFormatter);
-        todaTextFieldA.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldA, todaTextFieldB));
-        todaTextFieldB.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldB, todaTextFieldA));
-        gridBag.row().cell(new JLabel("TODA (m):"))
-                .cell(todaTextFieldA).fillX().cell()
-                .cell(new JLabel("TODA (m):"))
-                .cell(todaTextFieldB).fillX();
+        toraTextFieldA = new JFormattedTextField(integerFormatter);
+        toraTextFieldB = new JFormattedTextField(integerFormatter);
+        toraTextFieldB.addPropertyChangeListener("value", e -> updateToraB());
+        toraTextFieldA.addPropertyChangeListener("value", e -> updateToraA());
+        gridBag.row().cell(new JLabel("TORA (m):"))
+                .cell(toraTextFieldA).fillX().cell()
+                .cell(new JLabel("TORA (m):"))
+                .cell(toraTextFieldB).fillX();
 
         asdaTextFieldA = new JFormattedTextField(integerFormatter);
         asdaTextFieldB = new JFormattedTextField(integerFormatter);
@@ -195,14 +195,14 @@ public class AddRunwayPanel extends JPanel {
                 .cell(new JLabel("ASDA (m):"))
                 .cell(asdaTextFieldB).fillX();
 
-        toraTextFieldA = new JFormattedTextField(integerFormatter);
-        toraTextFieldB = new JFormattedTextField(integerFormatter);
-        toraTextFieldB.addPropertyChangeListener("value", e -> updateToraB());
-        toraTextFieldA.addPropertyChangeListener("value", e -> updateToraA());
-        gridBag.row().cell(new JLabel("TORA (m):"))
-                .cell(toraTextFieldA).fillX().cell()
-                .cell(new JLabel("TORA (m):"))
-                .cell(toraTextFieldB).fillX();
+        todaTextFieldA = new JFormattedTextField(integerFormatter);
+        todaTextFieldB = new JFormattedTextField(integerFormatter);
+        todaTextFieldA.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldA, todaTextFieldB));
+        todaTextFieldB.addPropertyChangeListener("value", e -> updateValueBlank(todaTextFieldB, todaTextFieldA));
+        gridBag.row().cell(new JLabel("TODA (m):"))
+                .cell(todaTextFieldA).fillX().cell()
+                .cell(new JLabel("TODA (m):"))
+                .cell(todaTextFieldB).fillX();
 
         addButton = new JButton("Add Runway --/--");
         JButton cancelButton = new JButton("Cancel");
