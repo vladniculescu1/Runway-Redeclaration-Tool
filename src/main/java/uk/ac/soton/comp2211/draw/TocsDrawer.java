@@ -14,7 +14,7 @@ public class TocsDrawer implements Drawer {
 
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         if (physicalRunway.hasObstacle()) {
 
@@ -30,20 +30,20 @@ public class TocsDrawer implements Drawer {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
                     DrawUtils.dashedLabelledDistance(g2d, slopeStart, slope, DrawConstants.LDA_POSITION, "TOCS",
-                            0.75F);
+                            0.75F, flipText);
                 } else {
                     DrawUtils.dashedLabelledDistance(g2d, slopeStart, -slope, DrawConstants.LDA_POSITION, "TOCS",
-                            0.75F);
+                            0.75F, flipText);
                 }
 
             } else {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
                     DrawUtils.dashedLabelledDistance(g2d, slopeStart + slope, -slope, DrawConstants.TORA_POSITION,
-                            "TOCS", 0.75F);
+                            "TOCS", 0.75F, flipText);
                 } else {
                     DrawUtils.dashedLabelledDistance(g2d, slopeStart - slope, slope, DrawConstants.TORA_POSITION,
-                            "TOCS", 0.75F);
+                            "TOCS", 0.75F, flipText);
                 }
 
 

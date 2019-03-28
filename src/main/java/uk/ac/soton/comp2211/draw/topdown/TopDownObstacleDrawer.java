@@ -15,7 +15,7 @@ import java.awt.*;
 public class TopDownObstacleDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         if (physicalRunway.hasObstacle()) {
 
@@ -36,14 +36,14 @@ public class TopDownObstacleDrawer implements Drawer {
             switch (obstacleSide) {
                 case LOWER_THRESHOLD: {
                     DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX, offsetY,
-                            length, 3, "OBS");
+                            length, 3, "OBS", flipText);
                     DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX, offsetY, length, 3);
                     break;
                 }
 
                 case HIGHER_THRESHOLD: {
                     DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX - length, offsetY,
-                            length, 3, "OBS");
+                            length, 3, "OBS", flipText);
                     DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX - length, offsetY,
                             length, 3);
                     break;

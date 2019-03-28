@@ -12,8 +12,9 @@ import java.awt.*;
  */
 public class AsdaDrawer implements Drawer {
 
+
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -24,10 +25,10 @@ public class AsdaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION, "ASDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.ASDA_POSITION, "ASDA", flipText);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION, "ASDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.ASDA_POSITION, "ASDA", flipText);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw ASDA for side " + side);

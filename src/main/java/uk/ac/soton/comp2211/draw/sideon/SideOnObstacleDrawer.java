@@ -16,7 +16,7 @@ import java.awt.*;
 public class SideOnObstacleDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
    
         if (physicalRunway.hasObstacle()) {
             
@@ -34,7 +34,7 @@ public class SideOnObstacleDrawer implements Drawer {
                 case LOWER_THRESHOLD: {
                     DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
-                            length, height, "OBS");
+                            length, height, "OBS",flipText);
                     DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5, length, height);
                     break;
@@ -43,7 +43,7 @@ public class SideOnObstacleDrawer implements Drawer {
                 case HIGHER_THRESHOLD: {
                     DrawUtils.uncenteredRectangleWithLabel(g2d, obstacleOutline, leftX - length,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5,
-                            length, height, "OBS");
+                            length, height, "OBS",flipText);
                     DrawUtils.uncenteredFilledRectangle(g2d, obstacleFill, leftX - length,
                             height / 2.0 + DrawConstants.CONSTANT_WIDTH_SIDE_ON * 0.5, length, height);
                     break;

@@ -70,7 +70,7 @@ public class TopDownRotatedPanel extends JPanel implements Observer {
         Graphics2D g2d = image.createGraphics();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, // Anti-alias!
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight());
+        this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight(), true);
         g2d.dispose();
         return image;
     }

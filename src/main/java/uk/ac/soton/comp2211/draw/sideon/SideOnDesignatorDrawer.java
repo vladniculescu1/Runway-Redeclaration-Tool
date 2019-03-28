@@ -15,7 +15,7 @@ public class SideOnDesignatorDrawer implements Drawer {
 
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         ConstantPositionCalculator calculator = physicalRunway.getConstantPositionCalculator();
 

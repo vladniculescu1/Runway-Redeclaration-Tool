@@ -15,7 +15,7 @@ import java.awt.*;
 public class TopDownStripDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
@@ -27,6 +27,6 @@ public class TopDownStripDrawer implements Drawer {
         DrawUtils.centeredFilledRectangle(g2d, new Color(43, 166, 32, 172),
                 stripPosition, stripLength, DrawConstants.STRIP_WIDTH);
         DrawUtils.centeredRectangleWithLabel(g2d, Color.black,
-                stripPosition, stripLength, DrawConstants.STRIP_WIDTH, "STRIP");
+                stripPosition, stripLength, DrawConstants.STRIP_WIDTH, "STRIP", flipText);
     }
 }

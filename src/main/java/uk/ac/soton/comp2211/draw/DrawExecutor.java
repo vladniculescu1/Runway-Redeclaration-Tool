@@ -34,10 +34,10 @@ public class DrawExecutor {
      * @param panelWidth the width of the draw display panel
      * @param panelHeight the height of the draw display panel
      */
-    public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
+    public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight, Boolean rotate) {
         if (runwaySelection.hasSelectedRunway()) {
             this.setupGraphics(g2d, panelWidth, panelHeight);
-            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
+            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway(), rotate));
         }
     }
 
@@ -84,6 +84,10 @@ public class DrawExecutor {
 
         // set draw color to black
         g2d.setColor(Color.BLACK);
+    }
+
+    public List<Drawer> getDrawers() {
+        return drawers;
     }
 
     public void addDrawer(Drawer drawer) {

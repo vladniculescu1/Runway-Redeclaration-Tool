@@ -13,9 +13,8 @@ import java.awt.*;
  */
 public class BlastDrawer implements Drawer {
 
-
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, Boolean flipText) {
 
         if (physicalRunway.hasObstacle()) {
 
@@ -31,20 +30,20 @@ public class BlastDrawer implements Drawer {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
                     DrawUtils.dashedLabelledDistance(g2d, blastStart, blast, DrawConstants.ASDA_POSITION, "BLAST",
-                            0.75F);
+                            0.75F, flipText);
                 } else {
                     DrawUtils.dashedLabelledDistance(g2d, blastStart, -blast, DrawConstants.ASDA_POSITION, "BLAST",
-                            0.75F);
+                            0.75F, flipText);
                 }
 
             } else {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
                     DrawUtils.dashedLabelledDistance(g2d, blastStart + blast, -blast, DrawConstants.ASDA_POSITION,
-                            "BLAST", 0.75F);
+                            "BLAST", 0.75F, flipText);
                 } else {
                     DrawUtils.dashedLabelledDistance(g2d, blastStart - blast, blast, DrawConstants.ASDA_POSITION,
-                            "BLAST", 0.75F);
+                            "BLAST", 0.75F, flipText);
                 }
 
 
