@@ -32,6 +32,15 @@ public class RunwaySelection implements Observable, Observer {
         this.observers = new HashSet<>();
     }
 
+    /**
+     * Returns true iff this has a runway with an obstacle that is below the centreline.
+     * @return True if obstacle is below centreline, false otherwise.
+     */
+    public boolean hasObstacleSouth() {
+        return (selectedRunway.isPresent()
+                && selectedRunway.get().hasObstacle()
+                && selectedRunway.get().getLowerThreshold().getRunwayObstacle().getCentreLineDistance() < 0);
+    }
 
     public void setSelectedRunway(PhysicalRunway physicalRunway) {
         this.selectedRunway = Optional.of(physicalRunway);

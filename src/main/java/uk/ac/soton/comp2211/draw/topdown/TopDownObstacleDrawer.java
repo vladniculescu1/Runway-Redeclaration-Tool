@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.draw.topdown;
 
 import uk.ac.soton.comp2211.calculator.DynamicPositionCalculator;
+import uk.ac.soton.comp2211.draw.DrawConstants;
 import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
@@ -27,7 +28,13 @@ public class TopDownObstacleDrawer implements Drawer {
             double offsetY = 0;
 
             if (physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() != 0) {
-                offsetY = 1.5 + (double) physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 30;
+                offsetY = (DrawConstants.CLEARED_GRADED_POSITION_OUTER
+                        * physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() / 75);
+                if (physicalRunway.getRunwayObstacle(obstacleSide).getCentreLineDistance() >= 0) {
+                    offsetY += 1.5;
+                } else {
+                    offsetY -= 1.5;
+                }
             }
 
             Color obstacleOutline = new Color(136, 53, 227);
