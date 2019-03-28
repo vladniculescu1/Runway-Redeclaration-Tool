@@ -16,8 +16,6 @@ public class DirectionArrowDrawer implements Drawer {
         
         RunwaySide side = physicalRunway.getRunwayDirection();
 
-        ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
-
         String text = "Take-off/Landing Direction";
 
         int totalLength = physicalRunway.getConstantLengthCalculator().getTotalVisualisationLength();

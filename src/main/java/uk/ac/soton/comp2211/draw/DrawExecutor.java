@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * This class holds the current runway selection and a list of all drawers. In order to draw the current selection
@@ -18,10 +19,10 @@ public class DrawExecutor {
     private List<Drawer> distanceDrawers;
     private RunwaySelection runwaySelection;
 
-    private Map<Drawer, Boolean> drawerEnabled;
+    private Map<Class<? extends Drawer>, Boolean> drawerEnabled;
 
     /**
-     * Instatiate a new DrawExecutor with the given list of drawers and a runway selection.
+     * Instantiate a new DrawExecutor with the given list of drawers and a runway selection.
      *
      * @param drawers list of drawers used to draw
      * @param distanceDrawers list of drawers that may be drawn above the runway instead of below
@@ -32,8 +33,8 @@ public class DrawExecutor {
         this.distanceDrawers = distanceDrawers;
         this.runwaySelection = runwaySelection;
         drawerEnabled = new HashMap<>();
-        this.drawers.forEach(drawer -> drawerEnabled.put(drawer, true));
-        this.distanceDrawers.forEach(drawer -> drawerEnabled.put(drawer, true));
+        this.drawers.forEach(drawer -> drawerEnabled.put(drawer.getClass(), true));
+        this.distanceDrawers.forEach(drawer -> drawerEnabled.put(drawer.getClass(), true));
     }
 
     /**
@@ -46,22 +47,23 @@ public class DrawExecutor {
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
         if (runwaySelection.hasSelectedRunway()) {
             this.setupGraphics(g2d, panelWidth, panelHeight);
-            this.drawers.forEach(drawer -> {
-                if (drawerEnabled.get(drawer)) {
-                    drawer.draw(g2d, runwaySelection.getSelectedRunway());
-                }
-            });
+
+            this.drawers.stream()
+                    .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
+                    .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway())
+                    );
 
             double verticalOffset = panelHeight * 2.5;
 
             if (runwaySelection.hasObstacleSouth()) {
                 g2d.translate(0,-verticalOffset);
             }
-            this.distanceDrawers.forEach(drawer -> {
-                if (drawerEnabled.get(drawer)) {
-                    drawer.draw(g2d, runwaySelection.getSelectedRunway());
-                }
-            });
+
+            this.distanceDrawers.stream()
+                    .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
+                    .forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway())
+                    );
+
             if (runwaySelection.hasObstacleSouth()) {
                 g2d.translate(0,verticalOffset);
             }
@@ -114,26 +116,22 @@ public class DrawExecutor {
     }
 
     public void enableDrawer(Class<? extends Drawer> clazz) {
-        this.drawerEnabled.put(getDrawer(clazz), true);
+        if (this.drawerExists(clazz))
+            this.drawerEnabled.put(clazz, true);
+        else
+            throw new IllegalArgumentException("Instance of class " + clazz + " is not in drawers");
     }
 
     public void disableDrawer(Class<? extends Drawer> clazz) {
-        this.drawerEnabled.put(getDrawer(clazz), false);
+        if (this.drawerExists(clazz))
+            this.drawerEnabled.put(clazz, false);
+        else
+            throw new IllegalArgumentException("Instance of class " + clazz + " is not in drawers");
     }
 
-    private Drawer getDrawer(Class<? extends Drawer> clazz) {
-        for (Drawer drawer: drawers) {
-            if (drawer.getClass() == clazz) {
-                return drawer;
-            }
-        }
-        for (Drawer drawer: distanceDrawers) {
-            if (drawer.getClass() == clazz) {
-                return drawer;
-            }
-        }
-
-        return null;
+    private boolean drawerExists(Class<? extends Drawer> clazz) {
+        return Stream.concat(this.drawers.stream(), this.distanceDrawers.stream())
+                .anyMatch(drawer -> drawer.getClass() == clazz);
     }
 
 }
