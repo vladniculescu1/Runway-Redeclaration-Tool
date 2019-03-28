@@ -53,7 +53,8 @@ public class DrawExecutor {
                     .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway())
                     );
 
-            double verticalOffset = panelHeight * 2.5;
+            double verticalOffset = (DrawConstants.STRIP_WIDTH/2 + DrawConstants.RUNWAY_WIDTH/2)
+                    * g2d.getFontMetrics().getHeight();
 
             if (runwaySelection.hasObstacleSouth()) {
                 g2d.translate(0,-verticalOffset);
