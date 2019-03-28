@@ -74,11 +74,11 @@ public class Application {
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownRunwayDrawer(), new TopDownCentreLineDrawer(), new TopDownThresholdDrawer(),
                 new TopDownDesignatorDrawer(), new TopDownObstacleDrawer()
-        );
-        List<Drawer> topDownDistancesDrawer = List.of(
+        ));
+        List<Drawer> topDownDistancesDrawer = new ArrayList<>(List.of(
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer()
-        );
+        ));
 
         List<Drawer> sideOnDrawer = new ArrayList<>(List.of(
                 new SideOnClearwayDrawer(), new SideOnStopwayDrawer(),

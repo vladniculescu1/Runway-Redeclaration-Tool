@@ -21,8 +21,7 @@ public class DirectionArrowDrawer implements Drawer {
         String text = "Take-off/Landing Direction";
               
         int distance = (int) (1.1 * g2d.getFontMetrics().stringWidth(text));
-        int startX = positionCalculator.getStripPosition() + 4
-                * distance / 10;
+        int startX = positionCalculator.getStripPosition() + 4 * distance / 10;
                 
         switch (side) {
             case LOWER_THRESHOLD:

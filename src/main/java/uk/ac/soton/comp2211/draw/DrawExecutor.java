@@ -4,7 +4,9 @@ import uk.ac.soton.comp2211.calculator.ConstantLengthCalculator;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class holds the current runway selection and a list of all drawers. In order to draw the current selection
@@ -15,6 +17,8 @@ public class DrawExecutor {
     private List<Drawer> drawers;
     private List<Drawer> distanceDrawers;
     private RunwaySelection runwaySelection;
+
+    private Map<Drawer, Boolean> drawerEnabled;
 
     /**
      * Instatiate a new DrawExecutor with the given list of drawers and a runway selection.
@@ -27,6 +31,9 @@ public class DrawExecutor {
         this.drawers = drawers;
         this.distanceDrawers = distanceDrawers;
         this.runwaySelection = runwaySelection;
+        drawerEnabled = new HashMap<>();
+        this.drawers.forEach(drawer -> drawerEnabled.put(drawer, true));
+        this.distanceDrawers.forEach(drawer -> drawerEnabled.put(drawer, true));
     }
 
     /**
@@ -39,17 +46,24 @@ public class DrawExecutor {
     public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
         if (runwaySelection.hasSelectedRunway()) {
             this.setupGraphics(g2d, panelWidth, panelHeight);
-            this.drawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
+            this.drawers.forEach(drawer -> {
+                if (drawerEnabled.get(drawer)) {
+                    drawer.draw(g2d, runwaySelection.getSelectedRunway());
+                }
+            });
 
             double verticalOffset = panelHeight * 2.5;
 
             if (runwaySelection.hasObstacleSouth()) {
                 g2d.translate(0,-verticalOffset);
             }
-            this.distanceDrawers.forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway()));
-
+            this.distanceDrawers.forEach(drawer -> {
+                if (drawerEnabled.get(drawer)) {
+                    drawer.draw(g2d, runwaySelection.getSelectedRunway());
+                }
+            });
             if (runwaySelection.hasObstacleSouth()) {
-                g2d.translate(0,verticalOffset); //?
+                g2d.translate(0,verticalOffset);
             }
         }
     }
@@ -99,16 +113,27 @@ public class DrawExecutor {
         g2d.setColor(Color.BLACK);
     }
 
-    public void addDrawer(Drawer drawer) {
-        this.drawers.add(drawer);
+    public void enableDrawer(Class<? extends Drawer> clazz) {
+        this.drawerEnabled.put(getDrawer(clazz), true);
     }
 
-    /**
-     * Removes a given drawer given a class.
-     * @param clazz the class of the drawer that will be removed
-     */
-    public void removeDrawerByClass(Class<? extends Drawer> clazz) {
-        this.drawers.removeIf(drawer -> drawer.getClass() == clazz);
+    public void disableDrawer(Class<? extends Drawer> clazz) {
+        this.drawerEnabled.put(getDrawer(clazz), false);
+    }
+
+    private Drawer getDrawer(Class<? extends Drawer> clazz) {
+        for (Drawer drawer: drawers) {
+            if (drawer.getClass() == clazz) {
+                return drawer;
+            }
+        }
+        for (Drawer drawer: distanceDrawers) {
+            if (drawer.getClass() == clazz) {
+                return drawer;
+            }
+        }
+
+        return null;
     }
 
 }
