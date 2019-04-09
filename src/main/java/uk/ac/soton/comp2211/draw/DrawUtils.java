@@ -66,8 +66,8 @@ public class DrawUtils {
         if (rotate) {
             AffineTransform affineTransform = new AffineTransform();
             affineTransform.rotate(Math.toRadians(180),
-                    Math.abs(g2d.getFontMetrics().stringWidth(label) / 2),
-                    -(g2d.getFontMetrics().getHeight() / 4));
+                    g2d.getFontMetrics().stringWidth(label) / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 2d));
             g2d.setFont(g2d.getFont().deriveFont(affineTransform));
         }
 
@@ -152,8 +152,8 @@ public class DrawUtils {
         if (rotate) {
             AffineTransform affineTransform = new AffineTransform();
             affineTransform.rotate(Math.toRadians(180),
-                    Math.abs(g2d.getFontMetrics().stringWidth(text) / 2),
-                    -(g2d.getFontMetrics().getHeight() / 4));
+                    distanceWidth / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 4d));
             g2d.setFont(g2d.getFont().deriveFont(affineTransform));
         }
 
@@ -193,8 +193,8 @@ public class DrawUtils {
         if (rotate) {
             AffineTransform affineTransform = new AffineTransform();
             affineTransform.rotate(Math.toRadians(180),
-                    Math.abs(g2d.getFontMetrics().stringWidth(text) / 2),
-                    -(g2d.getFontMetrics().getHeight() / 4));
+                    distanceWidth / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 4d));
             g2d.setFont(g2d.getFont().deriveFont(affineTransform));
         }
 
