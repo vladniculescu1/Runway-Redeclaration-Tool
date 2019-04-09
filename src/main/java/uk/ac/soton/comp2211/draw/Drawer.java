@@ -14,6 +14,7 @@ public interface Drawer {
      *
      * @param g2d the graphics object used for drawing
      * @param physicalRunway the current selected runway
+     * @param flipText whether to flip the text
      */
-    void draw(Graphics2D g2d, PhysicalRunway physicalRunway);
+    void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText);
 }

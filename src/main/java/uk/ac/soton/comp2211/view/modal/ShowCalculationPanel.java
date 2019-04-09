@@ -66,10 +66,10 @@ public class ShowCalculationPanel extends JPanel {
                 showCalculation(getToraCalculation());
                 break;
             case 2:
-                showCalculation(getAsdaCalculation(false));
+                showCalculation(getAsdaCalculation(physicalRunway.hasObstacle()));
                 break;
             case 3:
-                showCalculation(getTodaCalculation(false));
+                showCalculation(getTodaCalculation(physicalRunway.hasObstacle()));
                 break;
             default:
                 JLabel warningText = new JLabel("Please select a value from the corresponding table!");

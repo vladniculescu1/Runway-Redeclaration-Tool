@@ -12,8 +12,9 @@ import java.awt.*;
  */
 public class TodaDrawer implements Drawer {
 
+
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -24,10 +25,10 @@ public class TodaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TODA_POSITION, "TODA", flipText);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TODA_POSITION, "TODA", flipText);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw TODA for side " + side);

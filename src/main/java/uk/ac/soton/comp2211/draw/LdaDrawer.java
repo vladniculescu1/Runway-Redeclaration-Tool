@@ -13,7 +13,7 @@ import java.awt.*;
 public class LdaDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -24,10 +24,10 @@ public class LdaDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.LDA_POSITION, "LDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.LDA_POSITION, "LDA", flipText);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.LDA_POSITION, "LDA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.LDA_POSITION, "LDA", flipText);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw LDA for side " + side);

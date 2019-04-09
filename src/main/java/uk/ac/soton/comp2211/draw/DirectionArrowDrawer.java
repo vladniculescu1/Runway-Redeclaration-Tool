@@ -11,8 +11,9 @@ import java.awt.*;
  */
 public class DirectionArrowDrawer implements Drawer {
 
+
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
         
         RunwaySide side = physicalRunway.getRunwayDirection();
 
@@ -25,10 +26,10 @@ public class DirectionArrowDrawer implements Drawer {
                 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.solidLabelledDistance(g2d, startX, textLength, -10.5, text);
+                DrawUtils.solidLabelledDistance(g2d, startX, textLength, -10.5, text, flipText);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.solidLabelledDistance(g2d, startX + textLength, -textLength, -10.5, text);
+                DrawUtils.solidLabelledDistance(g2d, startX + textLength, -textLength, -10.5, text, flipText);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw take-off/landing line");

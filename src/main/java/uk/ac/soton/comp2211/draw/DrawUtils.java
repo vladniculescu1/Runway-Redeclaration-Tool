@@ -1,6 +1,7 @@
 package uk.ac.soton.comp2211.draw;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -32,11 +33,12 @@ public class DrawUtils {
      * @param width the width of the rectangle as a factor of the current font size
      * @param label the label that will be put above the rectangle
      * @param outline the colour of the outline
+     * @param rotate boolean indicating whether the text should be rotated
      */
     public static void centeredRectangleWithLabel(Graphics2D g2d, Color outline,
                                                   double positionX, double length, double width,
-                                                  String label) {
-        DrawUtils.uncenteredRectangleWithLabel(g2d, outline, positionX, 0, length, width, label);
+                                                  String label, Boolean rotate) {
+        DrawUtils.uncenteredRectangleWithLabel(g2d, outline, positionX, 0, length, width, label, rotate);
     }
 
     /**
@@ -49,18 +51,30 @@ public class DrawUtils {
      * @param width the width of the rectangle as a factor of the current font size
      * @param label the label that will be put above the rectangle
      * @param outline the colour of the outline
+     * @param rotate boolean indicating whether the text should be rotated
      */
     public static void uncenteredRectangleWithLabel(Graphics2D g2d, Color outline,
                                                   double positionX, double positionY, double length, double width,
-                                                  String label) {
+                                                  String label, Boolean rotate) {
         width = g2d.getFontMetrics().getHeight() * width;
         positionY = g2d.getFontMetrics().getHeight() * positionY;
         Rectangle2D rectangle = new Rectangle2D.Double(positionX, - (width / 2) - positionY, length, width);
+        Font font = g2d.getFont();
         g2d.setColor(outline);
         g2d.draw(rectangle);
+
+        if (rotate) {
+            AffineTransform affineTransform = new AffineTransform();
+            affineTransform.rotate(Math.toRadians(180),
+                    g2d.getFontMetrics().stringWidth(label) / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 2d));
+            g2d.setFont(g2d.getFont().deriveFont(affineTransform));
+        }
+
         double fontHeight = g2d.getFontMetrics().getHeight();
         g2d.drawString(label, (int) positionX, (int) (- (width / 2) - (fontHeight / 4) - positionY));
         g2d.setColor(Color.black);
+        g2d.setFont(font);
     }
 
     /**
@@ -91,9 +105,11 @@ public class DrawUtils {
      * @param distance the value of the distance (ASDA,TORA,TODA,LDA)
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
+     * @param rotate boolean indicating whether the text should be rotated
      */
-    public static void dashedLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
-        dashedLabelledDistance(g2d, startX, distance, offset, text, 1);
+    public static void dashedLabelledDistance(Graphics2D g2d, int startX,
+                                              int distance, double offset, String text, Boolean rotate) {
+        dashedLabelledDistance(g2d, startX, distance, offset, text, 1, rotate);
     }
 
     /**
@@ -105,9 +121,10 @@ public class DrawUtils {
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
      * @param fontSizeFactor a factor for the font size
+     * @param rotate boolean indicating whether the text should be rotated
      */
     public static void dashedLabelledDistance(Graphics2D g2d, int startX, int distance, double offset,
-                                        String text, float fontSizeFactor) {
+                                        String text, float fontSizeFactor, boolean rotate) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
         int height = (int) (fontHeight * offset);
@@ -132,6 +149,14 @@ public class DrawUtils {
         int textWidth = g2d.getFontMetrics().stringWidth(text);
         int distanceWidth = g2d.getFontMetrics().stringWidth(distanceString);
 
+        if (rotate) {
+            AffineTransform affineTransform = new AffineTransform();
+            affineTransform.rotate(Math.toRadians(180),
+                    distanceWidth / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 4d));
+            g2d.setFont(g2d.getFont().deriveFont(affineTransform));
+        }
+
         g2d.drawString(text,
                 (startX + startX + distance) / 2 - textWidth / 2, (int) (height - fontHeight * 0.2));
         g2d.drawString(distanceString,
@@ -149,17 +174,29 @@ public class DrawUtils {
      * @param distance the value of the distance
      * @param offset the distance from the centre line as a factor of the current font size
      * @param text the name of the value
+     * @param rotate boolean indicating whether the text should be rotated
      */
-    public static void solidLabelledDistance(Graphics2D g2d, int startX, int distance, double offset, String text) {
+    public static void solidLabelledDistance(Graphics2D g2d, int startX, int distance,
+                                             double offset, String text, Boolean rotate) {
         Font font = g2d.getFont();
         int fontHeight = g2d.getFontMetrics().getHeight();
         int height = (int) (fontHeight * offset);
+
+
 
         g2d.drawLine(startX, height + fontHeight / 4, startX, height - fontHeight / 4);
         g2d.drawLine(startX + distance, height + fontHeight / 4,
                 startX + distance, height - fontHeight / 4);
 
         int distanceWidth = g2d.getFontMetrics().stringWidth(text);
+
+        if (rotate) {
+            AffineTransform affineTransform = new AffineTransform();
+            affineTransform.rotate(Math.toRadians(180),
+                    distanceWidth / 2d,
+                    -(g2d.getFontMetrics().getHeight() / 4d));
+            g2d.setFont(g2d.getFont().deriveFont(affineTransform));
+        }
 
         g2d.drawString(text,
                 (startX + startX + distance) / 2 - distanceWidth / 2,  (int) (height - fontHeight * 0.2));

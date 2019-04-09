@@ -15,7 +15,7 @@ import java.awt.geom.Line2D;
 public class SideOnThresholdDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
 

@@ -14,7 +14,7 @@ public class ResaDrawer implements Drawer {
 
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         if (physicalRunway.hasObstacle()) {
 
@@ -28,9 +28,11 @@ public class ResaDrawer implements Drawer {
             if (obstacleSide == physicalRunway.getRunwayDirection()) {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
-                    DrawUtils.dashedLabelledDistance(g2d, resaStart, resa, DrawConstants.TORA_POSITION, "RESA", 0.75F);
+                    DrawUtils.dashedLabelledDistance(g2d, resaStart, resa,
+                            DrawConstants.TORA_POSITION, "RESA", 0.75F, flipText);
                 } else {
-                    DrawUtils.dashedLabelledDistance(g2d, resaStart, -resa, DrawConstants.TORA_POSITION, "RESA", 0.75F);
+                    DrawUtils.dashedLabelledDistance(g2d, resaStart, -resa,
+                            DrawConstants.TORA_POSITION, "RESA", 0.75F, flipText);
 
                 }
 
@@ -38,10 +40,10 @@ public class ResaDrawer implements Drawer {
 
                 if (obstacleSide == RunwaySide.LOWER_THRESHOLD) {
                     DrawUtils.dashedLabelledDistance(g2d, resaStart + resa,
-                            -resa, DrawConstants.LDA_POSITION, "RESA", 0.75F);
+                            -resa, DrawConstants.LDA_POSITION, "RESA", 0.75F, flipText);
                 } else {
                     DrawUtils.dashedLabelledDistance(g2d, resaStart - resa,
-                            resa, DrawConstants.LDA_POSITION, "RESA", 0.75F);
+                            resa, DrawConstants.LDA_POSITION, "RESA", 0.75F, flipText);
                 }
 
             }

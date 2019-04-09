@@ -17,7 +17,7 @@ import java.awt.*;
 public class TopDownStopwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
@@ -40,7 +40,7 @@ public class TopDownStopwayDrawer implements Drawer {
                     stopwayLengthLower, RunwaySide.LOWER_THRESHOLD));
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionLower,
-                    stopwayLengthLower, DrawConstants.RUNWAY_WIDTH, "SWY");
+                    stopwayLengthLower, DrawConstants.RUNWAY_WIDTH, "SWY", flipText);
 
         }
         // draw higher stopway if there is one
@@ -55,7 +55,7 @@ public class TopDownStopwayDrawer implements Drawer {
                     stopwayLengthHigher, RunwaySide.HIGHER_THRESHOLD));
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.yellow, stopwayPositionHigher,
-                    stopwayLengthHigher, DrawConstants.RUNWAY_WIDTH, "SWY");
+                    stopwayLengthHigher, DrawConstants.RUNWAY_WIDTH, "SWY", flipText);
 
         }
 

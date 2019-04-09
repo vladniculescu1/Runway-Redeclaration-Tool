@@ -8,6 +8,7 @@ import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 
 /**
@@ -16,7 +17,7 @@ import java.awt.*;
 public class SideOnClearwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
@@ -34,7 +35,7 @@ public class SideOnClearwayDrawer implements Drawer {
                     DrawConstants.CONSTANT_WIDTH_SIDE_ON);
             
             DrawUtils.centeredRectangleWithLabel(g2d, Color.black, clearwayPositionLower, clearwayLengthLower,
-                    DrawConstants.CONSTANT_WIDTH_SIDE_ON, "");
+                    DrawConstants.CONSTANT_WIDTH_SIDE_ON, "",flipText);
         }
         if (clearwayLengthHigher > 0) {
             
@@ -42,7 +43,7 @@ public class SideOnClearwayDrawer implements Drawer {
                     DrawConstants.CONSTANT_WIDTH_SIDE_ON);
             
             DrawUtils.centeredRectangleWithLabel(g2d, Color.black, clearwayPositionHigher, clearwayLengthHigher,
-                    DrawConstants.CONSTANT_WIDTH_SIDE_ON, "");
+                    DrawConstants.CONSTANT_WIDTH_SIDE_ON, "",flipText);
         }
     }
 }

@@ -32,7 +32,7 @@ public class TopDownPanel  extends JPanel implements Observer {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
 
-        this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight());
+        this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight(), false);
 
         g2d.dispose();
     }

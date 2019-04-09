@@ -8,6 +8,7 @@ import uk.ac.soton.comp2211.draw.Drawer;
 import uk.ac.soton.comp2211.model.PhysicalRunway;
 import uk.ac.soton.comp2211.model.RunwaySide;
 
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 
 /**
@@ -16,7 +17,7 @@ import java.awt.*;
 public class SideOnStopwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
@@ -34,7 +35,7 @@ public class SideOnStopwayDrawer implements Drawer {
                     stopwayLengthLower, DrawConstants.CONSTANT_WIDTH_SIDE_ON);
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.black, stopwayPositionLower,
-                    stopwayLengthLower, DrawConstants.CONSTANT_WIDTH_SIDE_ON, "");
+                    stopwayLengthLower, DrawConstants.CONSTANT_WIDTH_SIDE_ON, "",flipText);
       
 
         }
@@ -45,7 +46,7 @@ public class SideOnStopwayDrawer implements Drawer {
                     stopwayLengthHigher, DrawConstants.CONSTANT_WIDTH_SIDE_ON);
 
             DrawUtils.centeredRectangleWithLabel(g2d, Color.black, stopwayPositionHigher,
-                    stopwayLengthHigher, DrawConstants.CONSTANT_WIDTH_SIDE_ON, "");
+                    stopwayLengthHigher, DrawConstants.CONSTANT_WIDTH_SIDE_ON, "",flipText);
 
         }
 

@@ -14,7 +14,7 @@ import java.awt.*;
 public class TopDownSurroundingsDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();

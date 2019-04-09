@@ -13,7 +13,7 @@ import java.awt.*;
 public class ToraDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         RunwaySide side = physicalRunway.getRunwayDirection();
         DynamicLengthCalculator lengthCalculator = physicalRunway.getDynamicLengthCalculator();
@@ -24,10 +24,10 @@ public class ToraDrawer implements Drawer {
 
         switch (side) {
             case LOWER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, distance, DrawConstants.TORA_POSITION, "TORA", flipText);
                 break;
             case HIGHER_THRESHOLD:
-                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA");
+                DrawUtils.dashedLabelledDistance(g2d, startX, -distance, DrawConstants.TORA_POSITION, "TORA", flipText);
                 break;
             default:
                 throw new UnsupportedOperationException("Cannot draw TORA for side " + side);

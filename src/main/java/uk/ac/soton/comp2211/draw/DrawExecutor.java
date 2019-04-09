@@ -43,14 +43,15 @@ public class DrawExecutor {
      * @param g2d the graphics2d object used for drawing
      * @param panelWidth the width of the draw display panel
      * @param panelHeight the height of the draw display panel
+     * @param rotate whether to flip the text
      */
-    public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight) {
+    public void executeDrawers(Graphics2D g2d, int panelWidth, int panelHeight, Boolean rotate) {
         if (runwaySelection.hasSelectedRunway()) {
             this.setupGraphics(g2d, panelWidth, panelHeight);
 
             this.drawers.stream()
                 .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
-                .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway())
+                .forEach(drawer -> drawer.draw(g2d, this.runwaySelection.getSelectedRunway(), rotate)
                 );
 
             double verticalOffset = (DrawConstants.STRIP_WIDTH / 2 + DrawConstants.RUNWAY_WIDTH / 2)
@@ -62,7 +63,7 @@ public class DrawExecutor {
 
             this.distanceDrawers.stream()
                 .filter(drawer -> this.drawerEnabled.get(drawer.getClass()))
-                .forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway())
+                .forEach(drawer -> drawer.draw(g2d, runwaySelection.getSelectedRunway(), rotate)
                 );
 
             if (runwaySelection.hasObstacleSouth()) {
@@ -127,6 +128,10 @@ public class DrawExecutor {
         } else {
             throw new IllegalArgumentException("Instance of class " + clazz + " is not in drawers");
         }
+    }
+
+    public void addDrawer(Drawer drawer) {
+        this.drawers.add(drawer);
     }
 
     /**

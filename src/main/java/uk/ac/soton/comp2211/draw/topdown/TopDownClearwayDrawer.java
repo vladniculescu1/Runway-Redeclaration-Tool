@@ -16,7 +16,7 @@ import java.awt.*;
 public class TopDownClearwayDrawer implements Drawer {
 
     @Override
-    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway) {
+    public void draw(Graphics2D g2d, PhysicalRunway physicalRunway, boolean flipText) {
 
         ConstantLengthCalculator lengthCalculator = physicalRunway.getConstantLengthCalculator();
         ConstantPositionCalculator positionCalculator = physicalRunway.getConstantPositionCalculator();
@@ -30,11 +30,11 @@ public class TopDownClearwayDrawer implements Drawer {
         // draw clearways as labelled rectangles only if they are present
         if (clearwayLengthLower > 0) {
             DrawUtils.centeredRectangleWithLabel(g2d, Color.red, clearwayPositionLower, clearwayLengthLower,
-                    DrawConstants.CLEARWAY_WIDTH, "CWY");
+                    DrawConstants.CLEARWAY_WIDTH, "CWY",flipText);
         }
         if (clearwayLengthHigher > 0) {
             DrawUtils.centeredRectangleWithLabel(g2d, Color.red, clearwayPositionHigher, clearwayLengthHigher,
-                    DrawConstants.CLEARWAY_WIDTH, "CWY");
+                    DrawConstants.CLEARWAY_WIDTH, "CWY",flipText);
         }
     }
 }
