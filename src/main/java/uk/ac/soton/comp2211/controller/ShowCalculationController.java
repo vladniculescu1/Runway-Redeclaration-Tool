@@ -33,8 +33,7 @@ public class ShowCalculationController implements ActionListener {
     }
 
     public void addMainFrame(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;
-        
+        this.mainFrame = mainFrame;    
     }
     
     @Override
@@ -46,7 +45,6 @@ public class ShowCalculationController implements ActionListener {
                         lowerTable.getValueAt(lowerTable.getSelectedRow(), 0).toString(),
                         RunwaySide.LOWER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
-                //System.out.println(lowerTable.getValueAt(lowerTable.getSelectedRow(), 0));
                 break;
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_HIGHER:
                 displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
