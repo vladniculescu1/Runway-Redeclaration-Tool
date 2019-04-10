@@ -33,7 +33,7 @@ public class ShowCalculationController implements ActionListener {
     }
 
     public void addMainFrame(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;    
+        this.mainFrame = mainFrame;
     }
     
     @Override
