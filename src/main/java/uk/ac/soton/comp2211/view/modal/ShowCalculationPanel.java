@@ -27,12 +27,12 @@ public class ShowCalculationPanel extends JPanel {
     /**
      * Constructor for the show calculation panel.
      * @param physicalRunway the physical runway
-     * @param rowNumber the row number selected in the table
+     * @param rowName the distance value selected in the table
      * @param runwaySide the threshold selected
      * @param showCalculationController the controller to handle interactions with the panel
      */
 
-    public ShowCalculationPanel(PhysicalRunway physicalRunway, int rowNumber,
+    public ShowCalculationPanel(PhysicalRunway physicalRunway, String rowName,
                                 RunwaySide runwaySide, ShowCalculationController showCalculationController) {
         currentFont = new JLabel().getFont();
         fontSize = (float) 1.5 * currentFont.getSize();
@@ -58,17 +58,17 @@ public class ShowCalculationPanel extends JPanel {
                 throw new UnsupportedOperationException();
         }
 
-        switch (rowNumber) {
-            case 0:
+        switch (rowName) {
+            case "LDA":
                 showCalculation(getLdaCalculation());
                 break;
-            case 1:
+            case "TORA":
                 showCalculation(getToraCalculation());
                 break;
-            case 2:
+            case "ASDA":
                 showCalculation(getAsdaCalculation(physicalRunway.hasObstacle()));
                 break;
-            case 3:
+            case "TODA":
                 showCalculation(getTodaCalculation(physicalRunway.hasObstacle()));
                 break;
             default:
