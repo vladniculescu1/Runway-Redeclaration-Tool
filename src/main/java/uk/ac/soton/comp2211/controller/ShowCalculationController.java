@@ -35,7 +35,7 @@ public class ShowCalculationController implements ActionListener {
     public void addMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
