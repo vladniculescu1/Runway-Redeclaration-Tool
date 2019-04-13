@@ -110,7 +110,7 @@ public class ImportExportController implements ActionListener {
                         outputStrings.add("Physical Runway " + runway.toString() + ":");
                         outputStrings.add("Logical Runway " + runway.getLowerThreshold().toString() + ":");
                         ShowCalculationPanel textMaker = new ShowCalculationPanel(runway,
-                                0, RunwaySide.LOWER_THRESHOLD, null);
+                                "LDA", RunwaySide.LOWER_THRESHOLD, null);
                         addStringArray(outputStrings, textMaker.getLdaCalculation());
                         addStringArray(outputStrings, textMaker.getToraCalculation());
                         addStringArray(outputStrings, textMaker.getTodaCalculation(false));
@@ -120,7 +120,7 @@ public class ImportExportController implements ActionListener {
                         outputStrings.add("");
                         outputStrings.add("Logical Runway " + runway.getHigherThreshold().toString() + ":");
                         textMaker = new ShowCalculationPanel(runway,
-                                0, RunwaySide.HIGHER_THRESHOLD, null);
+                                "LDA", RunwaySide.HIGHER_THRESHOLD, null);
                         addStringArray(outputStrings, textMaker.getLdaCalculation());
                         addStringArray(outputStrings, textMaker.getToraCalculation());
                         addStringArray(outputStrings, textMaker.getTodaCalculation(false));
