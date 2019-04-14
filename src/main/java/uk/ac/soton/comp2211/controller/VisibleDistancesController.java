@@ -19,6 +19,9 @@ public class VisibleDistancesController implements ActionListener {
     private JCheckBox todaCheckbox;
     private JCheckBox asdaCheckbox;
     private JCheckBox toraCheckbox;
+    private JCheckBox blastCheckbox;
+    private JCheckBox tocsCheckbox;
+    private JCheckBox resaCheckbox;
 
     /**
      * The controller for displaying visible distances.
@@ -49,11 +52,24 @@ public class VisibleDistancesController implements ActionListener {
         this.toraCheckbox = toraCheckbox;
     }
 
+    public void setBlastCheckbox(JCheckBox blastCheckbox) {
+        this.blastCheckbox = blastCheckbox;
+    }
+
+    public void setTocsCheckbox(JCheckBox tocsCheckbox) {
+        this.tocsCheckbox = tocsCheckbox;
+    }
+
+    public void setResaCheckbox(JCheckBox resaCheckbox) {
+        this.resaCheckbox = resaCheckbox;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (runwaySelection.hasSelectedRunway()) {
             switch (e.getActionCommand()) {
                 case VisibleDistancesPanel.CHANGE_SELECTED: {
+
                     if (asdaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.enableDrawer(AsdaDrawer.class);
                         this.sideOnDrawExecutor.enableDrawer(AsdaDrawer.class);
@@ -61,6 +77,7 @@ public class VisibleDistancesController implements ActionListener {
                         this.topDownDrawExecutor.disableDrawer(AsdaDrawer.class);
                         this.sideOnDrawExecutor.disableDrawer(AsdaDrawer.class);
                     }
+
                     if (toraCheckbox.isSelected()) {
                         this.topDownDrawExecutor.enableDrawer(ToraDrawer.class);
                         this.sideOnDrawExecutor.enableDrawer(ToraDrawer.class);
@@ -68,6 +85,7 @@ public class VisibleDistancesController implements ActionListener {
                         this.topDownDrawExecutor.disableDrawer(ToraDrawer.class);
                         this.sideOnDrawExecutor.disableDrawer(ToraDrawer.class);
                     }
+
                     if (todaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.enableDrawer(TodaDrawer.class);
                         this.sideOnDrawExecutor.enableDrawer(TodaDrawer.class);
@@ -75,6 +93,7 @@ public class VisibleDistancesController implements ActionListener {
                         this.topDownDrawExecutor.disableDrawer(TodaDrawer.class);
                         this.sideOnDrawExecutor.disableDrawer(TodaDrawer.class);
                     }
+
                     if (ldaCheckbox.isSelected()) {
                         this.topDownDrawExecutor.enableDrawer(LdaDrawer.class);
                         this.sideOnDrawExecutor.enableDrawer(LdaDrawer.class);
@@ -82,7 +101,33 @@ public class VisibleDistancesController implements ActionListener {
                         this.topDownDrawExecutor.disableDrawer(LdaDrawer.class);
                         this.sideOnDrawExecutor.disableDrawer(LdaDrawer.class);
                     }
+
+                    if (blastCheckbox.isSelected()) {
+                        this.topDownDrawExecutor.enableDrawer(BlastDrawer.class);
+                        this.sideOnDrawExecutor.enableDrawer(BlastDrawer.class);
+                    } else {
+                        this.topDownDrawExecutor.disableDrawer(BlastDrawer.class);
+                        this.sideOnDrawExecutor.disableDrawer(BlastDrawer.class);
+                    }
+
+                    if (tocsCheckbox.isSelected()) {
+                        this.topDownDrawExecutor.enableDrawer(TocsDrawer.class);
+                        this.sideOnDrawExecutor.enableDrawer(TocsDrawer.class);
+                    } else {
+                        this.topDownDrawExecutor.disableDrawer(TocsDrawer.class);
+                        this.sideOnDrawExecutor.disableDrawer(TocsDrawer.class);
+                    }
+
+                    if (resaCheckbox.isSelected()) {
+                        this.topDownDrawExecutor.enableDrawer(ResaDrawer.class);
+                        this.sideOnDrawExecutor.enableDrawer(ResaDrawer.class);
+                    } else {
+                        this.topDownDrawExecutor.disableDrawer(ResaDrawer.class);
+                        this.sideOnDrawExecutor.disableDrawer(ResaDrawer.class);
+                    }
+
                     runwaySelection.notifyUpdate();
+
                     break;
                 }
                 default: {

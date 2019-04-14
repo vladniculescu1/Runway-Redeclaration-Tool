@@ -11,14 +11,18 @@ import java.awt.*;
 
 public class VisibleDistancesPanel extends JPanel implements Observer {
 
-    private JCheckBox ldaCheckbox;
-    private JCheckBox todaCheckbox;
-    private JCheckBox asdaCheckbox;
-    private JCheckBox toraCheckbox;
-
     public static final String CHANGE_SELECTED = "Change";
 
     private RunwaySelection runwaySelection;
+
+    private JCheckBox blastCheckbox;
+    private JCheckBox tocsCheckbox;
+    private JCheckBox resaCheckbox;
+    private JCheckBox ldaCheckbox;
+    private JCheckBox toraCheckbox;
+    private JCheckBox todaCheckbox;
+    private JCheckBox asdaCheckbox;
+
 
     /**
      * The visible distances panel. Contains the checkboxes for adding/removing visible (main) distances
@@ -28,9 +32,9 @@ public class VisibleDistancesPanel extends JPanel implements Observer {
     public VisibleDistancesPanel(RunwaySelection runwaySelection,
                                  VisibleDistancesController visibleDistancesController) {
         runwaySelection.subscribe(this);
-        this.runwaySelection = runwaySelection;
-
         this.setBorder(BorderFactory.createTitledBorder("Visible Distances"));
+
+        this.runwaySelection = runwaySelection;
 
         ldaCheckbox = new JCheckBox("LDA");
         ldaCheckbox.setSelected(true);
@@ -56,11 +60,32 @@ public class VisibleDistancesPanel extends JPanel implements Observer {
         todaCheckbox.addActionListener(visibleDistancesController);
         visibleDistancesController.setTodaCheckbox(todaCheckbox);
 
+        blastCheckbox = new JCheckBox("BLAST");
+        blastCheckbox.setSelected(true);
+        blastCheckbox.setActionCommand(CHANGE_SELECTED);
+        blastCheckbox.addActionListener(visibleDistancesController);
+        visibleDistancesController.setBlastCheckbox(blastCheckbox);
+
+        tocsCheckbox = new JCheckBox("TOCS");
+        tocsCheckbox.setSelected(true);
+        tocsCheckbox.setActionCommand(CHANGE_SELECTED);
+        tocsCheckbox.addActionListener(visibleDistancesController);
+        visibleDistancesController.setTocsCheckbox(tocsCheckbox);
+
+        resaCheckbox = new JCheckBox("RESA");
+        resaCheckbox.setSelected(true);
+        resaCheckbox.setActionCommand(CHANGE_SELECTED);
+        resaCheckbox.addActionListener(visibleDistancesController);
+        visibleDistancesController.setResaCheckbox(resaCheckbox);
+
         JPanel checkBoxPanel = new JPanel();
         checkBoxPanel.add(ldaCheckbox);
         checkBoxPanel.add(toraCheckbox);
         checkBoxPanel.add(asdaCheckbox);
         checkBoxPanel.add(todaCheckbox);
+        checkBoxPanel.add(tocsCheckbox);
+        checkBoxPanel.add(resaCheckbox);
+        checkBoxPanel.add(blastCheckbox);
         ((FlowLayout) checkBoxPanel.getLayout()).setVgap(5);
 
         PainlessGridbagConfiguration gridbagConfiguration = new PainlessGridbagConfiguration();
@@ -72,10 +97,34 @@ public class VisibleDistancesPanel extends JPanel implements Observer {
         PainlessGridBag gridBag = new PainlessGridBag(this, gridbagConfiguration,false);
         gridBag.row().cell(checkBoxPanel).fillX();
         gridBag.done();
+
+        this.notifyUpdate();
     }
 
     @Override
     public void notifyUpdate() {
+
+        if (this.runwaySelection.hasSelectedRunway()) {
+            this.ldaCheckbox.setEnabled(true);
+            this.toraCheckbox.setEnabled(true);
+            this.todaCheckbox.setEnabled(true);
+            this.asdaCheckbox.setEnabled(true);
+        } else {
+            this.ldaCheckbox.setEnabled(false);
+            this.toraCheckbox.setEnabled(false);
+            this.todaCheckbox.setEnabled(false);
+            this.asdaCheckbox.setEnabled(false);
+        }
+
+        if (this.runwaySelection.hasSelectedRunway() && this.runwaySelection.getSelectedRunway().hasObstacle()) {
+            this.blastCheckbox.setEnabled(true);
+            this.tocsCheckbox.setEnabled(true);
+            this.resaCheckbox.setEnabled(true);
+        } else {
+            this.blastCheckbox.setEnabled(false);
+            this.tocsCheckbox.setEnabled(false);
+            this.resaCheckbox.setEnabled(false);
+        }
 
     }
 }

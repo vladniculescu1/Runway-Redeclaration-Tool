@@ -116,7 +116,7 @@ public class Application {
                     new SouthPanel(
                         new DirectionPanel(runwaySelection, new DirectionController(runwaySelection)),
                         new VisibleDistancesPanel(runwaySelection, visibleDistancesController),
-                        new ExportPanel(importExportController),
+                        new ExportPanel(runwaySelection, importExportController),
                         new ImportPanel(importExportController)
                     ),
                     new NotificationsPanel(notification)
