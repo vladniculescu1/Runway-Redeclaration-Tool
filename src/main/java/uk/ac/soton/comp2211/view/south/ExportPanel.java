@@ -22,6 +22,7 @@ public class ExportPanel extends JPanel implements Observer {
     private JButton pngButton;
     private JButton txtButton;
     private JButton xmlButton;
+
     /**
      * Constructs a new Export panel.
      * @param runwaySelection the runway that is currently selected
@@ -52,9 +53,10 @@ public class ExportPanel extends JPanel implements Observer {
         xmlButton.setActionCommand(XML_EXPORT_BUTTON_COMMAND);
         xmlButton.addActionListener(actionListener);
 
-
         gridBag.row().cell(pngButton).fillX().cell(txtButton).fillX().cell(xmlButton).fillX();
         gridBag.done();
+
+        this.notifyUpdate();
     }
 
     @Override
