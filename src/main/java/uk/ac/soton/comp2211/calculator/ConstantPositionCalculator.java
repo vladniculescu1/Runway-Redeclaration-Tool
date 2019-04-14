@@ -82,7 +82,7 @@ public class ConstantPositionCalculator extends Calculator {
 
     public int getStripPosition() {
         return this.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
-                - constantLengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD)
+                - constantLengthCalculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD)
                 - constantLengthCalculator.getStripMargin();
     }
     /**

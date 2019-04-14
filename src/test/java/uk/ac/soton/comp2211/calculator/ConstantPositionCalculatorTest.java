@@ -83,7 +83,7 @@ class ConstantPositionCalculatorTest {
      */
     @Test
     void getStripPosition_noStopWayNoClearway() {
-        PhysicalRunway runway = Runways.stopWayNoClearwayHigher();
+        PhysicalRunway runway = Runways.noStopWayNoClearway();
         ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
         ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
         int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
@@ -104,7 +104,7 @@ class ConstantPositionCalculatorTest {
         ConstantPositionCalculator positionCalculator = runway.getConstantPositionCalculator();
         ConstantLengthCalculator lengthCalculator = runway.getConstantLengthCalculator();
         int expectedPosition = positionCalculator.getRunwayPosition(RunwaySide.LOWER_THRESHOLD)
-                - lengthCalculator.getStopwayLength(RunwaySide.LOWER_THRESHOLD) - lengthCalculator.getStripMargin();;
+                - lengthCalculator.getStopwayLength(RunwaySide.HIGHER_THRESHOLD) - lengthCalculator.getStripMargin();;
         int actualPosition = positionCalculator.getStripPosition();
 
         assertEquals(expectedPosition, actualPosition);

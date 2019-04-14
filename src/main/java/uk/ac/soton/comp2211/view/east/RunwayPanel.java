@@ -68,12 +68,20 @@ public class RunwayPanel extends JPanel implements Observer {
 
     @Override
     public void notifyUpdate() {
+
+        if (this.airport.getRunways().size() > 0) {
+            this.runwayComboBox.setEnabled(true);
+        } else {
+            this.runwayComboBox.setEnabled(false);
+        }
+
         this.airport.getRunways().forEach(runway -> {
             // only add runway to combobox if it is not already in the combo box
             if (this.runwayComboBoxModel.getIndexOf(runway) == -1) {
                 this.runwayComboBox.addItem(runway);
             }
         });
+
         if (runwaySelection.hasSelectedRunway()) {
             this.runwayComboBox.setSelectedItem(runwaySelection.getSelectedRunway());
             removeButton.setEnabled(true);
