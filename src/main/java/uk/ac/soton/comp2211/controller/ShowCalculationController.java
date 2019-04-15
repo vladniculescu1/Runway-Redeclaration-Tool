@@ -49,7 +49,7 @@ public class ShowCalculationController implements ActionListener {
             case DistancesPanel.SHOW_CALCULATION_BUTTON_COMMAND_HIGHER:
                 displayPopUpFrame = new DisplayPopUpFrame(panelTitle);
                 showCalculationPanel = new ShowCalculationPanel(runwaySelection.getSelectedRunway(),
-                        higherTable.getValueAt(lowerTable.getSelectedRow(), 0).toString(),
+                        higherTable.getValueAt(higherTable.getSelectedRow(), 0).toString(),
                         RunwaySide.HIGHER_THRESHOLD, this);
                 displayPopUpFrame.create(showCalculationPanel);
                 break;
