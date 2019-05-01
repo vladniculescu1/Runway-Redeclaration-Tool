@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.view.center;
 
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
+import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import javax.swing.*;

@@ -85,7 +85,8 @@ public class Application {
                 new TodaDrawer(), new ToraDrawer(), new AsdaDrawer(), new LdaDrawer(),
                 new ResaDrawer(), new TocsDrawer(), new BlastDrawer(), new SideOnSlopeDrawer(),
                 new SideOnRunwayDrawer(), new SideOnThresholdDrawer(),
-                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer()
+                new SideOnDesignatorDrawer(), new SideOnObstacleDrawer(), new DirectionArrowDrawer(),
+                new SideOnLegendDrawer()
         ));
 
         DrawExecutor topDownDrawExecutor = new DrawExecutor(topDownDrawer, topDownDistancesDrawer, runwaySelection);
