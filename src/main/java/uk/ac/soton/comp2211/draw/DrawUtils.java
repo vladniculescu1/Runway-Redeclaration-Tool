@@ -10,6 +10,11 @@ import java.awt.geom.Rectangle2D;
 public class DrawUtils {
 
 
+    public static void legend(Graphics2D g2d, double positionX, double positionY) {
+        DrawUtils.uncenteredFilledRectangle(g2d, Color.WHITE, positionX, positionY, 300, 5);
+    }
+
+
     /**
      * Draws a filled rectangle that is centered around the x axis.
      *

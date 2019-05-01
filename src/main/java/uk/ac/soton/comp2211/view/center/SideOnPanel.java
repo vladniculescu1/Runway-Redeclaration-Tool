@@ -2,6 +2,7 @@ package uk.ac.soton.comp2211.view.center;
 
 import uk.ac.soton.comp2211.Observer;
 import uk.ac.soton.comp2211.draw.DrawExecutor;
+import uk.ac.soton.comp2211.draw.DrawUtils;
 import uk.ac.soton.comp2211.model.RunwaySelection;
 
 import javax.swing.*;
@@ -31,6 +32,7 @@ public class SideOnPanel extends JPanel implements Observer {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        DrawUtils.legend(g2d, 10, -3);
 
         this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight(), false);
 
