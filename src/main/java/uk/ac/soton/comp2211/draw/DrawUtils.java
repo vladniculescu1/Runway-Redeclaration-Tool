@@ -9,16 +9,30 @@ import java.awt.geom.Rectangle2D;
  */
 public class DrawUtils {
 
-
+    /**
+     * Method to create a legend for Side On View.
+     * @param g2d the graphics object used to draw the legend
+     * @param positionX the left position on x axis
+     * @param positionY the left position on y axis
+     */
     public static void legend(Graphics2D g2d, double positionX, double positionY) {
-        int fontHeight = g2d.getFont().getSize();
+        int fontHeight = g2d.getFontMetrics().getHeight();
+        Color originalColor = g2d.getColor();
 
-        DrawUtils.uncenteredFilledRectangle(g2d, Color.WHITE, positionX, positionY, (fontHeight * 20), fontHeight / 3);
-        g2d.drawString("Clearway", (int) positionX + 10, (int) positionY + (fontHeight * 2));
-        g2d.drawString("Stopway", (int) positionX + 10, (int) positionY + (fontHeight * 4));
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect((int) positionX, (int) (positionY - (fontHeight * 11.5)), fontHeight * 6, fontHeight * 3);
 
-        DrawUtils.uncenteredFilledRectangle(g2d, Color.BLACK, positionX+50, positionY, fontHeight, fontHeight/5);
-        DrawUtils.uncenteredFilledRectangle(g2d, Color.BLACK, positionX, positionY, fontHeight, fontHeight/5);
+        g2d.setColor(originalColor);
+
+        g2d.drawString("Clearway", (int) positionX + (fontHeight * 2), (int) (positionY - (fontHeight * 10.5)));
+        g2d.drawString("Stopway", (int) positionX + (fontHeight * 2), (int) (positionY - (fontHeight * 9)));
+
+        g2d.setColor(Color.RED);
+        g2d.fillRect((int)positionX + (fontHeight / 2),(int) (positionY - (fontHeight * 11.3)), fontHeight, fontHeight);
+        g2d.setColor(Color.YELLOW);
+        g2d.fillRect((int)positionX + (fontHeight / 2), (int) (positionY - (fontHeight * 9.8)), fontHeight, fontHeight);
+
+        g2d.setColor(originalColor);
     }
 
 

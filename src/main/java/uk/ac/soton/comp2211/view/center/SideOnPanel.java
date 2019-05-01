@@ -32,7 +32,6 @@ public class SideOnPanel extends JPanel implements Observer {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
-        DrawUtils.legend(g2d, 10, -2);
 
         this.drawExecutor.executeDrawers(g2d, this.getWidth(), this.getHeight(), false);
 
