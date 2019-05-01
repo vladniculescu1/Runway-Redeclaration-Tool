@@ -11,7 +11,14 @@ public class DrawUtils {
 
 
     public static void legend(Graphics2D g2d, double positionX, double positionY) {
-        DrawUtils.uncenteredFilledRectangle(g2d, Color.WHITE, positionX, positionY, 300, 5);
+        int fontHeight = g2d.getFont().getSize();
+
+        DrawUtils.uncenteredFilledRectangle(g2d, Color.WHITE, positionX, positionY, (fontHeight * 20), fontHeight / 3);
+        g2d.drawString("Clearway", (int) positionX + 10, (int) positionY + (fontHeight * 2));
+        g2d.drawString("Stopway", (int) positionX + 10, (int) positionY + (fontHeight * 4));
+
+        DrawUtils.uncenteredFilledRectangle(g2d, Color.BLACK, positionX+50, positionY, fontHeight, fontHeight/5);
+        DrawUtils.uncenteredFilledRectangle(g2d, Color.BLACK, positionX, positionY, fontHeight, fontHeight/5);
     }
 
 
